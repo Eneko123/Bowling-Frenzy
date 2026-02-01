@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Camera : MonoBehaviour
 {
-    [SerializeField] float sensibility; // Se utiliza para fijar la sensibilidad del ratón
+    [SerializeField] float sensibilityX; // Se utiliza para fijar la sensibilidad del ratón en el eje X
+    [SerializeField] float sensibilityY; // Se utiliza para fijar la sensibilidad del ratón en el eje Y
     //Son variables para la rotacion en los ejes X e Y
     internal float rotationX;
     internal float rotationY;
@@ -39,15 +40,15 @@ public class Camera : MonoBehaviour
             //Se limita la rotacion en el angulo Y
             rotationY = AngerOverflow(minY, rotationY, maxY);
             //Se asigna en los vectores el como se quiere hacer la rotacion
-            Vector3 rotation_player = new Vector3(0, rotationX * sensibility, 0);
-            Vector3 rotation_camera = new Vector3(-rotationY * sensibility, 0, 0);
+            Vector3 rotation_player = new Vector3(0, rotationX * sensibilityX, 0);
+            Vector3 rotation_camera = new Vector3(-rotationY * sensibilityY, 0, 0);
             //Se rota al jugador en el eje X y la camara en el eje Y
             player.transform.localEulerAngles = rotation_player;
             this.transform.localEulerAngles = rotation_camera;
         }
     }
 
-    //Sirve para que la camara no pueda hacer giros de más de 180 grados
+    //Sirve para que la camara no pueda hacer giros de más de 60 grados
     float AngerOverflow(float min, float anger, float max)
     {
         //Devolvera el angulo minimo, maximo o el angulo actual del eje Y

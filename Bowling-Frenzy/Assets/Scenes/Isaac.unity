@@ -269,7 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58d5aff926cd6442b71064c46c01788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibility: 1
+  sensibilityX: 1
+  sensibilityY: 1
   player: {fileID: 1458839750}
   maxY: 60
   minY: -60
