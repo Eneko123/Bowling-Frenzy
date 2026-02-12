@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour
 {
-    //variable
+    //variables universales para todas las clases de enemigos
     public Transform player;
     private NavMeshAgent agent;
     //numero random
@@ -11,7 +11,9 @@ public class EnemyBase : MonoBehaviour
     //metodos
     void Start() 
     {
-        agent = GetComponent<NavMeshAgent>();
+        // asignamos los componentes necesarios
+        if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
+        if (player == null) { player = GameObject.FindGameObjectWithTag("Player").transform; }
     }
     void Update() 
     { 
@@ -19,28 +21,30 @@ public class EnemyBase : MonoBehaviour
     }
 
     void Movemetn()
-    { 
+    {
+        // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
         agent.SetDestination(player.position);
     }
 
-    private class Bolo1
-    {
-        private int hp = 10;
-    }
+    // clases de enemigos, cada una con sus propias variables, como hp, velocidad, etc.
+    //private class Bolo1
+    //{
+    //    private int hp = 10;
+    //}
 
-    private class Bolo2
-    {
-        private int hp = 5;
-    }
+    //private class Bolo2
+    //{
+    //    private int hp = 5;
+    //}
 
-    private class Bolo3
-    {
-        private int hp = 20;
-    }
+    //private class Bolo3
+    //{
+    //    private int hp = 20;
+    //}
 
-    private class BoloBoss
-    {
-        private int hp = 200;
-    }
+    //private class BoloBoss
+    //{
+    //    private int hp = 200;
+    //}
 
 }
