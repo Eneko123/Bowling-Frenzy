@@ -2,5 +2,9 @@ using UnityEngine;
 
 public class BoloE2 : EnemyBase
 {
-    protected int maxHealth = 10;
+    void Start()
+    {
+        maxHealth = 10;
+        agent.speed = 3.5f;
+    }
 }
