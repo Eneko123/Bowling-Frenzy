@@ -5,32 +5,36 @@ using UnityEngine;
 public class GenerateBullet : MonoBehaviour
 {
     int numberOfBullets = 10;
-    [SerializeField] GameObject bullet;
-    List<GameObject> listBullets = new List<GameObject>() { };
+    [SerializeField] NormalBulletBehaviour bullet;
+    List<NormalBulletBehaviour> listBullets = new List<NormalBulletBehaviour>() { };
+    [SerializeField] MainCharacter player;
+    [SerializeField] Camera playerCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject tmpBullet;
+        NormalBulletBehaviour tmpBullet;
         for (int i = 0; i < numberOfBullets; i++)
         {
             tmpBullet = Instantiate(bullet);
-            tmpBullet.SetActive(false);
+            tmpBullet.gameObject.SetActive(true);
             listBullets.Add(tmpBullet);
         }
     }
-    public GameObject GetBullets()
+    public NormalBulletBehaviour GetBullets()
     {
-        foreach (GameObject b in listBullets)
+        foreach (NormalBulletBehaviour b in listBullets)
         {
-            if (!b.activeInHierarchy)
+            if (!b.gameObject.activeInHierarchy)
             {
-                b.SetActive(true);
+                b.gameObject.SetActive(true);
+                b.Init(player.transform.position, playerCamera.transform.forward);
                 return b;
             }
         }
-        GameObject tmpBullet;
+        NormalBulletBehaviour tmpBullet;
         tmpBullet = Instantiate(bullet);
-        tmpBullet.SetActive(true);
+        tmpBullet.gameObject.SetActive(true);
+        tmpBullet.Init(player.transform.position, playerCamera.transform.forward);
         return tmpBullet;
 
     }

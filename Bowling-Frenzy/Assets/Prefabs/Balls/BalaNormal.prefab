@@ -127,7 +127,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   playerCamera: {fileID: 0}
-  lifeTime: 30
+  lifeTime: 4
 --- !u!54 &8383227892154248449
 Rigidbody:
   m_ObjectHideFlags: 0
