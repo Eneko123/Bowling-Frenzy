@@ -25,12 +25,12 @@ public class MainCharacter : MonoBehaviour
     //Controla el si se puede mover el jugador o no
     private bool _movementInputPressed = false;
 
-    Camera camera;
+    Camera cameraPlayer;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        camera = GetComponentInChildren<Camera>();
+        cameraPlayer = GetComponentInChildren<Camera>();
     }
     //Se llamara al evento en Unity asociado con la accion de moverse
     public void OnMoveInput(InputAction.CallbackContext contextMove)
@@ -73,7 +73,7 @@ public class MainCharacter : MonoBehaviour
         if (_movementInputPressed)
         {
             //Se mueve el jugador en la direccion dada a la velocidad dada
-            Vector3 move = (this.transform.forward * MoveDir.y + camera.transform.right * MoveDir.x);
+            Vector3 move = (this.transform.forward * MoveDir.y + cameraPlayer.transform.right * MoveDir.x);
             controller.Move(move.normalized * speed * Time.deltaTime);
         }
         //Calcula para que el jugador baje segun la gravedad
