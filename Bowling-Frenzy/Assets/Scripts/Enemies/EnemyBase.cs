@@ -6,18 +6,20 @@ public class EnemyBase : MonoBehaviour
 {
     //variables universales para todas las clases de enemigos
     public Transform player;
-    public int damage;
+    protected int damage;
     protected NavMeshAgent agent;
     protected int maxHealth;
     protected int health;
-    bool isDead = false;
+    protected bool isDead = false;
+    protected Animator animator;
 
 
     //metodos
-    void Start() 
+    protected void Start() 
     {
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
+        if (animator == null) { animator = GetComponent<Animator>(); }
         if (player == null) { player = GameObject.FindGameObjectWithTag("Player").transform; } // mala practica, cambiar player controler a ser un instance o que desde el game manager se le asigne al enemigo el player
         health = maxHealth;
     }

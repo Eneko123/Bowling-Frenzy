@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class BoloE3 : EnemyBase
 {
-    void Start()
+    new void Start()
     {
+        base.Start();
         maxHealth = 50;
         agent.speed = 2f;
     }
