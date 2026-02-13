@@ -7,7 +7,7 @@ public class NormalBulletBehaviour : MonoBehaviour
     [SerializeField] private Vector3 direction;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerCamera;
-    [SerializeField] private float lifeTime = 3f;
+    [SerializeField] private float lifeTime = 30f;
     private float currentLifeTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
