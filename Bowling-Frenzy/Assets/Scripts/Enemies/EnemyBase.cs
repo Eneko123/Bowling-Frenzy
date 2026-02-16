@@ -22,6 +22,7 @@ public class EnemyBase : MonoBehaviour
         if (animator == null) { animator = GetComponent<Animator>(); }
         if (player == null) { player = GameObject.FindGameObjectWithTag("Player").transform; } // mala practica, cambiar player controler a ser un instance o que desde el game manager se le asigne al enemigo el player
         health = maxHealth;
+        animator.SetBool("Move", true);
     }
     void Update() 
     { 
