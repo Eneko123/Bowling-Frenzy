@@ -48,7 +48,7 @@ public class EnemyBase : MonoBehaviour
         health -= damage;
     }
 
-    void Dead()
+    protected void Dead()
     {
         if (health <= 0)
         { 
