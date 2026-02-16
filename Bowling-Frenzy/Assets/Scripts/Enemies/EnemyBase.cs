@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,46 +6,53 @@ public class EnemyBase : MonoBehaviour
 {
     //variables universales para todas las clases de enemigos
     public Transform player;
-    private NavMeshAgent agent;
-    //numero random
+    protected int damage;
+    protected NavMeshAgent agent;
+    protected int maxHealth;
+    protected int health;
+    protected bool isDead = false;
+    protected Animator animator;
+
 
     //metodos
-    void Start() 
+    protected void Start() 
     {
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
-        if (player == null) { player = GameObject.FindGameObjectWithTag("Player").transform; }
+        if (animator == null) { animator = GetComponent<Animator>(); }
+        if (player == null) { player = GameObject.FindGameObjectWithTag("Player").transform; } // mala practica, cambiar player controler a ser un instance o que desde el game manager se le asigne al enemigo el player
+        health = maxHealth;
     }
     void Update() 
     { 
         Movemetn();
+        Dead();
     }
 
-    void Movemetn()
+    protected void Movemetn()
     {
         // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
         agent.SetDestination(player.position);
     }
 
-    // clases de enemigos, cada una con sus propias variables, como hp, velocidad, etc.
-    //private class Bolo1
-    //{
-    //    private int hp = 10;
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            TakeDamage(damage);
+        }
+    }
 
-    //private class Bolo2
-    //{
-    //    private int hp = 5;
-    //}
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 
-    //private class Bolo3
-    //{
-    //    private int hp = 20;
-    //}
-
-    //private class BoloBoss
-    //{
-    //    private int hp = 200;
-    //}
-
+    void Dead()
+    {
+        if (health <= 0)
+        { 
+            isDead = true;
+        }
+    }
 }

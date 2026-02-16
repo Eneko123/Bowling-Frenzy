@@ -26,7 +26,11 @@ public class NormalBulletBehaviour : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            OnDeactivate();
         }
+    }
+    protected virtual void OnDeactivate()
+    {
+               gameObject.SetActive(false);
     }
 }
