@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Camera : MonoBehaviour
+public class CameraPlayer : MonoBehaviour
 {
     [SerializeField] float sensibilityX; // Se utiliza para fijar la sensibilidad del ratón en el eje X
     [SerializeField] float sensibilityY; // Se utiliza para fijar la sensibilidad del ratón en el eje Y

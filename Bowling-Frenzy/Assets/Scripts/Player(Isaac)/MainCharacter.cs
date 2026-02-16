@@ -25,7 +25,7 @@ public class MainCharacter : MonoBehaviour
     //Controla el si se puede mover el jugador o no
     private bool _movementInputPressed = false;
 
-    [SerializeField] Camera cameraPlayer;
+    [SerializeField] CameraPlayer cameraPlayer;
 
     [SerializeField]GameObject pointOfShoot;
 
