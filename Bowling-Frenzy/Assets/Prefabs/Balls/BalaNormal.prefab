@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5745093063885400803}
   - component: {fileID: 6777128693919317023}
   - component: {fileID: 8383227892154248449}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BalaNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8371507476346950773}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

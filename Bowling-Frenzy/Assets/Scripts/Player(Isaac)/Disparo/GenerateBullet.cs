@@ -7,8 +7,19 @@ public class GenerateBullet : MonoBehaviour
     int numberOfBullets = 10;
     [SerializeField] NormalBulletBehaviour bullet;
     List<NormalBulletBehaviour> listBullets = new List<NormalBulletBehaviour>() { };
-    [SerializeField] MainCharacter player;
-    [SerializeField] Camera playerCamera;
+
+    public static GenerateBullet instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else 
+        {
+            Destroy(this);
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,23 +38,13 @@ public class GenerateBullet : MonoBehaviour
             if (!b.gameObject.activeInHierarchy)
             {
                 b.gameObject.SetActive(true);
-                b.Init(player.transform.position, playerCamera.transform.forward);
                 return b;
             }
         }
         NormalBulletBehaviour tmpBullet;
         tmpBullet = Instantiate(bullet);
         tmpBullet.gameObject.SetActive(true);
-        tmpBullet.Init(player.transform.position, playerCamera.transform.forward);
         return tmpBullet;
 
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            GetBullets();
-        }
-    }
-
 }

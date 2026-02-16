@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2916676181899333500}
   - component: {fileID: 5493163789765187969}
   - component: {fileID: 2706885389238692362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +132,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   jumpForce: 4
   gravity: -9.8
+  cameraPlayer: {fileID: 38802155774363370}
+  pointOfShoot: {fileID: 6880254541574603382}
 --- !u!114 &2706885389238692362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,37 @@ MonoBehaviour:
   m_DefaultActionMap: Keyboard
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &6880254541574603382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7103366405562054425}
+  m_Layer: 6
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7103366405562054425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880254541574603382}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7356471063499857286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7526648836981991843
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +256,7 @@ GameObject:
   - component: {fileID: 3879674544064332064}
   - component: {fileID: 5772774203886022681}
   - component: {fileID: 38802155774363370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -242,7 +275,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.436, z: 0.187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7103366405562054425}
   m_Father: {fileID: 5387676506217089211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8420861449511301590

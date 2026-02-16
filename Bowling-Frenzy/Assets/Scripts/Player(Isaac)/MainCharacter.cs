@@ -25,7 +25,9 @@ public class MainCharacter : MonoBehaviour
     //Controla el si se puede mover el jugador o no
     private bool _movementInputPressed = false;
 
-    Camera cameraPlayer;
+    [SerializeField] Camera cameraPlayer;
+
+    [SerializeField]GameObject pointOfShoot;
 
     private void Start()
     {
@@ -79,5 +81,11 @@ public class MainCharacter : MonoBehaviour
         //Calcula para que el jugador baje segun la gravedad
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
+            b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+
+        }
     }
 }

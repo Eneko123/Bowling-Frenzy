@@ -10,10 +10,6 @@ public class NormalBulletBehaviour : MonoBehaviour
     [SerializeField] private float lifeTime = 4f;
     private float currentLifeTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        direction = playerCamera.transform.forward;
-    }
     public void Init(Vector3 initialPos, Vector3 initialDir)
     {
         transform.position = initialPos;
