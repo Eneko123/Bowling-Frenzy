@@ -12,6 +12,9 @@ public class NormalBulletBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Init(Vector3 initialPos, Vector3 initialDir)
     {
+        Rigidbody r = GetComponent<Rigidbody>();
+        r.linearVelocity = Vector3.zero;
+        r.angularVelocity = Vector3.zero;
         transform.position = initialPos;
         direction = initialDir;
         currentLifeTime = lifeTime;

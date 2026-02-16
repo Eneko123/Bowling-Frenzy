@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GenerateBullet : MonoBehaviour
 {
-    int numberOfBullets = 10;
+    [SerializeField]int numberOfBullets = 10;
     [SerializeField] NormalBulletBehaviour bullet;
     List<NormalBulletBehaviour> listBullets = new List<NormalBulletBehaviour>() { };
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,6 +29,8 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] CameraPlayer cameraPlayer;
 
     [SerializeField]GameObject pointOfShoot;
+
+    bool isReloading = false;
 
     private void Start()
     {
@@ -71,11 +74,18 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext contextShoot)
     {
-        if (contextShoot.performed)
+        if (contextShoot.performed && !isReloading)
         {
             NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
             b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+            StartCoroutine(DelayForBullets());
         }
+    }
+    IEnumerator DelayForBullets()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(0.5f);
+        isReloading = false;
     }
     private void Update()
     {
