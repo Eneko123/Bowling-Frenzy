@@ -32,7 +32,6 @@ public class MainCharacter : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        cameraPlayer = GetComponentInChildren<Camera>();
     }
     //Se llamara al evento en Unity asociado con la accion de moverse
     public void OnMoveInput(InputAction.CallbackContext contextMove)
@@ -70,6 +69,14 @@ public class MainCharacter : MonoBehaviour
             }
         }
     }
+    public void OnShoot(InputAction.CallbackContext contextShoot)
+    {
+        if (contextShoot.performed)
+        {
+            NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
+            b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+        }
+    }
     private void Update()
     {
         if (_movementInputPressed)
@@ -81,11 +88,5 @@ public class MainCharacter : MonoBehaviour
         //Calcula para que el jugador baje segun la gravedad
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
-            b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-
-        }
     }
 }
