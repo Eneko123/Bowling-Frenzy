@@ -20,8 +20,8 @@ public class EnemyBase : MonoBehaviour
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
         if (animator == null) { animator = GetComponent<Animator>(); }
-        if (player == null) { player = GameObject.FindGameObjectWithTag("Player").transform; } // mala practica, cambiar player controler a ser un instance o que desde el game manager se le asigne al enemigo el player
-        health = maxHealth;
+        player = MainCharacter.Instance.playerTransform;
+        health = maxHealth; 
         animator.SetBool("Move", true);
     }
     void Update() 

@@ -32,6 +32,23 @@ public class MainCharacter : MonoBehaviour
 
     bool isReloading = false;
 
+    // Singleton para que el enemigo pueda acceder a la posición del jugador
+    public static MainCharacter Instance { get; private set; }
+    public Transform playerTransform;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            playerTransform = transform;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
