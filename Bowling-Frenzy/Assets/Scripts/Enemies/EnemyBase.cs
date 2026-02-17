@@ -24,7 +24,7 @@ public class EnemyBase : MonoBehaviour
         health = maxHealth; 
         animator.SetBool("Move", true);
     }
-    void Update() 
+    protected void Update() 
     { 
         Movemetn();
         Dead();
