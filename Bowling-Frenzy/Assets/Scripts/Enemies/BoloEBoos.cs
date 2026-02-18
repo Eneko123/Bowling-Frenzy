@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class BoloEBoos : EnemyBase
 {
+    public GameObject jump;
+    public GameObject atack;
+
     new void Start()
     {
         base.Start();

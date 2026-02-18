@@ -22,7 +22,6 @@ public class EnemyBase : MonoBehaviour
         if (animator == null) { animator = GetComponent<Animator>(); }
         player = MainCharacter.Instance.playerTransform;
         health = maxHealth; 
-        animator.SetBool("Move", true);
     }
     protected void Update() 
     { 
