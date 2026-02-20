@@ -134,6 +134,7 @@ MonoBehaviour:
   gravity: -9.8
   cameraPlayer: {fileID: 38802155774363370}
   pointOfShoot: {fileID: 6880254541574603382}
+  playerTransform: {fileID: 0}
 --- !u!114 &2706885389238692362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c6398bec-3e71-42f2-bb5c-26489f7bde0a
     m_ActionName: 'Keyboard/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5493163789765187969}
+        m_TargetAssemblyTypeName: MainCharacter, Assembly-CSharp
+        m_MethodName: OnSpecial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1395e7f1-0c49-4c2d-8da7-40172cb3e0dc
+    m_ActionName: 'Keyboard/SpecialHability[/Mouse/scroll/up]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Keyboard

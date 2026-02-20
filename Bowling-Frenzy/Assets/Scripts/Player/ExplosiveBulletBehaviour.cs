@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExplosiveBulletBehaviour : NormalBulletBehaviour
@@ -8,6 +9,15 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
     void Start()
     {
         Init(transform.position, Vector3.zero);
+        currentSpecial = SpecialBullets.Explosive;
+        for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
+        {
+            if (GenerateBullet.instance.listOfHabilities[i] == null)
+            {
+                GenerateBullet.instance.listOfHabilities[i] = this;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame

@@ -1,5 +1,8 @@
 using UnityEngine;
-
+public enum SpecialBullets
+{
+    Explosive,Perforating,Slowing
+}
 public class NormalBulletBehaviour : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
@@ -9,6 +12,8 @@ public class NormalBulletBehaviour : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float lifeTime = 4f;
     private float currentLifeTime;
+    protected SpecialBullets currentSpecial;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Init(Vector3 initialPos, Vector3 initialDir)
     {

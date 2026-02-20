@@ -95,13 +95,30 @@ public class MainCharacter : MonoBehaviour
         {
             NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
             b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-            StartCoroutine(DelayForBullets());
+            StartCoroutine(DelayForBullets(0.5f));
         }
     }
-    IEnumerator DelayForBullets()
+    public void OnSpecial(InputAction.CallbackContext contextSpecial)
+    {
+        if (contextSpecial.performed)
+        {
+            GenerateBullet currentHability = GenerateBullet.instance;
+            Debug.Log(currentHability.currentPositionHability);
+            switch (currentHability.currentPositionHability)
+            {
+                case 0:
+                    NormalBulletBehaviour b = GenerateBullet.instance.GetExplosiveBullets();
+                    b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                    StartCoroutine(DelayForBullets(10f));
+                    break;
+            }
+           
+        }
+    }
+    IEnumerator DelayForBullets(float delay)
     {
         isReloading = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
         isReloading = false;
     }
     private void Update()

@@ -149,7 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfBullets: 10
+  numberOfExplosiveBullets: 5
   bullet: {fileID: 1668215701}
+  heavyBullet: {fileID: 788312116}
 --- !u!4 &59611995
 Transform:
   m_ObjectHideFlags: 0
@@ -230,11 +232,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+--- !u!1001 &552899594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.226
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.399
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713963632612330550, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007578982750791357, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+      propertyPath: m_Name
+      value: BalaExplosiva
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
 --- !u!4 &782420376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
   m_PrefabInstance: {fileID: 2631055799276371067}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &788312116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 27293956557996846, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+  m_PrefabInstance: {fileID: 552899594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16306ab5be232e4f9276455ea3a0739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &943223482
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,3 +624,4 @@ SceneRoots:
   - {fileID: 2631055799276371067}
   - {fileID: 59611995}
   - {fileID: 480221997}
+  - {fileID: 552899594}

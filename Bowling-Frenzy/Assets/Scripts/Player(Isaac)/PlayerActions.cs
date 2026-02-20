@@ -127,6 +127,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialHability"",
+                    ""type"": ""Button"",
+                    ""id"": ""1395e7f1-0c49-4c2d-8da7-40172cb3e0dc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -217,6 +226,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ea2f6a5-fc63-48a6-ad4f-56dae6c0f40d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialHability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +249,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Keyboard_Jump = m_Keyboard.FindAction("Jump", throwIfNotFound: true);
         m_Keyboard_Look = m_Keyboard.FindAction("Look", throwIfNotFound: true);
         m_Keyboard_Shoot = m_Keyboard.FindAction("Shoot", throwIfNotFound: true);
+        m_Keyboard_SpecialHability = m_Keyboard.FindAction("SpecialHability", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -313,6 +334,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Jump;
     private readonly InputAction m_Keyboard_Look;
     private readonly InputAction m_Keyboard_Shoot;
+    private readonly InputAction m_Keyboard_SpecialHability;
     /// <summary>
     /// Provides access to input actions defined in input action map "Keyboard".
     /// </summary>
@@ -340,6 +362,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Keyboard/Shoot".
         /// </summary>
         public InputAction @Shoot => m_Wrapper.m_Keyboard_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "Keyboard/SpecialHability".
+        /// </summary>
+        public InputAction @SpecialHability => m_Wrapper.m_Keyboard_SpecialHability;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -378,6 +404,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @SpecialHability.started += instance.OnSpecialHability;
+            @SpecialHability.performed += instance.OnSpecialHability;
+            @SpecialHability.canceled += instance.OnSpecialHability;
         }
 
         /// <summary>
@@ -401,6 +430,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @SpecialHability.started -= instance.OnSpecialHability;
+            @SpecialHability.performed -= instance.OnSpecialHability;
+            @SpecialHability.canceled -= instance.OnSpecialHability;
         }
 
         /// <summary>
@@ -469,5 +501,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SpecialHability" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpecialHability(InputAction.CallbackContext context);
     }
 }
