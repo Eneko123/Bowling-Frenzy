@@ -28,7 +28,12 @@ public class EnemyBase : MonoBehaviour
         Movemetn();
         Dead();
     }
-
+    internal void ReceiveDamage(int damage)
+    {
+        Debug.Log(health);
+        health -= damage;
+        Debug.Log(health);
+    }
     protected void Movemetn()
     {
         // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
