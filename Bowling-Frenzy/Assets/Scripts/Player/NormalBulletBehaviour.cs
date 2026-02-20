@@ -2,12 +2,12 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 public enum SpecialBullets
 {
-    Explosive, Perforating, Slowing
+    Explosive, Piercing, Slowing
 }
 public class NormalBulletBehaviour : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private int damage = 10;
+    [SerializeField] protected float speed = 10f;
+    [SerializeField] protected int damage = 10;
     [SerializeField] private Vector3 direction;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerCamera;
@@ -38,9 +38,14 @@ public class NormalBulletBehaviour : MonoBehaviour
             OnDeactivate();
         }
     }
-    internal virtual void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider enemy)
     {
-        if (collision.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+        CheckEnemy(enemy);
+    }
+    internal virtual void CheckEnemy(Collider collider)
+    {
+
+        if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
             enemy.ReceiveDamage(damage);
 
