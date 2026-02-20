@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
                 currentEnemies++;
             }
             yield return new WaitForSeconds(spawnCooldown);
-            Debug.Log("paso ");
+            //el wait tiene que estar despues por que sino, espera y aparecen varios enemigos al momento
         }
 
         if (currentEnemies == maxActiveEnemies)

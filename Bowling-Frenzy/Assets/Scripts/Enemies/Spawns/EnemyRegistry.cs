@@ -14,6 +14,6 @@ public class EnemyRegistry : MonoBehaviour
     }
     private HashSet<EnemyBase> activeEnemies = new();
     public int ActiveCount => activeEnemies.Count;
-    public void Register(EnemyBase enemy) => activeEnemies.Add(enemy);
-    public void Unregister(EnemyBase enemy) => activeEnemies.Remove(enemy);
+    //public void Register(EnemyBase enemy) => activeEnemies.Add(enemy);
+    //public void Unregister(EnemyBase enemy) => activeEnemies.Remove(enemy);
 }
