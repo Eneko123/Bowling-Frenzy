@@ -6,6 +6,13 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class MainCharacter : MonoBehaviour
 {
+    
+    float MaxHealth = 100f;
+    float playerHealth;
+    // Para bajar la vida del enemigo se puede hacer playerHealth = playerHealth - damage + defense 
+    int defense = 0;
+    float healthRecovery = (playerHealth * 15) / 100;
+    [Space(1)]
     //Sirve para ver la dirección en la que se mueve
     public Vector2 MoveDir = Vector2.zero;
     //Hace referencia al componente CharacterController del objeto al que se le añadira
@@ -22,13 +29,13 @@ public class MainCharacter : MonoBehaviour
     //Sirve para controlar por si el jugador decide dejar de pulsar al completo porque quiere cancelar el salto
     private float jumpTimeStamp;
     private float jumpTime = 0.2f;
-    
+
     //Controla el si se puede mover el jugador o no
     private bool _movementInputPressed = false;
 
     [SerializeField] CameraPlayer cameraPlayer;
 
-    [SerializeField]GameObject pointOfShoot;
+    [SerializeField] GameObject pointOfShoot;
 
     bool isReloading = false;
 
@@ -47,6 +54,8 @@ public class MainCharacter : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        playerHealth = MaxHealth;
+        healthRecovery = (playerHealth * 15) / 100;
     }
 
     private void Start()
@@ -107,12 +116,15 @@ public class MainCharacter : MonoBehaviour
             switch (currentHability.currentPositionHability)
             {
                 case 0:
-                    NormalBulletBehaviour b = GenerateBullet.instance.GetExplosiveBullets();
-                    b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                    StartCoroutine(DelayForBullets(10f));
+                    if (!isReloading)
+                    {
+                        NormalBulletBehaviour b = GenerateBullet.instance.GetExplosiveBullets();
+                        b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        StartCoroutine(DelayForBullets(10f));
+                    }
                     break;
             }
-           
+
         }
     }
     IEnumerator DelayForBullets(float delay)
