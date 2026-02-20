@@ -48,7 +48,7 @@ public class NormalBulletBehaviour : MonoBehaviour
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
             enemy.ReceiveDamage(damage);
-
+            OnDeactivate();
         }
     }
     protected virtual void OnDeactivate()

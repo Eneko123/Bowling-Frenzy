@@ -28,6 +28,7 @@ public class SlowBullet : NormalBulletBehaviour
         {
             enemy.ReceiveDamage(damage);
             enemy.SlowEnemy();
+            OnDeactivate();
         }
     }
    
