@@ -119,16 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &159201370 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2315870425768144980, guid: 65f12829ad4732540a518324aeac501a, type: 3}
-  m_PrefabInstance: {fileID: 8671655114735541895}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &776311351 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3557338868935857738, guid: 65f12829ad4732540a518324aeac501a, type: 3}
-  m_PrefabInstance: {fileID: 8671655114735541895}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1072942826
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +618,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7380261118564423571, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
+      propertyPath: m_Acceleration
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380261118564423571, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8626084902805231096, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.728409
@@ -739,11 +737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8863078508310965168, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
       propertyPath: m_Acceleration
-      value: 4
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8863078508310965168, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
       propertyPath: m_StoppingDistance
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -806,6 +804,10 @@ PrefabInstance:
       propertyPath: m_AgentTypeID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8409932066686062737, guid: cde20e16e5606934b8c636237fd0f8c8, type: 3}
+      propertyPath: m_Acceleration
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -819,13 +821,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2315870425768144980, guid: 65f12829ad4732540a518324aeac501a, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 2114105243512934943, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: m_AutoBraking
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3127837134464903918, guid: 65f12829ad4732540a518324aeac501a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
+    - target: {fileID: 2114105243512934943, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: m_Acceleration
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114105243512934943, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 3630691104249013946, guid: 65f12829ad4732540a518324aeac501a, type: 3}
       propertyPath: m_Name
@@ -871,14 +877,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
-      propertyPath: jump
-      value: 
-      objectReference: {fileID: 159201370}
-    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
-      propertyPath: atack
-      value: 
-      objectReference: {fileID: 776311351}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

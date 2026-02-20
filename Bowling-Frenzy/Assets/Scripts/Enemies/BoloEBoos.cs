@@ -20,7 +20,6 @@ public class BoloEBoos : EnemyBase
 
     void States()
     {
-        jump.SetActive(true);
     if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
         {
             agent.speed = 1.2f;
@@ -33,6 +32,22 @@ public class BoloEBoos : EnemyBase
         {
             agent.speed = 1.8f;
         }
+    }
+
+    void Stop()
+    {
+        animator.SetBool("Jump", false);
+        animator.SetBool("Atack", false);
+    }
+
+    void AttackAnim()
+    {
+        atack.SetActive(true);
+    }
+
+    void JumpAnim()
+    {
+        jump.SetActive(true);
     }
 
     new void Dead()
