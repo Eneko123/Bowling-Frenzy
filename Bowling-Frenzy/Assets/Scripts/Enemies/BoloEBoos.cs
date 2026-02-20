@@ -10,6 +10,7 @@ public class BoloEBoos : EnemyBase
         base.Start();
         maxHealth = 1000;
         agent.speed = 1f;
+        animator.SetBool("Atack", true);
     }
 
     new void Update()
@@ -34,9 +35,13 @@ public class BoloEBoos : EnemyBase
         }
     }
 
-    void Stop()
+    void StopJump()
     {
         animator.SetBool("Jump", false);
+    }
+
+    void StopAtack()
+    {
         animator.SetBool("Atack", false);
     }
 
