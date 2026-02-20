@@ -3275,7 +3275,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.6666667
-    functionName: Stop
+    functionName: StopJump
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

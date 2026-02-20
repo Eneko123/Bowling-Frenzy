@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,7 +13,8 @@ public class EnemyBase : MonoBehaviour
     protected int health;
     protected bool isDead = false;
     protected Animator animator;
-
+    protected float originalSpeed;
+    protected bool isSlowing = false;
 
     //metodos
     protected void Start() 
@@ -39,25 +41,36 @@ public class EnemyBase : MonoBehaviour
         // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
         agent.SetDestination(player.position);
     }
-
-    private void OnCollisionEnter(Collision collision)
+    internal float GetEnemySpeed()
     {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            TakeDamage(damage);
-        }
+        return agent.speed;
     }
-
-    void TakeDamage(int damage)
-    {
-        health -= damage;
-    }
-
     protected void Dead()
     {
         if (health <= 0)
         { 
             isDead = true;
+        }
+    }
+    internal void SetEnemySpeed(float newSpeed)
+    {
+        agent.speed = newSpeed;
+    }
+    IEnumerator TimerSlow()
+    {
+        yield return new WaitForSeconds(2f);
+        isSlowing = false;
+        SetEnemySpeed(originalSpeed);
+    }
+    internal void SlowEnemy()
+    {
+        if (!isSlowing)
+        {
+
+            originalSpeed = GetEnemySpeed();
+            SetEnemySpeed(originalSpeed / 2);
+            isSlowing = true;
+            StartCoroutine(TimerSlow());
         }
     }
 }
