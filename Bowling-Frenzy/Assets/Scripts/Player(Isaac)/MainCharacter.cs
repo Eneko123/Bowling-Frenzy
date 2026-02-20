@@ -11,7 +11,7 @@ public class MainCharacter : MonoBehaviour
     float playerHealth;
     // Para bajar la vida del enemigo se puede hacer playerHealth = playerHealth - damage + defense 
     int defense = 0;
-    float healthRecovery = (playerHealth * 15) / 100;
+    float healthRecovery;
     [Space(1)]
     //Sirve para ver la dirección en la que se mueve
     public Vector2 MoveDir = Vector2.zero;
