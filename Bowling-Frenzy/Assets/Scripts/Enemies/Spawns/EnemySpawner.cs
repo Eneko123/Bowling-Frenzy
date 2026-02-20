@@ -24,6 +24,17 @@ public class EnemySpawner : MonoBehaviour
             // StartCoroutine(metodo ie);
             StartCoroutine(SpawnCorrutine());
         }
+
+        /*
+        if (currentEnemies == enemyPrefab.Length)
+        {
+            mi = 1;
+        }
+        if (mi == 1)
+        {
+            StartCoroutine(UnSpawnCorrutine());
+        }
+        */
     }
 
     //
@@ -40,15 +51,6 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnCooldown);
             //el wait tiene que estar despues por que sino, espera y aparecen varios enemigos al momento
         }
-
-        if (currentEnemies == maxActiveEnemies)
-        {
-            mi = 1;
-        }
-        if (mi == 1)
-        {
-            StartCoroutine(UnSpawnCorrutine());
-        }
     }
     IEnumerator UnSpawnCorrutine()
     {
@@ -61,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
                 currentEnemies--;
             }
             yield return new WaitForSeconds(3f);
-            Debug.Log("borro ");
+            //este metodo se desaparecera con la implementacion de la muerte del enemigo
 
             if (currentEnemies < 0)
             {
