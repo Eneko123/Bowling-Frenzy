@@ -7,25 +7,25 @@ public class BoloEBoos : EnemyBase
     public GameObject atack;
     private readonly float playerDistance = 15;
 
-    private readonly float cooldown1 = 5f;
-    private readonly float cooldownMax1 = 5f;
-    private readonly float velocityMin1 = 1;
-    private readonly float velocityMax1 = 1;
-            
-    private readonly float cooldown2 = 5f;
-    private readonly float cooldownMax2 = 5f;
-    private readonly float velocityMin2 = 1;
-    private readonly float velocityMax2 = 1;
-            
-    private readonly float cooldown3 = 5f;
-    private readonly float cooldownMax3 = 5f;
-    private readonly float velocityMin3 = 1;
-    private readonly float velocityMax3 = 1;
-             
-    private readonly float cooldown4 = 5f;
-    private readonly float cooldownMax4 = 5f;
-    private readonly float velocityMin4 = 1;
-    private readonly float velocityMax4 = 1;
+    private float cooldown1 = 5f;
+    private float cooldownMax1 = 5f;
+    private float velocityMin1 = 1;
+    private float velocityMax1 = 1;
+           
+    private float cooldown2 = 5f;
+    private float cooldownMax2 = 5f;
+    private float velocityMin2 = 1;
+    private float velocityMax2 = 1;
+           
+    private float cooldown3 = 5f;
+    private float cooldownMax3 = 5f;
+    private float velocityMin3 = 1;
+    private float velocityMax3 = 1;
+           
+    private float cooldown4 = 5f;
+    private float cooldownMax4 = 5f;
+    private float velocityMin4 = 1;
+    private float velocityMax4 = 1;
 
     private bool atacked = false;
 
@@ -44,7 +44,7 @@ public class BoloEBoos : EnemyBase
 
     void States()
     {
-        if (health <= maxHealth && health > maxHealth * 0.75f)
+        if (health > maxHealth * 0.75f)
         {
             Atack(cooldown1, cooldownMax1);
             ApproachPlayer(velocityMin1, velocityMax1);
