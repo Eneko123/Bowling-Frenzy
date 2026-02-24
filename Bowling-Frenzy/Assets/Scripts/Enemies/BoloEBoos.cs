@@ -4,13 +4,16 @@ public class BoloEBoos : EnemyBase
 {
     public GameObject jump;
     public GameObject atack;
+    public float playerDistance = 5;
+    private float cooldown = 5f;
+    private float cooldownMax = 5f;
+    private bool atacked = false;
 
     new void Start()
     {
         base.Start();
         maxHealth = 1000;
         agent.speed = 1f;
-        animator.SetBool("Atack", true);
     }
 
     new void Update()
@@ -21,7 +24,8 @@ public class BoloEBoos : EnemyBase
 
     void States()
     {
-    if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
+        Atack();
+        if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
         {
             agent.speed = 1.2f;
         }
@@ -34,6 +38,29 @@ public class BoloEBoos : EnemyBase
             agent.speed = 1.8f;
         }
     }
+
+    void Atack()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cooldown <= 0 && !atacked)
+        {
+            animator.SetBool("Atack", true);
+            cooldown = cooldownMax;
+            atacked = true;
+        }
+        else if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cooldown <= 0 && atacked)
+        {
+            animator.SetBool("Jump", true);
+            cooldown = cooldownMax;
+            atacked = false;
+        }
+        else
+        {
+            cooldown -= Time.deltaTime;
+        }
+    }
+
+
+
 
     void StopJump()
     {
