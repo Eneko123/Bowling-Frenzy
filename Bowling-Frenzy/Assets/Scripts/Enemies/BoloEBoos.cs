@@ -1,12 +1,32 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BoloEBoos : EnemyBase
 {
     public GameObject jump;
     public GameObject atack;
-    private float playerDistance = 15;
-    private float cooldown = 5f;
-    private float cooldownMax = 5f;
+    private readonly float playerDistance = 15;
+
+    private readonly float cooldown1 = 5f;
+    private readonly float cooldownMax1 = 5f;
+    private readonly float velocityMin1 = 1;
+    private readonly float velocityMax1 = 1;
+            
+    private readonly float cooldown2 = 5f;
+    private readonly float cooldownMax2 = 5f;
+    private readonly float velocityMin2 = 1;
+    private readonly float velocityMax2 = 1;
+            
+    private readonly float cooldown3 = 5f;
+    private readonly float cooldownMax3 = 5f;
+    private readonly float velocityMin3 = 1;
+    private readonly float velocityMax3 = 1;
+             
+    private readonly float cooldown4 = 5f;
+    private readonly float cooldownMax4 = 5f;
+    private readonly float velocityMin4 = 1;
+    private readonly float velocityMax4 = 1;
+
     private bool atacked = false;
 
     new void Start()
@@ -24,56 +44,62 @@ public class BoloEBoos : EnemyBase
 
     void States()
     {
-        Atack();
-        ApproachPlayer();
-        if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
+        if (health <= maxHealth && health > maxHealth * 0.75f)
         {
-            agent.speed = 1.2f;
+            Atack(cooldown1, cooldownMax1);
+            ApproachPlayer(velocityMin1, velocityMax1);
         }
-    else if (health <= maxHealth * 0.5f && health > maxHealth * 0.25f)
+        else if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
         {
-            agent.speed = 1.5f;
+            Atack(cooldown2, cooldownMax2);
+            ApproachPlayer(velocityMin2, velocityMax2);
         }
-    else if (health <= maxHealth * 0.25f && health > 0)
+        else if (health <= maxHealth * 0.5f && health > maxHealth * 0.25f)
         {
-            agent.speed = 1.8f;
+            Atack(cooldown3, cooldownMax3);
+            ApproachPlayer(velocityMin3, velocityMax3);
+        }
+        else if (health <= maxHealth * 0.25f && health > 0)
+        {
+            Atack(cooldown4, cooldownMax4);
+            ApproachPlayer(velocityMin4, velocityMax4);
         }
     }
 
-    void Atack()
+    void Atack(float cd, float cdMax)
     {
         // Patron de ataque: Si le jugador esta a playerDistance unidades, el cooldown ha llegado a zero y dependiendo del bool. El enemigo ataca o salta
-        if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cooldown <= 0 && !atacked)
+        if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cd <= 0 && !atacked)
         {
             // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el salto
             animator.SetBool("Atack", true);
-            cooldown = cooldownMax;
+            cd = cdMax;
             atacked = true;
         }
-        else if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cooldown <= 0 && atacked)
+        else if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cd <= 0 && atacked)
         {
             // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el ataque
             animator.SetBool("Jump", true);
-            cooldown = cooldownMax;
+            cd = cdMax;
             atacked = false;
         }
         else
         {
             // Debug.Log(Vector3.Distance(transform.position, player.transform.position));
-            cooldown -= Time.deltaTime;
+            cd -= Time.deltaTime;
         }
     }
 
-    void ApproachPlayer()
+    void ApproachPlayer(float min, float max)
     {
         // Si el jugador esta a mas de playerDistance unidades, el enemigo alcelera, si no, vuelve a su velocidad normal 
         if (Vector3.Distance(transform.position, player.transform.position) > playerDistance)
         {
-            agent.speed = 5f;
+            agent.speed = max;
         }
         else
         {
-            agent.speed = 1f;
+            agent.speed = min;
         }
     }
 
