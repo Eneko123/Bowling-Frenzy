@@ -249,8 +249,8 @@ Transform:
   m_GameObject: {fileID: 1072942826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.4546, y: 0, z: -15.0353}
-  m_LocalScale: {x: 41.735607, y: 1, z: 36.451958}
+  m_LocalPosition: {x: 62.5089, y: 0, z: -67.2072}
+  m_LocalScale: {x: 135.84523, y: 1, z: 140.79568}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1860303025}
@@ -274,15 +274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.43
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.42
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.25
+      value: -117.2
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalRotation.w
@@ -701,6 +701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoloE3
       objectReference: {fileID: 0}
+    - target: {fileID: 9006585902148915010, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -721,6 +725,10 @@ PrefabInstance:
     - target: {fileID: 5908303234000865002, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
       propertyPath: m_Name
       value: BoloE1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908303234000865002, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6536221488668318800, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
       propertyPath: m_LocalPosition.x
@@ -790,6 +798,10 @@ PrefabInstance:
     - target: {fileID: 3621189524744176448, guid: cde20e16e5606934b8c636237fd0f8c8, type: 3}
       propertyPath: m_Name
       value: BoloE2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621189524744176448, guid: cde20e16e5606934b8c636237fd0f8c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4110339516648020474, guid: cde20e16e5606934b8c636237fd0f8c8, type: 3}
       propertyPath: m_LocalPosition.x
