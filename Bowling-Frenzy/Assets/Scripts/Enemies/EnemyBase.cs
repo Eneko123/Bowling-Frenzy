@@ -73,4 +73,10 @@ public class EnemyBase : MonoBehaviour
             StartCoroutine(TimerSlow());
         }
     }
+
+    // Desactiva al enemigo
+    void DeadAnim()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
