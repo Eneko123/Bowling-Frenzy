@@ -11,6 +11,7 @@ public class NormalBulletBehaviour : MonoBehaviour
     [SerializeField] private Vector3 direction;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerCamera;
+    [SerializeField] private Rigidbody rbParent;
     [SerializeField] private float lifeTime = 4f;
     private float currentLifeTime;
     protected SpecialBullets currentSpecial;
@@ -18,9 +19,9 @@ public class NormalBulletBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Init(Vector3 initialPos, Vector3 initialDir)
     {
-        Rigidbody r = GetComponent<Rigidbody>();
-        r.linearVelocity = Vector3.zero;
-        r.angularVelocity = Vector3.zero;
+        
+        rbParent.linearVelocity = Vector3.zero;
+        rbParent.angularVelocity = Vector3.zero;
         transform.position = initialPos;
         direction = initialDir;
         currentLifeTime = lifeTime;

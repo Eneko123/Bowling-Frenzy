@@ -50,38 +50,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8371507476346950773, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
       propertyPath: m_Name
+      value: BalaExplosivaPhy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768598516750427948, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+      propertyPath: m_Name
       value: BalaExplosiva
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6777128693919317023, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+    - {fileID: 4609493793661680079, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8371507476346950773, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8768598516750427948, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 27293956557996846}
+      addedObject: {fileID: 451809558989934006}
   m_SourcePrefab: {fileID: 100100000, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
---- !u!1 &9007578982750791357 stripped
+--- !u!1 &8114528900532426212 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8371507476346950773, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8768598516750427948, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
   m_PrefabInstance: {fileID: 661124170969346760}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &27293956557996846
+--- !u!114 &451809558989934006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9007578982750791357}
+  m_GameObject: {fileID: 8114528900532426212}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f16306ab5be232e4f9276455ea3a0739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 10
   damage: 10
   direction: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   playerCamera: {fileID: 0}
-  lifeTime: 2
+  rbParent: {fileID: 9042099627554070473}
+  lifeTime: 4
   explosionEffectPrefab: {fileID: 5686262590365899157, guid: f4a8589e4b4de0a4bab253e16de48576, type: 3}
+--- !u!54 &9042099627554070473 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8383227892154248449, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+  m_PrefabInstance: {fileID: 661124170969346760}
+  m_PrefabAsset: {fileID: 0}
