@@ -13,7 +13,7 @@ public class NormalBulletBehaviour : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Rigidbody rbParent;
     [SerializeField] private float lifeTime = 4f;
-    private float currentLifeTime;
+    private float _currentLifeTime = 4f;
     protected SpecialBullets currentSpecial;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,17 +22,24 @@ public class NormalBulletBehaviour : MonoBehaviour
         
         rbParent.linearVelocity = Vector3.zero;
         rbParent.angularVelocity = Vector3.zero;
-        transform.position = initialPos;
+        // transform.position = initialPos;
+        rbParent.transform.position = initialPos;   
         direction = initialDir;
-        currentLifeTime = lifeTime;
+        _currentLifeTime = lifeTime;
+
+        rbParent.AddForce(direction * speed, ForceMode.Force);
     }
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
-        if (currentLifeTime > 0)
+        // transform.position += direction * speed * Time.deltaTime;
+        // rbParent.transform.position += direction * speed * Time.deltaTime;
+
+        
+
+        if (_currentLifeTime > 0)
         {
-            currentLifeTime -= Time.deltaTime;
+            _currentLifeTime -= Time.deltaTime;
         }
         else
         {
@@ -54,6 +61,6 @@ public class NormalBulletBehaviour : MonoBehaviour
     }
     protected virtual void OnDeactivate()
     {
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
 }

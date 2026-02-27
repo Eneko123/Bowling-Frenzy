@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7575681169371161945}
   - component: {fileID: 1575064019810496032}
   - component: {fileID: 9176218391513500061}
-  - component: {fileID: 9074363894441027752}
-  m_Layer: 0
+  - component: {fileID: 820628616449854888}
+  m_Layer: 7
   m_Name: BlalaRalentizar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,13 +103,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9074363894441027752
+--- !u!114 &820628616449854888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7356425161047965353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2966534245f4c7449ea029412c81658, type: 3}
+  m_Script: {fileID: 11500000, guid: bff998b46e942884d962df171b9ab858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 1834571155992683579}
   - component: {fileID: 6802911192044750206}
   - component: {fileID: 3782713623552739640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlalaRalentizarPhy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

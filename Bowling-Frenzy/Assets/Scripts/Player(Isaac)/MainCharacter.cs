@@ -107,8 +107,8 @@ public class MainCharacter : MonoBehaviour
     {
         if (contextShoot.performed && !isReloadingNormalBullet)
         {
-            NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
-            b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+            GameObject b = GenerateBullet.instance.GetBullets();
+            b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
             typeOfBullet = 0;
             StartCoroutine(DelayForBullets(0.5f));
         }
@@ -124,8 +124,8 @@ public class MainCharacter : MonoBehaviour
                 case 0:
                     if (!isReloadingExplosiveBullet)
                     {
-                        NormalBulletBehaviour b = GenerateBullet.instance.GetExplosiveBullets();
-                        b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        GameObject b = GenerateBullet.instance.GetExplosiveBullets();
+                        b.GetComponentInChildren<ExplosiveBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
                         typeOfBullet = 1;
                         StartCoroutine(DelayForBullets(10f));
                     }

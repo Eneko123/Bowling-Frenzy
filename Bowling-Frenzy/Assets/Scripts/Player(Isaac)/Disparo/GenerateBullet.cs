@@ -6,10 +6,10 @@ public class GenerateBullet : MonoBehaviour
 {
     [SerializeField]int numberOfBullets = 10;
     [SerializeField] int numberOfExplosiveBullets = 5;
-    [SerializeField] NormalBulletBehaviour bullet;
-    [SerializeField] ExplosiveBulletBehaviour heavyBullet;
-    List<NormalBulletBehaviour> listBullets = new List<NormalBulletBehaviour>() { };
-    List<ExplosiveBulletBehaviour> listHeavyBullets = new List<ExplosiveBulletBehaviour>() { };
+    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject heavyBullet;
+    List<GameObject> listBullets = new List<GameObject>() { };
+    List<GameObject> listHeavyBullets = new List<GameObject>() { };
 
     internal NormalBulletBehaviour[] listOfHabilities = new NormalBulletBehaviour[3];
     internal int currentPositionHability = 0;
@@ -28,24 +28,24 @@ public class GenerateBullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        NormalBulletBehaviour tmpBullet;
-        ExplosiveBulletBehaviour tmpExplosive;
+        GameObject tmpBullet;
+        GameObject tmpExplosive;
         for (int i = 0; i < numberOfBullets; i++)
         {
             tmpBullet = Instantiate(bullet);
-            tmpBullet.gameObject.SetActive(true);
+            tmpBullet.gameObject.SetActive(false);
             listBullets.Add(tmpBullet);
         }
         for(int i = 0; i < numberOfExplosiveBullets; i++)
         {
             tmpExplosive = Instantiate(heavyBullet);
-            tmpExplosive.gameObject.SetActive(true);
+            tmpExplosive.gameObject.SetActive(false);
             listHeavyBullets.Add(tmpExplosive);
         }
     }
-    public NormalBulletBehaviour GetBullets()
+    public GameObject GetBullets()
     {
-        foreach (NormalBulletBehaviour b in listBullets)
+        foreach (GameObject b in listBullets)
         {
             if (!b.gameObject.activeInHierarchy)
             {
@@ -53,23 +53,24 @@ public class GenerateBullet : MonoBehaviour
                 return b;
             }
         }
-        NormalBulletBehaviour tmpBullet;
+        GameObject tmpBullet;
         tmpBullet = Instantiate(bullet);
         tmpBullet.gameObject.SetActive(true);
         return tmpBullet;
 
     }
-    public ExplosiveBulletBehaviour GetExplosiveBullets()
+    public GameObject GetExplosiveBullets()
     {
-        foreach (ExplosiveBulletBehaviour e in listHeavyBullets)
+        foreach (GameObject e in listHeavyBullets)
         {
             if (!e.gameObject.activeInHierarchy)
             {
                 e.gameObject.SetActive(true);
+                Debug.Log(5);
                 return e;
             }
         }
-        ExplosiveBulletBehaviour tmpExplosive;
+        GameObject tmpExplosive;
         tmpExplosive = Instantiate(heavyBullet);
         tmpExplosive.gameObject.SetActive(true);
         return tmpExplosive;
