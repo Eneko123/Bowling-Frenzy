@@ -8,24 +8,24 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefab;
     private float spawnCooldown = 2f;
     private float timer;
-    public int idx = -1;
+    public int idx;
     public int maxActiveEnemies = 3;
     public int currentEnemies;
 
 
     //metodos
-    void Start() { currentEnemies = 0; }
+    void Start() { idx = -1; }
     void Update()
     {
         if (currentEnemies < maxActiveEnemies)
         {
             if (ShouldSpawn())
             {
+                idx++;
                 if (!enemyPrefab[idx].activeSelf)
                 {
                     enemyPrefab[idx].SetActive(true);
                     currentEnemies++;
-                    idx++;
 
                     Debug.Log("entra correctamente a sacar enemigos");
                 }
