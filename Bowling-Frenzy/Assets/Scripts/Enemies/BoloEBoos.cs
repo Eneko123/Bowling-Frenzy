@@ -1,16 +1,39 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BoloEBoos : EnemyBase
 {
     public GameObject jump;
     public GameObject atack;
+    private readonly float playerDistance = 15;
+
+    private float cooldown1 = 5f;
+    private float cooldownMax1 = 5f;
+    private float velocityMin1 = 1;
+    private float velocityMax1 = 1;
+           
+    private float cooldown2 = 5f;
+    private float cooldownMax2 = 5f;
+    private float velocityMin2 = 1;
+    private float velocityMax2 = 1;
+           
+    private float cooldown3 = 5f;
+    private float cooldownMax3 = 5f;
+    private float velocityMin3 = 1;
+    private float velocityMax3 = 1;
+           
+    private float cooldown4 = 5f;
+    private float cooldownMax4 = 5f;
+    private float velocityMin4 = 1;
+    private float velocityMax4 = 1;
+
+    private bool atacked = false;
 
     new void Start()
     {
         base.Start();
         maxHealth = 1000;
         agent.speed = 1f;
-        animator.SetBool("Atack", true);
     }
 
     new void Update()
@@ -21,38 +44,63 @@ public class BoloEBoos : EnemyBase
 
     void States()
     {
-    if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
+        if (health > maxHealth * 0.75f)
         {
-            agent.speed = 1.2f;
+            Atack(cooldown1, cooldownMax1);
+            ApproachPlayer(velocityMin1, velocityMax1);
         }
-    else if (health <= maxHealth * 0.5f && health > maxHealth * 0.25f)
+        else if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
         {
-            agent.speed = 1.5f;
+            Atack(cooldown2, cooldownMax2);
+            ApproachPlayer(velocityMin2, velocityMax2);
         }
-    else if (health <= maxHealth * 0.25f && health > 0)
+        else if (health <= maxHealth * 0.5f && health > maxHealth * 0.25f)
         {
-            agent.speed = 1.8f;
+            Atack(cooldown3, cooldownMax3);
+            ApproachPlayer(velocityMin3, velocityMax3);
+        }
+        else if (health <= maxHealth * 0.25f && health > 0)
+        {
+            Atack(cooldown4, cooldownMax4);
+            ApproachPlayer(velocityMin4, velocityMax4);
         }
     }
 
-    void StopJump()
+    void Atack(float cd, float cdMax)
     {
-        animator.SetBool("Jump", false);
+        // Patron de ataque: Si le jugador esta a playerDistance unidades, el cooldown ha llegado a zero y dependiendo del bool. El enemigo ataca o salta
+        if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cd <= 0 && !atacked)
+        {
+            // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el salto
+            animator.SetBool("Atack", true);
+            cd = cdMax;
+            atacked = true;
+        }
+        else if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && cd <= 0 && atacked)
+        {
+            // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el ataque
+            animator.SetBool("Jump", true);
+            cd = cdMax;
+            atacked = false;
+        }
+        else
+        {
+            // Debug.Log(Vector3.Distance(transform.position, player.transform.position));
+            cd -= Time.deltaTime;
+        }
     }
 
-    void StopAtack()
+    void ApproachPlayer(float min, float max)
     {
-        animator.SetBool("Atack", false);
-    }
-
-    void AttackAnim()
-    {
-        atack.SetActive(true);
-    }
-
-    void JumpAnim()
-    {
-        jump.SetActive(true);
+        // Si el jugador esta a mas de playerDistance unidades, el enemigo alcelera, si no, vuelve a su velocidad normal 
+        if (Vector3.Distance(transform.position, player.transform.position) > playerDistance)
+        {
+            agent.speed = max;
+        }
+        else
+        {
+            agent.speed = min;
+        }
     }
 
     new void Dead()
@@ -60,8 +108,36 @@ public class BoloEBoos : EnemyBase
         base.Dead();
         if (isDead)
         {
+            // Inmoviliza al enemigo y activa la animación de muerte
             agent.speed = 0;
             animator.SetBool("Dead", true);
         }
+    }
+
+    // Funciones de animaciones
+    // Desactiva al enemigo
+    void DeadAnim()
+    {
+        this.gameObject.SetActive(false);
+    }
+    // Desactiva el salto
+    void StopJump()
+    {
+        animator.SetBool("Jump", false);
+    }
+    // Desactiva el ataque
+    void StopAtack()
+    {
+        animator.SetBool("Atack", false);
+    }
+    // Activa el ataque
+    void AttackAnim()
+    {
+        atack.SetActive(true);
+    }
+    // Activa el salto
+    void JumpAnim()
+    {
+        jump.SetActive(true);
     }
 }
