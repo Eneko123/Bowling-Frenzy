@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefab;
     private float spawnCooldown = 2f;
     private float timer;
-    public int idx = 0;
+    public int idx = -1;
     public int maxActiveEnemies = 3;
     public int currentEnemies;
 
@@ -38,9 +38,9 @@ public class EnemySpawner : MonoBehaviour
             idx--;
         }
 
-        if(idx < 0)
+        if(idx < -1)
         {
-            idx = 0;
+            idx = -1;
         }
     }
     private bool ShouldSpawn()
