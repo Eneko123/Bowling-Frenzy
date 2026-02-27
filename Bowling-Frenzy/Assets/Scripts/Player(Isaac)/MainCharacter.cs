@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class MainCharacter : MonoBehaviour
 {
-    
+
     float MaxHealth = 100f;
     float playerHealth;
     // Para bajar la vida del enemigo se puede hacer playerHealth = playerHealth - damage + defense 
@@ -37,7 +37,12 @@ public class MainCharacter : MonoBehaviour
 
     [SerializeField] GameObject pointOfShoot;
 
-    bool isReloading = false;
+    bool isReloadingNormalBullet = false;
+    bool isReloadingExplosiveBullet = false;
+    bool isReloadingPiercingBullet = false;
+    bool isReloadingSlowingBullet = false;
+
+    int typeOfBullet = 0;//Cambiar con el enum de las balas
 
     // Singleton para que el enemigo pueda acceder a la posición del jugador
     public static MainCharacter Instance { get; private set; }
@@ -100,10 +105,11 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext contextShoot)
     {
-        if (contextShoot.performed && !isReloading)
+        if (contextShoot.performed && !isReloadingNormalBullet)
         {
             NormalBulletBehaviour b = GenerateBullet.instance.GetBullets();
             b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+            typeOfBullet = 0;
             StartCoroutine(DelayForBullets(0.5f));
         }
     }
@@ -116,10 +122,11 @@ public class MainCharacter : MonoBehaviour
             switch (currentHability.currentPositionHability)
             {
                 case 0:
-                    if (!isReloading)
+                    if (!isReloadingExplosiveBullet)
                     {
                         NormalBulletBehaviour b = GenerateBullet.instance.GetExplosiveBullets();
                         b.Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        typeOfBullet = 1;
                         StartCoroutine(DelayForBullets(10f));
                     }
                     break;
@@ -129,9 +136,29 @@ public class MainCharacter : MonoBehaviour
     }
     IEnumerator DelayForBullets(float delay)
     {
-        isReloading = true;
-        yield return new WaitForSeconds(delay);
-        isReloading = false;
+        switch (typeOfBullet)
+        {
+            case 0:
+                isReloadingNormalBullet = true;
+                yield return new WaitForSeconds(delay);
+                isReloadingNormalBullet = false;
+                break;
+            case 1:
+                isReloadingExplosiveBullet = true;
+                yield return new WaitForSeconds(delay);
+                isReloadingExplosiveBullet = false;
+                break;
+            case 2:
+                isReloadingPiercingBullet = true;
+                yield return new WaitForSeconds(delay);
+                isReloadingPiercingBullet = false;
+                break;
+            case 3:
+                isReloadingSlowingBullet = true;
+                yield return new WaitForSeconds(delay);
+                isReloadingSlowingBullet = false;
+                break;
+        }
     }
     private void Update()
     {
