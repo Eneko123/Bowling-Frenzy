@@ -370,11 +370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5913172463669914825, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -14.975856
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5234448375175369897, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -8.225267
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2639638324218457063, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -386,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854563699051640978, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -8.2207365
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8879528566716807029, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -445,7 +445,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 8
+  m_Height: 10
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -462,6 +462,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  EnemyStates:
+  - CooldownMax: 30
+    MinVel: 1
+    MaxVel: 2
+  - CooldownMax: 20
+    MinVel: 1.2
+    MaxVel: 2.4
+  - CooldownMax: 10
+    MinVel: 1.6
+    MaxVel: 3.2
+  - CooldownMax: 5
+    MinVel: 2
+    MaxVel: 4
   jump: {fileID: 146857487070688300}
   atack: {fileID: 3564890275236091876}
 --- !u!136 &639174233103976314

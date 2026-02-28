@@ -30,7 +30,7 @@ public class EnemyBase : MonoBehaviour
         Movemetn();
         Dead();
     }
-    internal void ReceiveDamage(int damage)
+    public virtual void ReceiveDamage(int damage)
     {
         Debug.Log(health);
         health -= damage;

@@ -14,7 +14,7 @@ public class BoloE3 : EnemyBase
         if (isDead)
         {
             agent.speed = 0;
-            animator.SetBool("Dead", true);
+            animator.SetTrigger("Dead");
         }
     }
 }
