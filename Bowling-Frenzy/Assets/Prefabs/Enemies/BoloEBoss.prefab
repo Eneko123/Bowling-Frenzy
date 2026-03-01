@@ -464,17 +464,17 @@ MonoBehaviour:
   player: {fileID: 0}
   EnemyStates:
   - CooldownMax: 30
-    MinVel: 1
-    MaxVel: 2
-  - CooldownMax: 20
-    MinVel: 1.2
-    MaxVel: 2.4
-  - CooldownMax: 10
-    MinVel: 1.6
-    MaxVel: 3.2
-  - CooldownMax: 5
     MinVel: 2
     MaxVel: 4
+  - CooldownMax: 20
+    MinVel: 2.4
+    MaxVel: 4.8
+  - CooldownMax: 10
+    MinVel: 3.2
+    MaxVel: 6.4
+  - CooldownMax: 5
+    MinVel: 4
+    MaxVel: 8
   jump: {fileID: 146857487070688300}
   atack: {fileID: 3564890275236091876}
 --- !u!136 &639174233103976314

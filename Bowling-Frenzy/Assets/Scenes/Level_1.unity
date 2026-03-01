@@ -532,6 +532,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[0].MaxVel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[0].MinVel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[1].MaxVel
+      value: 4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[1].MinVel
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[2].MaxVel
+      value: 6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[2].MinVel
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[3].MaxVel
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+      propertyPath: EnemyStates.Array.data[3].MinVel
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -589,6 +621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lvl1
       objectReference: {fileID: 0}
+    - target: {fileID: 8632010625403755949, guid: 6e07e17a4c403b848890010b0ce0bdd9, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: d06ae4a03bfd34541bef783fa9af5e4e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
