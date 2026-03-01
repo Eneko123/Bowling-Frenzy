@@ -24,8 +24,8 @@ public class BoloEBoos : EnemyBase
 
     new void Start()
     {
-        base.Start();
         maxHealth = 1000;
+        base.Start();
         agent.speed = 1f;
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;

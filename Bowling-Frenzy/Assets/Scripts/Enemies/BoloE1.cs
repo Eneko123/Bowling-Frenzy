@@ -4,9 +4,9 @@ public class BoloE1 : EnemyBase
 {
     new void Start()
     {
-        base.Start();
         maxHealth = 20;
-        agent.speed = 2.5f;
+        base.Start();
+        agent.speed = 5f;
     }
 
     new void Dead()
