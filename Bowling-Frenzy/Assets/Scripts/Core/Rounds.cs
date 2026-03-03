@@ -14,7 +14,8 @@ public class Rounds : MonoBehaviour
         public int E3;
         public int E4;
     }
-    
+
+    public GameObject sweeper;
     public State[] states;
     private State currentState;
     private int currentRound;
@@ -43,6 +44,7 @@ public class Rounds : MonoBehaviour
         }
         else
         {
+            sweeper.SetActive(true);
             isRoundActive = false;
             isRoundFinished = true;
             currentRound += 1;
