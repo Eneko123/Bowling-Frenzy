@@ -256,6 +256,81 @@ Transform:
   - {fileID: 1860303025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1187418834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187418836}
+  - component: {fileID: 1187418835}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1187418835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187418834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5457e6eceb8f2a4d910fc33ab8878ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - timeMax: 1
+    E1: 0
+    E2: 0
+    E3: 0
+    E4: 0
+  - timeMax: 2
+    E1: 0
+    E2: 0
+    E3: 0
+    E4: 0
+  - timeMax: 3
+    E1: 0
+    E2: 0
+    E3: 0
+    E4: 0
+  - timeMax: 4
+    E1: 0
+    E2: 0
+    E3: 0
+    E4: 0
+  - timeMax: 5
+    E1: 0
+    E2: 0
+    E3: 0
+    E4: 0
+  - timeMax: 6
+    E1: 0
+    E2: 0
+    E3: 0
+    E4: 0
+--- !u!4 &1187418836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187418834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.128258, y: 4.5, z: -13.721089}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1286250956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1113,3 +1188,4 @@ SceneRoots:
   - {fileID: 5042551163250424095}
   - {fileID: 3723337192705661480}
   - {fileID: 8671655114735541895}
+  - {fileID: 1187418836}
