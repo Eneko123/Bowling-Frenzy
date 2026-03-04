@@ -19,7 +19,11 @@ public class SlowBullet : NormalBulletBehaviour
             }
         }
     }
-  
+    internal SpecialBullets GetSpecialBullet()
+    {
+        return currentSpecial;
+    }
+
 
     // Update is called once per frame
     internal override void CheckEnemy(Collider collider)

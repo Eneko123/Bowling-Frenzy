@@ -21,6 +21,10 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
     }
 
     // Update is called once per frame
+    internal SpecialBullets GetSpecialBullet()
+    {
+        return currentSpecial;
+    }
 
     protected override void OnDeactivate()
     {

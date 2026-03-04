@@ -29,6 +29,10 @@ public class NormalBulletBehaviour : MonoBehaviour
 
         rbParent.AddForce(direction * speed, ForceMode.Force);
     }
+    internal SpecialBullets GetSpecialBullet()
+    {
+        return currentSpecial;
+    }
     // Update is called once per frame
     void Update()
     {

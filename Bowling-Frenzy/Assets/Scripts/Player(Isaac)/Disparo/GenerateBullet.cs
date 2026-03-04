@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GenerateBullet : MonoBehaviour
 {
-    [SerializeField]int numberOfBullets = 10;
+    [SerializeField] int numberOfBullets = 10;
     [SerializeField] int numberOfExplosiveBullets = 5;
     [SerializeField] int numberOfPiercingBullets = 5;
     [SerializeField] int numberOfSlowingBullets = 5;
@@ -26,7 +26,7 @@ public class GenerateBullet : MonoBehaviour
         {
             instance = this;
         }
-        else 
+        else
         {
             Destroy(this);
         }
@@ -44,7 +44,7 @@ public class GenerateBullet : MonoBehaviour
             tmpBullet.gameObject.SetActive(false);
             listBullets.Add(tmpBullet);
         }
-        for(int i = 0; i < numberOfExplosiveBullets; i++)
+        for (int i = 0; i < numberOfExplosiveBullets; i++)
         {
             tmpExplosive = Instantiate(heavyBullet);
             tmpExplosive.gameObject.SetActive(false);
@@ -78,6 +78,19 @@ public class GenerateBullet : MonoBehaviour
         tmpBullet.gameObject.SetActive(true);
         return tmpBullet;
 
+    }
+    internal GameObject SelectTheSpecial(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return GetExplosiveBullets();
+            case 1:
+                return GetPiercingBullets();
+            case 2:
+                return GetSlowingBullets();
+        }
+        return null;
     }
     public GameObject GetExplosiveBullets()
     {

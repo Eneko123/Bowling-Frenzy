@@ -19,6 +19,10 @@ public class PierceBullet : NormalBulletBehaviour
         }
     }
 
+    internal SpecialBullets GetSpecialBullet()
+    {
+        return currentSpecial;
+    }
     internal virtual void CheckEnemy(Collider collider)
     {
 
