@@ -9,13 +9,16 @@ public class PierceBullet : NormalBulletBehaviour
     {
         Init(transform.position, Vector3.zero);
         currentSpecial = SpecialBullets.Piercing;
+        for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
+        {
+            if (GenerateBullet.instance.listOfHabilities[i] == null)
+            {
+                GenerateBullet.instance.listOfHabilities[i] = this;
+                break;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     internal virtual void CheckEnemy(Collider collider)
     {
 

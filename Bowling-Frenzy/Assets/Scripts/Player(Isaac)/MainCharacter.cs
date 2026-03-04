@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -125,13 +126,60 @@ public class MainCharacter : MonoBehaviour
                     if (!isReloadingExplosiveBullet)
                     {
                         GameObject b = GenerateBullet.instance.GetExplosiveBullets();
-                        b.GetComponentInChildren<ExplosiveBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
                         typeOfBullet = 1;
+                        StartCoroutine(DelayForBullets(10f));
+                    }
+                    break;
+                case 1:
+                    if (!isReloadingPiercingBullet)
+                    {
+                        GameObject b = GenerateBullet.instance.GetPiercingBullets();
+                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        typeOfBullet = 2;
+                        StartCoroutine(DelayForBullets(10f));
+                    }
+                    break;
+                case 2:
+                    if (!isReloadingSlowingBullet)
+                    {
+                        GameObject b = GenerateBullet.instance.GetSlowingBullets();
+                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        typeOfBullet = 3;
                         StartCoroutine(DelayForBullets(10f));
                     }
                     break;
             }
 
+        }
+    }
+    public void OnChangeSpecial(InputAction.CallbackContext contextSpecial)
+    {
+        if (contextSpecial.performed)
+        {
+            GenerateBullet currentHability = GenerateBullet.instance;
+            InputBinding? binding = contextSpecial.action.GetBindingForControl(contextSpecial.control);
+            InputBinding K1 = new InputBinding(path: "<Keyboard>/1", action: "ChangeSpecial");
+            InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
+            InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
+
+            if (binding.Value.path == K1.path)
+            {
+                currentHability.ChangeHability(0);
+                Debug.Log("1Spec");
+            }
+            else if (binding.Value.path == K2.path)
+            {
+                currentHability.ChangeHability(1);
+                Debug.Log("2Spec");
+            }
+            else if (binding.Value.path == K3.path)
+            {
+                currentHability.ChangeHability(2);
+                Debug.Log("3Spec");
+            }
+            Debug.Log(binding.Value);
+            Debug.Log(currentHability.currentPositionHability);
         }
     }
     IEnumerator DelayForBullets(float delay)

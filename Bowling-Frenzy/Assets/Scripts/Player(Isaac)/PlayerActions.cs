@@ -136,6 +136,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeSpecial"",
+                    ""type"": ""Button"",
+                    ""id"": ""1be8d6cb-df81-496f-a2da-8cf5146ea626"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -237,6 +246,39 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""SpecialHability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf7c1b35-7579-419b-92a9-bd9f75203cd3"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5731d6a7-237d-4c76-9829-d61927e67b6c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b37adcd5-e829-4390-8137-0431033f97d8"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +292,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Keyboard_Look = m_Keyboard.FindAction("Look", throwIfNotFound: true);
         m_Keyboard_Shoot = m_Keyboard.FindAction("Shoot", throwIfNotFound: true);
         m_Keyboard_SpecialHability = m_Keyboard.FindAction("SpecialHability", throwIfNotFound: true);
+        m_Keyboard_ChangeSpecial = m_Keyboard.FindAction("ChangeSpecial", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -335,6 +378,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Look;
     private readonly InputAction m_Keyboard_Shoot;
     private readonly InputAction m_Keyboard_SpecialHability;
+    private readonly InputAction m_Keyboard_ChangeSpecial;
     /// <summary>
     /// Provides access to input actions defined in input action map "Keyboard".
     /// </summary>
@@ -366,6 +410,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Keyboard/SpecialHability".
         /// </summary>
         public InputAction @SpecialHability => m_Wrapper.m_Keyboard_SpecialHability;
+        /// <summary>
+        /// Provides access to the underlying input action "Keyboard/ChangeSpecial".
+        /// </summary>
+        public InputAction @ChangeSpecial => m_Wrapper.m_Keyboard_ChangeSpecial;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -407,6 +455,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @SpecialHability.started += instance.OnSpecialHability;
             @SpecialHability.performed += instance.OnSpecialHability;
             @SpecialHability.canceled += instance.OnSpecialHability;
+            @ChangeSpecial.started += instance.OnChangeSpecial;
+            @ChangeSpecial.performed += instance.OnChangeSpecial;
+            @ChangeSpecial.canceled += instance.OnChangeSpecial;
         }
 
         /// <summary>
@@ -433,6 +484,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @SpecialHability.started -= instance.OnSpecialHability;
             @SpecialHability.performed -= instance.OnSpecialHability;
             @SpecialHability.canceled -= instance.OnSpecialHability;
+            @ChangeSpecial.started -= instance.OnChangeSpecial;
+            @ChangeSpecial.performed -= instance.OnChangeSpecial;
+            @ChangeSpecial.canceled -= instance.OnChangeSpecial;
         }
 
         /// <summary>
@@ -508,5 +562,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpecialHability(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeSpecial" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeSpecial(InputAction.CallbackContext context);
     }
 }
