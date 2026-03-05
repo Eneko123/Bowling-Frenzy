@@ -119,7 +119,6 @@ public class MainCharacter : MonoBehaviour
         if (contextSpecial.performed)
         {
             GenerateBullet currentHability = GenerateBullet.instance;
-            Debug.Log(currentHability.currentPositionHability);
             GameObject b = GenerateBullet.instance.SelectTheSpecial(currentHability.currentPositionHability);
             if (b != null)
             {

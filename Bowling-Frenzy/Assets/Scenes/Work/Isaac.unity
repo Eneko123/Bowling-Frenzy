@@ -294,10 +294,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BalaPiercePhy
       objectReference: {fileID: 0}
-    - target: {fileID: 5855122511854525700, guid: 21789707a64f15c4aa50cf8b41e68bc3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

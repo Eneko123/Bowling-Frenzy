@@ -17,7 +17,7 @@ public class GenerateBullet : MonoBehaviour
     List<GameObject> listPiercingBullets = new List<GameObject>() { };
     List<GameObject> listSlowingBullets = new List<GameObject>() { };
 
-    internal NormalBulletBehaviour[] listOfHabilities = new NormalBulletBehaviour[3];
+    internal GameObject[] listOfHabilities = new GameObject[3];
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
     private void Awake()
@@ -63,6 +63,23 @@ public class GenerateBullet : MonoBehaviour
             listSlowingBullets.Add(tmpSlowing);
         }
     }
+    private void Update()
+    {
+        //(Esto es temporal, cuando se implementen las mejoras se debe de hacer que el primer elemento
+        // del array se meta el prefab del tipo de bala que haya conseguido
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            listOfHabilities[2] = heavyBullet;
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            listOfHabilities[1] = piercingBullet;
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            listOfHabilities[0] = slowingBullet;
+        }
+    }
     public GameObject GetBullets()
     {
         foreach (GameObject b in listBullets)
@@ -81,14 +98,20 @@ public class GenerateBullet : MonoBehaviour
     }
     internal GameObject SelectTheSpecial(int index)
     {
-        switch (index)
+        Debug.Log(listOfHabilities[index]);
+        GameObject temp = listOfHabilities[index];
+
+        if (temp.GetComponentInChildren<ExplosiveBulletBehaviour>())
         {
-            case 0:
-                return GetExplosiveBullets();
-            case 1:
-                return GetPiercingBullets();
-            case 2:
-                return GetSlowingBullets();
+            return GetExplosiveBullets();
+        }
+        else if (temp.GetComponentInChildren<PierceBullet>())
+        {
+            return GetPiercingBullets();
+        }
+        else if (temp.GetComponentInChildren<SlowBullet>())
+        {
+            return GetSlowingBullets();
         }
         return null;
     }

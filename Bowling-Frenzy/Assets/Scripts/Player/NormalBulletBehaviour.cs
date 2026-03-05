@@ -36,11 +36,6 @@ public class NormalBulletBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // transform.position += direction * speed * Time.deltaTime;
-        // rbParent.transform.position += direction * speed * Time.deltaTime;
-
-        
-
         if (_currentLifeTime > 0)
         {
             _currentLifeTime -= Time.deltaTime;
@@ -49,6 +44,7 @@ public class NormalBulletBehaviour : MonoBehaviour
         {
             OnDeactivate();
         }
+
     }
     private void OnTriggerEnter(Collider enemy)
     {

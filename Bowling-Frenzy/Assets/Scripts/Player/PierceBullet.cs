@@ -8,17 +8,20 @@ public class PierceBullet : NormalBulletBehaviour
     void Start()
     {
         Init(transform.position, Vector3.zero);
-        currentSpecial = SpecialBullets.Piercing;
+        this.currentSpecial = SpecialBullets.Piercing;
+        AddPierce();
+    }
+    internal void AddPierce()
+    {
         for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
         {
             if (GenerateBullet.instance.listOfHabilities[i] == null)
             {
-                GenerateBullet.instance.listOfHabilities[i] = this;
+                GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
                 break;
             }
         }
     }
-
     internal SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;

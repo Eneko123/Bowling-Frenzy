@@ -9,12 +9,16 @@ public class SlowBullet : NormalBulletBehaviour
     void Start()
     {
         Init(transform.position, Vector3.zero);
-        currentSpecial = SpecialBullets.Slowing;
+        this.currentSpecial = SpecialBullets.Slowing;
+        AddSlow();
+    }
+    internal void AddSlow()
+    {
         for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
         {
             if (GenerateBullet.instance.listOfHabilities[i] == null)
             {
-                GenerateBullet.instance.listOfHabilities[i] = this;
+                GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
                 break;
             }
         }
@@ -35,5 +39,5 @@ public class SlowBullet : NormalBulletBehaviour
             OnDeactivate();
         }
     }
-   
+
 }
