@@ -11,7 +11,6 @@ public class EnemyBase : MonoBehaviour
     protected NavMeshAgent agent;
     protected int maxHealth;
     protected int health;
-    protected bool isDead = false;
     protected Animator animator;
     protected float originalSpeed;
     protected bool isSlowing = false;
@@ -34,7 +33,8 @@ public class EnemyBase : MonoBehaviour
     {
         Debug.Log(health);
         health -= damage;
-        Combos.Instance.IncrementCombo();
+        if (Combos.Instance != null)
+            Combos.Instance.IncrementCombo();
         Debug.Log(health);
     }
     protected void Movemetn()
@@ -49,8 +49,9 @@ public class EnemyBase : MonoBehaviour
     protected void Dead()
     {
         if (health <= 0)
-        { 
-            isDead = true;
+        {
+            agent.speed = 0;
+            animator.SetTrigger("Dead");
         }
     }
     internal void SetEnemySpeed(float newSpeed)
