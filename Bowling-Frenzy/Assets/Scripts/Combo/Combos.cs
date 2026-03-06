@@ -8,11 +8,12 @@ public class Combos : MonoBehaviour
     private float comboTimer = 0f;
     public Image ComboBar;
     public Image ComboBarFill;
-    private TextMeshProUGUI ComboText;
+    public TextMeshProUGUI ComboText;
     public static Combos Instance;
     private float ComboSpeed = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    private Vector2 XLimit = new Vector2(-600f, 600f);
+    private Vector2 YLimit = new Vector2(-600f, -130f);
     void Start()
     {
         ComboBar.GetComponent<Image>();
@@ -55,9 +56,12 @@ public class Combos : MonoBehaviour
         comboTimer = 0f; // Reset the timer whenever a new combo is started
         currentComboCount++;
         ComboBarFill.fillAmount = 1;
+        ComboText.text = "x" + currentComboCount.ToString();
+        ComboText.rectTransform.anchoredPosition = new Vector2(Random.Range(XLimit.x, XLimit.y), Random.Range(YLimit.x, YLimit.y));
         if (currentComboCount % 5 == 0 && currentComboCount <= 40)
         {
             ComboSpeed += 0.75f;// Reduce the reset time by 1 second for every 5 combos, up to a maximum of 40 combos
+            ComboText.text = "x" + currentComboCount.ToString() + "!!";
         }
     }
 }
