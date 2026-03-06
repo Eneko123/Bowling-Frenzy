@@ -34,6 +34,7 @@ public class EnemyBase : MonoBehaviour
     {
         Debug.Log(health);
         health -= damage;
+        Combos.Instance.IncrementCombo();
         Debug.Log(health);
     }
     protected void Movemetn()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3302614539224789327}
   - component: {fileID: 8952822580279067089}
+  - component: {fileID: 7416232315365683935}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,5 +47,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfBullets: 10
   numberOfExplosiveBullets: 5
-  bullet: {fileID: 0}
-  heavyBullet: {fileID: 0}
+  numberOfPiercingBullets: 5
+  numberOfSlowingBullets: 5
+  bullet: {fileID: 8371507476346950773, guid: e0fcad6664b4c404097d1225d51aee4b, type: 3}
+  heavyBullet: {fileID: 115645394156408509, guid: f855190c3bbb87e4bb5e92ff5050db08, type: 3}
+  piercingBullet: {fileID: 0}
+  slowingBullet: {fileID: 0}
+--- !u!114 &7416232315365683935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050260326932439018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a15b684f73d664d94a25d9f4444890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentComboCount: 0
+  comboResetTime: 10
+  ComboBar: {fileID: 0}
+  ComboBarFill: {fileID: 0}
