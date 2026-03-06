@@ -201,6 +201,7 @@ public class MainCharacter : MonoBehaviour
                 currentSpecialBullet = currentHability.ChangeHability(2);
                 Debug.Log("3Spec");
             }
+
             Debug.Log(binding.Value);
             Debug.Log(currentHability.currentPositionHability);
         }

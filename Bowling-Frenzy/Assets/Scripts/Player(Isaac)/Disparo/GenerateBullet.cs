@@ -165,6 +165,10 @@ public class GenerateBullet : MonoBehaviour
     }
     internal SpecialBullets ChangeHability(int hability)
     {
+        if (specialBullets.Count == 0)
+        {
+            return SpecialBullets.None;
+        }
         SpecialBullets sP = specialBullets[hability];
         switch (sP)
         {
