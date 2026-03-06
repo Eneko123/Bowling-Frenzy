@@ -6,22 +6,25 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
     [SerializeField] private GameObject explosionEffectPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        Init(transform.position, Vector3.zero);
         this.currentSpecial = SpecialBullets.Explosive;
     }
-    internal void AddExplosive()
+    void Start()
     {
-        for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
-        {
-            if (GenerateBullet.instance.listOfHabilities[i] == null)
-            {
-                GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
-                break;
-            }
-        }
+        //Init(transform.position, Vector3.zero);
     }
+    //internal void AddExplosive()
+    //{
+    //    for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
+    //    {
+    //        if (GenerateBullet.instance.listOfHabilities[i] == null)
+    //        {
+    //            GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
+    //            break;
+    //        }
+    //    }
+    //}
 
     // Update is called once per frame
     internal SpecialBullets GetSpecialBullet()

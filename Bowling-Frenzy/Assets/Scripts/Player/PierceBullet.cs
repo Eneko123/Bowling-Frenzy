@@ -5,23 +5,25 @@ public class PierceBullet : NormalBulletBehaviour
     int MaxPierce = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        this.currentSpecial = SpecialBullets.Piercing;
+    }
     void Start()
     {
-        Init(transform.position, Vector3.zero);
-        this.currentSpecial = SpecialBullets.Piercing;
-        AddPierce();
+        //Init(transform.position, Vector3.zero);
     }
-    internal void AddPierce()
-    {
-        for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
-        {
-            if (GenerateBullet.instance.listOfHabilities[i] == null)
-            {
-                GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
-                break;
-            }
-        }
-    }
+    //internal void AddPierce()
+    //{
+    //    for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
+    //    {
+    //        if (GenerateBullet.instance.listOfHabilities[i] == null)
+    //        {
+    //            GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
+    //            break;
+    //        }
+    //    }
+    //}
     internal SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;

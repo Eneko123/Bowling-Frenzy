@@ -49,6 +49,7 @@ public class MainCharacter : MonoBehaviour
     public static MainCharacter Instance { get; private set; }
     public Transform playerTransform;
 
+    SpecialBullets currentSpecialBullet;
     private void Awake()
     {
         if (Instance == null)
@@ -119,7 +120,29 @@ public class MainCharacter : MonoBehaviour
         if (contextSpecial.performed)
         {
             GenerateBullet currentHability = GenerateBullet.instance;
-            GameObject b = GenerateBullet.instance.SelectTheSpecial(currentHability.currentPositionHability);
+            GameObject b = null;
+            switch (currentSpecialBullet)
+            {
+                case SpecialBullets.Explosive:
+                    if (!isReloadingExplosiveBullet)
+                    {
+                        b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+                    }
+                    break;
+                case SpecialBullets.Piercing:
+                    if (!isReloadingPiercingBullet)
+                    {
+                        b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+                    }
+                    break;
+                case SpecialBullets.Slowing:
+                    if (!isReloadingSlowingBullet)
+                    {
+                        b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+                    }
+                    break;
+            }
+
             if (b != null)
             {
                 switch (b.GetComponentInChildren<NormalBulletBehaviour>().GetSpecialBullet())
@@ -150,7 +173,6 @@ public class MainCharacter : MonoBehaviour
                         break;
                 }
             }
-
         }
     }
     public void OnChangeSpecial(InputAction.CallbackContext contextSpecial)
@@ -165,17 +187,18 @@ public class MainCharacter : MonoBehaviour
 
             if (binding.Value.path == K1.path)
             {
-                currentHability.ChangeHability(0);
+
+                currentSpecialBullet = currentHability.ChangeHability(0);
                 Debug.Log("1Spec");
             }
             else if (binding.Value.path == K2.path)
             {
-                currentHability.ChangeHability(1);
+                currentSpecialBullet = currentHability.ChangeHability(1);
                 Debug.Log("2Spec");
             }
             else if (binding.Value.path == K3.path)
             {
-                currentHability.ChangeHability(2);
+                currentSpecialBullet = currentHability.ChangeHability(2);
                 Debug.Log("3Spec");
             }
             Debug.Log(binding.Value);

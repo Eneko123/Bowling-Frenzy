@@ -6,23 +6,25 @@ public class SlowBullet : NormalBulletBehaviour
     bool isSlowing = false;
     float originalSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        this.currentSpecial = SpecialBullets.Slowing;
+    }
     void Start()
     {
-        Init(transform.position, Vector3.zero);
-        this.currentSpecial = SpecialBullets.Slowing;
-        AddSlow();
+        //Init(transform.position, Vector3.zero);
     }
-    internal void AddSlow()
-    {
-        for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
-        {
-            if (GenerateBullet.instance.listOfHabilities[i] == null)
-            {
-                GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
-                break;
-            }
-        }
-    }
+    //internal void AddSlow()
+    //{
+    //    for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
+    //    {
+    //        if (GenerateBullet.instance.listOfHabilities[i] == null)
+    //        {
+    //            GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
+    //            break;
+    //        }
+    //    }
+    //}
     internal SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;

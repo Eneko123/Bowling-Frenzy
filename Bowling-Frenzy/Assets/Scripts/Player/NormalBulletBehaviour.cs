@@ -2,7 +2,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 public enum SpecialBullets
 {
-    Explosive, Piercing, Slowing
+    None, Explosive, Piercing, Slowing
 }
 public class NormalBulletBehaviour : MonoBehaviour
 {

@@ -17,9 +17,10 @@ public class GenerateBullet : MonoBehaviour
     List<GameObject> listPiercingBullets = new List<GameObject>() { };
     List<GameObject> listSlowingBullets = new List<GameObject>() { };
 
-    internal GameObject[] listOfHabilities = new GameObject[3];
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
+
+    public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
     private void Awake()
     {
         if (instance == null)
@@ -69,15 +70,15 @@ public class GenerateBullet : MonoBehaviour
         // del array se meta el prefab del tipo de bala que haya conseguido
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            listOfHabilities[2] = heavyBullet;
+            specialBullets.Add(SpecialBullets.Piercing);
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            listOfHabilities[1] = piercingBullet;
+            specialBullets.Add(SpecialBullets.Explosive);
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            listOfHabilities[0] = slowingBullet;
+            specialBullets.Add(SpecialBullets.Slowing);
         }
     }
     public GameObject GetBullets()
@@ -96,20 +97,19 @@ public class GenerateBullet : MonoBehaviour
         return tmpBullet;
 
     }
-    internal GameObject SelectTheSpecial(int index)
+    internal GameObject SelectTheSpecial(SpecialBullets selectedSpecial)
     {
-        Debug.Log(listOfHabilities[index]);
-        GameObject temp = listOfHabilities[index];
 
-        if (temp.GetComponentInChildren<ExplosiveBulletBehaviour>())
+
+        if (selectedSpecial == SpecialBullets.Explosive)
         {
             return GetExplosiveBullets();
         }
-        else if (temp.GetComponentInChildren<PierceBullet>())
+        else if (selectedSpecial == SpecialBullets.Piercing)
         {
             return GetPiercingBullets();
         }
-        else if (temp.GetComponentInChildren<SlowBullet>())
+        else if (selectedSpecial == SpecialBullets.Slowing)
         {
             return GetSlowingBullets();
         }
@@ -163,8 +163,22 @@ public class GenerateBullet : MonoBehaviour
         tmpSlowing.gameObject.SetActive(false);
         return tmpSlowing;
     }
-    internal void ChangeHability(int hability)
+    internal SpecialBullets ChangeHability(int hability)
     {
-        currentPositionHability = hability;
+        SpecialBullets sP = specialBullets[hability];
+        switch (sP)
+        {
+            case SpecialBullets.Explosive:
+                sP = SpecialBullets.Explosive;
+                break;
+            case SpecialBullets.Piercing:
+                sP = SpecialBullets.Piercing;
+                break;
+            case SpecialBullets.Slowing:
+                sP = SpecialBullets.Slowing;
+                break;
+
+        }
+        return sP;
     }
 }

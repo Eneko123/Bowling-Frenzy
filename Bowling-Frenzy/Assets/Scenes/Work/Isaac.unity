@@ -425,6 +425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoloE1
       objectReference: {fileID: 0}
+    - target: {fileID: 5908303234000865002, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6536221488668318800, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.337891
@@ -809,15 +813,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31
+      value: 3.88
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.1
+      value: 2.91
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.901166
+      value: -14.41
       objectReference: {fileID: 0}
     - target: {fileID: 5387676506217089211, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
       propertyPath: m_LocalRotation.w
