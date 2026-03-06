@@ -338,15 +338,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.92598
+      value: 25.128258
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.499996
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47.922215
+      value: -13.721089
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -532,17 +532,17 @@ MonoBehaviour:
   player: {fileID: 0}
   EnemyStates:
   - CooldownMax: 30
+    MinVel: 1
+    MaxVel: 2
+  - CooldownMax: 20
+    MinVel: 1.2
+    MaxVel: 2.4
+  - CooldownMax: 10
+    MinVel: 1.6
+    MaxVel: 3.2
+  - CooldownMax: 5
     MinVel: 2
     MaxVel: 4
-  - CooldownMax: 20
-    MinVel: 2.4
-    MaxVel: 4.8
-  - CooldownMax: 10
-    MinVel: 3.2
-    MaxVel: 6.4
-  - CooldownMax: 5
-    MinVel: 4
-    MaxVel: 8
   jump: {fileID: 146857487070688300}
   atack: {fileID: 3564890275236091876}
 --- !u!136 &639174233103976314
@@ -565,9 +565,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.8
-  m_Height: 7.5
+  m_Height: 8
   m_Direction: 1
-  m_Center: {x: 0, y: 3.5, z: 0}
+  m_Center: {x: 0, y: 2.85, z: 0}
 --- !u!95 &5920542036071117024
 Animator:
   serializedVersion: 7

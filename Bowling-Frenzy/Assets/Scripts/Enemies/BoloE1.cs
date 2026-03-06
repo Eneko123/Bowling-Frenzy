@@ -9,13 +9,13 @@ public class BoloE1 : EnemyBase
         agent.speed = 5f;
     }
 
-    new void Dead()
-    {
-        base.Dead();
-        if (isDead)
-        {
-            agent.speed = 0;
-            animator.SetTrigger("Dead");
-        }
-    }
+    //protected override void Dead()
+    //{
+    //    base.Dead();
+    //    if (isDead)
+    //    {
+    //        agent.speed = 0;
+    //        animator.SetTrigger("Dead");
+    //    }
+    //}
 }
