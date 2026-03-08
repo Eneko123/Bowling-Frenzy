@@ -244,4 +244,8 @@ public class MainCharacter : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
+    public void RestoreHealthByCombo()
+    {
+       playerHealth *= 1.15f;
+    }
 }

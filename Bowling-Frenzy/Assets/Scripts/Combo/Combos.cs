@@ -63,5 +63,9 @@ public class Combos : MonoBehaviour
             ComboSpeed += 0.75f;// Reduce the reset time by 1 second for every 5 combos, up to a maximum of 40 combos
             ComboText.text = "x" + currentComboCount.ToString() + "!!";
         }
+        if(currentComboCount % 10 == 0)
+        {
+            MainCharacter.Instance.RestoreHealthByCombo();
+        }
     }
 }
