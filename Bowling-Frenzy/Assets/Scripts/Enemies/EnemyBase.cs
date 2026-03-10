@@ -39,8 +39,12 @@ public class EnemyBase : MonoBehaviour
     }
     protected void Movemetn()
     {
+        // para evitar errores, si el enemigo esta muerto o desactivado, no se mueve ni hace nada
+        if (!this.gameObject.activeSelf) { return; }
+        if (player == null) { return; }
         // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
         agent.SetDestination(player.position);
+
     }
     internal float GetEnemySpeed()
     {
@@ -50,6 +54,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (health <= 0)
         {
+            damage = 0;
             agent.speed = 0;
             animator.SetTrigger("Dead");
         }

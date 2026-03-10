@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &406999423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9006585902148915010, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
+  m_PrefabInstance: {fileID: 3723337192705661480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &525690282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -445,6 +450,70 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1663790170399398989, guid: e4396cc288d9517439fba7c3974a5cd2, type: 3}
+--- !u!1 &855060668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3621189524744176448, guid: cde20e16e5606934b8c636237fd0f8c8, type: 3}
+  m_PrefabInstance: {fileID: 5042551163250424095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1000951861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1000951865}
+  - component: {fileID: 1000951866}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1000951865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000951861}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1000951866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000951861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902cbc199b624df46a8bbd69a51e216b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemysType:
+  - BoloEPool: []
+    BoloEAmount: 5
+    BoloE: {fileID: 1116809532}
+  - BoloEPool: []
+    BoloEAmount: 5
+    BoloE: {fileID: 855060668}
+  - BoloEPool: []
+    BoloEAmount: 5
+    BoloE: {fileID: 406999423}
+--- !u!1 &1116809532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5908303234000865002, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
+  m_PrefabInstance: {fileID: 3941195618683287856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1187418834
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,37 +545,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sweeper: {fileID: 525690283}
+  spawnPoints:
+  - {fileID: 1000951866}
+  - {fileID: 1758553319}
   states:
-  - timeMax: 5
-    E1: 0
-    E2: 0
-    E3: 0
+  - timeMax: 200
+    E1: 5
+    E2: 5
+    E3: 5
     E4: 0
+    spawnRateMax: 2
+    currentSpawnRate: 0
   - timeMax: 2
     E1: 0
     E2: 0
     E3: 0
     E4: 0
+    spawnRateMax: 0
+    currentSpawnRate: 0
   - timeMax: 3
     E1: 0
     E2: 0
     E3: 0
     E4: 0
+    spawnRateMax: 0
+    currentSpawnRate: 0
   - timeMax: 4
     E1: 0
     E2: 0
     E3: 0
     E4: 0
+    spawnRateMax: 0
+    currentSpawnRate: 0
   - timeMax: 5
     E1: 0
     E2: 0
     E3: 0
     E4: 0
+    spawnRateMax: 0
+    currentSpawnRate: 0
   - timeMax: 6
     E1: 0
     E2: 0
     E3: 0
     E4: 0
+    spawnRateMax: 0
+    currentSpawnRate: 0
 --- !u!4 &1187418836
 Transform:
   m_ObjectHideFlags: 0
@@ -801,6 +885,60 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1758553318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1758553320}
+  - component: {fileID: 1758553319}
+  m_Layer: 0
+  m_Name: Spawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1758553319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758553318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902cbc199b624df46a8bbd69a51e216b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemysType:
+  - BoloEPool: []
+    BoloEAmount: 5
+    BoloE: {fileID: 1116809532}
+  - BoloEPool: []
+    BoloEAmount: 5
+    BoloE: {fileID: 855060668}
+  - BoloEPool: []
+    BoloEAmount: 5
+    BoloE: {fileID: 406999423}
+--- !u!4 &1758553320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758553318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1941996525 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1829834912503583684, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
@@ -1070,3 +1208,5 @@ SceneRoots:
   - {fileID: 1187418836}
   - {fileID: 1385328685}
   - {fileID: 525690282}
+  - {fileID: 1000951865}
+  - {fileID: 1758553320}
