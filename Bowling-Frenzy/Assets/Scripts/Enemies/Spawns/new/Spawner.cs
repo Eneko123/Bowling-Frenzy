@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
     private GameObject BoloBoss;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         AddBoloToPool(EnemysType[0].BoloEAmount, EnemysType[0].BoloE, EnemysType[0].BoloEPool);
         AddBoloToPool(EnemysType[1].BoloEAmount, EnemysType[1].BoloE, EnemysType[1].BoloEPool);

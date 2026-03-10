@@ -42,6 +42,7 @@ public class EnemyBase : MonoBehaviour
         // para evitar errores, si el enemigo esta muerto o desactivado, no se mueve ni hace nada
         if (!this.gameObject.activeSelf) { return; }
         if (player == null) { return; }
+        Debug.Log("El enemigo se mueve hacia el jugador " + player.position + " " + this.gameObject.activeSelf);
         // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
         agent.SetDestination(player.position);
 
