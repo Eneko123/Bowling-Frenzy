@@ -129,14 +129,17 @@ public class RoundsManager : MonoBehaviour
                 {
                     spawnPoints[i].SpawnBolo(spawnPoints[i].EnemysType[0].BoloE, spawnPoints[i].EnemysType[0].BoloEPool);
                 }
+                else { return; }
                 if (currentState.E2 > TotalActiveEnemies2)
                 {
                     spawnPoints[i].SpawnBolo(spawnPoints[i].EnemysType[1].BoloE, spawnPoints[i].EnemysType[1].BoloEPool);
                 }
+                else { return; }
                 if (currentState.E3 > TotalActiveEnemies3)
                 {
                     spawnPoints[i].SpawnBolo(spawnPoints[i].EnemysType[2].BoloE, spawnPoints[i].EnemysType[2].BoloEPool);
                 }
+                else { return; }
                 currentState.currentSpawnRate = currentState.spawnRateMax;
             }
         }
