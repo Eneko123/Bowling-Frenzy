@@ -23,18 +23,15 @@ public class Spawner : MonoBehaviour
     public int ActiveEnemies1 => EnemysType[0].BoloEPool.FindAll(e => e.activeSelf).Count;
     public int ActiveEnemies2 => EnemysType[1].BoloEPool.FindAll(e => e.activeSelf).Count;
     public int ActiveEnemies3 => EnemysType[1].BoloEPool.FindAll(e => e.activeSelf).Count;
-    //private List<GameObject> BoloE1Pool = new List<GameObject>();
-    //private List<GameObject> BoloE2Pool = new List<GameObject>();
-    //private List<GameObject> BoloE3Pool = new List<GameObject>();
-    //private int BoloE1Amount = 10;
-    //private int BoloE2Amount = 10;
-    //private int BoloE3Amount = 10;
-    //private GameObject BoloE1;
-    //private GameObject BoloE2;
-    //private GameObject BoloE3;
-    private GameObject BoloBoss;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //private List<GameObject> BoloBoss;
+    public GameObject BoloBoss;
+
+    //void Start()
+    //{
+    //    BoloBoss.Add(BoloEBoos.instance.gameObject);
+    //}
+
     void Awake()
     {
         AddBoloToPool(EnemysType[0].BoloEAmount, EnemysType[0].BoloE, EnemysType[0].BoloEPool);
@@ -42,7 +39,6 @@ public class Spawner : MonoBehaviour
         AddBoloToPool(EnemysType[2].BoloEAmount, EnemysType[2].BoloE, EnemysType[2].BoloEPool);
     }
 
-    // Update is called once per frame
     void Update()
     {
     }
@@ -72,5 +68,11 @@ public class Spawner : MonoBehaviour
 
         enemy.transform.position = this.transform.position;
         enemy.SetActive(true);
+    }
+
+    public void SpawnBoss(Transform Spawn)
+    {
+        BoloBoss.transform.position = Spawn.transform.position;
+        BoloBoss.SetActive(true);
     }
 }

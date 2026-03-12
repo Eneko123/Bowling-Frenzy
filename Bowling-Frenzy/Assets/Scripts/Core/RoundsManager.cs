@@ -24,7 +24,7 @@ public class RoundsManager : MonoBehaviour
     private State currentState;
     private int currentRound;
     private float currentTime;
-    private bool isRoundActive;
+    // private bool isRoundActive;
     private bool isRoundFinished;
     private bool isFinalRound;
     private bool timeBetwineRounds = false;
@@ -84,7 +84,7 @@ public class RoundsManager : MonoBehaviour
     {
         if (timeBetwineRounds)
         {
-            return;
+            StartNextRound();
         }
         else
         {
@@ -94,34 +94,46 @@ public class RoundsManager : MonoBehaviour
             }
             else
             {
-                sweeper.SetActive(true);
-                isRoundActive = false;
                 isRoundFinished = true;
-                currentRound += 1;
-                if (currentRound == states.Length - 1)
+                timeBetwineRounds = true;
+                if (currentRound == states.Length - 2)
                 {
                     isFinalRound = true;
                     currentState = states[currentRound];
                     currentTime = 3600;
-                    Debug.Log("Final round reached!");
+                    spawnPoints[spawnPoints.Length-1].SpawnBoss(spawnPoints[spawnPoints.Length-1].transform);
                     return;
                 }
                 else
                 {
-                    isRoundActive = true;
-                    isRoundFinished = false;
-                    currentState = states[currentRound];
-                    currentTime = currentState.timeMax;
-                    Debug.Log("Round " + (currentRound) + " started! " + currentTime);
+                    return;
                 }
             }
+        }
+    }
+
+    void StartNextRound()
+    {
+        if (isRoundFinished)
+        {
+            sweeper.SetActive(true);
+            isRoundFinished = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) && !isRoundFinished)
+        {
+            Debug.Log("Next round started!");
+            currentRound += 1;
+            currentState = states[currentRound];
+            currentTime = currentState.timeMax;
+            timeBetwineRounds = false;
         }
     }
 
     void SpawnEnemis()
     {
         currentState.currentSpawnRate -= Time.deltaTime;
-        if (currentState.currentSpawnRate <= 0)
+        if (currentState.currentSpawnRate <= 0 && !timeBetwineRounds)
         {
             for (int i = 0; i < spawnPoints.Length; i++)
             {

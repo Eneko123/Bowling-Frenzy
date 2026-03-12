@@ -6,10 +6,8 @@ public class Sweeper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Sweeper collided with: " + other.gameObject.name);
         if (other.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
-            Debug.Log("Sweeper hit an enemy");
             enemy.ReceiveDamage(damage);
         }
     }

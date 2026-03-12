@@ -12,6 +12,8 @@ public struct State
 
 public class BoloEBoos : EnemyBase
 {
+    public static BoloEBoos instance;
+
     public State[] EnemyStates;
     private State CurrentState;
     private float Cooldown;
@@ -21,6 +23,11 @@ public class BoloEBoos : EnemyBase
     private readonly float playerDistance = 15;
 
     private bool atacked = false;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     new void Start()
     {
