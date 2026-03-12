@@ -12,7 +12,7 @@ public struct State
 
 public class BoloEBoos : EnemyBase
 {
-    public static BoloEBoos instance;
+    //public static BoloEBoos instance;
 
     public State[] EnemyStates;
     private State CurrentState;
@@ -24,10 +24,10 @@ public class BoloEBoos : EnemyBase
 
     private bool atacked = false;
 
-    void Awake()
-    {
-        instance = this;
-    }
+    //void Awake()
+    //{
+    //    instance = this;
+    //}
 
     new void Start()
     {
