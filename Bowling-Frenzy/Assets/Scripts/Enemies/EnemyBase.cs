@@ -31,11 +31,11 @@ public class EnemyBase : MonoBehaviour
     }
     public virtual void ReceiveDamage(int damage)
     {
-        Debug.Log(health);
+        //Debug.Log(health);
         health -= damage;
         if (Combos.Instance != null)
             Combos.Instance.IncrementCombo();
-        Debug.Log(health);
+        //Debug.Log(health);
     }
     protected void Movemetn()
     {
@@ -57,6 +57,7 @@ public class EnemyBase : MonoBehaviour
             damage = 0;
             agent.speed = 0;
             animator.SetTrigger("Dead");
+            health = maxHealth;
         }
     }
     internal void SetEnemySpeed(float newSpeed)

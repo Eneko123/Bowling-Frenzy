@@ -57,9 +57,13 @@ public class BoloEBoos : EnemyBase
         {
             CurrentState = EnemyStates[2];
         }
-        else if (health <= maxHealth * 0.25f)
+        else if (health <= maxHealth * 0.25f && health > 0)
         {
             CurrentState = EnemyStates[3];
+        }
+        else if (health <= 0)
+        {
+            CurrentState = EnemyStates[4];
         }
     }
 
