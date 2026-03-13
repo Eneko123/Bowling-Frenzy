@@ -67,10 +67,10 @@ public class RoundsManager : MonoBehaviour
         currentTime = states[0].timeMax;
         currentRound = 0;
 
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            spawnPoints[i].GetComponent<Spawner>();
-        }
+        //for (int i = 0; i < spawnPoints.Length; i++)
+        //{
+        //    spawnPoints[i].GetComponent<Spawner>();
+        //}
     }
 
     // Update is called once per frame
@@ -96,7 +96,7 @@ public class RoundsManager : MonoBehaviour
             {
                 isRoundFinished = true;
                 timeBetwineRounds = true;
-                if (currentRound == states.Length - 2)
+                if (currentRound == states.Length - 1)
                 {
                     isFinalRound = true;
                     currentState = states[currentRound];
@@ -141,19 +141,16 @@ public class RoundsManager : MonoBehaviour
                 {
                     spawnPoints[i].SpawnBolo(spawnPoints[i].EnemysType[0].BoloE, spawnPoints[i].EnemysType[0].BoloEPool);
                 }
-                else { return; }
                 if (currentState.E2 > TotalActiveEnemies2)
                 {
                     spawnPoints[i].SpawnBolo(spawnPoints[i].EnemysType[1].BoloE, spawnPoints[i].EnemysType[1].BoloEPool);
                 }
-                else { return; }
                 if (currentState.E3 > TotalActiveEnemies3)
                 {
                     spawnPoints[i].SpawnBolo(spawnPoints[i].EnemysType[2].BoloE, spawnPoints[i].EnemysType[2].BoloEPool);
                 }
-                else { return; }
-                currentState.currentSpawnRate = currentState.spawnRateMax;
             }
+            currentState.currentSpawnRate = currentState.spawnRateMax;
         }
     }
 
