@@ -3,7 +3,11 @@ using UnityEngine;
 public class MinimapIconsManager : MonoBehaviour
 {
     public Transform player;
-    
+
+    private void Awake()
+    {
+        player = MainCharacter.Instance.transform;
+    }
     // Update is called once per frame
     void Update()
     {

@@ -15,6 +15,11 @@ public class EnemyBase : MonoBehaviour
     protected float originalSpeed;
     protected bool isSlowing = false;
 
+    private void Awake()
+    {
+        player = MainCharacter.Instance.transform;
+    }
+
     //metodos
     protected void Start() 
     {
