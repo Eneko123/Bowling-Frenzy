@@ -54,4 +54,4 @@ MonoBehaviour:
   - BoloEPool: []
     BoloEAmount: 5
     BoloE: {fileID: 9006585902148915010, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
-  BoloBoss: {fileID: 0}
+  BoloBoss: {fileID: 3630691104249013946, guid: 65f12829ad4732540a518324aeac501a, type: 3}

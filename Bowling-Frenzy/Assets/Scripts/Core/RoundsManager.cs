@@ -98,8 +98,6 @@ public class RoundsManager : MonoBehaviour
                 timeBetwineRounds = true;
                 if (currentRound == states.Length - 1)
                 {
-                    Debug.Log(currentRound);
-                    Debug.Log(states.Length - 1);
                     isFinalRound = true;
                     currentState = states[currentRound];
                     currentTime = 3600;
