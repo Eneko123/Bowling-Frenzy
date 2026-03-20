@@ -1,4 +1,5 @@
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class RoundsManager : MonoBehaviour
@@ -27,6 +28,8 @@ public class RoundsManager : MonoBehaviour
     private bool isRoundFinished;
     private bool isFinalRound;
     private bool timeBetwineRounds = false;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI RoundManagerText;
 
     public int TotalActiveEnemies1
     {
@@ -65,6 +68,8 @@ public class RoundsManager : MonoBehaviour
         currentState = states[0];
         currentTime = states[0].timeMax;
         currentRound = 0;
+        RoundManagerText.text = $"Round {currentRound + 1}";
+        timerText.text = (currentTime/60).ToString("00")+ ":" + (currentTime%60).ToString("00");
     }
 
     // Update is called once per frame
@@ -85,6 +90,7 @@ public class RoundsManager : MonoBehaviour
             if (currentTime >= 0)
             {
                 currentTime -= Time.deltaTime;
+                timerText.text = (currentTime / 60).ToString("00") + ":" + (currentTime % 60).ToString("00");
             }
             else
             {
@@ -116,7 +122,9 @@ public class RoundsManager : MonoBehaviour
             currentRound += 1;
             currentState = states[currentRound];
             currentTime = currentState.timeMax;
+            timerText.text = (currentTime / 60).ToString("00") + ":" + (currentTime % 60).ToString("00");
             timeBetwineRounds = false;
+            RoundManagerText.text = $"Round {currentRound + 1}";
         }
     }
 
