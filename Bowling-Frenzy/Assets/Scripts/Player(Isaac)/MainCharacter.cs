@@ -240,7 +240,10 @@ public class MainCharacter : MonoBehaviour
             controller.Move(move.normalized * speed * Time.deltaTime);
         }
         //Calcula para que el jugador baje segun la gravedad
-        velocity.y += gravity * Time.deltaTime;
+        if (velocity.y > -19.6)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
         controller.Move(velocity * Time.deltaTime);
     }
     public void RestoreHealthByCombo()
