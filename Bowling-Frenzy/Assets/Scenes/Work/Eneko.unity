@@ -174,14 +174,12 @@ MonoBehaviour:
     E1: 5
     E2: 5
     E3: 5
-    E4: 0
     spawnRateMax: 2
     currentSpawnRate: 0
   - timeMax: 1
     E1: 10
     E2: 10
     E3: 10
-    E4: 0
     spawnRateMax: 0
     currentSpawnRate: 0
 --- !u!4 &1187418836
@@ -276,6 +274,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5493163789765187969, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493163789765187969, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
+      propertyPath: gravity
+      value: -19.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493163789765187969, guid: caa0143c1aaaed34985302b6fc8d5f04, type: 3}
+      propertyPath: jumpForce
+      value: 3.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -367,7 +377,7 @@ PrefabInstance:
     - target: {fileID: 8632010625403755949, guid: 6e07e17a4c403b848890010b0ce0bdd9, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 779a19ca0bcbb854b8af31bc3a008958, type: 2}
+      objectReference: {fileID: 23800000, guid: a3947fd8c19b58543bc69ab80db0a145, type: 2}
     - target: {fileID: 8632010625403755949, guid: 6e07e17a4c403b848890010b0ce0bdd9, type: 3}
       propertyPath: m_LastRotation.x
       value: -0

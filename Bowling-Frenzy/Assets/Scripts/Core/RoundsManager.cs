@@ -12,7 +12,6 @@ public class RoundsManager : MonoBehaviour
         public int E1;
         public int E2;
         public int E3;
-        public int E4;
         public float spawnRateMax;
         public float currentSpawnRate;
     }
@@ -66,11 +65,6 @@ public class RoundsManager : MonoBehaviour
         currentState = states[0];
         currentTime = states[0].timeMax;
         currentRound = 0;
-
-        //for (int i = 0; i < spawnPoints.Length; i++)
-        //{
-        //    spawnPoints[i].GetComponent<Spawner>();
-        //}
     }
 
     // Update is called once per frame
@@ -99,10 +93,7 @@ public class RoundsManager : MonoBehaviour
                 if (currentRound == states.Length - 1)
                 {
                     isFinalRound = true;
-                    currentState = states[currentRound];
-                    currentTime = 3600;
                     spawnPoints[spawnPoints.Length-1].SpawnBoss(spawnPoints[spawnPoints.Length-1].transform);
-                    return;
                 }
                 else
                 {
@@ -114,7 +105,7 @@ public class RoundsManager : MonoBehaviour
 
     void StartNextRound()
     {
-        if (isRoundFinished)
+        if (isRoundFinished && !isFinalRound)
         {
             sweeper.SetActive(true);
             isRoundFinished = false;
@@ -122,7 +113,6 @@ public class RoundsManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P) && !isRoundFinished)
         {
-            Debug.Log("Next round started!");
             currentRound += 1;
             currentState = states[currentRound];
             currentTime = currentState.timeMax;
