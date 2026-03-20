@@ -29,7 +29,7 @@ public class MainCharacter : MonoBehaviour
 
     //Sirve para controlar por si el jugador decide dejar de pulsar al completo porque quiere cancelar el salto
     private float jumpTimeStamp;
-    private float jumpTime = 0.2f;
+    private float jumpTime = 0f;
 
     //Controla el si se puede mover el jugador o no
     private bool _movementInputPressed = false;

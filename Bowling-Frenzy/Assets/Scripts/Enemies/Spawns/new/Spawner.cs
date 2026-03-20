@@ -72,7 +72,8 @@ public class Spawner : MonoBehaviour
 
     public void SpawnBoss(Transform Spawn)
     {
-        BoloBoss.transform.position = Spawn.transform.position;
-        BoloBoss.SetActive(true);
+        GameObject boss = Instantiate(BoloBoss);
+        boss.transform.position = Spawn.transform.position;
+        boss.SetActive(true);
     }
 }
