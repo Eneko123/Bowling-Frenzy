@@ -11,7 +11,7 @@ public class MainCharacter : MonoBehaviour
     float MaxHealth = 100f;
     float playerHealth;
     // Para bajar la vida del enemigo se puede hacer playerHealth = playerHealth - damage + defense 
-    int defense = 0;
+    float defense = 0;
     float healthRecovery;
     [Space(1)]
     //Sirve para ver la dirección en la que se mueve
@@ -250,4 +250,14 @@ public class MainCharacter : MonoBehaviour
     {
         playerHealth *= healthRecovery;
     }
+
+    #region Geters-Seters
+    public float GetHealthMax() { return MaxHealth; }
+    public float GetDefense() { return defense; }
+    public float GetSpeed() { return speed; }
+
+    public void SetHealthMax(float healtUp) { MaxHealth = healtUp; }
+    public void SetDefense(float defenseUp) { defense = defenseUp; }
+    public void SetSpeed(float speedUp) { speed = speedUp; }
+    #endregion
 }
