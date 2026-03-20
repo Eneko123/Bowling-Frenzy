@@ -35,7 +35,6 @@ public class MainCharacter : MonoBehaviour
     private bool _movementInputPressed = false;
 
     [SerializeField] CameraPlayer cameraPlayer;
-
     [SerializeField] GameObject pointOfShoot;
 
     bool isReloadingNormalBullet = false;
@@ -246,6 +245,6 @@ public class MainCharacter : MonoBehaviour
     }
     public void RestoreHealthByCombo()
     {
-       playerHealth *= 1.15f;
+        playerHealth *= 1.15f;
     }
 }
