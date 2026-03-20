@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class canvas : MonoBehaviour
+public class uicanmenus : MonoBehaviour
 {
     // variables
     public GameObject pov;
@@ -32,10 +32,21 @@ public class canvas : MonoBehaviour
             }
             else { return; }
         }
+        
         else { return; }
+    
+    
+    
     }
 
-    void menuinicio() 
+
+    public void prueva()
+    {
+        Debug.Log("funciona");
+    }
+
+    //activacion de menus
+    public void menuinicio() 
     {
         pov.SetActive(false);
         inicio.SetActive(true);//empieza en el menu
@@ -43,9 +54,8 @@ public class canvas : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);
-
     }
-    void Jugadorpov()
+    public void Jugadorpov()
     {
         pov.SetActive(true);//lo que ve el jugador
         inicio.SetActive(false);
@@ -53,9 +63,8 @@ public class canvas : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);
-
     }
-    void menupausa()
+    public void menupausa()
     {
         pov.SetActive(false);
         inicio.SetActive(false);
@@ -63,9 +72,8 @@ public class canvas : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);
-
     }
-    void menuniveles()
+    public void menuniveles()
     {
         pov.SetActive(false);
         inicio.SetActive(false);
@@ -73,9 +81,8 @@ public class canvas : MonoBehaviour
         niveles.SetActive(true);//se ven los niveles a elegir
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);
-
     }
-    void menuopciones()
+    public void menuopciones()
     {
         pov.SetActive(false);
         inicio.SetActive(false);
@@ -83,9 +90,8 @@ public class canvas : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(true);//se saca las opciones
         Eleccionmejoras.SetActive(false);
-
     }
-    void menumejoras()
+    public void menumejoras()
     {
         pov.SetActive(false);
         inicio.SetActive(true);
@@ -93,6 +99,5 @@ public class canvas : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);//se elije la mejora
-
     }
 }
