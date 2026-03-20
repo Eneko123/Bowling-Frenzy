@@ -19,6 +19,7 @@ public class Combos : MonoBehaviour
         ComboBar.GetComponent<Image>();
         ComboBarFill.GetComponent<Image>();
         ComboBar.gameObject.SetActive(false);
+        ComboText.gameObject.SetActive(false);
     }
     public void Awake()
     {
@@ -46,12 +47,14 @@ public class Combos : MonoBehaviour
         currentComboCount = 0;
         comboTimer = 0f;
         ComboBar.gameObject.SetActive(false);
+        ComboText.gameObject.SetActive(false);
     }
     public void IncrementCombo()
     {
         if(currentComboCount == 0)
         {
             ComboBar.gameObject.SetActive(true);
+            ComboText.gameObject.SetActive(true);
         }
         comboTimer = 0f; // Reset the timer whenever a new combo is started
         currentComboCount++;
