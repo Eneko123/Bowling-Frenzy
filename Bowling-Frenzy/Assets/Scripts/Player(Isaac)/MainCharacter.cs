@@ -36,7 +36,7 @@ public class MainCharacter : MonoBehaviour
 
     [SerializeField] CameraPlayer cameraPlayer;
     [SerializeField] GameObject pointOfShoot;
-
+    [SerializeField] PlayerHealth playerHealthUI;
     bool isReloadingNormalBullet = false;
     bool isReloadingExplosiveBullet = false;
     bool isReloadingPiercingBullet = false;
@@ -245,6 +245,6 @@ public class MainCharacter : MonoBehaviour
     }
     public void RestoreHealthByCombo()
     {
-        playerHealth *= 1.15f;
+        playerHealth *= healthRecovery;
     }
 }
