@@ -64,23 +64,23 @@ public class GenerateBullet : MonoBehaviour
             listSlowingBullets.Add(tmpSlowing);
         }
     }
-    private void Update()
-    {
-        //(Esto es temporal, cuando se implementen las mejoras se debe de hacer que el primer elemento
-        // del array se meta el prefab del tipo de bala que haya conseguido
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            specialBullets.Add(SpecialBullets.Piercing);
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            specialBullets.Add(SpecialBullets.Explosive);
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            specialBullets.Add(SpecialBullets.Slowing);
-        }
-    }
+    //private void Update()
+    //{
+    //    //(Esto es temporal, cuando se implementen las mejoras se debe de hacer que el primer elemento
+    //    // del array se meta el prefab del tipo de bala que haya conseguido
+    //    if (Input.GetKeyDown(KeyCode.Z))
+    //    {
+    //        specialBullets.Add(SpecialBullets.Piercing);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.X))
+    //    {
+    //        specialBullets.Add(SpecialBullets.Explosive);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.C))
+    //    {
+    //        specialBullets.Add(SpecialBullets.Slowing);
+    //    }
+    //}
     public GameObject GetBullets()
     {
         foreach (GameObject b in listBullets)

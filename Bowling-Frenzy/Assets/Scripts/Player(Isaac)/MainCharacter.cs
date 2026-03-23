@@ -252,7 +252,7 @@ public class MainCharacter : MonoBehaviour
     }
     public void damageHealthPlayer(float damage)
     {
-        playerHealth -= damage * (defense / 100);
+        playerHealth -= damage * (1 - defense);
         Debug.Log("Player health decreased");
     }
     #region Geters-Seters

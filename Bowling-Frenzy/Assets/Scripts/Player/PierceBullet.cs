@@ -28,7 +28,7 @@ public class PierceBullet : NormalBulletBehaviour
     {
         return currentSpecial;
     }
-    internal virtual void CheckEnemy(Collider collider)
+    internal override void CheckEnemy(Collider collider)
     {
 
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
