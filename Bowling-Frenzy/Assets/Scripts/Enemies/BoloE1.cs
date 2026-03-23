@@ -8,6 +8,13 @@ public class BoloE1 : EnemyBase
         base.Start();
         agent.speed = 5f;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        {
+            player.damageHealthPlayer(damage);
+        }
+    }
 
     //protected override void Dead()
     //{

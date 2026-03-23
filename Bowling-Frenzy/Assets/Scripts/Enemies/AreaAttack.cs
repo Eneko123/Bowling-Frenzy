@@ -5,6 +5,7 @@ public class AreaAttack : MonoBehaviour
     public GameObject jump;
     public GameObject atack;
 
+    [SerializeField] float damage;
     void StopAttacks()
     {
         jump.SetActive(false);
@@ -16,8 +17,9 @@ public class AreaAttack : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Collision detected with: " + collision.gameObject.name);
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.TryGetComponent(out MainCharacter player))
         {
+            player.damageHealthPlayer(damage);
             Debug.Log("Player hit by area attack");
         }
     }

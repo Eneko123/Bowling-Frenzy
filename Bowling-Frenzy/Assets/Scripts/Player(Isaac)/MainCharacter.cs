@@ -250,7 +250,11 @@ public class MainCharacter : MonoBehaviour
     {
         playerHealth *= healthRecovery;
     }
-
+    public void damageHealthPlayer(float damage)
+    {
+        playerHealth -= damage * (defense / 100);
+        Debug.Log("Player health decreased");
+    }
     #region Geters-Seters
     public float GetHealthMax() { return MaxHealth; }
     public float GetDefense() { return defense; }
