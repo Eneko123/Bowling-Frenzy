@@ -52,4 +52,13 @@ public class PierceBullet : NormalBulletBehaviour
     {
         this.damage = newDamage;
     }
+
+    public int GetMaxPierce()
+    {
+        return MaxPierce;
+    }
+    public void SetMaxPierce(int newMaxPierce)
+    {
+        MaxPierce = newMaxPierce;
+    }
 }

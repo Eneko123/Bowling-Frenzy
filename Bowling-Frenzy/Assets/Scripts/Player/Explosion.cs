@@ -23,4 +23,13 @@ public class Explosion : MonoBehaviour
     {
         
     }
+
+    public float GetExposionScale()
+    {
+        return explosionScale;
+    }
+    public void SetExposionScale(float newScale)
+    {
+        explosionScale = newScale;
+    }
 }

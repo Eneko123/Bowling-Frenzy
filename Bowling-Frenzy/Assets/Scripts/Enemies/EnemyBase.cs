@@ -15,6 +15,8 @@ public class EnemyBase : MonoBehaviour
     protected float originalSpeed;
     protected bool isSlowing = false;
 
+    private float slowTime = 2f;
+
     private void Awake()
     {
         player = MainCharacter.Instance.transform;
@@ -71,7 +73,7 @@ public class EnemyBase : MonoBehaviour
     }
     IEnumerator TimerSlow()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(slowTime);
         isSlowing = false;
         SetEnemySpeed(originalSpeed);
     }
@@ -91,5 +93,14 @@ public class EnemyBase : MonoBehaviour
     void DeadAnim()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public float GetSlowTime()
+    {
+        return slowTime;
+    }
+    public void SetSlowTime(float newSlowTime)
+    { 
+        slowTime = newSlowTime; 
     }
 }
