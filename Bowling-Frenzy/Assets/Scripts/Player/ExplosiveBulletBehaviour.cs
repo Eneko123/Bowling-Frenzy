@@ -40,4 +40,14 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 
         base.OnDeactivate();
     }
+
+    public override float GetDamage()
+    {
+        return this.damage;
+    }
+
+    public override void SetDamage(float newDamage)
+    {
+        this.damage = newDamage;
+    }
 }

@@ -7,7 +7,7 @@ public enum SpecialBullets
 public class NormalBulletBehaviour : MonoBehaviour
 {
     [SerializeField] protected float speed = 10f;
-    [SerializeField] protected int damage = 10;
+    [SerializeField] protected float damage = 10;
     [SerializeField] private Vector3 direction;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerCamera;
@@ -62,5 +62,15 @@ public class NormalBulletBehaviour : MonoBehaviour
     protected virtual void OnDeactivate()
     {
         transform.parent.gameObject.SetActive(false);
+    }
+
+    public virtual float GetDamage() 
+    {
+        return damage;
+    }
+
+    public virtual void SetDamage(float newDamage)
+    {
+        damage = newDamage;
     }
 }

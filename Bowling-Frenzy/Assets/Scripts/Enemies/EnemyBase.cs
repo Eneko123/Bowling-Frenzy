@@ -7,10 +7,10 @@ public class EnemyBase : MonoBehaviour
 {
     //variables universales para todas las clases de enemigos
     public Transform player;
-    protected int damage;
+    protected float damage;
     protected NavMeshAgent agent;
-    protected int maxHealth;
-    protected int health;
+    protected float maxHealth;
+    protected float health;
     protected Animator animator;
     protected float originalSpeed;
     protected bool isSlowing = false;
@@ -34,7 +34,7 @@ public class EnemyBase : MonoBehaviour
         Movemetn();
         Dead();
     }
-    public virtual void ReceiveDamage(int damage)
+    public virtual void ReceiveDamage(float damage)
     {
         //Debug.Log(health);
         health -= damage;
