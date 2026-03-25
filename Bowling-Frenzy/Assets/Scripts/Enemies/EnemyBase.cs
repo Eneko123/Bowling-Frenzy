@@ -29,7 +29,21 @@ public class EnemyBase : MonoBehaviour
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
         if (animator == null) { animator = GetComponent<Animator>(); }
         player = MainCharacter.Instance.playerTransform;
-        health = maxHealth; 
+        health = maxHealth;
+
+        int round = RoundsManager.instance.CurrentRound;
+
+        float mult = GameManager.Instance.difficulty switch
+        {
+            Difficulty.Easy => 1f,                        // sin aumento
+            Difficulty.Normal => Mathf.Pow(1.10f, round),  // +10% acumulado por ronda
+            Difficulty.Hard => Mathf.Pow(1.30f, round),  // +30% acumulado por ronda
+            _ => 1f
+        };
+
+        maxHealth *= mult;
+        damage *= mult;
+        agent.speed *= mult/2;
     }
     protected void Update() 
     { 

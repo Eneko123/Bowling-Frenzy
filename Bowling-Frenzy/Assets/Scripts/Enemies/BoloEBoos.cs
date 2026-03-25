@@ -45,7 +45,7 @@ public class BoloEBoos : EnemyBase
         ApproachPlayer();
     }
 
-    public override void ReceiveDamage(int damage)
+    public override void ReceiveDamage(float damage)
     {
         health -= damage;
 

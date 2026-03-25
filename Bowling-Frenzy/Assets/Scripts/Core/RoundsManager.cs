@@ -19,6 +19,7 @@ public class RoundsManager : MonoBehaviour
 
     public GameObject sweeper;
     public Spawner[] spawnPoints;
+    public PowerUps powerUps;
 
     public State[] states;
     private State currentState;
@@ -30,6 +31,15 @@ public class RoundsManager : MonoBehaviour
     private bool timeBetwineRounds = false;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI RoundManagerText;
+
+    public static RoundsManager instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    public int CurrentRound => currentRound;
 
     public int TotalActiveEnemies1
     {
@@ -96,6 +106,7 @@ public class RoundsManager : MonoBehaviour
             {
                 isRoundFinished = true;
                 timeBetwineRounds = true;
+                powerUps.ShowUpgradesForRound(currentRound);
                 if (currentRound == states.Length - 1)
                 {
                     isFinalRound = true;
