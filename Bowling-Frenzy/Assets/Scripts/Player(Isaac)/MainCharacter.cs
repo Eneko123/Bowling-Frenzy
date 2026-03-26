@@ -27,6 +27,7 @@ public class MainCharacter : MonoBehaviour
     //La gravedad para hacer que el jugador caiga
     [SerializeField] float gravity = -9.8f;
 
+    public PlayerHealth saludJugador;
     //Sirve para controlar por si el jugador decide dejar de pulsar al completo porque quiere cancelar el salto
     private float jumpTimeStamp;
     private float jumpTime = 0f;
@@ -62,6 +63,7 @@ public class MainCharacter : MonoBehaviour
         }
         playerHealth = MaxHealth;
         healthRecovery = (playerHealth * 15) / 100;
+        saludJugador.UpdateHealth(playerHealth, MaxHealth);
     }
 
     private void Start()
@@ -249,11 +251,13 @@ public class MainCharacter : MonoBehaviour
     public void RestoreHealthByCombo()
     {
         playerHealth *= healthRecovery;
+        saludJugador.UpdateHealth(playerHealth, MaxHealth);
     }
     public void damageHealthPlayer(float damage)
     {
         playerHealth -= damage * (1 - defense);
         Debug.Log("Player health decreased");
+        saludJugador.UpdateHealth(playerHealth, MaxHealth);
     }
     #region Geters-Seters
     public float GetHealthMax() { return MaxHealth; }
