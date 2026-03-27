@@ -26,7 +26,7 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] float jumpForce = 4f;
     //La gravedad para hacer que el jugador caiga
     [SerializeField] float gravity = -9.8f;
-
+    public CambiaArmasVisualizer changeWeapon;
     public PlayerHealth saludJugador;
     //Sirve para controlar por si el jugador decide dejar de pulsar al completo porque quiere cancelar el salto
     private float jumpTimeStamp;
@@ -201,6 +201,8 @@ public class MainCharacter : MonoBehaviour
                 currentSpecialBullet = currentHability.ChangeHability(2);
                 Debug.Log("3Spec");
             }
+
+            changeWeapon.UpdateActive(currentSpecialBullet);
 
             Debug.Log(binding.Value);
             Debug.Log(currentHability.currentPositionHability);
