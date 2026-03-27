@@ -50,3 +50,4 @@ MonoBehaviour:
   niveles: {fileID: 0}
   opciones: {fileID: 0}
   Eleccionmejoras: {fileID: 0}
+  vieneinicio: 1

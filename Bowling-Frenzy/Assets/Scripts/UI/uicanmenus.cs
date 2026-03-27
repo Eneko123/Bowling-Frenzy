@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class uicanmenus : MonoBehaviour
 {
-    // variables
+    // objetos
     public GameObject pov;
     public GameObject inicio;
     public GameObject pausa;
     public GameObject niveles;
     public GameObject opciones;
     public GameObject Eleccionmejoras;
+
+    //variable
+    public bool vieneinicio = true;
 
 
     //
@@ -39,12 +42,6 @@ public class uicanmenus : MonoBehaviour
     
     }
 
-
-    public void prueva()
-    {
-        Debug.Log("funciona");
-    }
-
     //activacion de menus
     public void menuinicio() 
     {
@@ -54,6 +51,8 @@ public class uicanmenus : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);
+
+        vieneinicio = true;
     }
     public void Jugadorpov()
     {
@@ -72,6 +71,8 @@ public class uicanmenus : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);
+
+        vieneinicio = false;
     }
     public void menuniveles()
     {
@@ -99,5 +100,31 @@ public class uicanmenus : MonoBehaviour
         niveles.SetActive(false);
         opciones.SetActive(false);
         Eleccionmejoras.SetActive(false);//se elije la mejora
+    }
+
+    //extra
+    public void prueva()
+    {
+        Debug.Log("funciona");
+        Jugadorpov();
+    }
+    public void Checardondeopciones()
+    {
+        if (vieneinicio)
+        {
+            menuinicio();
+        }
+        else 
+        {
+            menupausa();
+        }
+    }
+    public void Vueltadepausa()
+    {
+        
+    }
+    public void salirjuego()
+    {
+        Application.Quit();
     }
 }
