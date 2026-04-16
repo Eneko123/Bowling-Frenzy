@@ -49,6 +49,8 @@ public class MainCharacter : MonoBehaviour
     public Transform playerTransform;
 
     SpecialBullets currentSpecialBullet;
+
+    Animator animator;
     private void Awake()
     {
         if (Instance == null)
@@ -68,6 +70,7 @@ public class MainCharacter : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
     //Se llamara al evento en Unity asociado con la accion de moverse
     public void OnMoveInput(InputAction.CallbackContext contextMove)
@@ -109,70 +112,16 @@ public class MainCharacter : MonoBehaviour
     {
         if (contextShoot.performed && !isReloadingNormalBullet)
         {
-            GameObject b = GenerateBullet.instance.GetBullets();
-            b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-            typeOfBullet = 0;
-            StartCoroutine(DelayForBullets(0.5f));
+            animator.SetTrigger("isAttacking");
+
         }
     }
     public void OnSpecial(InputAction.CallbackContext contextSpecial)
     {
         if (contextSpecial.performed)
         {
-            GenerateBullet currentHability = GenerateBullet.instance;
-            GameObject b = null;
-            switch (currentSpecialBullet)
-            {
-                case SpecialBullets.Explosive:
-                    if (!isReloadingExplosiveBullet)
-                    {
-                        b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
-                    }
-                    break;
-                case SpecialBullets.Piercing:
-                    if (!isReloadingPiercingBullet)
-                    {
-                        b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
-                    }
-                    break;
-                case SpecialBullets.Slowing:
-                    if (!isReloadingSlowingBullet)
-                    {
-                        b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
-                    }
-                    break;
-            }
+            animator.SetTrigger("IsSpecial");
 
-            if (b != null)
-            {
-                switch (b.GetComponentInChildren<NormalBulletBehaviour>().GetSpecialBullet())
-                {
-                    case SpecialBullets.Explosive:
-                        if (!isReloadingExplosiveBullet)
-                        {
-                            b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                            typeOfBullet = 1;
-                            StartCoroutine(DelayForBullets(10f));
-                        }
-                        break;
-                    case SpecialBullets.Piercing:
-                        if (!isReloadingPiercingBullet)
-                        {
-                            b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                            typeOfBullet = 2;
-                            StartCoroutine(DelayForBullets(5.5f));
-                        }
-                        break;
-                    case SpecialBullets.Slowing:
-                        if (!isReloadingSlowingBullet)
-                        {
-                            b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                            typeOfBullet = 3;
-                            StartCoroutine(DelayForBullets(7f));
-                        }
-                        break;
-                }
-            }
         }
     }
     public void OnChangeSpecial(InputAction.CallbackContext contextSpecial)
@@ -210,6 +159,7 @@ public class MainCharacter : MonoBehaviour
     }
     IEnumerator DelayForBullets(float delay)
     {
+        //animator.SetBool("IsShootingNormal", false);
         switch (typeOfBullet)
         {
             case 0:
@@ -248,6 +198,70 @@ public class MainCharacter : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
         controller.Move(velocity * Time.deltaTime);
+    }
+    void ThrowNormalBall()
+    {
+        GameObject b = GenerateBullet.instance.GetBullets();
+        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+        typeOfBullet = 0;
+        StartCoroutine(DelayForBullets(0.5f));
+    }
+    void ThrowSpecialBall()
+    {
+        GenerateBullet currentHability = GenerateBullet.instance;
+        GameObject b = null;
+        switch (currentSpecialBullet)
+        {
+            case SpecialBullets.Explosive:
+                if (!isReloadingExplosiveBullet)
+                {
+                    b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+                }
+                break;
+            case SpecialBullets.Piercing:
+                if (!isReloadingPiercingBullet)
+                {
+                    b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+                }
+                break;
+            case SpecialBullets.Slowing:
+                if (!isReloadingSlowingBullet)
+                {
+                    b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+                }
+                break;
+        }
+
+        if (b != null)
+        {
+            switch (b.GetComponentInChildren<NormalBulletBehaviour>().GetSpecialBullet())
+            {
+                case SpecialBullets.Explosive:
+                    if (!isReloadingExplosiveBullet)
+                    {
+                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        typeOfBullet = 1;
+                        StartCoroutine(DelayForBullets(10f));
+                    }
+                    break;
+                case SpecialBullets.Piercing:
+                    if (!isReloadingPiercingBullet)
+                    {
+                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        typeOfBullet = 2;
+                        StartCoroutine(DelayForBullets(5.5f));
+                    }
+                    break;
+                case SpecialBullets.Slowing:
+                    if (!isReloadingSlowingBullet)
+                    {
+                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                        typeOfBullet = 3;
+                        StartCoroutine(DelayForBullets(7f));
+                    }
+                    break;
+            }
+        }
     }
     public void RestoreHealthByCombo()
     {
