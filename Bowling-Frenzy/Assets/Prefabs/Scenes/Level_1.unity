@@ -1690,6 +1690,10 @@ PrefabInstance:
       propertyPath: m_BounceIntensity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1351828741358431616, guid: 0b54ac961eaac844c97e1e92c3a3b5c8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1989060293591015549, guid: 0b54ac961eaac844c97e1e92c3a3b5c8, type: 3}
       propertyPath: m_IsActive
       value: 1
