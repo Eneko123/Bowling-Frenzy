@@ -23,7 +23,7 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private Button quitButton;
 
     private bool isPaused = false;
-    private bool isUpgradeMenuOpen = false;
+    internal bool isUpgradeMenuOpen = false;
 
     void Start()
     {
@@ -38,9 +38,15 @@ public class UIGameplay : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && !isUpgradeMenuOpen)
         {
             if (isPaused)
+            {
                 ResumeGame();
+                Cursor.lockState = CursorLockMode.Locked;
+            }
             else
+            {
                 PauseGame();
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
         UpdateHUD();
     }

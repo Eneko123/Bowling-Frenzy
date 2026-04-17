@@ -260,6 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f07a03b9b219254386468e1aadae401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rounds: {fileID: 1204422404}
+  playerHealth: {fileID: 1677538754}
   upgradePanel: {fileID: 1333906360}
   buttons:
   - {fileID: 1591137552}
@@ -1583,6 +1585,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8090995966111806534, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
+      propertyPath: powerUps
+      value: 
+      objectReference: {fileID: 28346466}
+    - target: {fileID: 8090995966111806534, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
+      propertyPath: roundsManager
+      value: 
+      objectReference: {fileID: 1204422404}
     - target: {fileID: 8104226097108124074, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
       propertyPath: m_Name
       value: Barredora
@@ -2025,7 +2035,7 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 60
+  - timeMax: 5
     E1: 10
     E2: 10
     E3: 10
@@ -2039,6 +2049,7 @@ MonoBehaviour:
     currentSpawnRate: 0
   timerText: {fileID: 174185787}
   RoundManagerText: {fileID: 174185788}
+  uiGameplay: {fileID: 28346465}
 --- !u!1 &1238506595
 GameObject:
   m_ObjectHideFlags: 0
