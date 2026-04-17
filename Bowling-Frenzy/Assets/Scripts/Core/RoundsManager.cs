@@ -138,7 +138,7 @@ public class RoundsManager : MonoBehaviour
             currentRound += 1;
             currentState = states[currentRound];
             currentTime = currentState.timeMax;
-            timerText.text = (currentTime / 60).ToString("00") + ":" + (currentTime % 60).ToString("00");
+            timerText.text = "00 :" + (currentTime % 60).ToString("00");
             timeBetwineRounds = false;
             RoundManagerText.text = $"Round {currentRound + 1}";
             uiGameplay.isUpgradeMenuOpen = false;
