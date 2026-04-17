@@ -95,7 +95,7 @@ public class PowerUps : MonoBehaviour
         upgradePanel.SetActive(false);
         Time.timeScale = 1f;
         rounds.StartNextRoundButton();
-        playerHealth.UpdateHealth(player.GetCurrentHealth(), player.GetHealthMax());
+        playerHealth.UpdateHealth(player.GetCurrentHealth(), player.GetHealthMax()); // al current health no le afecta la mejora, pero al maximo si, asi que hay que actualizar la barra de vida
     }
 
     UpgradeOption GetRandomOption(Cat cat)
