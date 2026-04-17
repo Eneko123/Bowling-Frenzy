@@ -98,6 +98,7 @@ public class MainCharacter : MonoBehaviour
             jumpTimeStamp = Time.time;
             //Ayuda a establecer la máxima altura a la que el jugador quiere llegar
             velocity.y = MathF.Sqrt(jumpForce * -3 * gravity);
+            Debug.Log(velocity.y);
         }
         else if (contextJump.canceled)
         {
