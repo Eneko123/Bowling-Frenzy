@@ -1225,6 +1225,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 27150eabc31392e46ac10ac18659549d, type: 2}
+    - target: {fileID: 5866666021909216657, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6000407479487422213, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 31.019772
