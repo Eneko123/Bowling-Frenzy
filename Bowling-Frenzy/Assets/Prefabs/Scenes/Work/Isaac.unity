@@ -751,10 +751,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4412663231087174927, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6048898275541411092, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: m_Name
       value: BowlFace
