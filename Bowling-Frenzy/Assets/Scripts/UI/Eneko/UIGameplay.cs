@@ -7,10 +7,8 @@ public class UIGameplay : MonoBehaviour
 {
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI livesText;
     [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private Slider healthBar;
     [SerializeField] private TextMeshProUGUI healthText;
 
     [Header("Panels")]
@@ -74,13 +72,13 @@ public class UIGameplay : MonoBehaviour
         // Actualizar score
         if (scoreText && GameManager.Instance != null)
         {
-            scoreText.text = $"Puntos: {GameManager.Instance.playerScore}";
+            scoreText.text = $"Score: {GameManager.Instance.playerScore}";
         }
 
         // Actualizar ronda
         if (roundText && RoundsManager.instance != null)
         {
-            roundText.text = $"Ronda {RoundsManager.instance.CurrentRound + 1}";
+            roundText.text = $"Round {RoundsManager.instance.CurrentRound + 1}";
         }
     }
 

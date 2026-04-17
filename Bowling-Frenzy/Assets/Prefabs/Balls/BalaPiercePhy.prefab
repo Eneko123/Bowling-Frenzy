@@ -121,13 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2966534245f4c7449ea029412c81658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 400
   damage: 10
   direction: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   playerCamera: {fileID: 0}
   rbParent: {fileID: 8317560459623570784}
-  lifeTime: 4
+  lifeTime: 6
 --- !u!1 &5855122511854525700
 GameObject:
   m_ObjectHideFlags: 0
