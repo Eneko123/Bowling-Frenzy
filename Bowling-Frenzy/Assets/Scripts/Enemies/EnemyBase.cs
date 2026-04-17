@@ -33,6 +33,8 @@ public class EnemyBase : MonoBehaviour
 
         int round = RoundsManager.instance.CurrentRound;
 
+        // Evitar errores si el GameManager no esta presente, aunque deberia estarlo siempre. Borrar luego
+        if (GameManager.Instance == null) { return; }
         float mult = GameManager.Instance.difficulty switch
         {
             Difficulty.Easy => 1f,                        // sin aumento
