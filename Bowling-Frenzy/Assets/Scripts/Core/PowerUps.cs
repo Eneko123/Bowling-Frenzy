@@ -14,7 +14,8 @@ public class PowerUps : MonoBehaviour
     PierceBullet pierceBullet;
     SlowBullet slowBullet;
     Explosion explosion;
-    RoundsManager rounds;
+    [SerializeField] RoundsManager rounds;
+    [SerializeField] PlayerHealth playerHealth;
 
     public GameObject upgradePanel;
     public Button[] buttons;           // 3 botones
@@ -93,6 +94,8 @@ public class PowerUps : MonoBehaviour
         pendingActions[index]?.Invoke();
         upgradePanel.SetActive(false);
         Time.timeScale = 1f;
+        rounds.StartNextRoundButton();
+        playerHealth.UpdateHealth(player.GetCurrentHealth(), player.GetHealthMax());
     }
 
     UpgradeOption GetRandomOption(Cat cat)

@@ -277,6 +277,7 @@ public class MainCharacter : MonoBehaviour
     }
     #region Geters-Seters
     public float GetHealthMax() { return MaxHealth; }
+    public float GetCurrentHealth() { return playerHealth; }
     public float GetDefense() { return defense; }
     public float GetSpeed() { return speed; }
 

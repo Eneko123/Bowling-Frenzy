@@ -32,6 +32,8 @@ public class RoundsManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI RoundManagerText;
 
+    [SerializeField]UIGameplay uiGameplay;
+
     public static RoundsManager instance;
 
     void Awake()
@@ -106,7 +108,7 @@ public class RoundsManager : MonoBehaviour
             {
                 isRoundFinished = true;
                 timeBetwineRounds = true;
-                powerUps.ShowUpgradesForRound(currentRound);
+                uiGameplay.isUpgradeMenuOpen = true;
                 if (currentRound == states.Length - 1)
                 {
                     isFinalRound = true;
@@ -127,8 +129,11 @@ public class RoundsManager : MonoBehaviour
             sweeper.SetActive(true);
             isRoundFinished = false;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.P) && !isRoundFinished)
+    public void StartNextRoundButton()
+    {
+        if (!isRoundFinished)
         {
             currentRound += 1;
             currentState = states[currentRound];
@@ -136,6 +141,8 @@ public class RoundsManager : MonoBehaviour
             timerText.text = (currentTime / 60).ToString("00") + ":" + (currentTime % 60).ToString("00");
             timeBetwineRounds = false;
             RoundManagerText.text = $"Round {currentRound + 1}";
+            uiGameplay.isUpgradeMenuOpen = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
