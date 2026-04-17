@@ -1,6 +1,9 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class GenerateBullet : MonoBehaviour
 {
@@ -19,8 +22,12 @@ public class GenerateBullet : MonoBehaviour
 
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
-
+    //public Sprite ExploIcon;
+    //public Sprite PiercingIcon;
+    //public Sprite SlowingIcon;
+    //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
+    public List<Image> WeaponSlots = new List<Image>(); 
     private void Awake()
     {
         if (instance == null)
@@ -70,15 +77,18 @@ public class GenerateBullet : MonoBehaviour
         // del array se meta el prefab del tipo de bala que haya conseguido
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            specialBullets.Add(SpecialBullets.Piercing);
+        
+            AddSpecial(SpecialBullets.Piercing);
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            specialBullets.Add(SpecialBullets.Explosive);
+        
+            AddSpecial(SpecialBullets.Explosive);
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            specialBullets.Add(SpecialBullets.Slowing);
+        
+            AddSpecial(SpecialBullets.Slowing);
         }
     }
     public GameObject GetBullets()
@@ -184,5 +194,23 @@ public class GenerateBullet : MonoBehaviour
 
         }
         return sP;
+    }
+    public void AddSpecial(SpecialBullets SB)
+    {
+        specialBullets.Add(SB);
+        Debug.Log(SB);
+        switch (SB)
+        {
+            case SpecialBullets.Explosive:
+                
+                WeaponSlots[specialBullets.Count - 1].color = Color.red;
+                break;
+            case SpecialBullets.Piercing:
+                WeaponSlots[specialBullets.Count - 1].color = Color.green;
+                break;
+            case SpecialBullets.Slowing:
+                WeaponSlots[specialBullets.Count - 1].color = Color.blue;
+                break;
+        }
     }
 }

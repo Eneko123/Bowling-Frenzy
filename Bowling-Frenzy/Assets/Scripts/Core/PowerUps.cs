@@ -208,7 +208,7 @@ public class PowerUps : MonoBehaviour
         return new UpgradeOption
         {
             label = $" Desbloquear: {name}",
-            apply = () => GenerateBullet.instance.specialBullets.Add(toUnlock)
+            apply = () => GenerateBullet.instance.AddSpecial(toUnlock)
         };
     }
 
