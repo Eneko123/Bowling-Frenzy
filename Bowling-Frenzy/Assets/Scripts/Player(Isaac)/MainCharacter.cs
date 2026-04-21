@@ -44,6 +44,8 @@ public class MainCharacter : MonoBehaviour
 
     int typeOfBullet = 0;//Cambiar con el enum de las balas
 
+    [SerializeField] UIGameplay uiGameplay;
+
     // Singleton para que el enemigo pueda acceder a la posición del jugador
     public static MainCharacter Instance { get; private set; }
     public Transform playerTransform;
@@ -107,12 +109,15 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext contextShoot)
     {
-        if (contextShoot.performed && !isReloadingNormalBullet)
+        if (!uiGameplay.isPaused && !uiGameplay.isUpgradeMenuOpen)
         {
-            GameObject b = GenerateBullet.instance.GetBullets();
-            b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-            typeOfBullet = 0;
-            StartCoroutine(DelayForBullets(0.5f));
+            if (contextShoot.performed && !isReloadingNormalBullet)
+            {
+                GameObject b = GenerateBullet.instance.GetBullets();
+                b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+                typeOfBullet = 0;
+                StartCoroutine(DelayForBullets(0.5f));
+            }
         }
     }
     public void OnSpecial(InputAction.CallbackContext contextSpecial)

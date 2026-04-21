@@ -1105,6 +1105,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1251003391922785699, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: uiGameplay
+      value: 
+      objectReference: {fileID: 28346465}
+    - target: {fileID: 1251003391922785699, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: changeWeapon
       value: 
       objectReference: {fileID: 1677538755}
@@ -1844,6 +1848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902cbc199b624df46a8bbd69a51e216b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1152678867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 656327470378955913, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+  m_PrefabInstance: {fileID: 174185783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193273654
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,7 +2050,25 @@ MonoBehaviour:
     E3: 10
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 5
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 0.8
+    currentSpawnRate: 0
+  - timeMax: 5
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 0.8
+    currentSpawnRate: 0
+  - timeMax: 5
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 0.8
+    currentSpawnRate: 0
+  - timeMax: 5
     E1: 10
     E2: 10
     E3: 10
@@ -2049,6 +2076,7 @@ MonoBehaviour:
     currentSpawnRate: 0
   timerText: {fileID: 174185787}
   RoundManagerText: {fileID: 174185788}
+  timerObject: {fileID: 1152678867}
   uiGameplay: {fileID: 28346465}
 --- !u!1 &1238506595
 GameObject:

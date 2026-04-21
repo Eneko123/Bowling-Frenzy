@@ -32,6 +32,8 @@ public class RoundsManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI RoundManagerText;
 
+    [SerializeField] GameObject timerObject;
+
     [SerializeField]UIGameplay uiGameplay;
 
     public static RoundsManager instance;
@@ -77,11 +79,12 @@ public class RoundsManager : MonoBehaviour
 
     void Start()
     {
+        timerObject.SetActive(true);
         currentState = states[0];
         currentTime = states[0].timeMax;
         currentRound = 0;
         RoundManagerText.text = $"Round {currentRound + 1}";
-        timerText.text = (currentTime/60).ToString("00")+ ":" + (currentTime%60).ToString("00");
+        timerText.text = "00:" + (currentTime%60).ToString("00");
     }
 
     // Update is called once per frame
@@ -102,7 +105,7 @@ public class RoundsManager : MonoBehaviour
             if (currentTime >= 0)
             {
                 currentTime -= Time.deltaTime;
-                timerText.text = (currentTime / 60).ToString("00") + ":" + (currentTime % 60).ToString("00");
+                timerText.text = "00:" + (currentTime % 60).ToString("00");
             }
             else
             {
@@ -112,6 +115,7 @@ public class RoundsManager : MonoBehaviour
                 if (currentRound == states.Length - 1)
                 {
                     isFinalRound = true;
+                    timerObject.SetActive(false);
                     spawnPoints[spawnPoints.Length-1].SpawnBoss(spawnPoints[spawnPoints.Length-1].transform);
                 }
                 else

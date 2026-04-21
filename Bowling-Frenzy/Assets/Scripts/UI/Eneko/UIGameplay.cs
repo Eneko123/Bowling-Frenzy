@@ -22,7 +22,7 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button quitButton;
 
-    private bool isPaused = false;
+    internal bool isPaused = false;
     internal bool isUpgradeMenuOpen = false;
 
     void Start()
@@ -40,12 +40,10 @@ public class UIGameplay : MonoBehaviour
             if (isPaused)
             {
                 ResumeGame();
-                Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
                 PauseGame();
-                Cursor.lockState = CursorLockMode.None;
             }
         }
         UpdateHUD();
@@ -116,7 +114,7 @@ public class UIGameplay : MonoBehaviour
         if (pausePanel) pausePanel.SetActive(true);
         if (hudPanel) hudPanel.SetActive(false);
 
-        Debug.Log("Game paused");
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ResumeGame()
@@ -127,7 +125,7 @@ public class UIGameplay : MonoBehaviour
         if (pausePanel) pausePanel.SetActive(false);
         if (hudPanel) hudPanel.SetActive(true);
 
-        Debug.Log("Game resumed");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void RestartLevel()

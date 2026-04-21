@@ -48,7 +48,7 @@ public class PowerUps : MonoBehaviour
 
     // variables de mejora
     // Player
-    float[] healthMults = { 1.1f, 1.2f, 1.5f };
+    int[] healthSum = { 10, 25, 50 };
     float[] defenseBons = { 0.05f, 0.1f, 0.2f };
     float[] speedBons = { 1f, 2f, 5f };
     int[] weights = { 60, 30, 10 }; // comun, raro, epico
@@ -119,8 +119,8 @@ public class PowerUps : MonoBehaviour
         {
             0 => new UpgradeOption
             {
-                label = $" Vida +{Mathf.RoundToInt((healthMults[tier] - 1) * 100)}%",
-                apply = () => player.SetHealthMax(player.GetHealthMax() * healthMults[tier]),
+                label = $" Vida +{healthSum[tier]}",
+                apply = () => player.SetHealthMax(player.GetHealthMax() + healthSum[tier]),
                 weight = weights[tier]
             },
             1 => new UpgradeOption
@@ -222,175 +222,4 @@ public class PowerUps : MonoBehaviour
         if (roll <= 40) return 1;        // raro    30%
         return 0;                        // comun   60%
     }
-    //private void Update()
-    //{
-    //    // OnMouseOver cuando le raton este encima de boton
-    //    // up1_1.onClick.RemoveAllListeners(); Borrar las funciones del boton cada ronda para que no den fallos
-    //}
-
-    //void ChoseUpsPlayer()
-    //{
-    //    int up1 = Random.Range(1, 10);
-    //    int up2 = Random.Range(1, 10);
-    //    int up3 = Random.Range(1, 10);
-
-    //    if (up1 == 1)
-    //    {
-    //        up1_1.onClick.AddListener(() => UpHealth(healthUp3)); 
-    //    }
-    //    else if (up1 > 1 && up1 < 4)
-    //    {
-    //        up1_1.onClick.AddListener(() => UpHealth(healthUp2));
-    //    }
-    //    else if (up1 >= 4 && up1 <= 10)
-    //    {
-    //        up1_1.onClick.AddListener(() => UpHealth(healthUp1));
-    //    }
-
-    //    if (up2 == 1)
-    //    {
-    //        up2_1.onClick.AddListener(() => UpDefense(defenseUp3));
-    //    }
-    //    else if (up2 > 1 && up2 < 4)
-    //    {
-    //        up2_1.onClick.AddListener(() => UpDefense(defenseUp2));
-    //    }
-    //    else if (up2 >= 4 && up2 <= 10)
-    //    {
-    //        up2_1.onClick.AddListener(() => UpDefense(defenseUp1));
-    //    }
-
-    //    if (up3 == 1)
-    //    {
-    //        up3_1.onClick.AddListener(() => UpSpeed(speedUp3));
-    //    }
-    //    else if (up3 > 1 && up3 < 4)
-    //    {
-    //        up3_1.onClick.AddListener(() => UpSpeed(speedUp2));
-    //    }
-    //    else if (up3 >= 4 && up3 <= 10)
-    //    {
-    //        up3_1.onClick.AddListener(() => UpSpeed(speedUp1));
-    //    }
-    //}
-
-    //void ChoseUpsBullets()
-    //{
-    //    int up1 = Random.Range(1, 10);
-    //    int up2 = Random.Range(1, 10);
-    //    int up3 = Random.Range(1, 10);
-
-    //    if (up1 == 1)
-    //    {
-    //        up1_1.onClick.AddListener(() => UpNormalDamage(normalDamageUp3));
-    //    }
-    //    else if (up1 > 1 && up1 < 4)
-    //    {
-    //        up1_1.onClick.AddListener(() => UpNormalDamage(normalDamageUp2));
-    //    }
-    //    else if (up1 >= 4 && up1 <= 10)
-    //    {
-    //        up1_1.onClick.AddListener(() => UpNormalDamage(normalDamageUp1));
-    //    }
-
-    //    if (up2 == 1)
-    //    {
-    //        up2_1.onClick.AddListener(() => UpExplosiveDamage(specialDamageUp2, explosibeScaleUp3));
-    //    }
-    //    else if (up2 > 1 && up2 < 4)
-    //    {
-    //        up2_1.onClick.AddListener(() => UpExplosiveDamage(specialDamageUp2, explosibeScaleUp2));
-    //    }
-    //    else if (up2 >= 4 && up2 <= 10)
-    //    {
-    //        up2_1.onClick.AddListener(() => UpExplosiveDamage(specialDamageUp1, explosibeScaleUp1));
-    //    }
-
-    //    if (up3 == 1)
-    //    {
-    //        up3_1.onClick.AddListener(() => UpPierceDamage(specialDamageUp3, pierceUp3));
-    //    }
-    //    else if (up3 > 1 && up3 < 4)
-    //    {
-    //        up3_1.onClick.AddListener(() => UpPierceDamage(specialDamageUp2, pierceUp2));
-    //    }
-    //    else if (up3 >= 4 && up3 <= 10)
-    //    {
-    //        up3_1.onClick.AddListener(() => UpPierceDamage(specialDamageUp1, pierceUp1));
-    //    }
-    //}
-
-
-
-    //void UpHealth(float health)
-    //{
-    //    float newMaxHealth = player.GetHealthMax() * health;
-    //    player.SetHealthMax(newMaxHealth);
-    //}
-
-    //void UpDefense(float defense)
-    //{
-    //    float newDefense = player.GetDefense() + defense;
-    //    player.SetDefense(newDefense);
-    //}
-
-    //void UpSpeed(float speed)
-    //{
-    //    float newSpeed = player.GetSpeed() + speed;
-    //    player.SetSpeed(newSpeed);
-    //}
-
-    //void UnlockExplosiveBullet()
-    //{
-    //    if (!GenerateBullet.instance.specialBullets.Contains(SpecialBullets.Explosive))
-    //    {
-    //        GenerateBullet.instance.specialBullets.Add(SpecialBullets.Explosive);
-    //    }
-    //}
-
-    //void UnlockPiercingBullet()
-    //{
-    //    if (!GenerateBullet.instance.specialBullets.Contains(SpecialBullets.Piercing))
-    //    {
-    //        GenerateBullet.instance.specialBullets.Add(SpecialBullets.Piercing);
-    //    }
-    //}
-
-    //void UnlockSlowingBullet()
-    //{
-    //    if (!GenerateBullet.instance.specialBullets.Contains(SpecialBullets.Slowing))
-    //    {
-    //        GenerateBullet.instance.specialBullets.Add(SpecialBullets.Slowing);
-    //    }
-    //}
-
-    //void UpNormalDamage(float normalDamage)
-    //{
-    //    float newDamage = normalBullet.GetDamage() * normalDamage;
-    //    normalBullet.SetDamage(newDamage);
-    //}
-
-    //void UpExplosiveDamage(float explosiveDamage, float explosiveScale)
-    //{
-    //    float newDamage = explosiveBullet.GetDamage() * explosiveDamage;
-    //    float newScale = explosion.GetExposionScale() * explosiveScale;
-    //    explosiveBullet.SetDamage(newDamage);
-    //    explosion.SetExposionScale(newScale);
-    //}
-
-    //void UpPierceDamage(float pierceDamage, int pierce)
-    //{
-    //    float newDamage = pierceBullet.GetDamage() * pierceDamage;
-    //    int newMaxPierce = pierceBullet.GetMaxPierce() + pierce;
-    //    pierceBullet.SetDamage(newDamage);
-    //    pierceBullet.SetMaxPierce(newMaxPierce);
-    //}
-
-    //void UpSlowDamage(float slowDamage, float slowTime)
-    //{
-    //    float newDamage = slowBullet.GetDamage() * slowDamage;
-    //    float newSlowTime = enemis.GetSlowTime() + slowTime;
-    //    slowBullet.SetDamage(newDamage);
-    //    enemis.SetSlowTime(newSlowTime);
-    //}
 }

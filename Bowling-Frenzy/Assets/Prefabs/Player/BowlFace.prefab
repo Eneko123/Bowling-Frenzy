@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 20, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 6, y: 6, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7772299266287812469}
@@ -373,7 +373,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 30
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -447,15 +447,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.246028
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8302989
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48357773
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1614,6 +1614,7 @@ MonoBehaviour:
   piercingBullet: {fileID: 5855122511854525700, guid: 21789707a64f15c4aa50cf8b41e68bc3, type: 3}
   slowingBullet: {fileID: 9177630666821361346, guid: a59cbcab5260bc24386213e52d2fee28, type: 3}
   specialBullets: 
+  WeaponSlots: []
 --- !u!4 &7772299266287812469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
