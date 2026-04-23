@@ -7,11 +7,9 @@ public class EnemyBase : MonoBehaviour
 {
     //variables universales para todas las clases de enemigos
     public Transform player;
-    [SerializeField] protected float damage;
+    protected float damage;
     protected float currentDamage;
     protected NavMeshAgent agent;
-    [SerializeField] protected float speed;
-    protected float currentSpeed;
     protected float maxHealth;
     protected float health;
     protected Animator animator;
@@ -80,12 +78,10 @@ public class EnemyBase : MonoBehaviour
     {
         if (health <= 0)
         {
-            currentDamage = 0;
+            damage = 0;
             agent.speed = 0;
             animator.SetTrigger("Dead");
             health = maxHealth;
-            agent.speed = currentSpeed;
-            currentDamage = damage;
         }
     }
     internal void SetEnemySpeed(float newSpeed)

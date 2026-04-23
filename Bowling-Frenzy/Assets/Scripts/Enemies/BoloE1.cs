@@ -6,14 +6,13 @@ public class BoloE1 : EnemyBase
     {
         maxHealth = 20;
         base.Start();
-        agent.speed = speed;
-        currentDamage = damage;
+        agent.speed = 5;
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out MainCharacter player))
         {
-            player.damageHealthPlayer(currentDamage);
+            player.damageHealthPlayer(damage);
         }
     }
 

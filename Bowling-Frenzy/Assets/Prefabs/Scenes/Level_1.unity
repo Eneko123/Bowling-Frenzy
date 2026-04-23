@@ -1542,7 +1542,7 @@ MonoBehaviour:
     E3: 10
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 5
+  - timeMax: 80
     E1: 10
     E2: 10
     E3: 10
