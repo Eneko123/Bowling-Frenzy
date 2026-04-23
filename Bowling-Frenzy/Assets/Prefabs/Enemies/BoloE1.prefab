@@ -328,6 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  damage: 10
+  speed: 5
 --- !u!136 &2997320502146116149
 CapsuleCollider:
   m_ObjectHideFlags: 0

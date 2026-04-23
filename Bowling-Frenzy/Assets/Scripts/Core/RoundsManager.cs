@@ -36,6 +36,8 @@ public class RoundsManager : MonoBehaviour
 
     [SerializeField]UIGameplay uiGameplay;
 
+    [SerializeField] GameObject boss; // prefab del boss colocado en la escena pero desactivado
+
     public static RoundsManager instance;
 
     void Awake()
@@ -80,6 +82,7 @@ public class RoundsManager : MonoBehaviour
     void Start()
     {
         timerObject.SetActive(true);
+        boss.SetActive(false);
         currentState = states[0];
         currentTime = states[0].timeMax;
         currentRound = 0;
@@ -102,7 +105,13 @@ public class RoundsManager : MonoBehaviour
         }
         else
         {
-            if (currentTime >= 0)
+            if (currentRound == states.Length - 1)
+            {
+                isFinalRound = true;
+                timerObject.SetActive(false);
+                boss.SetActive(true);
+            }
+            else if (currentTime >= 0)
             {
                 currentTime -= Time.deltaTime;
                 timerText.text = "00:" + (currentTime % 60).ToString("00");
@@ -112,16 +121,6 @@ public class RoundsManager : MonoBehaviour
                 isRoundFinished = true;
                 timeBetwineRounds = true;
                 uiGameplay.isUpgradeMenuOpen = true;
-                if (currentRound == states.Length - 1)
-                {
-                    isFinalRound = true;
-                    timerObject.SetActive(false);
-                    spawnPoints[spawnPoints.Length-1].SpawnBoss(spawnPoints[spawnPoints.Length-1].transform);
-                }
-                else
-                {
-                    return;
-                }
             }
         }
     }
