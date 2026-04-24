@@ -74,19 +74,35 @@ public class PowerUps : MonoBehaviour
             ? roundTable[roundIndex]
             : new[] { Cat.B, Cat.B, Cat.B };
 
+        // Lista para rastrear las opciones ya generadas
+        var usedOptions = new HashSet<string>();
+
         for (int i = 0; i < buttons.Length; i++)
         {
-            UpgradeOption opt = GetRandomOption(cats[i]);
+            UpgradeOption opt;
+            int attempts = 0;
+
+            // Intenta obtener una opcion unica (maximo 20 intentos para evitar bucle infinito)
+            do
+            {
+                opt = GetRandomOption(cats[i]);
+                attempts++;
+            }
+            while (usedOptions.Contains(opt.label) && attempts < 20);
+
+            // Marca esta opcion como usada
+            usedOptions.Add(opt.label);
+
             pendingActions[i] = opt.apply;
             btnLabels[i].text = opt.label;
 
-            int captured = i; // captura para el lambda
+            int captured = i;
             buttons[i].onClick.RemoveAllListeners();
             buttons[i].onClick.AddListener(() => ApplyAndClose(captured));
         }
 
         upgradePanel.SetActive(true);
-        Time.timeScale = 0f; // pausa el juego
+        Time.timeScale = 0f;
     }
 
     void ApplyAndClose(int index)
@@ -95,7 +111,7 @@ public class PowerUps : MonoBehaviour
         upgradePanel.SetActive(false);
         Time.timeScale = 1f;
         rounds.StartNextRoundButton();
-        playerHealth.UpdateHealth(player.GetCurrentHealth(), player.GetHealthMax()); // al current health no le afecta la mejora, pero al maximo si, asi que hay que actualizar la barra de vida
+        playerHealth.UpdateHealth(player.GetCurrentHealth(), player.GetHealthMax());
     }
 
     UpgradeOption GetRandomOption(Cat cat)
@@ -120,7 +136,12 @@ public class PowerUps : MonoBehaviour
             0 => new UpgradeOption
             {
                 label = $" Vida +{healthSum[tier]}",
-                apply = () => player.SetHealthMax(player.GetHealthMax() + healthSum[tier]),
+                apply = () =>
+                {
+                    player.SetHealthMax(player.GetHealthMax() + healthSum[tier]);
+                    // Añade también la vida al current health
+                    player.SetCurrentHealth(player.GetCurrentHealth() + healthSum[tier]);
+                },
                 weight = weights[tier]
             },
             1 => new UpgradeOption

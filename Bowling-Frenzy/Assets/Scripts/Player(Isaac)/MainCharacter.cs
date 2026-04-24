@@ -288,6 +288,7 @@ public class MainCharacter : MonoBehaviour
     public float GetSpeed() { return speed; }
 
     public void SetHealthMax(float healtUp) { MaxHealth = healtUp; }
+    public void SetCurrentHealth(float currentHealtUp) { playerHealth = currentHealtUp; }
     public void SetDefense(float defenseUp) { defense = defenseUp; }
     public void SetSpeed(float speedUp) { speed = speedUp; }
     #endregion

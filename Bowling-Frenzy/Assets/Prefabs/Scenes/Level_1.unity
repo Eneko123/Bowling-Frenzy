@@ -1536,13 +1536,61 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 10
+  - timeMax: 1
     E1: 10
     E2: 10
     E3: 10
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 80
+  - timeMax: 1
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 1
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 1
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 1
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 1
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 0
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 1
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 0
+    E1: 10
+    E2: 10
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 1
     E1: 10
     E2: 10
     E3: 10

@@ -199,17 +199,26 @@ public class GenerateBullet : MonoBehaviour
     {
         specialBullets.Add(SB);
         Debug.Log(SB);
+
+        // Verifica que hay suficientes slots antes de acceder
+        int slotIndex = specialBullets.Count - 1;
+
+        if (slotIndex >= WeaponSlots.Count)
+        {
+            Debug.LogError($"No hay suficientes WeaponSlots! Necesitas al menos {slotIndex + 1} slots en el Inspector.");
+            return;
+        }
+
         switch (SB)
         {
             case SpecialBullets.Explosive:
-                
-                WeaponSlots[specialBullets.Count - 1].color = Color.red;
+                WeaponSlots[slotIndex].color = Color.red;
                 break;
             case SpecialBullets.Piercing:
-                WeaponSlots[specialBullets.Count - 1].color = Color.green;
+                WeaponSlots[slotIndex].color = Color.green;
                 break;
             case SpecialBullets.Slowing:
-                WeaponSlots[specialBullets.Count - 1].color = Color.blue;
+                WeaponSlots[slotIndex].color = Color.blue;
                 break;
         }
     }
