@@ -22,12 +22,12 @@ public class GenerateBullet : MonoBehaviour
 
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
-    //public Sprite ExploIcon;
-    //public Sprite PiercingIcon;
-    //public Sprite SlowingIcon;
+    public Sprite ExploIcon;
+    public Sprite PiercingIcon;
+    public Sprite SlowingIcon;
     //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
-    public List<RawImage> WeaponSlots = new List<RawImage>();
+    public List<Image> WeaponSlots = new List<Image>();
     // Primer elemento: imagen del slot de bala explosiva
     // Segundo elemento: imagen del slot de bala perforante
     // Tercer elemento: imagen del slot de bala ralentizadora
@@ -72,10 +72,6 @@ public class GenerateBullet : MonoBehaviour
             tmpSlowing = Instantiate(slowingBullet);
             tmpSlowing.gameObject.SetActive(false);
             listSlowingBullets.Add(tmpSlowing);
-        }
-        for (int i = 0; i < WeaponSlots.Count; i++)
-        {
-            WeaponSlots[i].color = Color.black;
         }
     }
     private void Update()
@@ -219,18 +215,15 @@ public class GenerateBullet : MonoBehaviour
         switch (SB)
         {
             case SpecialBullets.Explosive:
-                WeaponSlots[slotIndex] = WeaponSlots[0];
-                WeaponSlots[0].color = Color.white;
+                WeaponSlots[slotIndex].sprite = ExploIcon;
 
                 break;
             case SpecialBullets.Piercing:
-                WeaponSlots[slotIndex] = WeaponSlots[1];
-                WeaponSlots[1].color = Color.white;
+                WeaponSlots[slotIndex].sprite = PiercingIcon;
 
                 break;
             case SpecialBullets.Slowing:
-                WeaponSlots[slotIndex] = WeaponSlots[2];
-                WeaponSlots[2].color = Color.white;
+                WeaponSlots[slotIndex].sprite = SlowingIcon;
 
                 break;
         }
