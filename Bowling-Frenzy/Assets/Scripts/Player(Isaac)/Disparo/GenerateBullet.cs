@@ -1,7 +1,9 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static PowerUps;
 
 
 
@@ -12,22 +14,24 @@ public class GenerateBullet : MonoBehaviour
     [SerializeField] int numberOfPiercingBullets = 5;
     [SerializeField] int numberOfSlowingBullets = 5;
     [SerializeField] GameObject bullet;
-    [SerializeField] GameObject heavyBullet;
+    [SerializeField] GameObject explosiveBullet;
     [SerializeField] GameObject piercingBullet;
     [SerializeField] GameObject slowingBullet;
+    Explosion explosion;
     List<GameObject> listBullets = new List<GameObject>() { };
-    List<GameObject> listHeavyBullets = new List<GameObject>() { };
+    List<GameObject> listExplosiveBullets = new List<GameObject>() { };
     List<GameObject> listPiercingBullets = new List<GameObject>() { };
     List<GameObject> listSlowingBullets = new List<GameObject>() { };
+    [SerializeField] PowerUps powerUps;
 
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
-    //public Sprite ExploIcon;
-    //public Sprite PiercingIcon;
-    //public Sprite SlowingIcon;
+    public Sprite ExploIcon;
+    public Sprite PiercingIcon;
+    public Sprite SlowingIcon;
     //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
-    public List<RawImage> WeaponSlots = new List<RawImage>();
+    public List<Image> WeaponSlots = new List<Image>();
     // Primer elemento: imagen del slot de bala explosiva
     // Segundo elemento: imagen del slot de bala perforante
     // Tercer elemento: imagen del slot de bala ralentizadora
@@ -45,10 +49,14 @@ public class GenerateBullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        WeaponSlots[0].enabled = false;
+        WeaponSlots[1].enabled = false;
+        WeaponSlots[2].enabled = false;
         GameObject tmpBullet;
         GameObject tmpExplosive;
         GameObject tmpPiercing;
         GameObject tmpSlowing;
+        explosion = explosiveBullet.GetComponent<Explosion>();
         for (int i = 0; i < numberOfBullets; i++)
         {
             tmpBullet = Instantiate(bullet);
@@ -57,9 +65,9 @@ public class GenerateBullet : MonoBehaviour
         }
         for (int i = 0; i < numberOfExplosiveBullets; i++)
         {
-            tmpExplosive = Instantiate(heavyBullet);
+            tmpExplosive = Instantiate(explosiveBullet);
             tmpExplosive.gameObject.SetActive(false);
-            listHeavyBullets.Add(tmpExplosive);
+            listExplosiveBullets.Add(tmpExplosive);
         }
         for (int i = 0; i < numberOfPiercingBullets; i++)
         {
@@ -72,10 +80,6 @@ public class GenerateBullet : MonoBehaviour
             tmpSlowing = Instantiate(slowingBullet);
             tmpSlowing.gameObject.SetActive(false);
             listSlowingBullets.Add(tmpSlowing);
-        }
-        for (int i = 0; i < WeaponSlots.Count; i++)
-        {
-            WeaponSlots[i].color = Color.black;
         }
     }
     private void Update()
@@ -134,7 +138,7 @@ public class GenerateBullet : MonoBehaviour
     }
     public GameObject GetExplosiveBullets()
     {
-        foreach (GameObject e in listHeavyBullets)
+        foreach (GameObject e in listExplosiveBullets)
         {
             if (!e.gameObject.activeInHierarchy)
             {
@@ -144,7 +148,7 @@ public class GenerateBullet : MonoBehaviour
             }
         }
         GameObject tmpExplosive;
-        tmpExplosive = Instantiate(heavyBullet);
+        tmpExplosive = Instantiate(explosiveBullet);
         tmpExplosive.gameObject.SetActive(true);
         return tmpExplosive;
     }
@@ -219,20 +223,81 @@ public class GenerateBullet : MonoBehaviour
         switch (SB)
         {
             case SpecialBullets.Explosive:
-                WeaponSlots[slotIndex] = WeaponSlots[0];
-                WeaponSlots[0].color = Color.white;
-
+                WeaponSlots[slotIndex].enabled = true;
+                WeaponSlots[slotIndex].sprite = ExploIcon;
                 break;
             case SpecialBullets.Piercing:
-                WeaponSlots[slotIndex] = WeaponSlots[1];
-                WeaponSlots[1].color = Color.white;
-
+                WeaponSlots[slotIndex].enabled = true;
+                WeaponSlots[slotIndex].sprite = PiercingIcon;
                 break;
             case SpecialBullets.Slowing:
-                WeaponSlots[slotIndex] = WeaponSlots[2];
-                WeaponSlots[2].color = Color.white;
-
+                WeaponSlots[slotIndex].enabled = true;
+                WeaponSlots[slotIndex].sprite = SlowingIcon;
                 break;
         }
     }
+
+    #region Update Mejoras balas
+
+    private UpgradeOption ConvertToUpgradeOption(PowerUps.UpgradeOption option)
+    {
+        return new UpgradeOption
+        {
+            label = option.label,
+            apply = option.apply,
+            weight = option.weight
+        };
+    }
+
+    public UpgradeOption GetBulletOption(int tier)
+    {
+        // Construye la lista de opciones disponibles
+        // La bala normal siempre esta, las especiales solo si están desbloqueadas
+        var available = new List<string>();
+        available.Add("Normal");
+
+        foreach (SpecialBullets b in GenerateBullet.instance.specialBullets)
+            available.Add(b.ToString());
+
+        string chosen = available[Random.Range(0, available.Count)];
+
+        if (chosen == "Normal")
+            return new UpgradeOption
+            {
+                label = $" Danio normal +{Mathf.RoundToInt((powerUps.normalDmgM[tier] - 1) * 100)}%",
+                apply = () => bullet.GetComponent<NormalBulletBehaviour>().SetDamage(bullet.GetComponent<NormalBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier])
+            };
+
+        SpecialBullets chosenSpecial = (SpecialBullets)System.Enum.Parse(typeof(SpecialBullets), chosen);
+
+        return chosenSpecial switch
+        {
+            SpecialBullets.Explosive => new UpgradeOption
+            {
+                label = $" Explosivo: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
+                apply = () =>
+                {
+                    explosiveBullet.GetComponent<ExplosiveBulletBehaviour>().SetDamage(explosiveBullet.GetComponent<ExplosiveBulletBehaviour>().GetDamage() * powerUps.specialDmgM[tier]);
+                    explosion.SetExposionScale(explosion.GetExposionScale() * powerUps.explScaleM[tier]);
+                }
+            },
+            SpecialBullets.Piercing => new UpgradeOption
+            {
+                label = $" Perforante: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
+                apply = () =>
+                {
+                    piercingBullet.GetComponent<PierceBullet>().SetDamage(piercingBullet.GetComponent<PierceBullet>().GetDamage() * powerUps.specialDmgM[tier]);
+                    piercingBullet.GetComponent<PierceBullet>().SetMaxPierce(piercingBullet.GetComponent<PierceBullet>().GetMaxPierce() + powerUps.pierceVals[tier]);
+                }
+            },
+            SpecialBullets.Slowing => new UpgradeOption
+            {
+                label = $" Ralentizadora: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / duracion +{powerUps.slowTimeVals[tier]}s",
+                apply = () => slowingBullet.GetComponent<SlowBullet>().SetDamage(slowingBullet.GetComponent<SlowBullet>().GetDamage() * powerUps.specialDmgM[tier])
+            },
+            _ => ConvertToUpgradeOption(powerUps.GetPlayerOption(0))
+        };
+    }
+
+    #endregion
 }

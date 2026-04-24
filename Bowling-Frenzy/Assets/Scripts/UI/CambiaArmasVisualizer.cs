@@ -6,6 +6,7 @@ public class CambiaArmasVisualizer : MonoBehaviour
     public GameObject ExploActive;
     public GameObject SlowActive;
     public GameObject PierceActive;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 public void UpdateActive(int currentSpecial)
     {
