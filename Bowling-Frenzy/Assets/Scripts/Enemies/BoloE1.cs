@@ -7,6 +7,7 @@ public class BoloE1 : EnemyBase
         maxHealth = 20;
         base.Start();
         agent.speed = 5;
+        points = 100;
     }
     private void OnCollisionEnter(Collision collision)
     {

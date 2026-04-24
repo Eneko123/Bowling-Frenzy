@@ -25,11 +25,24 @@ public class UIGameplay : MonoBehaviour
     internal bool isPaused = false;
     internal bool isUpgradeMenuOpen = false;
 
+    public static UIGameplay uI;
+    private void Awake()
+    {
+        if (uI == null)
+        {
+            uI = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     void Start()
     {
         InitializePanels();
         SetupButtonListeners();
-        UpdateHUD();
+        UpdateRoundText();
+        UpdateScoreText();
     }
 
     void Update()
@@ -46,7 +59,6 @@ public class UIGameplay : MonoBehaviour
                 PauseGame();
             }
         }
-        UpdateHUD();
     }
 
     void InitializePanels()
@@ -71,26 +83,28 @@ public class UIGameplay : MonoBehaviour
     }
 
     #region HUD Updates
-    void UpdateHUD()
-    {
-        // Actualizar score
-        if (scoreText && GameManager.Instance != null)
-        {
-            scoreText.text = $"Score: {GameManager.Instance.playerScore}";
-        }
 
+    internal void UpdateRoundText()
+    {
         // Actualizar ronda
         if (roundText && RoundsManager.instance != null)
         {
             roundText.text = $"Round {RoundsManager.instance.CurrentRound + 1}";
         }
     }
-
-    public void UpdateScore(int newScore)
+    internal void UpdateScoreText()
+    {
+        // Actualizar score
+        if (scoreText && GameManager.Instance != null)
+        {
+            scoreText.text = $"Score: {GameManager.Instance.playerScore}";
+        }
+    }
+    public void UpdateMaxScore(int newScore)
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.playerScore = newScore;
+            GameManager.Instance.bestPlayerScore = newScore;
         }
     }
 
@@ -99,6 +113,8 @@ public class UIGameplay : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.playerScore += points;
+            Debug.Log(GameManager.Instance.playerScore);
+            UpdateScoreText();
         }
     }
     #endregion
