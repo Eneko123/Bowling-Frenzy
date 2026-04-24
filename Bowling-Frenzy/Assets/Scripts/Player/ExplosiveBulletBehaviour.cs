@@ -34,10 +34,9 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 
     protected override void OnDeactivate()
     {
-        Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-
-
-
+        GameObject e = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+        e.TryGetComponent<Explosion>(out Explosion explosion);
+        explosion.SetExplosionDamage(damage);
         base.OnDeactivate();
     }
 

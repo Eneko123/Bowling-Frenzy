@@ -5,6 +5,7 @@ public class Explosion : MonoBehaviour
 {
     [SerializeField] private float explosionTime = 0.5f;
     [SerializeField] private float explosionScale = 8f;
+    [SerializeField] private float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     IEnumerator Start()
     {
@@ -17,13 +18,25 @@ public class Explosion : MonoBehaviour
         }
             Destroy(gameObject);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider enemy)
     {
-        
+        CheckEnemy(enemy);
+        Debug.Log("Explosion hit: " + enemy.gameObject.name);
     }
 
+    // Update is called once per frame
+    internal void CheckEnemy(Collider collider)
+    {
+        if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
+        {
+            enemy.ReceiveDamage(damage);
+            Debug.Log("Damage inflicted: " + damage);
+        }
+    }
+    public void SetExplosionDamage(float newDamage)
+    {
+        damage = newDamage;
+    }   
     public float GetExposionScale()
     {
         return explosionScale;
