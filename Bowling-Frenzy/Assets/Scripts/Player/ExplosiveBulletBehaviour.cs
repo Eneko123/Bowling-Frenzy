@@ -27,7 +27,7 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
     //}
 
     // Update is called once per frame
-    internal SpecialBullets GetSpecialBullet()
+    public override SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;
     }
