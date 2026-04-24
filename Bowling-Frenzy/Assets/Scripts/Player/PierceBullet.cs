@@ -24,7 +24,7 @@ public class PierceBullet : NormalBulletBehaviour
     //        }
     //    }
     //}
-    internal SpecialBullets GetSpecialBullet()
+    public override SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;
     }

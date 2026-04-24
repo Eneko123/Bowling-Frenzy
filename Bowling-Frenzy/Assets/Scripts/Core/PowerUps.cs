@@ -88,7 +88,7 @@ public class PowerUps : MonoBehaviour
                 opt = GetRandomOption(cats[i]);
                 attempts++;
             }
-            while (usedOptions.Contains(opt.label) && attempts < 20);
+            while (usedOptions.Contains(opt.label) && attempts < 30);
 
             // Marca esta opcion como usada
             usedOptions.Add(opt.label);
@@ -217,10 +217,16 @@ public class PowerUps : MonoBehaviour
             if (!GenerateBullet.instance.specialBullets.Contains(b))
                 locked.Add(b);
 
-        if (locked.Count == 0)
-            return GetBulletOption(WeightedRandom()); // si ya estan todas, da mejora de daño
+        //if (locked.Count == 0)
+        //    return GetBulletOption(WeightedRandom()); // si ya estan todas, da mejora de danio
 
-        SpecialBullets toUnlock = locked[Random.Range(0, locked.Count)];
+        SpecialBullets toUnlock = SpecialBullets.None;
+        while (toUnlock == SpecialBullets.None)
+        {
+            // evita desbloquear "None" si por alguna razon esta en la lista
+            toUnlock = locked[Random.Range(0, locked.Count)];
+        }
+        
         string name = toUnlock switch
         {
             SpecialBullets.Explosive => "Bala Explosiva",
