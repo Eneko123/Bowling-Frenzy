@@ -36,6 +36,7 @@ public class BoloEBoos : EnemyBase
         agent.speed = 1f;
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
+        points = 1000;
     }
 
     new void Update()

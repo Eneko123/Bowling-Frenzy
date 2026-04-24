@@ -15,7 +15,7 @@ public class EnemyBase : MonoBehaviour
     protected Animator animator;
     protected float originalSpeed;
     protected bool isSlowing = false;
-
+    [SerializeField] protected int points;
     private float slowTime = 2f;
 
     private void Awake()
@@ -84,6 +84,7 @@ public class EnemyBase : MonoBehaviour
             agent.enabled = false;
             animator.SetTrigger("Dead");
             health = maxHealth;
+            GivePoints(points);
         }
     }
     internal void SetEnemySpeed(float newSpeed)
@@ -114,7 +115,10 @@ public class EnemyBase : MonoBehaviour
         agent.enabled = true;
         this.gameObject.SetActive(false);
     }
-
+    protected void GivePoints(int points)
+    {
+        UIGameplay.uI.AddScore(points);
+    }
     public float GetSlowTime()
     {
         return slowTime;

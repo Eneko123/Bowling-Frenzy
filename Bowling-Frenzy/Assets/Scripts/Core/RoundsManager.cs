@@ -139,6 +139,7 @@ public class RoundsManager : MonoBehaviour
         if (!isRoundFinished)
         {
             currentRound += 1;
+            uiGameplay.UpdateRoundText();
             currentState = states[currentRound];
             currentTime = currentState.timeMax;
             timerText.text = "00 :" + (currentTime % 60).ToString("00");

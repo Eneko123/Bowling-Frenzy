@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Difficulty difficulty = Difficulty.Normal;
     public string selectedLevel = "";
     public int playerScore = 0;
+    public int bestPlayerScore = 0;
 
     [Header("Settings")]
     public float masterVolume = 1f;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        playerScore = 0;
     }
 
     void Start()
