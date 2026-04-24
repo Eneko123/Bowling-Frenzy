@@ -623,6 +623,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 28346464}
     m_Modifications:
+    - target: {fileID: 723119953131461645, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2529716452568046263, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_Texture
       value: 
@@ -638,6 +642,14 @@ PrefabInstance:
     - target: {fileID: 6224681584170779641, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_Name
       value: Slot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973629925744970226, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973629925744970226, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7092315730451638503, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_IsActive
