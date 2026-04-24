@@ -945,15 +945,15 @@ PrefabInstance:
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: ExploIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 1469a07544244f34ea621c22bc192c71, type: 3}
+      objectReference: {fileID: 21300000, guid: d2a770f3706abdc41988d47017253d23, type: 3}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: SlowingIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 6a00046fc2f164748a579cf742d80d3c, type: 3}
+      objectReference: {fileID: 21300000, guid: 87405a691b2092f4c9590f75a71ccda2, type: 3}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: PiercingIcon
       value: 
-      objectReference: {fileID: 21300000, guid: a61122c56ec41784996d16313874a729, type: 3}
+      objectReference: {fileID: 21300000, guid: 0c0e333cc1b39a243b65f87382159c15, type: 3}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: WeaponSlots.Array.size
       value: 3
