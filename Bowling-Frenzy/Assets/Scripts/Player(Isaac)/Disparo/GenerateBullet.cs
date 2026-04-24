@@ -22,9 +22,9 @@ public class GenerateBullet : MonoBehaviour
 
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
-    //public Sprite ExploIcon;
-    //public Sprite PiercingIcon;
-    //public Sprite SlowingIcon;
+    public Sprite ExploIcon;
+    public Sprite PiercingIcon;
+    public Sprite SlowingIcon;
     //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
     public List<Image> WeaponSlots = new List<Image>(); 
@@ -212,13 +212,13 @@ public class GenerateBullet : MonoBehaviour
         switch (SB)
         {
             case SpecialBullets.Explosive:
-                WeaponSlots[slotIndex].color = Color.red;
+                WeaponSlots[slotIndex].sprite = ExploIcon;
                 break;
             case SpecialBullets.Piercing:
-                WeaponSlots[slotIndex].color = Color.green;
+                WeaponSlots[slotIndex].sprite = PiercingIcon;
                 break;
             case SpecialBullets.Slowing:
-                WeaponSlots[slotIndex].color = Color.blue;
+                WeaponSlots[slotIndex].sprite = SlowingIcon;
                 break;
         }
     }
