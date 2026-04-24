@@ -66,9 +66,11 @@ public class EnemyBase : MonoBehaviour
         // para evitar errores, si el enemigo esta muerto o desactivado, no se mueve ni hace nada
         if (!this.gameObject.activeSelf) { return; }
         if (player == null) { return; }
-        // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
-        agent.SetDestination(player.position);
-
+        if (agent.enabled)
+        {
+            // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
+            agent.SetDestination(player.position);
+        }
     }
     internal float GetEnemySpeed()
     {
@@ -79,7 +81,7 @@ public class EnemyBase : MonoBehaviour
         if (health <= 0)
         {
             damage = 0;
-            agent.speed = 0;
+            agent.enabled = false;
             animator.SetTrigger("Dead");
             health = maxHealth;
         }
@@ -109,6 +111,7 @@ public class EnemyBase : MonoBehaviour
     // Desactiva al enemigo
     void DeadAnim()
     {
+        agent.enabled = true;
         this.gameObject.SetActive(false);
     }
 

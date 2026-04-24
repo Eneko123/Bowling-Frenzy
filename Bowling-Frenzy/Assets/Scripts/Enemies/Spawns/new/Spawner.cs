@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
 
     public int ActiveEnemies1 => EnemysType[0].BoloEPool.FindAll(e => e.activeSelf).Count;
     public int ActiveEnemies2 => EnemysType[1].BoloEPool.FindAll(e => e.activeSelf).Count;
-    public int ActiveEnemies3 => EnemysType[1].BoloEPool.FindAll(e => e.activeSelf).Count;
+    public int ActiveEnemies3 => EnemysType[2].BoloEPool.FindAll(e => e.activeSelf).Count;
 
     //private List<GameObject> BoloBoss;
     public GameObject BoloBoss;
