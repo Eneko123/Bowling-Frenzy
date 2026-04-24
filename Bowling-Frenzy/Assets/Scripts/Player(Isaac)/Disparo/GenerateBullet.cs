@@ -27,7 +27,10 @@ public class GenerateBullet : MonoBehaviour
     //public Sprite SlowingIcon;
     //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
-    public List<Image> WeaponSlots = new List<Image>(); 
+    public List<RawImage> WeaponSlots = new List<RawImage>();
+    // Primer elemento: imagen del slot de bala explosiva
+    // Segundo elemento: imagen del slot de bala perforante
+    // Tercer elemento: imagen del slot de bala ralentizadora
     private void Awake()
     {
         if (instance == null)
@@ -69,6 +72,10 @@ public class GenerateBullet : MonoBehaviour
             tmpSlowing = Instantiate(slowingBullet);
             tmpSlowing.gameObject.SetActive(false);
             listSlowingBullets.Add(tmpSlowing);
+        }
+        for (int i = 0; i < WeaponSlots.Count; i++)
+        {
+            WeaponSlots[i].color = Color.black;
         }
     }
     private void Update()
@@ -203,22 +210,28 @@ public class GenerateBullet : MonoBehaviour
         // Verifica que hay suficientes slots antes de acceder
         int slotIndex = specialBullets.Count - 1;
 
-        if (slotIndex >= WeaponSlots.Count)
-        {
-            Debug.LogError($"No hay suficientes WeaponSlots! Necesitas al menos {slotIndex + 1} slots en el Inspector.");
-            return;
-        }
+        //if (slotIndex >= WeaponSlots.Count)
+        //{
+        //    Debug.LogError($"No hay suficientes WeaponSlots! Necesitas al menos {slotIndex + 1} slots en el Inspector.");
+        //    return;
+        //}
 
         switch (SB)
         {
             case SpecialBullets.Explosive:
-                WeaponSlots[slotIndex].color = Color.red;
+                WeaponSlots[slotIndex] = WeaponSlots[0];
+                WeaponSlots[0].color = Color.white;
+
                 break;
             case SpecialBullets.Piercing:
-                WeaponSlots[slotIndex].color = Color.green;
+                WeaponSlots[slotIndex] = WeaponSlots[1];
+                WeaponSlots[1].color = Color.white;
+
                 break;
             case SpecialBullets.Slowing:
-                WeaponSlots[slotIndex].color = Color.blue;
+                WeaponSlots[slotIndex] = WeaponSlots[2];
+                WeaponSlots[2].color = Color.white;
+
                 break;
         }
     }

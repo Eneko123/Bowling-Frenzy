@@ -25,7 +25,7 @@ public class SlowBullet : NormalBulletBehaviour
     //        }
     //    }
     //}
-    internal SpecialBullets GetSpecialBullet()
+    public override SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;
     }

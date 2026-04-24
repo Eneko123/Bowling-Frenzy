@@ -29,7 +29,7 @@ public class NormalBulletBehaviour : MonoBehaviour
 
         rbParent.AddForce(direction * speed, ForceMode.Force);
     }
-    internal SpecialBullets GetSpecialBullet()
+    public virtual SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;
     }
