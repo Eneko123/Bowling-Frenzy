@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static PowerUps;
@@ -48,6 +49,9 @@ public class GenerateBullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        WeaponSlots[0].enabled = false;
+        WeaponSlots[1].enabled = false;
+        WeaponSlots[2].enabled = false;
         GameObject tmpBullet;
         GameObject tmpExplosive;
         GameObject tmpPiercing;
@@ -219,16 +223,16 @@ public class GenerateBullet : MonoBehaviour
         switch (SB)
         {
             case SpecialBullets.Explosive:
+                WeaponSlots[slotIndex].enabled = true;
                 WeaponSlots[slotIndex].sprite = ExploIcon;
-
                 break;
             case SpecialBullets.Piercing:
+                WeaponSlots[slotIndex].enabled = true;
                 WeaponSlots[slotIndex].sprite = PiercingIcon;
-
                 break;
             case SpecialBullets.Slowing:
+                WeaponSlots[slotIndex].enabled = true;
                 WeaponSlots[slotIndex].sprite = SlowingIcon;
-
                 break;
         }
     }
