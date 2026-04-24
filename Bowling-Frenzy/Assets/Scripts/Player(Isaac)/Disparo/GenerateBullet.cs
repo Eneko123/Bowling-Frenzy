@@ -56,7 +56,6 @@ public class GenerateBullet : MonoBehaviour
         GameObject tmpExplosive;
         GameObject tmpPiercing;
         GameObject tmpSlowing;
-        explosion = explosiveBullet.GetComponent<Explosion>();
         for (int i = 0; i < numberOfBullets; i++)
         {
             tmpBullet = Instantiate(bullet);
@@ -270,8 +269,8 @@ public class GenerateBullet : MonoBehaviour
                     for (int i = 0; i < listBullets.Count; i++)
                     {
                         int captured = i;
-                        listBullets[captured].GetComponent<NormalBulletBehaviour>().SetDamage(
-                            listBullets[captured].GetComponent<NormalBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
+                        listBullets[captured].GetComponentInChildren<NormalBulletBehaviour>().SetDamage(
+                            listBullets[captured].GetComponentInChildren<NormalBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
                     }
                 }
             };
@@ -288,10 +287,11 @@ public class GenerateBullet : MonoBehaviour
                     for (int i = 0; i < listExplosiveBullets.Count; i++)
                     {
                         int captured = i;
-                        listExplosiveBullets[captured].GetComponent<ExplosiveBulletBehaviour>().SetDamage(
-                            listExplosiveBullets[captured].GetComponent<ExplosiveBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
+                        listExplosiveBullets[captured].GetComponentInChildren<ExplosiveBulletBehaviour>().SetDamage(
+                            listExplosiveBullets[captured].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
+                        listExplosiveBullets[captured].GetComponentInChildren<Explosion>().SetExposionScale(
+                            listExplosiveBullets[captured].GetComponent<Explosion>().GetExposionScale() * powerUps.explScaleM[tier]);
                     }
-                    explosion.SetExposionScale(explosion.GetExposionScale() * powerUps.explScaleM[tier]);
                 }
             },
             SpecialBullets.Piercing => new UpgradeOption
@@ -302,8 +302,8 @@ public class GenerateBullet : MonoBehaviour
                     for(int i = 0; i < listPiercingBullets.Count; i++)
                     {
                         int captured = i;
-                        listPiercingBullets[captured].GetComponent<PierceBullet>().SetDamage(
-                            listPiercingBullets[captured].GetComponent<PierceBullet>().GetDamage() * powerUps.normalDmgM[tier]);
+                        listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().SetDamage(
+                            listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().GetDamage() * powerUps.normalDmgM[tier]);
                     }
                 }
             },
@@ -314,8 +314,8 @@ public class GenerateBullet : MonoBehaviour
                 {   for (int i = 0; i < listSlowingBullets.Count; i++)
                     {
                         int captured = i;
-                        listSlowingBullets[captured].GetComponent<SlowBullet>().SetDamage(
-                            listSlowingBullets[captured].GetComponent<SlowBullet>().GetDamage() * powerUps.normalDmgM[tier]);
+                        listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().SetDamage(
+                            listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().GetDamage() * powerUps.normalDmgM[tier]);
                     }
                 }
             },
