@@ -100,11 +100,13 @@ public class UIGameplay : MonoBehaviour
             scoreText.text = $"Score: {GameManager.Instance.playerScore}";
         }
     }
-    public void UpdateMaxScore(int newScore)
+    public void UpdateMaxScore()
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.bestPlayerScore = newScore;
+            GameManager.Instance.bestPlayerScore = GameManager.Instance.playerScore;
+            PlayerPrefs.SetString("BestScore", GameManager.Instance.bestPlayerScore.ToString());
+            PlayerPrefs.Save();
         }
     }
 

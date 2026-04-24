@@ -9,12 +9,7 @@ public class PowerUps : MonoBehaviour
 {
     MainCharacter player;
     EnemyBase enemis;
-    GenerateBullet generateBullet;
-    NormalBulletBehaviour normalBullet;
-    ExplosiveBulletBehaviour explosiveBullet;
-    PierceBullet pierceBullet;
-    SlowBullet slowBullet;
-    Explosion explosion;
+    [SerializeField] GenerateBullet generateBullet;
     [SerializeField] RoundsManager rounds;
     [SerializeField] PlayerHealth playerHealth;
 

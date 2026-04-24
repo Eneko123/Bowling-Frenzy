@@ -18,7 +18,6 @@ public class UIGameOver : MonoBehaviour
 
     [Header("Stats Display")]
     [SerializeField] private TextMeshProUGUI enemiesKilledText;
-    [SerializeField] private TextMeshProUGUI accuracyText;
     [SerializeField] private TextMeshProUGUI timePlayedText;
 
     void Start()

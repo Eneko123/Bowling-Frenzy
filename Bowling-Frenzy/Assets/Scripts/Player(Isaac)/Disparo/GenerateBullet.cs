@@ -249,7 +249,7 @@ public class GenerateBullet : MonoBehaviour
         };
     }
 
-    public UpgradeOption GetBulletOption(int tier)
+    public PowerUps.UpgradeOption GetBulletOption(int tier)
     {
         // Construye la lista de opciones disponibles
         // La bala normal siempre esta, las especiales solo si están desbloqueadas
@@ -265,7 +265,15 @@ public class GenerateBullet : MonoBehaviour
             return new UpgradeOption
             {
                 label = $" Danio normal +{Mathf.RoundToInt((powerUps.normalDmgM[tier] - 1) * 100)}%",
-                apply = () => bullet.GetComponent<NormalBulletBehaviour>().SetDamage(bullet.GetComponent<NormalBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier])
+                apply = () =>
+                {
+                    for (int i = 0; i < listBullets.Count; i++)
+                    {
+                        int captured = i;
+                        listBullets[captured].GetComponent<NormalBulletBehaviour>().SetDamage(
+                            listBullets[captured].GetComponent<NormalBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
+                    }
+                }
             };
 
         SpecialBullets chosenSpecial = (SpecialBullets)System.Enum.Parse(typeof(SpecialBullets), chosen);
@@ -277,7 +285,12 @@ public class GenerateBullet : MonoBehaviour
                 label = $" Explosivo: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
                 apply = () =>
                 {
-                    explosiveBullet.GetComponent<ExplosiveBulletBehaviour>().SetDamage(explosiveBullet.GetComponent<ExplosiveBulletBehaviour>().GetDamage() * powerUps.specialDmgM[tier]);
+                    for (int i = 0; i < listExplosiveBullets.Count; i++)
+                    {
+                        int captured = i;
+                        listExplosiveBullets[captured].GetComponent<ExplosiveBulletBehaviour>().SetDamage(
+                            listExplosiveBullets[captured].GetComponent<ExplosiveBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
+                    }
                     explosion.SetExposionScale(explosion.GetExposionScale() * powerUps.explScaleM[tier]);
                 }
             },
@@ -286,14 +299,25 @@ public class GenerateBullet : MonoBehaviour
                 label = $" Perforante: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
                 apply = () =>
                 {
-                    piercingBullet.GetComponent<PierceBullet>().SetDamage(piercingBullet.GetComponent<PierceBullet>().GetDamage() * powerUps.specialDmgM[tier]);
-                    piercingBullet.GetComponent<PierceBullet>().SetMaxPierce(piercingBullet.GetComponent<PierceBullet>().GetMaxPierce() + powerUps.pierceVals[tier]);
+                    for(int i = 0; i < listPiercingBullets.Count; i++)
+                    {
+                        int captured = i;
+                        listPiercingBullets[captured].GetComponent<PierceBullet>().SetDamage(
+                            listPiercingBullets[captured].GetComponent<PierceBullet>().GetDamage() * powerUps.normalDmgM[tier]);
+                    }
                 }
             },
             SpecialBullets.Slowing => new UpgradeOption
             {
                 label = $" Ralentizadora: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / duracion +{powerUps.slowTimeVals[tier]}s",
-                apply = () => slowingBullet.GetComponent<SlowBullet>().SetDamage(slowingBullet.GetComponent<SlowBullet>().GetDamage() * powerUps.specialDmgM[tier])
+                apply = () =>
+                {   for (int i = 0; i < listSlowingBullets.Count; i++)
+                    {
+                        int captured = i;
+                        listSlowingBullets[captured].GetComponent<SlowBullet>().SetDamage(
+                            listSlowingBullets[captured].GetComponent<SlowBullet>().GetDamage() * powerUps.normalDmgM[tier]);
+                    }
+                }
             },
             _ => ConvertToUpgradeOption(powerUps.GetPlayerOption(0))
         };

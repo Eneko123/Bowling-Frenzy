@@ -121,6 +121,7 @@ public class BoloEBoos : EnemyBase
     void DeadAnim()
     {
         this.gameObject.SetActive(false);
+        UIGameplay.uI.UpdateMaxScore();
     }
     // Activa el ataque
     void AttackAnim()
