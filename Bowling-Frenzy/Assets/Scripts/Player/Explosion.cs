@@ -6,8 +6,22 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float explosionTime = 0.5f;
     [SerializeField] private float explosionScale = 8f;
     [SerializeField] private float damage;
+
+    private Coroutine explosionCoroutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    IEnumerator Start()
+    private void OnEnable()
+    {
+        // Reinicia la escala y comienza la animacion cada vez que se activa
+        transform.localScale = Vector3.zero;
+        if (explosionCoroutine != null)
+        {
+            StopCoroutine(explosionCoroutine);
+        }
+        explosionCoroutine = StartCoroutine(ExplosionAnimation());
+    }
+
+    IEnumerator ExplosionAnimation()
     {
         float timer = 0f;
         while (timer < explosionTime)
@@ -16,12 +30,8 @@ public class Explosion : MonoBehaviour
             transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * explosionScale, timer / explosionTime);
             yield return null;
         }
-            Destroy(gameObject);
-    }
-    private void OnTriggerEnter(Collider enemy)
-    {
-        CheckEnemy(enemy);
-        Debug.Log("Explosion hit: " + enemy.gameObject.name);
+        // Desactiva en lugar de destruir
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,7 +51,7 @@ public class Explosion : MonoBehaviour
     {
         return explosionScale;
     }
-    public void SetExposionScale(float newScale)
+    public void SetExplosionScale(float newScale)
     {
         explosionScale = newScale;
     }

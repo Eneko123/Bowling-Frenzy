@@ -3,28 +3,28 @@ using UnityEngine;
 
 public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 {
-    [SerializeField] private GameObject explosionEffectPrefab;
+    [SerializeField] private Explosion explosionEffect;
+    [SerializeField] private float explosionScale = 8f; // Almacena la escala de explosion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         this.currentSpecial = SpecialBullets.Explosive;
+
+        // Asegurase de que la explosion este desactivada al inicio
+        if (explosionEffect != null)
+        {
+            explosionEffect.gameObject.SetActive(false);
+        }
     }
     void Start()
     {
-        //Init(transform.position, Vector3.zero);
+        // Inicializa las propiedades de la explosión
+        if (explosionEffect != null)
+        {
+            explosionEffect.SetExplosionScale(explosionScale);
+        }
     }
-    //internal void AddExplosive()
-    //{
-    //    for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
-    //    {
-    //        if (GenerateBullet.instance.listOfHabilities[i] == null)
-    //        {
-    //            GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
-    //            break;
-    //        }
-    //    }
-    //}
 
     // Update is called once per frame
     public override SpecialBullets GetSpecialBullet()
@@ -34,9 +34,14 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 
     protected override void OnDeactivate()
     {
-        GameObject e = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-        e.TryGetComponent<Explosion>(out Explosion explosion);
-        explosion.SetExplosionDamage(damage);
+        // Activa la explosion en lugar de instanciarla
+        if (explosionEffect != null)
+        {
+            explosionEffect.SetExplosionDamage(damage);
+            explosionEffect.SetExplosionScale(explosionScale);
+            explosionEffect.gameObject.SetActive(true);
+        }
+
         base.OnDeactivate();
     }
 
@@ -48,5 +53,15 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
     public override void SetDamage(float newDamage)
     {
         this.damage = newDamage;
+    }
+
+    public float GetExplosionScale()
+    {
+        return explosionScale;
+    }
+
+    public void SetExplosionScale(float newScale)
+    {
+        explosionScale = newScale;
     }
 }

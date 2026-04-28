@@ -87,17 +87,17 @@ public class GenerateBullet : MonoBehaviour
         // del array se meta el prefab del tipo de bala que haya conseguido
         if (Input.GetKeyDown(KeyCode.Z))
         {
-        
+
             AddSpecial(SpecialBullets.Piercing);
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-        
+
             AddSpecial(SpecialBullets.Explosive);
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-        
+
             AddSpecial(SpecialBullets.Slowing);
         }
     }
@@ -251,7 +251,7 @@ public class GenerateBullet : MonoBehaviour
     public PowerUps.UpgradeOption GetBulletOption(int tier)
     {
         // Construye la lista de opciones disponibles
-        // La bala normal siempre esta, las especiales solo si están desbloqueadas
+        // La bala normal siempre esta, las especiales solo si estan desbloqueadas
         var available = new List<string>();
         available.Add("Normal");
 
@@ -287,10 +287,16 @@ public class GenerateBullet : MonoBehaviour
                     for (int i = 0; i < listExplosiveBullets.Count; i++)
                     {
                         int captured = i;
-                        listExplosiveBullets[captured].GetComponentInChildren<ExplosiveBulletBehaviour>().SetDamage(
-                            listExplosiveBullets[captured].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
-                        listExplosiveBullets[captured].GetComponentInChildren<Explosion>().SetExposionScale(
-                            listExplosiveBullets[captured].GetComponent<Explosion>().GetExposionScale() * powerUps.explScaleM[tier]);
+                        ExplosiveBulletBehaviour explosiveBehaviour = listExplosiveBullets[captured].GetComponentInChildren<ExplosiveBulletBehaviour>();
+
+                        if (explosiveBehaviour != null)
+                        {
+                            // Actualiza el daioo
+                            explosiveBehaviour.SetDamage(explosiveBehaviour.GetDamage() * powerUps.specialDmgM[tier]);
+
+                            // Actualiza la escala de explosioin
+                            explosiveBehaviour.SetExplosionScale(explosiveBehaviour.GetExplosionScale() * powerUps.explScaleM[tier]);
+                        }
                     }
                 }
             },
@@ -299,7 +305,7 @@ public class GenerateBullet : MonoBehaviour
                 label = $" Perforante: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
                 apply = () =>
                 {
-                    for(int i = 0; i < listPiercingBullets.Count; i++)
+                    for (int i = 0; i < listPiercingBullets.Count; i++)
                     {
                         int captured = i;
                         listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().SetDamage(
@@ -311,7 +317,8 @@ public class GenerateBullet : MonoBehaviour
             {
                 label = $" Ralentizadora: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / duracion +{powerUps.slowTimeVals[tier]}s",
                 apply = () =>
-                {   for (int i = 0; i < listSlowingBullets.Count; i++)
+                {
+                    for (int i = 0; i < listSlowingBullets.Count; i++)
                     {
                         int captured = i;
                         listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().SetDamage(
