@@ -110,15 +110,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e5087da6dac2b0246bdd16d6a61fdd24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5668106
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5087da6dac2b0246bdd16d6a61fdd24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5087da6dac2b0246bdd16d6a61fdd24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.534603
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5087da6dac2b0246bdd16d6a61fdd24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -328,8 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 10
-  speed: 5
+  points: 0
 --- !u!136 &2997320502146116149
 CapsuleCollider:
   m_ObjectHideFlags: 0
