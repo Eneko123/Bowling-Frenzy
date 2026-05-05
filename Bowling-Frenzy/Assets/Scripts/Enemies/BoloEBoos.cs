@@ -107,10 +107,13 @@ public class BoloEBoos : EnemyBase
 
     protected override void Dead()
     {
-        damage = 0;
-        // Inmoviliza al enemigo y activa la animación de muerte
-        agent.speed = 0;
-        animator.SetTrigger("Dead");
+        if (health <= 0)
+        {
+            damage = 0;
+            // Inmoviliza al enemigo y activa la animación de muerte
+            agent.speed = 0;
+            animator.SetTrigger("Dead");
+        }
     }
 
     // Funciones de animaciones
