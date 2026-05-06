@@ -1104,6 +1104,10 @@ PrefabInstance:
       value: BowlFace
       objectReference: {fileID: 0}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 6658469368460690752, guid: 762936975b464ed4b86fc606cb7dda3b, type: 3}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: powerUps
       value: 
       objectReference: {fileID: 28346466}
@@ -1119,6 +1123,18 @@ PrefabInstance:
       propertyPath: PiercingIcon
       value: 
       objectReference: {fileID: 21300000, guid: 0c0e333cc1b39a243b65f87382159c15, type: 3}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: slowingBullet
+      value: 
+      objectReference: {fileID: 2623793497078484551, guid: dda24b1b4ae00cc45889b166374c0345, type: 3}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: piercingBullet
+      value: 
+      objectReference: {fileID: 1777468714673887011, guid: f1e7d3bb1b3973b4c873588724b2f974, type: 3}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: explosiveBullet
+      value: 
+      objectReference: {fileID: 6759333344230276231, guid: 4525b87d9ca5df84382e63b5cce3a90d, type: 3}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: WeaponSlots.Array.size
       value: 3
@@ -1885,64 +1901,64 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 1
-    E1: 10
+  - timeMax: 60
+    E1: 20
+    E2: 0
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 30
+    E2: 0
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 50
     E2: 10
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 20
+    E2: 10
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 25
+    E2: 15
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 30
+    E2: 20
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 20
+    E2: 10
+    E3: 5
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 30
+    E2: 20
     E3: 10
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
-    E2: 10
-    E3: 10
+  - timeMax: 60
+    E1: 35
+    E2: 25
+    E3: 15
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
+  - timeMax: 60
+    E1: 15
     E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
-    E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
-    E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
-    E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 0
-    E1: 10
-    E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
-    E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 0
-    E1: 10
-    E2: 10
-    E3: 10
-    spawnRateMax: 1
-    currentSpawnRate: 0
-  - timeMax: 1
-    E1: 10
-    E2: 10
-    E3: 10
+    E3: 5
     spawnRateMax: 1
     currentSpawnRate: 0
   timerText: {fileID: 174185787}

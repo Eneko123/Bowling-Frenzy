@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    [SerializeField] Transform explosionPos;
     [SerializeField] private float explosionTime = 0.5f;
     [SerializeField] private float explosionScale = 8f;
     [SerializeField] private float damage;
@@ -13,6 +14,7 @@ public class Explosion : MonoBehaviour
     private void OnEnable()
     {
         // Reinicia la escala y comienza la animacion cada vez que se activa
+        transform.position = explosionPos.position;
         transform.localScale = Vector3.zero;
         if (explosionCoroutine != null)
         {

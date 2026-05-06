@@ -76,14 +76,13 @@ public class EnemyBase : MonoBehaviour
     {
         return agent.speed;
     }
-    protected void Dead()
+    protected virtual void Dead()
     {
         if (health <= 0)
         {
-            damage = 0;
+            currentDamage = 0;
             agent.enabled = false;
             animator.SetTrigger("Dead");
-            health = maxHealth;
             GivePoints(points);
         }
     }
@@ -112,6 +111,8 @@ public class EnemyBase : MonoBehaviour
     // Desactiva al enemigo
     void DeadAnim()
     {
+        health = maxHealth;
+        currentDamage = damage;
         agent.enabled = true;
         this.gameObject.SetActive(false);
     }
