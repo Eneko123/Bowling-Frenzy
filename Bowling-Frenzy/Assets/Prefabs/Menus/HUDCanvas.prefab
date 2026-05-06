@@ -967,6 +967,7 @@ GameObject:
   - component: {fileID: 8359882412443204308}
   - component: {fileID: 8265730875117850243}
   - component: {fileID: 4221180829393623237}
+  - component: {fileID: 5037860632025160366}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -1080,6 +1081,23 @@ MonoBehaviour:
   healthbarBackground: {fileID: 3707400803149450729}
   healthbarFill: {fileID: 3707400803149450729}
   healthText: {fileID: 7922475428941767586}
+--- !u!114 &5037860632025160366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210811598005488216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a15b684f73d664d94a25d9f4444890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentComboCount: 0
+  comboResetTime: 10
+  ComboBar: {fileID: 8772983802684050130}
+  ComboBarFill: {fileID: 7405293322248086472}
+  ComboText: {fileID: 3800185201345242639}
 --- !u!1 &3217225811711311259
 GameObject:
   m_ObjectHideFlags: 0
