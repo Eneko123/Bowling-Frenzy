@@ -208,8 +208,11 @@ public class MainCharacter : MonoBehaviour
     }
     public void RestoreHealthByCombo()
     {
-        playerHealth *= healthRecovery;
-        saludJugador.UpdateHealth(playerHealth, MaxHealth);
+        if (playerHealth < MaxHealth)
+        {
+            playerHealth *= healthRecovery;
+            saludJugador.UpdateHealth(playerHealth, MaxHealth);
+        }
     }
     public void damageHealthPlayer(float damage)
     {

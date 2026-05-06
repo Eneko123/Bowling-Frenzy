@@ -71,4 +71,8 @@ public class Combos : MonoBehaviour
             MainCharacter.Instance.RestoreHealthByCombo();
         }
     }
+    internal int GetCurrentCombo()
+    {
+        return currentComboCount;
+    }
 }

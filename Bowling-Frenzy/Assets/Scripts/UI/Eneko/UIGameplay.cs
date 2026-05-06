@@ -26,6 +26,7 @@ public class UIGameplay : MonoBehaviour
     internal bool isUpgradeMenuOpen = false;
 
     public static UIGameplay uI;
+    Combos comboManager;
     private void Awake()
     {
         if (uI == null)
@@ -43,6 +44,7 @@ public class UIGameplay : MonoBehaviour
         SetupButtonListeners();
         UpdateRoundText();
         UpdateScoreText();
+        comboManager = GetComponentInChildren<Combos>();
     }
 
     void Update()
@@ -114,7 +116,8 @@ public class UIGameplay : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.playerScore += points;
+            Debug.Log(comboManager.GetCurrentCombo());
+            GameManager.Instance.playerScore += (points * comboManager.GetCurrentCombo());
             Debug.Log(GameManager.Instance.playerScore);
             UpdateScoreText();
         }
