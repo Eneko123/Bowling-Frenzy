@@ -7,6 +7,7 @@ public class UIMainMenu : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private GameObject mainPanel;
+    [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject creditsPanel;
 
@@ -28,6 +29,9 @@ public class UIMainMenu : MonoBehaviour
 
     [Header("Buttons - Credits Panel")]
     [SerializeField] private Button creditsBackButton;
+
+    [Header("Buttons - Tutorial Panel")]
+    [SerializeField] private Button tutorialBackButton;
 
     void Start()
     {
@@ -61,6 +65,9 @@ public class UIMainMenu : MonoBehaviour
 
         // Credits Panel
         if (creditsBackButton) creditsBackButton.onClick.AddListener(OnCreditsBackClicked);
+
+        // Tutorial Panel
+        if (tutorialBackButton) tutorialBackButton.onClick.AddListener(OnCreditsBackClicked);
     }
 
     void LoadAudioSettings()
@@ -98,12 +105,7 @@ public class UIMainMenu : MonoBehaviour
     void OnTutorialClicked()
     {
         Debug.Log("Tutorial clicked");
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.selectedLevel = "Level_Tutorial";
-            GameManager.Instance.difficulty = Difficulty.Normal; // Tutorial siempre en normal
-            SceneManager.LoadScene("Level_Tutorial");
-        }
+        ShowPanel(tutorialPanel);
     }
 
     void OnOptionsClicked()
@@ -183,6 +185,14 @@ public class UIMainMenu : MonoBehaviour
     void OnCreditsBackClicked()
     {
         Debug.Log("Credits back clicked");
+        ShowPanel(mainPanel);
+    }
+    #endregion
+
+    #region Button Callbacks - Tutorial Panel
+    void OnTutorialBackClicked()
+    {
+        Debug.Log("Tutorial back clicked");
         ShowPanel(mainPanel);
     }
     #endregion
