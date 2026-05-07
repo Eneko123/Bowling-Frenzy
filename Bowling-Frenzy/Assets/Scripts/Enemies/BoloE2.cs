@@ -8,6 +8,7 @@ public class BoloE2 : EnemyBase
         base.Awake();
         agent.speed = 7f;
         points = 250;
+        damage = 15f;
     }
     private void OnCollisionEnter(Collision collision)
     {
