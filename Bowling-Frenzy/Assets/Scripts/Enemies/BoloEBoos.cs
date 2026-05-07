@@ -48,8 +48,8 @@ public class BoloEBoos : EnemyBase
     public override void DificultySystem()
     {
         // Solo se llama en la ultima ronda
-        if(roundsManager.GetFinalRound())
-        {
+ 
+        
             // Evitar errores si el GameManager no esta presente
             if (GameManager.Instance == null) { return; }
 
@@ -85,7 +85,7 @@ public class BoloEBoos : EnemyBase
             // Actualizar la vida actual y el danio actual
             health = maxHealth;
             currentDamage = damage;
-        }
+        
     }
 
     public override void ReceiveDamage(float damage, bool isBarredora)
