@@ -115,7 +115,7 @@ public class BoloEBoos : EnemyBase
         else if (health <= 0)
         {
             CurrentState = EnemyStates[4];
-            Dead();
+            Dead(isBarredora);
         }
         if (Combos.Instance != null && !isBarredora)
             Combos.Instance.IncrementCombo();
@@ -158,7 +158,7 @@ public class BoloEBoos : EnemyBase
         }
     }
 
-    protected override void Dead()
+    protected override void Dead(bool isBarredora)
     {
         if (health <= 0)
         {
@@ -166,6 +166,10 @@ public class BoloEBoos : EnemyBase
             // Inmoviliza al enemigo y activa la animacion de muerte
             agent.speed = 0;
             animator.SetTrigger("Dead");
+        }
+        if (!isBarredora)
+        {
+            GivePoints(points);
         }
     }
 
