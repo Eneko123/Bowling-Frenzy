@@ -224,6 +224,11 @@ public class MainCharacter : MonoBehaviour
             playerHealth *= healthRecovery;
             saludJugador.UpdateHealth(playerHealth, MaxHealth);
         }
+        if (playerHealth >= MaxHealth)
+        {
+            playerHealth = MaxHealth;
+            saludJugador.UpdateHealth(playerHealth, MaxHealth);
+        }
     }
     public void damageHealthPlayer(float damage)
     {
