@@ -221,7 +221,7 @@ public class MainCharacter : MonoBehaviour
     {
         if (playerHealth < MaxHealth)
         {
-            playerHealth *= healthRecovery;
+            playerHealth += Mathf.Round(healthRecovery);
             saludJugador.UpdateHealth(playerHealth, MaxHealth);
         }
         if (playerHealth >= MaxHealth)
@@ -232,7 +232,7 @@ public class MainCharacter : MonoBehaviour
     }
     public void damageHealthPlayer(float damage)
     {
-        playerHealth -= damage * (1 - defense);
+        playerHealth -= Mathf.Round(damage * (1 - defense));
         Debug.Log("Player health decreased");
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
         Dead();
