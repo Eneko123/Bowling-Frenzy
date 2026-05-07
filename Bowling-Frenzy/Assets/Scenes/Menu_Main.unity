@@ -1809,6 +1809,13 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 5760621133976034266, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_text
+      value: "Tu objetivo ser\xE1 sobrevivir a las oleadas de enemigos que vendran
+        a matarte. Cuando el tiempo llegue a 0, te saldr\xE1 un men\xFA de mejoras
+        en el que deber\xE1s escoger. Haz click izquierdo en la opci\xF3n que quieras
+        escoger. Sobrevive a las 10 rondas.\n\nDebes matar al boss para poder ganar."
+      objectReference: {fileID: 0}
     - target: {fileID: 6225322537222152788, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
