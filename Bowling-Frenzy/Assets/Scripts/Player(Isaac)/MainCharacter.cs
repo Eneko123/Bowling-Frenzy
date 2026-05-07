@@ -54,6 +54,9 @@ public class MainCharacter : MonoBehaviour
     SpecialBullets currentSpecialBullet;
 
     Animator animator;
+
+    CharacterController characterController;
+
     private void Awake()
     {
         if (Instance == null)
@@ -74,6 +77,7 @@ public class MainCharacter : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
     }
     //Se llamara al evento en Unity asociado con la accion de moverse
     public void OnMoveInput(InputAction.CallbackContext contextMove)
@@ -235,8 +239,17 @@ public class MainCharacter : MonoBehaviour
         playerHealth -= Mathf.Round(damage * (1 - defense));
         Debug.Log("Player health decreased");
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
+        StartCoroutine(InvencibilityCoroutine());
         Dead();
     }
+
+    IEnumerator InvencibilityCoroutine()
+    {
+        characterController.detectCollisions = false;
+        yield return new WaitForSeconds(1.5f);
+        characterController.detectCollisions = true;
+    }
+
     void ThrowNormalBall()
     {
         GameObject b = GenerateBullet.instance.GetBullets();

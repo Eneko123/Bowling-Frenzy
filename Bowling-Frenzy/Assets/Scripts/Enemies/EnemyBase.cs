@@ -18,12 +18,15 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected int points;
     private float slowTime = 2f;
 
+    private Collider col;
+
     protected void Awake()
     {
         player = MainCharacter.Instance.transform;
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
         if (animator == null) { animator = GetComponent<Animator>(); }
+        if (col == null) { col = GetComponent<Collider>(); }
         player = MainCharacter.Instance.playerTransform;
         health = maxHealth;
     }
@@ -97,6 +100,7 @@ public class EnemyBase : MonoBehaviour
         {
             currentDamage = 0;
             agent.enabled = false;
+            col.enabled = false;
             animator.SetTrigger("Dead");
         }
         if (!isBarredora)
@@ -132,6 +136,7 @@ public class EnemyBase : MonoBehaviour
         health = maxHealth;
         currentDamage = damage;
         agent.enabled = true;
+        col.enabled = true;
         this.gameObject.SetActive(false);
     }
     protected void GivePoints(int points)
