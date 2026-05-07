@@ -2228,7 +2228,7 @@ MonoBehaviour:
   m_text: "Tu objetivo ser\xE1 sobrevivir a las oleadas de enemigos que vendran a
     matarte. Cuando el tiempo llegue a 0, te saldr\xE1 un men\xFA de mejoras en el
     que deber\xE1s escoger. Haz click izquierdo en la opci\xF3n que quieras escoger.
-    Sobrevive a las 10 rondas."
+    Sobrevive a las 10 rondas.\n\nEn la ultima ronda debes matar al jefe para ganar."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
