@@ -31,8 +31,13 @@ public class BoloEBoos : EnemyBase
 
     new void Start()
     {
+        // Establecer valores base del boss ANTES de llamar a base.Start()
         maxHealth = 1000;
+        damage = 20f;
+
+        // Llamar al Start de la clase base que guardara estos valores y aplicara dificultad
         base.Start();
+
         agent.speed = 1f;
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
@@ -111,7 +116,7 @@ public class BoloEBoos : EnemyBase
         if (health <= 0)
         {
             damage = 0;
-            // Inmoviliza al enemigo y activa la animación de muerte
+            // Inmoviliza al enemigo y activa la animacion de muerte
             agent.speed = 0;
             animator.SetTrigger("Dead");
         }
