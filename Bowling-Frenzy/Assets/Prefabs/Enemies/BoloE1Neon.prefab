@@ -190,6 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  damage: 0
+  currentDamage: 0
+  maxHealth: 0
+  health: 0
   points: 0
 --- !u!195 &366746469151641768
 NavMeshAgent:

@@ -635,6 +635,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  damage: 0
+  currentDamage: 0
+  maxHealth: 0
+  health: 0
   points: 0
   EnemyStates:
   - CooldownMax: 30
@@ -654,6 +658,7 @@ MonoBehaviour:
     MaxVel: 0
   jump: {fileID: 146857487070688300}
   atack: {fileID: 3564890275236091876}
+  roundsManager: {fileID: 0}
 --- !u!136 &639174233103976314
 CapsuleCollider:
   m_ObjectHideFlags: 0

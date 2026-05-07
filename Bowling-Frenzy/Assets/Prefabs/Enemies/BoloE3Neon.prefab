@@ -212,6 +212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  damage: 0
+  currentDamage: 0
+  maxHealth: 0
+  health: 0
   points: 0
 --- !u!95 &8097040505411447150
 Animator:

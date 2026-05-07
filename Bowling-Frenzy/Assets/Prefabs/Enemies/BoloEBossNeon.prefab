@@ -221,10 +221,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  damage: 0
+  currentDamage: 0
+  maxHealth: 0
+  health: 0
   points: 0
   EnemyStates: []
   jump: {fileID: 0}
   atack: {fileID: 0}
+  roundsManager: {fileID: 0}
 --- !u!136 &4235859916789365119
 CapsuleCollider:
   m_ObjectHideFlags: 0

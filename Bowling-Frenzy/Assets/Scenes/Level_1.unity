@@ -704,6 +704,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot1
       objectReference: {fileID: 0}
+    - target: {fileID: 3811812865379768167, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221180829393623237, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: healthbarFill
+      value: 
+      objectReference: {fileID: 407565033}
     - target: {fileID: 4705984591280025576, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_SizeDelta.x
       value: 355
@@ -1156,6 +1164,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+--- !u!114 &407565033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3811812865379768167, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+  m_PrefabInstance: {fileID: 174185783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &483553703
 GameObject:
   m_ObjectHideFlags: 0
