@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class CooldownIndicator : MonoBehaviour
 {
     public Image CooldownReloader;
+    public float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +14,8 @@ public class CooldownIndicator : MonoBehaviour
     // Update is called once per frame
     public void UpdateCooldown(float cooldown)
     {
-        CooldownReloader.fillAmount = cooldown;
+        timer += Time.deltaTime;
+        CooldownReloader.fillAmount = timer / cooldown;
         if(CooldownReloader.fillAmount == 1f)
         {
             CooldownReloader.fillAmount = 0f;
