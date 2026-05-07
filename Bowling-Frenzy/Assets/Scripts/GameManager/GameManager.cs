@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public float musicVolume = 0.7f;
     public float sfxVolume = 0.8f;
 
+    public bool winornot;
+
     void Awake()
     {
         // Singleton pattern - Compatible con tu código original

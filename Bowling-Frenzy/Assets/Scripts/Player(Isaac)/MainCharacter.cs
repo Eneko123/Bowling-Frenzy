@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInput))]
 public class MainCharacter : MonoBehaviour
@@ -206,6 +207,16 @@ public class MainCharacter : MonoBehaviour
         }
         controller.Move(velocity * Time.deltaTime);
     }
+
+    void Dead()
+    {
+        if (playerHealth <= 0)
+        {
+            // Condicion
+            GameManager.Instance.winornot = false;
+            SceneManager.LoadScene("Game_Over");
+        }
+    }
     public void RestoreHealthByCombo()
     {
         if (playerHealth < MaxHealth)
@@ -219,6 +230,7 @@ public class MainCharacter : MonoBehaviour
         playerHealth -= damage * (1 - defense);
         Debug.Log("Player health decreased");
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
+        Dead();
     }
     void ThrowNormalBall()
     {

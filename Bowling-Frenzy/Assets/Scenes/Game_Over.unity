@@ -1778,6 +1778,8 @@ MonoBehaviour:
   finalScoreText: {fileID: 6749153}
   finalRoundText: {fileID: 397058489}
   messageText: {fileID: 2044661298}
+  panelWin: {fileID: 1931708870}
+  panelLoose: {fileID: 425107530}
   retryButton: {fileID: 299977458}
   mainMenuButton: {fileID: 719991592}
   quitButton: {fileID: 102728066}

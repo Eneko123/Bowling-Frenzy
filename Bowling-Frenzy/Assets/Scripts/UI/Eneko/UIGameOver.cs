@@ -11,6 +11,10 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalRoundText;
     [SerializeField] private TextMeshProUGUI messageText;
 
+    [Header("Panels")]
+    [SerializeField] private GameObject panelWin;
+    [SerializeField] private GameObject panelLoose;
+
     [Header("Buttons")]
     [SerializeField] private Button retryButton;
     [SerializeField] private Button mainMenuButton;
@@ -25,6 +29,24 @@ public class UIGameOver : MonoBehaviour
         SetupButtonListeners();
         DisplayGameOverStats();
         Time.timeScale = 1f; // Asegurar que el tiempo esta normal
+    }
+
+    public void Update()
+    {
+        WinOrNot();
+    }
+
+    public void WinOrNot()
+    {
+        if (GameManager.Instance.winornot)
+        {
+            panelWin.SetActive(true);
+            panelLoose.SetActive(false);
+        }
+        else {
+            panelWin.SetActive(false);
+            panelLoose.SetActive(true);
+        }
     }
 
     void SetupButtonListeners()
