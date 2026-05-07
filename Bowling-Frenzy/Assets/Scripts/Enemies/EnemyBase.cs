@@ -67,11 +67,11 @@ public class EnemyBase : MonoBehaviour
         currentDamage = damage;
     }
 
-    public virtual void ReceiveDamage(float damage)
+    public virtual void ReceiveDamage(float damage, bool isBarredora)
     {
         //Debug.Log(health);
         health -= damage;
-        if (Combos.Instance != null)
+        if (Combos.Instance != null && !isBarredora)
             Combos.Instance.IncrementCombo();
         //Debug.Log(health);
         Dead();

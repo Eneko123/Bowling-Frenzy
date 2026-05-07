@@ -11,7 +11,7 @@ public class Sweeper : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
-            enemy.ReceiveDamage(damage);
+            enemy.ReceiveDamage(damage, true);
         }
     }
 

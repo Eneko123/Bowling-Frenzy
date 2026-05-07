@@ -55,7 +55,7 @@ public class Explosion : MonoBehaviour
     {
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
-            enemy.ReceiveDamage(damage);
+            enemy.ReceiveDamage(damage, false);
             Debug.Log("Damage inflicted: " + damage);
         }
     }

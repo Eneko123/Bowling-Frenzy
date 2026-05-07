@@ -96,7 +96,7 @@ public class BoloEBoos : EnemyBase
         }
     }
 
-    public override void ReceiveDamage(float damage)
+    public override void ReceiveDamage(float damage, bool isBarredora)
     {
         health -= damage;
 
@@ -117,6 +117,8 @@ public class BoloEBoos : EnemyBase
             CurrentState = EnemyStates[4];
             Dead();
         }
+        if (Combos.Instance != null && !isBarredora)
+            Combos.Instance.IncrementCombo();
     }
 
     void Atack()

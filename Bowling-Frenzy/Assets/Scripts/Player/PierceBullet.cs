@@ -33,7 +33,7 @@ public class PierceBullet : NormalBulletBehaviour
 
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
-            enemy.ReceiveDamage(damage);
+            enemy.ReceiveDamage(damage, false);
             MaxPierce--;
 
             if (MaxPierce <= 0)

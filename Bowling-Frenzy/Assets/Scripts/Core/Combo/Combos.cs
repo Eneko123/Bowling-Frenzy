@@ -46,6 +46,7 @@ public class Combos : MonoBehaviour
     {
         currentComboCount = 0;
         comboTimer = 0f;
+        ComboSpeed = 1f;
         ComboBar.gameObject.SetActive(false);
         ComboText.gameObject.SetActive(false);
     }
