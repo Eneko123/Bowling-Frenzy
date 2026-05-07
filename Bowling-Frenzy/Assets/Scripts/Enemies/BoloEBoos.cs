@@ -40,6 +40,11 @@ public class BoloEBoos : EnemyBase
         ApproachPlayer();
     }
 
+    private void OnEnable()
+    {
+        DificultySystem();
+    }
+
     public override void DificultySystem()
     {
         // Solo se llama en la ultima ronda
