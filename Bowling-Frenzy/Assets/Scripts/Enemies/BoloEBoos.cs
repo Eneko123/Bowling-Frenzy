@@ -27,24 +27,10 @@ public class BoloEBoos : EnemyBase
 
     [SerializeField] RoundsManager roundsManager;
 
-    //void Awake()
-    //{
-    //    instance = this;
-    //}
-
-    new void Awake()
+    void Start()
     {
-        // Establecer valores base del boss ANTES de llamar a base.Start()
-        maxHealth = 1000;
-        damage = 20f;
-
-        // Llamar al Start de la clase base que guardara estos valores y aplicara dificultad
-        base.Awake();
-
-        agent.speed = 1f;
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
-        points = 1000;
     }
 
     new void Update()
