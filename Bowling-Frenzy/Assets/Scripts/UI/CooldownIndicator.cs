@@ -14,9 +14,9 @@ public class CooldownIndicator : MonoBehaviour
     public void UpdateCooldown(float cooldown)
     {
         CooldownReloader.fillAmount = cooldown;
-        if(CooldownReloader.fillAmount = 1)
+        if(CooldownReloader.fillAmount == 1f)
         {
-            CooldownReloader.fillAmount = 0;
+            CooldownReloader.fillAmount = 0f;
         }
     }
 }
