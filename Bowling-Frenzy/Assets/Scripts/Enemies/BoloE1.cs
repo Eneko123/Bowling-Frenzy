@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BoloE1 : EnemyBase
 {
-    new void Start()
+    new void Awake()
     {
         maxHealth = 20;
-        base.Start();
+        base.Awake();
         agent.speed = 5;
         points = 100;
     }

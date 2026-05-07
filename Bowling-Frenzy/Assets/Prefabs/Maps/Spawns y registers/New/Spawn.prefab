@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemysType:
   - BoloEPool: []
-    BoloEAmount: 5
+    BoloEAmount: 10
     BoloE: {fileID: 5908303234000865002, guid: 3e348e57466b56b49abde1b64a8c3889, type: 3}
   - BoloEPool: []
-    BoloEAmount: 5
+    BoloEAmount: 10
     BoloE: {fileID: 3621189524744176448, guid: cde20e16e5606934b8c636237fd0f8c8, type: 3}
   - BoloEPool: []
-    BoloEAmount: 5
+    BoloEAmount: 10
     BoloE: {fileID: 9006585902148915010, guid: fe0c63c902f424f44bc22bbbc22eb635, type: 3}
   BoloBoss: {fileID: 3630691104249013946, guid: 65f12829ad4732540a518324aeac501a, type: 3}

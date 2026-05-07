@@ -24,19 +24,21 @@ public class BoloEBoos : EnemyBase
 
     private bool atacked = false;
 
+    [SerializeField] RoundsManager roundsManager;
+
     //void Awake()
     //{
     //    instance = this;
     //}
 
-    new void Start()
+    new void Awake()
     {
         // Establecer valores base del boss ANTES de llamar a base.Start()
         maxHealth = 1000;
         damage = 20f;
 
         // Llamar al Start de la clase base que guardara estos valores y aplicara dificultad
-        base.Start();
+        base.Awake();
 
         agent.speed = 1f;
         CurrentState = EnemyStates[0];
@@ -49,6 +51,49 @@ public class BoloEBoos : EnemyBase
         base.Update();
         Atack();
         ApproachPlayer();
+    }
+
+    public override void DificultySystem()
+    {
+        // Solo se llama en la ultima ronda
+        if(roundsManager.GetFinalRound())
+        {
+            // Evitar errores si el GameManager no esta presente
+            if (GameManager.Instance == null) { return; }
+
+            switch (GameManager.Instance.difficulty)
+            {
+                case Difficulty.Easy:
+                    // Sin cambios, los valores quedan como estan
+                    break;
+
+                case Difficulty.Normal:
+                    maxHealth += 250f;
+                    damage += 10;
+                    for (int i = 0; i < EnemyStates.Length - 1; i++)
+                    {
+                        EnemyStates[i].CooldownMax -= 2.5f;
+                        EnemyStates[i].MaxVel += 1f;
+                        EnemyStates[i].MinVel += 1f;
+                    }
+                    break;
+
+                case Difficulty.Hard:
+                    maxHealth += 500f;
+                    damage += 20;
+                    for (int i = 0; i < EnemyStates.Length - 1; i++)
+                    {
+                        EnemyStates[i].CooldownMax -= 4.5f;
+                        EnemyStates[i].MaxVel += 2f;
+                        EnemyStates[i].MinVel += 2f;
+                    }
+                    break;
+            }
+
+            // Actualizar la vida actual y el danio actual
+            health = maxHealth;
+            currentDamage = damage;
+        }
     }
 
     public override void ReceiveDamage(float damage)

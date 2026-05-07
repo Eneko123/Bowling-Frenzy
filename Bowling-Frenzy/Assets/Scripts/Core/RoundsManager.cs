@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ public class RoundsManager : MonoBehaviour
 
     [SerializeField] GameObject timerObject;
 
-    [SerializeField]UIGameplay uiGameplay;
+    [SerializeField] UIGameplay uiGameplay;
 
     [SerializeField] GameObject boss; // prefab del boss colocado en la escena pero desactivado
 
@@ -99,28 +100,32 @@ public class RoundsManager : MonoBehaviour
 
     void Timer()
     {
-        if (timeBetwineRounds)
+        if(!isFinalRound)
         {
-            StartNextRound();
-        }
-        else
-        {
-            if (currentRound == states.Length - 1)
+            if (timeBetwineRounds)
             {
-                isFinalRound = true;
-                timerObject.SetActive(false);
-                boss.SetActive(true);
-            }
-            else if (currentTime >= 0)
-            {
-                currentTime -= Time.deltaTime;
-                timerText.text = "00:" + (currentTime % 60).ToString("00");
+                StartNextRound();
             }
             else
             {
-                isRoundFinished = true;
-                timeBetwineRounds = true;
-                uiGameplay.isUpgradeMenuOpen = true;
+                if (currentRound == states.Length - 1)
+                {
+                    isFinalRound = true;
+                    timerObject.SetActive(false);
+                    boss.GetComponent<BoloEBoos>().DificultySystem(); // Llamamos a esta funcion en la ultima ronda para que funcione
+                    boss.SetActive(true);
+                }
+                else if (currentTime >= 0)
+                {
+                    currentTime -= Time.deltaTime;
+                    timerText.text = "00:" + (currentTime % 60).ToString("00");
+                }
+                else
+                {
+                    isRoundFinished = true;
+                    timeBetwineRounds = true;
+                    uiGameplay.isUpgradeMenuOpen = true;
+                }
             }
         }
     }
@@ -139,6 +144,7 @@ public class RoundsManager : MonoBehaviour
         if (!isRoundFinished)
         {
             currentRound += 1;
+            AplyDificultySystemToEnemis();
             uiGameplay.UpdateRoundText();
             currentState = states[currentRound];
             currentTime = currentState.timeMax;
@@ -147,6 +153,19 @@ public class RoundsManager : MonoBehaviour
             RoundManagerText.text = $"Round {currentRound + 1}";
             uiGameplay.isUpgradeMenuOpen = false;
             Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    void AplyDificultySystemToEnemis()
+    { // Accede a los enemigos dentro de los spawnpoints y les aplica las mejoras
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            var enemies = spawnPoints[i].GetComponentsInChildren<EnemyBase>(true);
+            Debug.Log(enemies.Length);
+            for (int j = 0; j < enemies.Length; j++)
+            {
+                enemies[j].DificultySystem();
+            }
         }
     }
 
@@ -173,6 +192,8 @@ public class RoundsManager : MonoBehaviour
             currentState.currentSpawnRate = currentState.spawnRateMax;
         }
     }
+
+    public bool GetFinalRound() => isFinalRound;
 
     void DesactiveSweeper()
     {

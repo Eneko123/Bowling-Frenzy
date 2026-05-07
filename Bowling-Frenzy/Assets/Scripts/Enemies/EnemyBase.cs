@@ -7,44 +7,28 @@ public class EnemyBase : MonoBehaviour
 {
     //variables universales para todas las clases de enemigos
     public Transform player;
-    protected float damage;
-    protected float currentDamage;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float currentDamage;
     protected NavMeshAgent agent;
-    protected float maxHealth;
-    protected float health;
+    [SerializeField] protected float maxHealth;
+    [SerializeField] protected float health;
     protected Animator animator;
     protected float originalSpeed;
     protected bool isSlowing = false;
     [SerializeField] protected int points;
     private float slowTime = 2f;
 
-    // Variables para guardar los valores BASE antes de aplicar dificultad
-    protected float baseMaxHealth;
-    protected float baseDamage;
-    protected float baseSpeed;
-
-    private void Awake()
+    protected void Awake()
     {
         player = MainCharacter.Instance.transform;
-    }
-
-    //metodos
-    protected void Start()
-    {
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
         if (animator == null) { animator = GetComponent<Animator>(); }
         player = MainCharacter.Instance.playerTransform;
         health = maxHealth;
-
-        // Guardar valores base ANTES de aplicar modificadores de dificultad
-        baseMaxHealth = maxHealth;
-        baseDamage = damage;
-        baseSpeed = agent.speed;
-
-        // Aplicar el sistema de dificultad
-        DificultySystem();
     }
+
+    //metodos
     protected void Update()
     {
         Movemetn();
@@ -52,32 +36,29 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void DificultySystem()
     {
-        int round = RoundsManager.instance.CurrentRound;
-
         // Evitar errores si el GameManager no esta presente
         if (GameManager.Instance == null) { return; }
 
         switch (GameManager.Instance.difficulty)
         {
             case Difficulty.Easy:
-                // Sin cambios - los valores quedan como están
-                // No hace falta modificar nada
+                // Sin cambios, los valores quedan como estan
                 break;
 
             case Difficulty.Normal:
                 // Incremento ADITIVO por ronda (SUMA)
                 // Usa los valores BASE y suma el incremento por ronda
-                maxHealth = baseMaxHealth + (10f * round);      // +10 de vida por ronda
-                damage = baseDamage + (5f * round);             // +5 de daño por ronda
-                agent.speed = baseSpeed + (0.05f * round);      // +0.05 de velocidad por ronda
+                maxHealth += 10f;      // +10 de vida por ronda
+                damage += 5f;             // +5 de danio por ronda
+                agent.speed += 0.05f;      // +0.05 de velocidad por ronda
                 break;
 
             case Difficulty.Hard:
                 // Incremento MULTIPLICATIVO acumulativo por ronda
-                // Formula: valorBase * (1 + porcentaje)^ronda
-                maxHealth = baseMaxHealth * Mathf.Pow(1.10f, round);   // ×1.10 (10% mas) por ronda acumulado
-                damage = baseDamage * Mathf.Pow(1.05f, round);         // ×1.05 (5% mas) por ronda acumulado
-                agent.speed = baseSpeed * Mathf.Pow(1.01f, round);     // ×1.01 (1% mas) por ronda acumulado
+                // Formula: valorBase * (1 + porcentaje)
+                maxHealth *= 1.10f;   // ×1.10 de vida por ronda
+                damage *= 1.05f;         // ×1.05 de danio por ronda
+                agent.speed *= 1.01f;     // ×1.01 de velocidad por ronda
                 break;
         }
 
