@@ -14,12 +14,6 @@ public void UpdateActive(int currentSpecial)
         {
             Debug.Log((GenerateBullet.instance.specialBullets[i]));
         }
-        SpecialBullets sb = (SpecialBullets)currentSpecial;
-        if(!GenerateBullet.instance.specialBullets.Contains(sb))
-        {
-            Debug.Log("NO Tiene el tipo de bala");
-            return;
-        }
         
         switch (currentSpecial)
         {
