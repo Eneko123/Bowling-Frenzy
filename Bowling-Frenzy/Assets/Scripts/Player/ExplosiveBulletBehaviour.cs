@@ -34,12 +34,14 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 
     protected override void OnDeactivate()
     {
+
         // Activa la explosion en lugar de instanciarla
         if (explosionEffect != null)
-        {
+        { 
             explosionEffect.SetExplosionDamage(damage);
             explosionEffect.SetExplosionScale(explosionScale);
             explosionEffect.gameObject.SetActive(true);
+            Debug.Log("Explosion activated with damage: " + damage + " and scale: " + explosionScale);
         }
 
         base.OnDeactivate();

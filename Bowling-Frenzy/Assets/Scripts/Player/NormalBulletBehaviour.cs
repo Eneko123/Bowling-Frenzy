@@ -55,6 +55,7 @@ public class NormalBulletBehaviour : MonoBehaviour
 
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
+            Debug.Log("Hit Enemy");
             enemy.ReceiveDamage(damage);
             OnDeactivate();
         }

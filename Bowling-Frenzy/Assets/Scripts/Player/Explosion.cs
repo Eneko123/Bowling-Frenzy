@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] Transform explosionPos;
+    [SerializeField] public Transform explosionPos;
     [SerializeField] private float explosionTime = 0.5f;
     [SerializeField] private float explosionScale = 8f;
     [SerializeField] private float damage;
