@@ -38,6 +38,8 @@ public class UIGameOver : MonoBehaviour
 
     public void WinOrNot()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         if (GameManager.Instance.winornot)
         {
             panelWin.SetActive(true);

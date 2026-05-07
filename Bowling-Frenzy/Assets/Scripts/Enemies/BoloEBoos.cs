@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct State
@@ -179,6 +180,8 @@ public class BoloEBoos : EnemyBase
     {
         this.gameObject.SetActive(false);
         UIGameplay.uI.UpdateMaxScore();
+        GameManager.Instance.winornot = true;
+        SceneManager.LoadScene("Game_Over");
     }
     // Activa el ataque
     void AttackAnim()
