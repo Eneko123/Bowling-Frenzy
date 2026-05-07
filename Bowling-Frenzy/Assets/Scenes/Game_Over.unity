@@ -1780,9 +1780,12 @@ MonoBehaviour:
   messageText: {fileID: 2044661298}
   panelWin: {fileID: 1931708870}
   panelLoose: {fileID: 425107530}
-  retryButton: {fileID: 299977458}
-  mainMenuButton: {fileID: 719991592}
-  quitButton: {fileID: 102728066}
+  retryButtonW: {fileID: 1464718281}
+  mainMenuButtonW: {fileID: 1805727647}
+  quitButtonW: {fileID: 518790952}
+  retryButtonL: {fileID: 299977458}
+  mainMenuButtonL: {fileID: 719991592}
+  quitButtonL: {fileID: 102728066}
   enemiesKilledText: {fileID: 0}
   timePlayedText: {fileID: 0}
 --- !u!1 &777884432

@@ -15,10 +15,15 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private GameObject panelWin;
     [SerializeField] private GameObject panelLoose;
 
-    [Header("Buttons")]
-    [SerializeField] private Button retryButton;
-    [SerializeField] private Button mainMenuButton;
-    [SerializeField] private Button quitButton;
+    [Header("Buttons Win")]
+    [SerializeField] private Button retryButtonW;
+    [SerializeField] private Button mainMenuButtonW;
+    [SerializeField] private Button quitButtonW;
+
+    [Header("Buttons Loose")]
+    [SerializeField] private Button retryButtonL;
+    [SerializeField] private Button mainMenuButtonL;
+    [SerializeField] private Button quitButtonL;
 
     [Header("Stats Display")]
     [SerializeField] private TextMeshProUGUI enemiesKilledText;
@@ -53,9 +58,13 @@ public class UIGameOver : MonoBehaviour
 
     void SetupButtonListeners()
     {
-        if (retryButton) retryButton.onClick.AddListener(OnRetryClicked);
-        if (mainMenuButton) mainMenuButton.onClick.AddListener(OnMainMenuClicked);
-        if (quitButton) quitButton.onClick.AddListener(OnQuitClicked);
+        if (retryButtonW) retryButtonW.onClick.AddListener(OnRetryClicked);
+        if (mainMenuButtonW) mainMenuButtonW.onClick.AddListener(OnMainMenuClicked);
+        if (quitButtonW) quitButtonW.onClick.AddListener(OnQuitClicked);
+
+        if (retryButtonL) retryButtonL.onClick.AddListener(OnRetryClicked);
+        if (mainMenuButtonL) mainMenuButtonL.onClick.AddListener(OnMainMenuClicked);
+        if (quitButtonL) quitButtonL.onClick.AddListener(OnQuitClicked);
     }
 
     void DisplayGameOverStats()
