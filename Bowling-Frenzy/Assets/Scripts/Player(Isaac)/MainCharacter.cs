@@ -32,7 +32,7 @@ public class MainCharacter : MonoBehaviour
     //Sirve para controlar por si el jugador decide dejar de pulsar al completo porque quiere cancelar el salto
     private float jumpTimeStamp;
     private float jumpTime = 0f;
-
+    public CooldownIndicator tiempoRecarga;
     //Controla el si se puede mover el jugador o no
     private bool _movementInputPressed = false;
 
@@ -293,6 +293,7 @@ public class MainCharacter : MonoBehaviour
                         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
                         typeOfBullet = 1;
                         StartCoroutine(DelayForBullets(10f));
+                        tiempoRecarga.UpdateCooldown(10f);
                     }
                     break;
                 case SpecialBullets.Piercing:
@@ -301,6 +302,7 @@ public class MainCharacter : MonoBehaviour
                         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
                         typeOfBullet = 2;
                         StartCoroutine(DelayForBullets(5.5f));
+                        tiempoRecarga.UpdateCooldown(5.5f);
                     }
                     break;
                 case SpecialBullets.Slowing:
@@ -309,6 +311,7 @@ public class MainCharacter : MonoBehaviour
                         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
                         typeOfBullet = 3;
                         StartCoroutine(DelayForBullets(7f));
+                        tiempoRecarga.UpdateCooldown(7f);
                     }
                     break;
             }
