@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Explosion : MonoBehaviour
 {
@@ -13,8 +14,16 @@ public class Explosion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
     {
-        // Reinicia la escala y comienza la animacion cada vez que se activa
-        transform.position = explosionPos.position;
+
+        
+    }
+
+    public void startExplosion()
+    {
+        if (explosionPos != null)
+        {
+            transform.position = explosionPos.position;
+        }// Reinicia la escala y comienza la animacion cada vez que se activa
         transform.localScale = Vector3.zero;
         if (explosionCoroutine != null)
         {
@@ -34,10 +43,15 @@ public class Explosion : MonoBehaviour
         }
         // Desactiva en lugar de destruir
         gameObject.SetActive(false);
+        Destroy(this);
     }
 
     // Update is called once per frame
     internal void CheckEnemy(Collider collider)
+    {
+        
+    }
+    private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {

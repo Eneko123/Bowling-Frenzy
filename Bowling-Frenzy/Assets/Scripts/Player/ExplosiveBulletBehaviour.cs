@@ -5,6 +5,7 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 {
     [SerializeField] private Explosion explosionEffect;
     [SerializeField] private float explosionScale = 8f; // Almacena la escala de explosion
+    [SerializeField] GameObject explosion;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -12,10 +13,8 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
         this.currentSpecial = SpecialBullets.Explosive;
 
         // Asegurase de que la explosion este desactivada al inicio
-        if (explosionEffect != null)
-        {
-            explosionEffect.gameObject.SetActive(false);
-        }
+        explosionEffect.gameObject.SetActive(false);
+        
     }
     void Start()
     {
@@ -34,13 +33,16 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
 
     protected override void OnDeactivate()
     {
-
         // Activa la explosion en lugar de instanciarla
         if (explosionEffect != null)
-        { 
-            explosionEffect.SetExplosionDamage(damage);
-            explosionEffect.SetExplosionScale(explosionScale);
-            explosionEffect.gameObject.SetActive(true);
+        {
+            GameObject a = Instantiate(explosion, transform.position, Quaternion.identity);
+            a.SetActive(true);
+
+            Explosion explo = a.GetComponent<Explosion>();
+            explo.SetExplosionDamage(damage);
+            explo.SetExplosionScale(explosionScale);
+            explo.startExplosion();
             Debug.Log("Explosion activated with damage: " + damage + " and scale: " + explosionScale);
         }
 
