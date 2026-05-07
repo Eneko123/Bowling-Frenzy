@@ -65,6 +65,7 @@ public class BoloEBoos : EnemyBase
         else if (health <= 0)
         {
             CurrentState = EnemyStates[4];
+            Dead();
         }
     }
 

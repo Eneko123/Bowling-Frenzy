@@ -201,7 +201,8 @@ public class GenerateBullet : MonoBehaviour
             case SpecialBullets.Slowing:
                 sP = SpecialBullets.Slowing;
                 break;
-
+            default:
+                break;
         }
         return sP;
     }

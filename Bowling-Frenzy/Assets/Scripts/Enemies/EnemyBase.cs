@@ -51,7 +51,6 @@ public class EnemyBase : MonoBehaviour
     protected void Update() 
     { 
         Movemetn();
-        Dead();
     }
     public virtual void ReceiveDamage(float damage)
     {
@@ -60,6 +59,7 @@ public class EnemyBase : MonoBehaviour
         if (Combos.Instance != null)
             Combos.Instance.IncrementCombo();
         //Debug.Log(health);
+        Dead();
     }
     protected void Movemetn()
     {
