@@ -22,6 +22,7 @@ public class UILevelSelect : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI selectedDifficultyText;
+    [SerializeField] private Button difButton;
     [SerializeField] private Button backButton;
     [SerializeField] private Button confirmButton;
 
@@ -61,6 +62,7 @@ public class UILevelSelect : MonoBehaviour
         if (level2Button) level2Button.onClick.AddListener(() => OnLevelSelected("Level_2"));
 
         // Navigation buttons
+        if (difButton) difButton.onClick.AddListener(DificultyElection);
         if (backButton) backButton.onClick.AddListener(OnBackClicked);
         if (confirmButton)
         {
@@ -187,7 +189,7 @@ public class UILevelSelect : MonoBehaviour
     #endregion
 
     #region Navigation
-    void OnBackClicked()
+    void DificultyElection()
     {
         // Si estamos en el panel de niveles, volver a dificultad
         if (levelSelectionPanel && levelSelectionPanel.activeSelf)
@@ -199,6 +201,14 @@ public class UILevelSelect : MonoBehaviour
         }
         // Si estamos en dificultad, volver al menu principal
         else
+        {
+            Debug.Log("no funciona");
+        }
+    }
+    void OnBackClicked()
+    {
+        //deberia llevarnos solo a inicio
+        if (backButton)
         {
             SceneManager.LoadScene("Menu_Main");
         }
