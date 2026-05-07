@@ -17,19 +17,12 @@ public class UILevelSelect : MonoBehaviour
     [Header("Level Buttons")]
     [SerializeField] private Button level1Button;
     [SerializeField] private Button level2Button;
-    [SerializeField] private TextMeshProUGUI level1Text;
-    [SerializeField] private TextMeshProUGUI level2Text;
 
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI selectedDifficultyText;
     [SerializeField] private Button difButton;
     [SerializeField] private Button backButton;
     [SerializeField] private Button confirmButton;
-
-    [Header("Visual Feedback")]
-    [SerializeField] private Color selectedColor = Color.green;
-    [SerializeField] private Color normalColor = Color.white;
-    [SerializeField] private Color lockedColor = Color.gray;
 
     private Difficulty currentDifficulty = Difficulty.Normal;
     private string selectedLevelName = "";
@@ -86,9 +79,6 @@ public class UILevelSelect : MonoBehaviour
         if (level1Button) level1Button.interactable = true;
         if (level2Button) level2Button.interactable = true;
 
-        // Actualizar textos
-        if (level1Text) level1Text.text = "Mapa 1";
-        if (level2Text) level2Text.text = "Mapa 2";
     }
 
     #region Difficulty Selection
@@ -118,17 +108,6 @@ public class UILevelSelect : MonoBehaviour
 
     void UpdateDifficultyButtonVisuals()
     {
-        // Resetear todos los botones
-        foreach (var btn in difficultyButtons)
-        {
-            if (btn != null)
-            {
-                var colors = btn.colors;
-                colors.normalColor = normalColor;
-                btn.colors = colors;
-            }
-        }
-
         // Resaltar el boton seleccionado
         Button selectedButton = currentDifficulty switch
         {
@@ -136,13 +115,6 @@ public class UILevelSelect : MonoBehaviour
             Difficulty.Hard => hardButton,
             _ => normalButton
         };
-
-        if (selectedButton != null)
-        {
-            var colors = selectedButton.colors;
-            colors.normalColor = selectedColor;
-            selectedButton.colors = colors;
-        }
     }
 
     string GetDifficultyName(Difficulty difficulty)
@@ -164,28 +136,10 @@ public class UILevelSelect : MonoBehaviour
         // Activar boton de confirmar
         if (confirmButton) confirmButton.interactable = true;
 
-        // Actualizar visualizacion de botones de nivel
-        UpdateLevelButtonVisuals(levelName);
-
         Debug.Log($"Level selected: {levelName}");
     }
 
-    void UpdateLevelButtonVisuals(string levelName)
-    {
-        // Resetear todos los botones de nivel
-        SetButtonHighlight(level1Button, levelName == "Level_1");
-        SetButtonHighlight(level2Button, levelName == "Level_2");
-    }
-
-    void SetButtonHighlight(Button button, bool isSelected)
-    {
-        if (button != null)
-        {
-            var colors = button.colors;
-            colors.normalColor = isSelected ? selectedColor : normalColor;
-            button.colors = colors;
-        }
-    }
+   
     #endregion
 
     #region Navigation
