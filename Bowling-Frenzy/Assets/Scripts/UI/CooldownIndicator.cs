@@ -16,7 +16,7 @@ public class CooldownIndicator : MonoBehaviour
     {
         timer += Time.deltaTime;
         CooldownReloader.fillAmount = timer / cooldown;
-        if(CooldownReloader.fillAmount == 1f)
+        if(CooldownReloader.fillAmount >= 1f)
         {
             CooldownReloader.fillAmount = 0f;
         }
