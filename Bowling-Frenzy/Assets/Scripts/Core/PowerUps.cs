@@ -21,6 +21,7 @@ public class PowerUps : MonoBehaviour
     //imagenes
     [SerializeField] public Sprite ImagenIForUpgrate;
     [SerializeField] public Sprite ImagenIIForUpgrate;
+    [SerializeField] public Sprite ImagenIIIForUpgrate;
 
     // Cada fila = una ronda. Cada columna = categoria del boton.
     // P = PlayerStat, B = BulletDamage, U = UnlockBullet
@@ -138,6 +139,7 @@ public class PowerUps : MonoBehaviour
             0 => new UpgradeOption
             {
                 label = $" Vida +{healthSum[tier]}",
+                upgrateimage = ImagenIForUpgrate,
                 apply = () =>
                 {
                     player.SetHealthMax(player.GetHealthMax() + healthSum[tier]);
@@ -149,14 +151,14 @@ public class PowerUps : MonoBehaviour
             1 => new UpgradeOption
             {
                 label = $" Defensa +{defenseBons[tier]}",
-                upgrateimage = ImagenIForUpgrate,
+                upgrateimage = ImagenIIForUpgrate,
                 apply = () => player.SetDefense(player.GetDefense() + defenseBons[tier]),
                 weight = weights[tier]
             },
             _ => new UpgradeOption
             {
                 label = $" Velocidad +{speedBons[tier]}",
-                upgrateimage = ImagenIIForUpgrate,
+                upgrateimage = ImagenIIIForUpgrate,
                 apply = () => player.SetSpeed(player.GetSpeed() + speedBons[tier]),
                 weight = weights[tier]
             }
