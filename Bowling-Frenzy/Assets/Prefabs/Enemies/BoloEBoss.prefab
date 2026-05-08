@@ -643,6 +643,7 @@ MonoBehaviour:
   maxHealth: 1000
   health: 1000
   points: 1000
+  pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
   EnemyStates:
   - CooldownMax: 30
     MinVel: 1

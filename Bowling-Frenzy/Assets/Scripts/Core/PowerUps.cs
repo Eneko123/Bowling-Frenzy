@@ -11,7 +11,7 @@ public class PowerUps : MonoBehaviour
     EnemyBase enemis;
     [SerializeField] GenerateBullet generateBullet;
     [SerializeField] RoundsManager rounds;
-    [SerializeField] PlayerHealth playerHealth;
+    [SerializeField] HealthUI playerHealth;
 
     public GameObject upgradePanel;
     public Button[] buttons;           // 3 botones

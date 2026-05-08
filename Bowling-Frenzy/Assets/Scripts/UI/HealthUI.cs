@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;  
 using TMPro;
-public class PlayerHealth : MonoBehaviour
+public class HealthUI : MonoBehaviour
 {
     public Image healthbarBackground;
     public Image healthbarFill;

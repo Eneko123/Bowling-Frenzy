@@ -28,7 +28,7 @@ public class MainCharacter : MonoBehaviour
     //La gravedad para hacer que el jugador caiga
     [SerializeField] float gravity = -9.8f;
     public CambiaArmasVisualizer changeWeapon;
-    public PlayerHealth saludJugador;
+    public HealthUI saludJugador;
     //Sirve para controlar por si el jugador decide dejar de pulsar al completo porque quiere cancelar el salto
     private float jumpTimeStamp;
     private float jumpTime = 0f;

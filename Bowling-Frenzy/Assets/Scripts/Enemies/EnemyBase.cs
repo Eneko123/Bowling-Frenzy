@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,18 +18,28 @@ public class EnemyBase : MonoBehaviour
     protected bool isSlowing = false;
     [SerializeField] protected int points;
     private float slowTime = 2f;
-
+    private SkinnedMeshRenderer meshRenderer;
+    [SerializeField] private Material pulseMaterial;  
     private Collider col;
-
+    private Coroutine pulseCoroutine;
+    private Color originalColor;
+    private Material[] materials;
     protected void Awake()
-    {
+    {   
         player = MainCharacter.Instance.transform;
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
         if (animator == null) { animator = GetComponent<Animator>(); }
         if (col == null) { col = GetComponent<Collider>(); }
         player = MainCharacter.Instance.playerTransform;
-        health = maxHealth;
+        health = maxHealth;        
+    }
+
+    protected void Start()
+    {
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        materials = meshRenderer.materials;
+        originalColor = materials[0].color;
     }
 
     //metodos
@@ -72,6 +83,14 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void ReceiveDamage(float damage, bool isBarredora)
     {
+        if(pulseCoroutine != null)
+        {
+            StopCoroutine(pulseCoroutine);
+        }
+        else
+        {
+            pulseCoroutine = StartCoroutine(ColorPulse());
+        }
         //Debug.Log(health);
         health -= damage;
         if (Combos.Instance != null && !isBarredora)
@@ -117,6 +136,14 @@ public class EnemyBase : MonoBehaviour
         yield return new WaitForSeconds(slowTime);
         isSlowing = false;
         SetEnemySpeed(originalSpeed);
+    }
+
+    IEnumerator ColorPulse()
+    {
+        materials[0].color = pulseMaterial.color; // Cambia a rojo para indicar que está ralentizado
+        yield return new WaitForSeconds(0.2f);
+        materials[0].color = originalColor; // Vuelve al color original
+        pulseCoroutine = null; // Reinicia la referencia al coroutine
     }
     internal void SlowEnemy()
     {

@@ -198,6 +198,7 @@ MonoBehaviour:
   maxHealth: 0
   health: 0
   points: 0
+  pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
 --- !u!195 &366746469151641768
 NavMeshAgent:
   m_ObjectHideFlags: 0
