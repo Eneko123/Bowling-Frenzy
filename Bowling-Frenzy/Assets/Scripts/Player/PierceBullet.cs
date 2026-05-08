@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PierceBullet : NormalBulletBehaviour
 {
-    int MaxPierce = 3;
+    int MaxPierce;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+        MaxPierce = 3;
         this.currentSpecial = SpecialBullets.Piercing;
     }
     void Start()
