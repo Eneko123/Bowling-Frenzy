@@ -178,6 +178,7 @@ public class UILevelSelect : MonoBehaviour
                 GameManager.Instance.selectedLevel = selectedLevelName;
             }
             Time.timeScale = 1f; // Asegurar que el tiempo este normal
+
             SceneManager.LoadScene(selectedLevelName);
         }
     }
