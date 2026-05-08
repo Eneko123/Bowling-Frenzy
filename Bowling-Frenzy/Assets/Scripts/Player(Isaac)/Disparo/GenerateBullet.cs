@@ -271,7 +271,7 @@ public class GenerateBullet : MonoBehaviour
         if (chosen == "Normal")
             return new UpgradeOption
             {
-                label = $" Danio normal +{Mathf.RoundToInt((powerUps.normalDmgM[tier] - 1) * 100)}%",
+                label = $" Danio normal +{powerUps.normalDmgM[tier]}%",
                 upgrateimage = ImagenIVForUpgrate,
                 apply = () =>
                 {
@@ -279,7 +279,7 @@ public class GenerateBullet : MonoBehaviour
                     {
                         int captured = i;
                         listBullets[captured].GetComponentInChildren<NormalBulletBehaviour>().SetDamage(
-                            listBullets[captured].GetComponentInChildren<NormalBulletBehaviour>().GetDamage() * powerUps.normalDmgM[tier]);
+                            listBullets[captured].GetComponentInChildren<NormalBulletBehaviour>().GetDamage() + powerUps.normalDmgM[tier]);
                     }
                 }
             };
@@ -290,7 +290,7 @@ public class GenerateBullet : MonoBehaviour
         {
             SpecialBullets.Explosive => new UpgradeOption
             {
-                label = $" Explosivo: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
+                label = $" Explosivo: danio +{powerUps.specialDmgM[tier]}% / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
                 upgrateimage = ImagenVForUpgrate,
                 apply = () =>
                 {
@@ -302,7 +302,7 @@ public class GenerateBullet : MonoBehaviour
                         if (explosiveBehaviour != null)
                         {
                             // Actualiza el daioo
-                            explosiveBehaviour.SetDamage(explosiveBehaviour.GetDamage() * powerUps.specialDmgM[tier]);
+                            explosiveBehaviour.SetDamage(explosiveBehaviour.GetDamage() + powerUps.specialDmgM[tier]);
 
                             // Actualiza la escala de explosioin
                             explosiveBehaviour.SetExplosionScale(explosiveBehaviour.GetExplosionScale() * powerUps.explScaleM[tier]);
@@ -312,7 +312,7 @@ public class GenerateBullet : MonoBehaviour
             },
             SpecialBullets.Piercing => new UpgradeOption
             {
-                label = $" Perforante: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
+                label = $" Perforante: danio +{powerUps.specialDmgM[tier]}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
                 upgrateimage = ImagenVIForUpgrate,
                 apply = () =>
                 {
@@ -320,13 +320,13 @@ public class GenerateBullet : MonoBehaviour
                     {
                         int captured = i;
                         listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().SetDamage(
-                            listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().GetDamage() * powerUps.normalDmgM[tier]);
+                            listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().GetDamage() + powerUps.normalDmgM[tier]);
                     }
                 }
             },
             SpecialBullets.Slowing => new UpgradeOption
             {
-                label = $" Ralentizadora: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / duracion +{powerUps.slowTimeVals[tier]}s",
+                label = $" Ralentizadora: danio +{powerUps.specialDmgM[tier]}% / duracion +{powerUps.slowTimeVals[tier]}s",
                 upgrateimage = ImagenVIIForUpgrate,
                 apply = () =>
                 {
@@ -334,7 +334,7 @@ public class GenerateBullet : MonoBehaviour
                     {
                         int captured = i;
                         listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().SetDamage(
-                            listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().GetDamage() * powerUps.normalDmgM[tier]);
+                            listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().GetDamage() + powerUps.normalDmgM[tier]);
                     }
                 }
             },

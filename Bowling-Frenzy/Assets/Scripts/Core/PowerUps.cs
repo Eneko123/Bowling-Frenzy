@@ -57,8 +57,8 @@ public class PowerUps : MonoBehaviour
     int[] weights = { 60, 30, 10 }; // comun, raro, epico
 
     // Balas
-    internal float[] normalDmgM = { 1.2f, 1.4f, 1.6f };
-    internal float[] specialDmgM = { 1.1f, 1.2f, 1.3f };
+    internal float[] normalDmgM = { 15f, 25f, 40f };
+    internal float[] specialDmgM = { 10f, 20f, 30f };
     internal float[] explScaleM = { 1.2f, 1.4f, 1.6f };
     internal int[] pierceVals = { 2, 4, 8 };
     internal float[] slowTimeVals = { 1f, 2f, 3f };

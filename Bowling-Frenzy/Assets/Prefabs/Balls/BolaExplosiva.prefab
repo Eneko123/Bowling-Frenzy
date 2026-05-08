@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  damage: 10
+  damage: 25
   direction: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   playerCamera: {fileID: 0}

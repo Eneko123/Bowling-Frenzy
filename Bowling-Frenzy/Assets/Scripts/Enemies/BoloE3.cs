@@ -4,7 +4,7 @@ public class BoloE3 : EnemyBase
 {
     new void Awake()
     {
-        maxHealth = 50;
+        maxHealth = 40;
         base.Awake();
         agent.speed = 4f;
         points = 50;

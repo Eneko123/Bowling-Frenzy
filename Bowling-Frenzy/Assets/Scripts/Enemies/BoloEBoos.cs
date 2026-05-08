@@ -65,19 +65,19 @@ public class BoloEBoos : EnemyBase
                     for (int i = 0; i < EnemyStates.Length - 1; i++)
                     {
                         EnemyStates[i].CooldownMax -= 2.5f;
-                        EnemyStates[i].MaxVel += 1f;
-                        EnemyStates[i].MinVel += 1f;
+                        EnemyStates[i].MaxVel += 2f;
+                        EnemyStates[i].MinVel += 2f;
                     }
                     break;
 
                 case Difficulty.Hard:
                     maxHealth += 500f;
-                    damage += 20;
+                    damage += 30;
                     for (int i = 0; i < EnemyStates.Length - 1; i++)
                     {
                         EnemyStates[i].CooldownMax -= 4.5f;
-                        EnemyStates[i].MaxVel += 2f;
-                        EnemyStates[i].MinVel += 2f;
+                        EnemyStates[i].MaxVel += 3f;
+                        EnemyStates[i].MinVel += 3f;
                     }
                     break;
             }
