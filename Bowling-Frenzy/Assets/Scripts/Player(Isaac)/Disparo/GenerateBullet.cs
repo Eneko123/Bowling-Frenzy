@@ -271,7 +271,7 @@ public class GenerateBullet : MonoBehaviour
         if (chosen == "Normal")
             return new UpgradeOption
             {
-                label = $" Danio normal +{powerUps.normalDmgM[tier]}%",
+                label = $" Danio normal +{powerUps.normalDmgM[tier]}",
                 upgrateimage = ImagenIVForUpgrate,
                 apply = () =>
                 {
@@ -290,7 +290,7 @@ public class GenerateBullet : MonoBehaviour
         {
             SpecialBullets.Explosive => new UpgradeOption
             {
-                label = $" Explosivo: danio +{powerUps.specialDmgM[tier]}% / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
+                label = $" Explosivo: danio +{powerUps.specialDmgM[tier]} / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
                 upgrateimage = ImagenVForUpgrate,
                 apply = () =>
                 {
@@ -312,7 +312,7 @@ public class GenerateBullet : MonoBehaviour
             },
             SpecialBullets.Piercing => new UpgradeOption
             {
-                label = $" Perforante: danio +{powerUps.specialDmgM[tier]}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
+                label = $" Perforante: danio +{powerUps.specialDmgM[tier]} / cantidad de perforacion +{powerUps.pierceVals[tier]}",
                 upgrateimage = ImagenVIForUpgrate,
                 apply = () =>
                 {
@@ -326,7 +326,7 @@ public class GenerateBullet : MonoBehaviour
             },
             SpecialBullets.Slowing => new UpgradeOption
             {
-                label = $" Ralentizadora: danio +{powerUps.specialDmgM[tier]}% / duracion +{powerUps.slowTimeVals[tier]}s",
+                label = $" Ralentizadora: danio +{powerUps.specialDmgM[tier]} / duracion +{powerUps.slowTimeVals[tier]}s",
                 upgrateimage = ImagenVIIForUpgrate,
                 apply = () =>
                 {
