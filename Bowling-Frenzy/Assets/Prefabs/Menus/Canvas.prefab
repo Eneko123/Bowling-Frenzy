@@ -182,9 +182,9 @@ RectTransform:
   - {fileID: 8652009942103063656}
   m_Father: {fileID: 992503496325498746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1.5, y: -722.707}
   m_SizeDelta: {x: 1766, y: 316.3535}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2257500353710633013
@@ -222,9 +222,9 @@ RectTransform:
   m_Father: {fileID: 8422445819271104495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3012905250063998024
 CanvasRenderer:
@@ -618,9 +618,9 @@ RectTransform:
   - {fileID: 2772778807246549297}
   m_Father: {fileID: 992503496325498746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1.5, y: -1059.0604}
   m_SizeDelta: {x: 1766, y: 316.3535}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4313865741011013466
@@ -642,7 +642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6225322537222152788
 RectTransform:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ RectTransform:
   m_GameObject: {fileID: 4313865741011013466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8983871017849479221}
@@ -700,10 +700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -779,7 +779,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -134, y: 0}
+  m_SizeDelta: {x: -134, y: 1375.414}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3214515748550095238
 MonoBehaviour:
@@ -887,9 +887,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Para disparar debes presionar el click izquierdo. Con ello soltaras bolas
-    normales.\n\nSi conseguiste una bala especial, debes seleccionar la posici\xF3n
-    en la que se encuentra la bala usando 1 , 2 o 3 dependiendo de en que posicion
-    se encuentre la bala."
+    normales.\n\nPara disparar balas especiales debes presionar el click derecho.
+    Con ello podr\xE1s disparar balas especial.\n\nSi conseguiste una bala especial,
+    debes seleccionar la posici\xF3n en la que se encuentra la bala usando 1 , 2
+    o 3 dependiendo de en que posicion se encuentre la bala."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1066,9 +1067,9 @@ RectTransform:
   - {fileID: 7502683862048458900}
   m_Father: {fileID: 992503496325498746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1.5, y: -386.3535}
   m_SizeDelta: {x: 1766, y: 316.3535}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &5922571480005320352
@@ -1103,9 +1104,9 @@ RectTransform:
   - {fileID: 4563487937486664282}
   m_Father: {fileID: 992503496325498746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1.5, y: -50}
   m_SizeDelta: {x: 1766, y: 316.3535}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6169079832004203882
@@ -1197,7 +1198,7 @@ GameObject:
   - component: {fileID: 4542829477257668808}
   - component: {fileID: 7499330413233511173}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,8 +1350,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6806899012158788248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.21478182}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1568,7 +1569,7 @@ MonoBehaviour:
   m_text: "Tu objetivo ser\xE1 sobrevivir a las oleadas de enemigos que vendran a
     matarte. Cuando el tiempo llegue a 0, te saldr\xE1 un men\xFA de mejoras en el
     que deber\xE1s escoger. Haz click izquierdo en la opci\xF3n que quieras escoger.
-    Sobrevive a las 10 rondas."
+    Sobrevive a las 10 rondas.\n\nDebes matar al boss para poder ganar."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
