@@ -16,6 +16,11 @@ public class PowerUps : MonoBehaviour
     public GameObject upgradePanel;
     public Button[] buttons;           // 3 botones
     public TextMeshProUGUI[] btnLabels; // texto de cada boton
+    public Image[] btnImage; //imagen para cada mejora/texto
+
+    //imagenes
+    [SerializeField] public Sprite ImagenIForUpgrate;
+    [SerializeField] public Sprite ImagenIIForUpgrate;
 
     // Cada fila = una ronda. Cada columna = categoria del boton.
     // P = PlayerStat, B = BulletDamage, U = UnlockBullet
@@ -39,6 +44,7 @@ public class PowerUps : MonoBehaviour
     {
         public string label;
         public System.Action apply;
+        public Sprite upgrateimage;
         public int weight; // mayor = mas comun
     }
 
@@ -90,6 +96,7 @@ public class PowerUps : MonoBehaviour
 
             pendingActions[i] = opt.apply;
             btnLabels[i].text = opt.label;
+            btnImage[i].sprite = opt.upgrateimage;//para que le de la imagen
 
             int captured = i;
             buttons[i].onClick.RemoveAllListeners();
@@ -142,12 +149,14 @@ public class PowerUps : MonoBehaviour
             1 => new UpgradeOption
             {
                 label = $" Defensa +{defenseBons[tier]}",
+                upgrateimage = ImagenIForUpgrate,
                 apply = () => player.SetDefense(player.GetDefense() + defenseBons[tier]),
                 weight = weights[tier]
             },
             _ => new UpgradeOption
             {
                 label = $" Velocidad +{speedBons[tier]}",
+                upgrateimage = ImagenIIForUpgrate,
                 apply = () => player.SetSpeed(player.GetSpeed() + speedBons[tier]),
                 weight = weights[tier]
             }
