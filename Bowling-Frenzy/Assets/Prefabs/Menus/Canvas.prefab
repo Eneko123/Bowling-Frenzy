@@ -887,9 +887,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Para disparar debes presionar el click izquierdo. Con ello soltaras bolas
-    normales.\n\nSi conseguiste una bala especial, debes seleccionar la posici\xF3n
-    en la que se encuentra la bala usando 1 , 2 o 3 dependiendo de en que posicion
-    se encuentre la bala."
+    normales.\n\nPara disparar balas especiales debes presionar el click derecho.
+    Con ello podr\xE1s disparar balas especial.\n\nSi conseguiste una bala especial,
+    debes seleccionar la posici\xF3n en la que se encuentra la bala usando 1 , 2
+    o 3 dependiendo de en que posicion se encuentre la bala."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
