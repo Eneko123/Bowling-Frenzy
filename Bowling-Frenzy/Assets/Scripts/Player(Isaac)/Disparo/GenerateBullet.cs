@@ -24,6 +24,12 @@ public class GenerateBullet : MonoBehaviour
     List<GameObject> listSlowingBullets = new List<GameObject>() { };
     [SerializeField] PowerUps powerUps;
 
+    //imagenesbalas
+    [SerializeField] public Sprite ImagenIVForUpgrate;
+    [SerializeField] public Sprite ImagenVForUpgrate;
+    [SerializeField] public Sprite ImagenVIForUpgrate;
+    [SerializeField] public Sprite ImagenVIIForUpgrate;
+
     internal int currentPositionHability = 0;
     public static GenerateBullet instance;
     public Sprite ExploIcon;
@@ -244,6 +250,7 @@ public class GenerateBullet : MonoBehaviour
         return new UpgradeOption
         {
             label = option.label,
+            upgrateimage = option.upgrateimage,
             apply = option.apply,
             weight = option.weight
         };
@@ -265,6 +272,7 @@ public class GenerateBullet : MonoBehaviour
             return new UpgradeOption
             {
                 label = $" Danio normal +{Mathf.RoundToInt((powerUps.normalDmgM[tier] - 1) * 100)}%",
+                upgrateimage = ImagenIVForUpgrate,
                 apply = () =>
                 {
                     for (int i = 0; i < listBullets.Count; i++)
@@ -283,6 +291,7 @@ public class GenerateBullet : MonoBehaviour
             SpecialBullets.Explosive => new UpgradeOption
             {
                 label = $" Explosivo: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
+                upgrateimage = ImagenVForUpgrate,
                 apply = () =>
                 {
                     for (int i = 0; i < listExplosiveBullets.Count; i++)
@@ -304,6 +313,7 @@ public class GenerateBullet : MonoBehaviour
             SpecialBullets.Piercing => new UpgradeOption
             {
                 label = $" Perforante: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / cantidad de perforacion +{powerUps.pierceVals[tier]}",
+                upgrateimage = ImagenVIForUpgrate,
                 apply = () =>
                 {
                     for (int i = 0; i < listPiercingBullets.Count; i++)
@@ -317,6 +327,7 @@ public class GenerateBullet : MonoBehaviour
             SpecialBullets.Slowing => new UpgradeOption
             {
                 label = $" Ralentizadora: danio +{Mathf.RoundToInt((powerUps.specialDmgM[tier] - 1) * 100)}% / duracion +{powerUps.slowTimeVals[tier]}s",
+                upgrateimage = ImagenVIIForUpgrate,
                 apply = () =>
                 {
                     for (int i = 0; i < listSlowingBullets.Count; i++)
