@@ -8,10 +8,22 @@ public class BotonTutorial : MonoBehaviour
     static bool isFirstTimePlayed = true;
     [SerializeField] Button buttonReturnMainMenu;
     [SerializeField] Button buttonStartFirstPlaythrought;
-    UIGameplay uigameplay;
+    [SerializeField] GameObject uigameplay;
+    public static BotonTutorial instance;
     public void ReturnMenu()
     {
         SceneManager.LoadScene(MenuLevel);
+    }
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else 
+        {
+            Destroy(this);
+        }
     }
     private void OnEnable()
     {
@@ -28,10 +40,9 @@ public class BotonTutorial : MonoBehaviour
     }
     private void Start()
     {
-        uigameplay = GetComponentInParent<UIGameplay>();
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (intToBool(PlayerPrefs.GetInt("isFirstTimePlayed", 0)))
+            if (intToBool(PlayerPrefs.GetInt("isFirstTimePlayed")))
             {
                 Time.timeScale = 0.0f;
                 if (uigameplay != null)
@@ -40,7 +51,6 @@ public class BotonTutorial : MonoBehaviour
                 }
                 PlayerPrefs.SetInt("isFirstTimePlayed", boolToInt(isFirstTimePlayed));
                 this.gameObject.SetActive(isFirstTimePlayed);
-                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
@@ -58,6 +68,7 @@ public class BotonTutorial : MonoBehaviour
         {
             uigameplay.gameObject.SetActive(true);
         }
+        Cursor.lockState = CursorLockMode.Locked;
     }
     int boolToInt(bool val)
     {
@@ -73,5 +84,9 @@ public class BotonTutorial : MonoBehaviour
             return true;
         else
             return false;
+    }
+    public bool GetFirstPlayedChecker()
+    {
+        return isFirstTimePlayed;
     }
 }

@@ -19,8 +19,12 @@ public class CameraPlayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Cuando se hace click en la pantalla el ratón pasa la centro de la pantalla
-        Cursor.lockState = CursorLockMode.Locked;
+        if (!BotonTutorial.instance.GetFirstPlayedChecker())
+        {
+            //Cuando se hace click en la pantalla el ratón pasa la centro de la pantalla
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
     }
 
     public void OnLookInput(InputAction.CallbackContext contextLook)
