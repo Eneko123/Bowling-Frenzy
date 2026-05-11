@@ -110,6 +110,7 @@ public class PowerUps : MonoBehaviour
 
     void ApplyAndClose(int index)
     {
+        MainCharacter.Instance.ResetShootingState(); // Evita disparos acomulados
         pendingActions[index]?.Invoke();
         upgradePanel.SetActive(false);
         Time.timeScale = 1f;

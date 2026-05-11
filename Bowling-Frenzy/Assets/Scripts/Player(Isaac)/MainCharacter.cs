@@ -57,6 +57,11 @@ public class MainCharacter : MonoBehaviour
 
     CharacterController characterController;
 
+    // Variables para el disparo continuo
+    private bool isShootingPressed = false;
+    private bool isShootingLoopActive = false;
+    private Coroutine normalBulletReloadCoroutine = null;
+
     private void Awake()
     {
         if (Instance == null)
@@ -117,23 +122,129 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext contextShoot)
     {
+        Debug.Log($"OnShoot called - Phase: {contextShoot.phase}, isPaused: {uiGameplay.isPaused}, isUpgradeMenuOpen: {uiGameplay.isUpgradeMenuOpen}");
+
         if (!uiGameplay.isPaused && !uiGameplay.isUpgradeMenuOpen)
         {
-            if (contextShoot.performed && !isReloadingNormalBullet)
+            // Cuando se presiona el botón
+            if (contextShoot.started)
             {
-                animator.SetTrigger("isAttacking");
+                Debug.Log("Shoot STARTED");
+                isShootingPressed = true;
+                if (!isReloadingNormalBullet && !isShootingLoopActive)
+                {
+                    StartCoroutine(ShootingLoopCoroutine());
+                }
+            }
+            // Cuando se suelta el botón
+            else if (contextShoot.canceled)
+            {
+                isShootingPressed = false;
+                StopShootingLoop();
             }
         }
     }
+
+    // Corrutina que maneja el loop de disparo
+    private IEnumerator ShootingLoopCoroutine()
+    {
+        Debug.Log("ShootingLoopCoroutine STARTED");
+        isShootingLoopActive = true;
+
+        while (isShootingPressed)
+        {
+            // Solo dispara si no está recargando
+            if (!isReloadingNormalBullet)
+            {
+                animator.SetTrigger("isAttacking");
+            }
+
+            // Espera el tiempo de recarga antes del siguiente disparo
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        isShootingLoopActive = false;
+    }
+
+    // Detiene el loop de disparo
+    private void StopShootingLoop()
+    {
+        if (isShootingLoopActive)
+        {
+            StopCoroutine(ShootingLoopCoroutine());
+            isShootingLoopActive = false;
+        }
+
+        // Detiene la corrutina de recarga de balas normales
+        if (normalBulletReloadCoroutine != null)
+        {
+            StopCoroutine(normalBulletReloadCoroutine);
+            normalBulletReloadCoroutine = null;
+        }
+        isReloadingNormalBullet = false;
+    }
+
+    // Función pública para resetear el estado de disparo
+    // Evita acomulaciones de disparos
+    public void ResetShootingState()
+    {
+        Debug.Log("Resetting shooting state");
+        isShootingPressed = false;
+        StopShootingLoop();
+
+        // Detener también las corrutinas de balas especiales si están activas
+        StopAllCoroutines();
+
+        // Resetear todos los flags de recarga
+        isReloadingNormalBullet = false;
+        isReloadingExplosiveBullet = false;
+        isReloadingPiercingBullet = false;
+        isReloadingSlowingBullet = false;
+
+        isShootingLoopActive = false;
+        normalBulletReloadCoroutine = null;
+    }
+
     public void OnSpecial(InputAction.CallbackContext contextSpecial)
     {
         if (contextSpecial.performed && !isReloadingExplosiveBullet && currentSpecialBullet == SpecialBullets.Explosive
             || contextSpecial.performed && !isReloadingPiercingBullet && currentSpecialBullet == SpecialBullets.Piercing
             || contextSpecial.performed && !isReloadingSlowingBullet && currentSpecialBullet == SpecialBullets.Slowing)
         {
+            // Guarda si el jugador estaba disparando
+            bool wasShootingPressed = isShootingPressed;
+
+            // Detiene completamente el loop de disparo normal
+            isShootingPressed = false;
+            StopShootingLoop();
+
             animator.SetTrigger("IsSpecial");
+
+            // Si el jugador seguía manteniendo el clic izquierdo, reinicia el loop después del disparo especial
+            if (wasShootingPressed)
+            {
+                StartCoroutine(ResumeShootingAfterSpecial());
+            }
         }
     }
+
+    // Corrutina para reanudar el disparo normal después del disparo especial
+    private IEnumerator ResumeShootingAfterSpecial()
+    {
+        // Espera un frame para que la animación especial se active
+        yield return null;
+
+        // Espera a que termine la animación especial (ajustar este tiempo según la duración de la animación)
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+
+        // Verifica que el jugador realmente siga presionando el botón (no solo que la variable esté en true)
+        if (isShootingPressed && !isReloadingNormalBullet && !isShootingLoopActive)
+        {
+            StartCoroutine(ShootingLoopCoroutine());
+        }
+    }
+
     public void OnChangeSpecial(InputAction.CallbackContext contextSpecial)
     {
         if (contextSpecial.performed)
@@ -170,15 +281,18 @@ public class MainCharacter : MonoBehaviour
             Debug.Log(currentHability.currentPositionHability);
         }
     }
+    IEnumerator DelayForNormalBullet(float delay)
+    {
+        isReloadingNormalBullet = true;
+        yield return new WaitForSeconds(delay);
+        isReloadingNormalBullet = false;
+        normalBulletReloadCoroutine = null;
+    }
+
     IEnumerator DelayForBullets(float delay)
     {
         switch (typeOfBullet)
         {
-            case 0:
-                isReloadingNormalBullet = true;
-                yield return new WaitForSeconds(delay);
-                isReloadingNormalBullet = false;
-                break;
             case 1:
                 isReloadingExplosiveBullet = true;
                 yield return new WaitForSeconds(delay);
@@ -198,6 +312,13 @@ public class MainCharacter : MonoBehaviour
     }
     private void Update()
     {
+        // Si el juego se pausa o se abre el menú de mejoras, detener el disparo
+        if ((uiGameplay.isPaused || uiGameplay.isUpgradeMenuOpen) && isShootingPressed)
+        {
+            isShootingPressed = false;
+            StopShootingLoop();
+        }
+
         if (_movementInputPressed)
         {
             //Se mueve el jugador en la direccion dada a la velocidad dada
@@ -252,10 +373,21 @@ public class MainCharacter : MonoBehaviour
 
     void ThrowNormalBall()
     {
+        // Solo dispara si no está recargando
+        if (isReloadingNormalBullet)
+            return;
+
         GameObject b = GenerateBullet.instance.GetBullets();
         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+
+        // Detener la corrutina anterior si existe
+        if (normalBulletReloadCoroutine != null)
+        {
+            StopCoroutine(normalBulletReloadCoroutine);
+        }
+
         typeOfBullet = 0;
-        StartCoroutine(DelayForBullets(0.5f));
+        normalBulletReloadCoroutine = StartCoroutine(DelayForNormalBullet(0.5f));
     }
     void ThrowSpecialBall()
     {

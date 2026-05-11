@@ -135,6 +135,8 @@ public class UIGameplay : MonoBehaviour
         if (pausePanel) pausePanel.SetActive(true);
         if (hudPanel) hudPanel.SetActive(false);
 
+        MainCharacter.Instance.ResetShootingState(); // Evita disparos acomulados
+
         Cursor.lockState = CursorLockMode.None;
     }
 
