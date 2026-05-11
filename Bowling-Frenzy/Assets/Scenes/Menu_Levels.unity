@@ -279,7 +279,7 @@ MonoBehaviour:
   hardButton: {fileID: 1252673255}
   level1Button: {fileID: 52728280}
   level2Button: {fileID: 1610458124}
-  selectedDifficultyText: {fileID: 0}
+  selectedDifficultyText: {fileID: 2044639842}
   difButton: {fileID: 841471075}
   backButton: {fileID: 253728226}
 --- !u!114 &112810570
