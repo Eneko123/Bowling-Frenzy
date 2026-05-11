@@ -22,7 +22,7 @@ public class UILevelSelect : MonoBehaviour
     [SerializeField] private TextMeshProUGUI selectedDifficultyText;
     [SerializeField] private Button difButton;
     [SerializeField] private Button backButton;
-    [SerializeField] private Button confirmButton;
+    //[SerializeField] private Button confirmButton;
 
     private Difficulty currentDifficulty = Difficulty.Normal;
     private string selectedLevelName = "";
@@ -57,19 +57,16 @@ public class UILevelSelect : MonoBehaviour
         // Navigation buttons
         if (difButton) difButton.onClick.AddListener(DificultyElection);
         if (backButton) backButton.onClick.AddListener(OnBackClicked);
-        if (confirmButton)
-        {
-            confirmButton.onClick.AddListener(OnConfirmClicked);
-            confirmButton.interactable = false; // Desactivado hasta que se seleccione un nivel
-        }
+        //if (confirmButton)
+        //{
+        //    confirmButton.onClick.AddListener(OnConfirmClicked);
+        //    confirmButton.interactable = false; // Desactivado hasta que se seleccione un nivel
+        //}
     }
 
     void SetupDifficultyButtons()
     {
         difficultyButtons = new Button[] { easyButton, normalButton, hardButton };
-
-        // Establecer dificultad Normal por defecto
-        OnDifficultySelected(Difficulty.Normal);
     }
 
     void UpdateLevelAvailability()
@@ -134,9 +131,11 @@ public class UILevelSelect : MonoBehaviour
         selectedLevelName = levelName;
 
         // Activar boton de confirmar
-        if (confirmButton) confirmButton.interactable = true;
+        //if (confirmButton) confirmButton.interactable = true;
 
         Debug.Log($"Level selected: {levelName}");
+
+        OnConfirmClicked();
     }
 
    
@@ -151,7 +150,7 @@ public class UILevelSelect : MonoBehaviour
             levelSelectionPanel.SetActive(false);
             difficultyPanel.SetActive(true);
             selectedLevelName = "";
-            if (confirmButton) confirmButton.interactable = false;
+            //if (confirmButton) confirmButton.interactable = false;
         }
         // Si estamos en dificultad, volver al menu principal
         else
