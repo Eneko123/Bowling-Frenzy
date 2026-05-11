@@ -22,6 +22,17 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button quitButton;
 
+    [Header("Iconospausa")]
+    [SerializeField] private TextMeshProUGUI ComonBall;
+    [SerializeField] private TextMeshProUGUI BurnBall;
+    [SerializeField] private GameObject BlackBB;
+    [SerializeField] private TextMeshProUGUI FreezeBall;
+    [SerializeField] private GameObject BlackFB;
+    [SerializeField] private TextMeshProUGUI DrillBall;
+    [SerializeField] private GameObject BlackDB;
+    [SerializeField] private TextMeshProUGUI Defense;
+    [SerializeField] private TextMeshProUGUI Speed;
+
     internal bool isPaused = false;
     internal bool isUpgradeMenuOpen = false;
 
