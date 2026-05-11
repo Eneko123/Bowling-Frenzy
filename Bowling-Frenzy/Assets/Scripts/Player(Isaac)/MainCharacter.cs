@@ -195,12 +195,6 @@ public class MainCharacter : MonoBehaviour
         // Detener también las corrutinas de balas especiales si están activas
         StopAllCoroutines();
 
-        // Resetear todos los flags de recarga
-        isReloadingNormalBullet = false;
-        isReloadingExplosiveBullet = false;
-        isReloadingPiercingBullet = false;
-        isReloadingSlowingBullet = false;
-
         isShootingLoopActive = false;
         normalBulletReloadCoroutine = null;
     }
@@ -217,6 +211,7 @@ public class MainCharacter : MonoBehaviour
             // Detiene completamente el loop de disparo normal
             isShootingPressed = false;
             StopShootingLoop();
+
 
             animator.SetTrigger("IsSpecial");
 
