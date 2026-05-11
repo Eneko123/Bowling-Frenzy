@@ -94,7 +94,7 @@ public class EnemyBase : MonoBehaviour
         if (Combos.Instance != null && !isBarredora)
             Combos.Instance.IncrementCombo();
         //Debug.Log(health);
-        Dead();
+        Dead(isBarredora);
     }
     protected void Movemetn()
     {
@@ -111,7 +111,7 @@ public class EnemyBase : MonoBehaviour
     {
         return agent.speed;
     }
-    protected virtual void Dead()
+    protected virtual void Dead(bool isBarredoraOn)
     {
         if (health <= 0)
         {
@@ -119,6 +119,9 @@ public class EnemyBase : MonoBehaviour
             agent.enabled = false;
             col.enabled = false;
             animator.SetTrigger("Dead");
+        }
+        if (health <= 0 && !isBarredoraOn)
+        {
             GivePoints(points);
         }
     }
