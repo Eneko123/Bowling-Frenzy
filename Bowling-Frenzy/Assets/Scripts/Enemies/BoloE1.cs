@@ -10,13 +10,7 @@ public class BoloE1 : EnemyBase
         points = 100;
         damage = 10f;
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent(out MainCharacter player))
-        {
-            player.damageHealthPlayer(damage);
-        }
-    }
+    
 
     //protected override void Dead()
     //{

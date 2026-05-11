@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -10,6 +10,9 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI healthText;
+
+    [SerializeField] private Image bigJumpFillBar;          // Imagen que se rellena
+    [SerializeField] private TextMeshProUGUI bigJumpText;  // Texto que muestra "X.Xs" o "¡LISTO!"
 
     [Header("Panels")]
     [SerializeField] private GameObject hudPanel;
@@ -36,6 +39,7 @@ public class UIGameplay : MonoBehaviour
     internal bool isPaused = false;
     internal bool isUpgradeMenuOpen = false;
 
+    private MainCharacter player;
     public static UIGameplay uI;
     Combos comboManager;
     private void Awake()
@@ -51,6 +55,7 @@ public class UIGameplay : MonoBehaviour
     }
     void Start()
     {
+        player = MainCharacter.Instance;
         InitializePanels();
         SetupButtonListeners();
         UpdateRoundText();
@@ -72,6 +77,7 @@ public class UIGameplay : MonoBehaviour
                 PauseGame();
             }
         }
+        UpdateBigJumpCooldown();
     }
 
     void InitializePanels()
@@ -131,6 +137,39 @@ public class UIGameplay : MonoBehaviour
             GameManager.Instance.playerScore += (points * comboManager.GetCurrentCombo());
             Debug.Log(GameManager.Instance.playerScore);
             UpdateScoreText();
+        }
+    }
+
+    void UpdateBigJumpCooldown()
+    {
+        bool isReady = player.CanUseBigJump();
+        float cooldownRemaining = player.GetBigJumpCooldownRemaining();
+        float cooldownTotal = player.GetBigJumpCooldownTotal();
+
+        if (bigJumpFillBar != null && cooldownTotal > 0)
+        {
+            if (isReady)
+            {
+                bigJumpFillBar.fillAmount = 1f; // Barra completamente llena
+            }
+            else
+            {
+                // Progreso: 0 (vacío) → 1 (lleno)
+                float progress = 1f - (cooldownRemaining / cooldownTotal);
+                bigJumpFillBar.fillAmount = Mathf.Clamp01(progress); // Asignar, no restar
+            }
+        }
+
+        if (bigJumpText != null)
+        {
+            if (isReady)
+            {
+                bigJumpText.text = "LISTO";
+            }
+            else
+            {
+                bigJumpText.text = cooldownRemaining.ToString("F1") + "s";
+            }
         }
     }
     #endregion

@@ -21,9 +21,10 @@ public class EnemyBase : MonoBehaviour
     private SkinnedMeshRenderer meshRenderer;
     [SerializeField] private Material pulseMaterial;  
     private Collider col;
-    private Coroutine pulseCoroutine;
+    protected Coroutine pulseCoroutine;
     private Color originalColor;
     private Material[] materials;
+    float damageCooldown = 0;
     protected void Awake()
     {   
         player = MainCharacter.Instance.transform;
@@ -137,7 +138,7 @@ public class EnemyBase : MonoBehaviour
         SetEnemySpeed(originalSpeed);
     }
 
-    IEnumerator ColorPulse()
+    protected IEnumerator ColorPulse()
     {
         materials[0].color = pulseMaterial.color; // Cambia a rojo para indicar que está ralentizado
         yield return new WaitForSeconds(0.2f);
@@ -176,5 +177,47 @@ public class EnemyBase : MonoBehaviour
     public void SetSlowTime(float newSlowTime)
     {
         slowTime = newSlowTime;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        {
+            // Solo hacer daño si el cooldown ha terminado
+            if (damageCooldown <= 0)
+            {
+                player.damageHealthPlayer(damage);
+                damageCooldown = 1.5f; // Reiniciar cooldown
+                Debug.Log("Daño aplicado en OnCollisionEnter");
+            }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        {
+            // Reducir el cooldown constantemente
+            damageCooldown -= Time.deltaTime;
+
+            // Hacer daño solo cuando el cooldown llega a 0 o menos
+            if (damageCooldown <= 0)
+            {
+                player.damageHealthPlayer(damage);
+                damageCooldown = 1.5f; // Reiniciar cooldown
+                Debug.Log("Daño aplicado en OnCollisionStay");
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        {
+            // Resetear el cooldown cuando deja de tocar al jugador
+            // Esto hace que el próximo contacto haga daño inmediato
+            damageCooldown = 0f;
+            Debug.Log("Jugador salió de colisión - cooldown reseteado");
+        }
     }
 }

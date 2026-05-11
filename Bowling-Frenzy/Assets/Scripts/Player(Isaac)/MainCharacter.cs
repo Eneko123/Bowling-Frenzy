@@ -24,7 +24,11 @@ public class MainCharacter : MonoBehaviour
     //Sirve para controlar el salto
     [SerializeField] Vector3 velocity;
     //Fuerza con la que se quiere que el jugador salte
-    [SerializeField] float jumpForce = 4f;
+    [SerializeField] float normalJumpForce = 1.6f;      // Salto pequeño
+    [SerializeField] float bigJumpForce = 3.2f;         // Salto grande
+    [SerializeField] float bigJumpCooldown = 5f;      // Tiempo entre saltos grandes
+    private float bigJumpTimer = 0f;                  // Timer interno
+    private bool canUseBigJump = true;
     //La gravedad para hacer que el jugador caiga
     [SerializeField] float gravity = -9.8f;
     public CambiaArmasVisualizer changeWeapon;
@@ -103,17 +107,37 @@ public class MainCharacter : MonoBehaviour
     //Se llamara al evento en Unity asociado con la accion de saltar
     public void OnJumpInput(InputAction.CallbackContext contextJump)
     {
-        //Si el jugador ha realizado la accion y se encuentra en el suelo
+        // Si el jugador realiza la acción y está en el suelo
         if (contextJump.performed && controller.isGrounded)
         {
-            //Empezara una cuenta para saber si el jugador quiere saltar más o menos
             jumpTimeStamp = Time.time;
-            //Ayuda a establecer la máxima altura a la que el jugador quiere llegar
-            velocity.y = MathF.Sqrt(jumpForce * -3 * gravity);
+
+            // Determinar qué tipo de salto usar
+            float jumpForceToUse;
+
+            if (canUseBigJump)
+            {
+                // Usar salto grande
+                jumpForceToUse = bigJumpForce;
+                canUseBigJump = false;
+                bigJumpTimer = bigJumpCooldown; // Iniciar cooldown
+
+                // Feedback para el jugador
+                Debug.Log("¡SALTO GRANDE usado! Próximo disponible en " + bigJumpCooldown + "s");
+            }
+            else
+            {
+                // Usar salto normal (pequeño)
+                jumpForceToUse = normalJumpForce;
+                Debug.Log("Salto normal");
+            }
+
+            // Aplicar la fuerza de salto elegida
+            velocity.y = MathF.Sqrt(jumpForceToUse * -3 * gravity);
         }
         else if (contextJump.canceled)
         {
-            //Si decide no querer saltar al maximo se frenara el salto y bajara el jugador
+            // Si decide no querer saltar al máximo se frenará el salto
             if (Time.time - jumpTimeStamp < jumpTime)
             {
                 velocity.y = 0;
@@ -313,7 +337,15 @@ public class MainCharacter : MonoBehaviour
             isShootingPressed = false;
             StopShootingLoop();
         }
-
+        if (!canUseBigJump)
+        {
+            bigJumpTimer -= Time.deltaTime;
+            if (bigJumpTimer <= 0f)
+            {
+                canUseBigJump = true;
+                Debug.Log("¡SALTO GRANDE DISPONIBLE!");
+            }
+        }
         if (_movementInputPressed)
         {
             //Se mueve el jugador en la direccion dada a la velocidad dada
@@ -355,16 +387,16 @@ public class MainCharacter : MonoBehaviour
         playerHealth -= Mathf.Round(damage * (1 - defense));
         Debug.Log("Player health decreased");
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
-        StartCoroutine(InvencibilityCoroutine());
+        //StartCoroutine(InvencibilityCoroutine());
         Dead();
     }
 
-    IEnumerator InvencibilityCoroutine()
-    {
-        characterController.detectCollisions = false;
-        yield return new WaitForSeconds(1.5f);
-        characterController.detectCollisions = true;
-    }
+    //IEnumerator InvencibilityCoroutine()
+    //{
+    //    characterController.detectCollisions = false;
+    //    yield return new WaitForSeconds(1.5f);
+    //    characterController.detectCollisions = true;
+    //}
 
     void ThrowNormalBall()
     {
@@ -449,6 +481,11 @@ public class MainCharacter : MonoBehaviour
     public float GetCurrentHealth() { return playerHealth; }
     public float GetDefense() { return defense; }
     public float GetSpeed() { return speed; }
+
+    public bool CanUseBigJump() { return canUseBigJump; }
+    public float GetBigJumpCooldownRemaining() { return bigJumpTimer; }
+    public float GetBigJumpCooldownTotal() { return bigJumpCooldown; }
+
 
     public void SetHealthMax(float healtUp) { MaxHealth = healtUp; }
     public void SetCurrentHealth(float currentHealtUp) { playerHealth = currentHealtUp; }

@@ -27,7 +27,7 @@ public class BoloEBoos : EnemyBase
 
     [SerializeField] RoundsManager roundsManager;
 
-    void Start()
+    new void Start()
     {
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
@@ -91,6 +91,15 @@ public class BoloEBoos : EnemyBase
     public override void ReceiveDamage(float damage, bool isBarredora)
     {
         health -= damage;
+
+        if (pulseCoroutine != null)
+        {
+            StopCoroutine(pulseCoroutine);
+        }
+        else
+        {
+            pulseCoroutine = StartCoroutine(ColorPulse());
+        }
 
         if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
         {
