@@ -119,6 +119,7 @@ public class EnemyBase : MonoBehaviour
             agent.enabled = false;
             col.enabled = false;
             animator.SetTrigger("Dead");
+            materials[0].color = originalColor;
         }
         if (health <= 0 && !isBarredoraOn)
         {
