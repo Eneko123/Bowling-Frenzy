@@ -2852,61 +2852,61 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 60
+  - timeMax: 1
     E1: 20
     E2: 0
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 30
     E2: 0
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 50
     E2: 10
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 20
     E2: 10
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 25
     E2: 15
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 30
     E2: 20
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 20
     E2: 10
     E3: 5
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 30
     E2: 20
     E3: 10
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 35
     E2: 25
     E3: 15
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 15
     E2: 10
     E3: 5

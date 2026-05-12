@@ -143,7 +143,6 @@ public class UIGameplay : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            Debug.Log(comboManager.GetCurrentCombo());
             GameManager.Instance.playerScore += (points * comboManager.GetCurrentCombo());
             Debug.Log(GameManager.Instance.playerScore);
             UpdateScoreText();
