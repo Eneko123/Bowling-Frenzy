@@ -150,13 +150,16 @@ public class UIGameplay : MonoBehaviour
         {
             if (isReady)
             {
-                bigJumpFillBar.fillAmount = 1f; // Barra completamente llena
+                // Completamente listo
+                bigJumpFillBar.fillAmount = 1f;
             }
             else
             {
-                // Progreso: 0 (vacío) → 1 (lleno)
+                // En cooldown: el timer va de cooldownTotal → 0
+                // El fill va de 0 → 1
+                // Invertimos: cuando cooldownRemaining es alto, fill es bajo
                 float progress = 1f - (cooldownRemaining / cooldownTotal);
-                bigJumpFillBar.fillAmount = Mathf.Clamp01(progress); // Asignar, no restar
+                bigJumpFillBar.fillAmount = Mathf.Clamp01(progress);
             }
         }
 

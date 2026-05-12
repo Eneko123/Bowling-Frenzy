@@ -22,8 +22,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Material pulseMaterial;  
     private Collider col;
     protected Coroutine pulseCoroutine;
-    private Color originalColor;
-    private Material[] materials;
+    protected Color originalColor;
+    protected Material[] materials;
     float damageCooldown = 0;
     protected void Awake()
     {   
@@ -120,7 +120,6 @@ public class EnemyBase : MonoBehaviour
             agent.enabled = false;
             col.enabled = false;
             animator.SetTrigger("Dead");
-            materials[0].color = originalColor;
         }
         if (health <= 0 && !isBarredoraOn)
         {
@@ -160,6 +159,7 @@ public class EnemyBase : MonoBehaviour
     // Desactiva al enemigo
     void DeadAnim()
     {
+        materials[0].color = originalColor;
         health = maxHealth;
         currentDamage = damage;
         agent.enabled = true;

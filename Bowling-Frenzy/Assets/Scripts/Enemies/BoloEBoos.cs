@@ -178,6 +178,7 @@ public class BoloEBoos : EnemyBase
     // Desactiva al enemigo
     void DeadAnim()
     {
+        materials[0].color = originalColor;
         this.gameObject.SetActive(false);
         UIGameplay.uI.UpdateMaxScore();
         GameManager.Instance.winornot = true;
