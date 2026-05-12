@@ -165,6 +165,9 @@ public class EnemyBase : MonoBehaviour
     void StopSpeedIfIsSweeperActive()
     { 
         float currentSpeed = GetEnemySpeed();
+
+        if (Sweeper.instance == null) { return; } // Para que deje de saltar errores
+
         if (Sweeper.instance.gameObject.activeSelf && Sweeper.instance != null)
         {
             SetEnemySpeed(0f);
