@@ -121,15 +121,11 @@ public class MainCharacter : MonoBehaviour
                 jumpForceToUse = bigJumpForce;
                 canUseBigJump = false;
                 bigJumpTimer = bigJumpCooldown; // Iniciar cooldown
-
-                // Feedback para el jugador
-                Debug.Log("¡SALTO GRANDE usado! Próximo disponible en " + bigJumpCooldown + "s");
             }
             else
             {
-                // Usar salto normal (pequeño)
+                // Usar salto normal
                 jumpForceToUse = normalJumpForce;
-                Debug.Log("Salto normal");
             }
 
             // Aplicar la fuerza de salto elegida
@@ -146,14 +142,12 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext contextShoot)
     {
-        Debug.Log($"OnShoot called - Phase: {contextShoot.phase}, isPaused: {uiGameplay.isPaused}, isUpgradeMenuOpen: {uiGameplay.isUpgradeMenuOpen}");
 
         if (!uiGameplay.isPaused && !uiGameplay.isUpgradeMenuOpen)
         {
             // Cuando se presiona el botón
             if (contextShoot.started)
             {
-                Debug.Log("Shoot STARTED");
                 isShootingPressed = true;
                 if (!isReloadingNormalBullet && !isShootingLoopActive)
                 {
@@ -172,7 +166,6 @@ public class MainCharacter : MonoBehaviour
     // Corrutina que maneja el loop de disparo
     private IEnumerator ShootingLoopCoroutine()
     {
-        Debug.Log("ShootingLoopCoroutine STARTED");
         isShootingLoopActive = true;
 
         while (isShootingPressed)
@@ -212,7 +205,6 @@ public class MainCharacter : MonoBehaviour
     // Evita acomulaciones de disparos
     public void ResetShootingState()
     {
-        Debug.Log("Resetting shooting state");
         isShootingPressed = false;
         StopShootingLoop();
 

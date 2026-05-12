@@ -5,7 +5,17 @@ public class Sweeper : MonoBehaviour
     [SerializeField] PowerUps powerUps;
     [SerializeField] RoundsManager roundsManager;
 
+    public static Sweeper instance;
+
     private int damage = 99999;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

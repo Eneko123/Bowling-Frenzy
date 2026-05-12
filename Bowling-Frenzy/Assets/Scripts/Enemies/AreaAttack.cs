@@ -6,6 +6,19 @@ public class AreaAttack : MonoBehaviour
     public GameObject atack;
 
     [SerializeField] float damage;
+
+    private void OnEnable()
+    {
+        jump.transform.SetParent(null);
+        atack.transform.SetParent(null);
+    }
+
+    private void OnDisable()
+    {
+        jump.transform.SetParent(GetComponentInParent<BoloEBoos>().transform); 
+        atack.transform.SetParent(GetComponentInParent<BoloEBoos>().transform);
+    }
+
     void StopAttacks()
     {
         jump.SetActive(false);

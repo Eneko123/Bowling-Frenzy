@@ -143,7 +143,6 @@ public class UIGameplay : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            Debug.Log(comboManager.GetCurrentCombo());
             GameManager.Instance.playerScore += (points * comboManager.GetCurrentCombo());
             Debug.Log(GameManager.Instance.playerScore);
             UpdateScoreText();
@@ -273,6 +272,20 @@ public class UIGameplay : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    void ShowPlayerSatats()
+    {
+        // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
+
+        //ComonBall.text =;
+        //BurnBall.text =;
+        //FreezeBall.text =;
+        //DrillBall.text =;
+
+        Defense.text = MainCharacter.Instance.GetDefense().ToString();
+        Speed.text = MainCharacter.Instance.GetSpeed().ToString();
+    }
+
     #endregion
 
     #region Upgrade Menu Integration

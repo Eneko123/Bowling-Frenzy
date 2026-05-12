@@ -25,14 +25,30 @@ public class BoloEBoos : EnemyBase
     private readonly float playerDistance = 15;
 
     private bool atacked = false;
+    private bool bossDead;
 
     [SerializeField] RoundsManager roundsManager;
+
+    public static BoloEBoos Instance { get; private set; }
 
     new void Start()
     {
         base.Start();
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
+    }
+
+    new void Awake()
+    {
+        base.Awake();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     new void Update()
@@ -172,7 +188,7 @@ public class BoloEBoos : EnemyBase
             // Inmoviliza al enemigo y activa la animacion de muerte
             agent.speed = 0;
             animator.SetTrigger("Dead");
-            bossIsDead = true;
+            bossDead = true;
         }
         if (health <= 0 && !isBarredoraOn)
         {
@@ -181,6 +197,7 @@ public class BoloEBoos : EnemyBase
     }
 
     public float GetBossHealth() { return health; }
+    public bool GetBossIsDead() { return bossDead; }
 
     // Funciones de animaciones
     // Desactiva al enemigo

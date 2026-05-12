@@ -25,10 +25,10 @@ public class EnemyBase : MonoBehaviour
     protected Color originalColor;
     protected Material[] materials;
     float damageCooldown = 0;
-    protected bool bossIsDead = false;
     protected void Awake()
     {   
         player = MainCharacter.Instance.transform;
+
         // asignamos los componentes necesarios
         if (agent == null) { agent = GetComponent<NavMeshAgent>(); }
         if (animator == null) { animator = GetComponent<Animator>(); }
@@ -108,10 +108,12 @@ public class EnemyBase : MonoBehaviour
             // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
             agent.SetDestination(player.position);
         }
-        if (bossIsDead)
+        if (BoloEBoos.Instance != null && BoloEBoos.Instance.GetBossIsDead())
         {
-            health = -1f;
+            ReceiveDamage(99999, true);
         }
+
+        StopSpeedIfIsSweeperActive();
     }
     internal float GetEnemySpeed()
     {
@@ -158,6 +160,18 @@ public class EnemyBase : MonoBehaviour
             SetEnemySpeed(originalSpeed / 2);
             isSlowing = true;
             StartCoroutine(TimerSlow());
+        }
+    }
+    void StopSpeedIfIsSweeperActive()
+    { 
+        float currentSpeed = GetEnemySpeed();
+        if (Sweeper.instance.gameObject.activeSelf && Sweeper.instance != null)
+        {
+            SetEnemySpeed(0f);
+        }
+        else if (!Sweeper.instance.gameObject.activeSelf && Sweeper.instance != null)
+        {
+            SetEnemySpeed(currentSpeed);
         }
     }
 
