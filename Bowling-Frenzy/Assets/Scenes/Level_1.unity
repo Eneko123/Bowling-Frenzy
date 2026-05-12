@@ -2387,7 +2387,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5502976217703375900, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2852,61 +2853,61 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 1
+  - timeMax: 60
     E1: 20
     E2: 0
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 30
     E2: 0
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 50
     E2: 10
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 20
     E2: 10
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 25
     E2: 15
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 30
     E2: 20
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 20
     E2: 10
     E3: 5
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 30
     E2: 20
     E3: 10
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 35
     E2: 25
     E3: 15
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 60
     E1: 15
     E2: 10
     E3: 5
