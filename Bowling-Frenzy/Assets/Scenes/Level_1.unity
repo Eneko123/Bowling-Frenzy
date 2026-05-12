@@ -2852,19 +2852,19 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 1
+  - timeMax: 10
     E1: 20
     E2: 0
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 10
     E1: 30
     E2: 0
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 1
+  - timeMax: 5
     E1: 50
     E2: 10
     E3: 0

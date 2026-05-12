@@ -112,6 +112,8 @@ public class EnemyBase : MonoBehaviour
         {
             ReceiveDamage(99999, true);
         }
+
+        StopSpeedIfIsSweeperActive();
     }
     internal float GetEnemySpeed()
     {
@@ -158,6 +160,18 @@ public class EnemyBase : MonoBehaviour
             SetEnemySpeed(originalSpeed / 2);
             isSlowing = true;
             StartCoroutine(TimerSlow());
+        }
+    }
+    void StopSpeedIfIsSweeperActive()
+    { 
+        float currentSpeed = GetEnemySpeed();
+        if (Sweeper.instance.gameObject.activeSelf)
+        {
+            SetEnemySpeed(0f);
+        }
+        else if (!Sweeper.instance.gameObject.activeSelf)
+        {
+            SetEnemySpeed(currentSpeed);
         }
     }
 
