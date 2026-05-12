@@ -15,11 +15,6 @@ public class Sweeper : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            Destroy(instance);
-        }
-        
     }
 
     private void OnTriggerEnter(Collider other)
