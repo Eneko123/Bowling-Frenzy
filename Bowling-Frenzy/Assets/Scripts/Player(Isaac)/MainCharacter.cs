@@ -387,16 +387,16 @@ public class MainCharacter : MonoBehaviour
         playerHealth -= Mathf.Round(damage * (1 - defense));
         Debug.Log("Player health decreased");
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
-        //StartCoroutine(InvencibilityCoroutine());
+        StartCoroutine(InvencibilityCoroutine());
         Dead();
     }
 
-    //IEnumerator InvencibilityCoroutine()
-    //{
-    //    characterController.detectCollisions = false;
-    //    yield return new WaitForSeconds(1.5f);
-    //    characterController.detectCollisions = true;
-    //}
+    IEnumerator InvencibilityCoroutine()
+    {
+        characterController.detectCollisions = false;
+        yield return new WaitForSeconds(1.5f);
+        characterController.detectCollisions = true;
+    }
 
     void ThrowNormalBall()
     {

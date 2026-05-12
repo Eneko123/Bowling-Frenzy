@@ -25,6 +25,7 @@ public class EnemyBase : MonoBehaviour
     protected Color originalColor;
     protected Material[] materials;
     float damageCooldown = 0;
+    protected bool bossIsDead = false;
     protected void Awake()
     {   
         player = MainCharacter.Instance.transform;
@@ -106,6 +107,10 @@ public class EnemyBase : MonoBehaviour
         {
             // movimiento basico del enemigo, se dirige hacia el jugador gracias al NavMeshAgent
             agent.SetDestination(player.position);
+        }
+        if (bossIsDead)
+        {
+            health = -1f;
         }
     }
     internal float GetEnemySpeed()
@@ -210,14 +215,14 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent(out MainCharacter player))
-        {
-            // Resetear el cooldown cuando deja de tocar al jugador
-            // Esto hace que el próximo contacto haga daño inmediato
-            damageCooldown = 0f;
-            Debug.Log("Jugador salió de colisión - cooldown reseteado");
-        }
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.TryGetComponent(out MainCharacter player))
+    //    {
+    //        // Resetear el cooldown cuando deja de tocar al jugador
+    //        // Esto hace que el próximo contacto haga daño inmediato
+    //        damageCooldown = 0f;
+    //        Debug.Log("Jugador salió de colisión - cooldown reseteado");
+    //    }
+    //}
 }

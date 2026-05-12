@@ -14,6 +14,10 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private Image bigJumpFillBar;          // Imagen que se rellena
     [SerializeField] private TextMeshProUGUI bigJumpText;  // Texto que muestra "X.Xs" o "¡LISTO!"
 
+    [SerializeField] private GameObject bossHealthIndicator;     // Almacena todo lo visualmente relacionado con la vida del boss
+    [SerializeField] private Image bigBowlingBowlBossHealthBar;     // Imagen que muestra la vida del boss
+    [SerializeField] private BoloEBoos boos;
+
     [Header("Panels")]
     [SerializeField] private GameObject hudPanel;
     [SerializeField] private GameObject pausePanel;
@@ -78,6 +82,12 @@ public class UIGameplay : MonoBehaviour
             }
         }
         UpdateBigJumpCooldown();
+
+        if (RoundsManager.instance.GetFinalRound())
+        {
+            bossHealthIndicator.SetActive(true);
+            UpdateBossHealthBar();
+        }
     }
 
     void InitializePanels()
@@ -174,6 +184,27 @@ public class UIGameplay : MonoBehaviour
                 bigJumpText.text = cooldownRemaining.ToString("F1") + "s";
             }
         }
+    }
+
+    void UpdateBossHealthBar()
+    {
+        float bossHeath = boos.GetBossHealth();
+        float bossHealthMax = 0;
+        if (GameManager.Instance.difficulty == Difficulty.Easy)
+        {
+            bossHealthMax = 1000f;
+        } 
+        else if (GameManager.Instance.difficulty == Difficulty.Normal)
+        {
+            bossHealthMax = 1250f;
+        }
+        else if (GameManager.Instance.difficulty == Difficulty.Hard)
+        {
+            bossHealthMax = 1500f;
+        }
+
+        float progres = (bossHeath / bossHealthMax);
+        bigBowlingBowlBossHealthBar.fillAmount = progres;
     }
     #endregion
 

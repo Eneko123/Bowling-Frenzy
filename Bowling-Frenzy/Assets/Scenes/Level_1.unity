@@ -380,6 +380,9 @@ MonoBehaviour:
   healthText: {fileID: 174185786}
   bigJumpFillBar: {fileID: 1184734096}
   bigJumpText: {fileID: 1355790144}
+  bossHealthIndicator: {fileID: 511228062}
+  bigBowlingBowlBossHealthBar: {fileID: 511228061}
+  boos: {fileID: 2081428954}
   hudPanel: {fileID: 174185784}
   pausePanel: {fileID: 1238506595}
   upgradesPanel: {fileID: 1333906360}
@@ -940,16 +943,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7171018526219594344, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7171018526219594344, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e012b4b2886ed1044a35c702f1ae730f, type: 3}
-    - target: {fileID: 7171018526219594344, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
-      propertyPath: m_FillMethod
+    - target: {fileID: 4360992098993933831, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7840832038737001221, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
@@ -1540,6 +1535,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483553703}
   m_CullTransparentMesh: 1
+--- !u!114 &511228061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7846878960320956151, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+  m_PrefabInstance: {fileID: 174185783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &511228062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4360992098993933831, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+  m_PrefabInstance: {fileID: 174185783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &552227603 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3759802109234320479, guid: 15ad93012b350204e9f25e0da01ac5a8, type: 3}
@@ -6638,6 +6649,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3630691104249013946, guid: 65f12829ad4732540a518324aeac501a, type: 3}
   m_PrefabInstance: {fileID: 2081428948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2081428954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4985992440342056084, guid: 65f12829ad4732540a518324aeac501a, type: 3}
+  m_PrefabInstance: {fileID: 2081428948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081428949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabca747231017641b29d473b33c5712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

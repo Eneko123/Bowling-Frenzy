@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,6 +30,7 @@ public class BoloEBoos : EnemyBase
 
     new void Start()
     {
+        base.Start();
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
     }
@@ -124,25 +126,28 @@ public class BoloEBoos : EnemyBase
 
     void Atack()
     {
-        // Patron de ataque: Si le jugador esta a playerDistance unidades, el cooldown ha llegado a zero y dependiendo del bool. El enemigo ataca o salta
-        if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && Cooldown <= 0 && !atacked)
+        if (health > 0)
         {
-            // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el salto
-            animator.SetTrigger("Atack");
-            Cooldown = CurrentState.CooldownMax;
-            atacked = true;
-        }
-        else if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && Cooldown <= 0 && atacked)
-        {
-            // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el ataque
-            animator.SetTrigger("Jump");
-            Cooldown = CurrentState.CooldownMax;
-            atacked = false;
-        }
-        else
-        {
-            // Debug.Log(Vector3.Distance(transform.position, player.transform.position));
-            Cooldown -= Time.deltaTime;
+            // Patron de ataque: Si le jugador esta a playerDistance unidades, el cooldown ha llegado a zero y dependiendo del bool. El enemigo ataca o salta
+            if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && Cooldown <= 0 && !atacked)
+            {
+                // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el salto
+                animator.SetTrigger("Atack");
+                Cooldown = CurrentState.CooldownMax;
+                atacked = true;
+            }
+            else if (Vector3.Distance(transform.position, player.transform.position) <= playerDistance && Cooldown <= 0 && atacked)
+            {
+                // Activamos animacion, reseteamos el cooldown y cambiamos el bool para que el siguiente ataque sea el ataque
+                animator.SetTrigger("Jump");
+                Cooldown = CurrentState.CooldownMax;
+                atacked = false;
+            }
+            else
+            {
+                // Debug.Log(Vector3.Distance(transform.position, player.transform.position));
+                Cooldown -= Time.deltaTime;
+            }
         }
     }
 
@@ -167,12 +172,15 @@ public class BoloEBoos : EnemyBase
             // Inmoviliza al enemigo y activa la animacion de muerte
             agent.speed = 0;
             animator.SetTrigger("Dead");
+            bossIsDead = true;
         }
         if (health <= 0 && !isBarredoraOn)
         {
             GivePoints(points);
         }
     }
+
+    public float GetBossHealth() { return health; }
 
     // Funciones de animaciones
     // Desactiva al enemigo

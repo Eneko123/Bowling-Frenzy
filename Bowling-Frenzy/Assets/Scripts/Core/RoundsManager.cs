@@ -112,7 +112,7 @@ public class RoundsManager : MonoBehaviour
                 {
                     isFinalRound = true;
                     timerObject.SetActive(false);
-                    RoundManagerText.text = $"DERROTA AL BOSS";
+                    RoundManagerText.gameObject.SetActive(false);
                     boss.GetComponent<BoloEBoos>().DificultySystem(); // Llamamos a esta funcion en la ultima ronda para que funcione
                     boss.SetActive(true);
                 }
