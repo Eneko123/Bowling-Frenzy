@@ -42,7 +42,7 @@ public class BotonTutorial : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (intToBool(PlayerPrefs.GetInt("isFirstTimePlayed")))
+            if (intToBool(PlayerPrefs.GetInt("isFirstTimePlayed", 0)))
             {
                 Time.timeScale = 0.0f;
                 if (uigameplay != null)
@@ -80,7 +80,7 @@ public class BotonTutorial : MonoBehaviour
 
     bool intToBool(int val)
     {
-        if (val != 0)
+        if (val == 0)
             return true;
         else
             return false;
