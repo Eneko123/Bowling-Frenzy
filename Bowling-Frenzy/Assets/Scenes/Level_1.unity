@@ -2853,8 +2853,8 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 60
-    E1: 20
+  - timeMax: 1000
+    E1: 1
     E2: 0
     E3: 0
     spawnRateMax: 1

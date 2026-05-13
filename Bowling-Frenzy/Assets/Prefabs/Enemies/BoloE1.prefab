@@ -410,7 +410,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 46
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1554821713014327534
 MonoBehaviour:
@@ -429,10 +429,12 @@ MonoBehaviour:
     m_Bits: 8
   raycastDistance: 2
   raycastOffset: 0.5
-  rotationSpeed: 5
+  rotationSpeed: 10
   alignToGround: 1
-  maxTiltAngle: 90
-  showDebugRays: 0
+  maxTiltAngle: 60
+  minimapIndicator: {fileID: 3116389845385778030}
+  bolo: {fileID: 6536221488668318800}
+  showDebugRays: 1
 --- !u!4 &6536221488668318800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5087da6dac2b0246bdd16d6a61fdd24, type: 3}
