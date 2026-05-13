@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1691153695819811007}
+  - component: {fileID: 4031026630884582560}
+  - component: {fileID: 502945438986643501}
   m_Layer: 0
   m_Name: Bala Perforante Neon Almacen
   m_TagString: Untagged
@@ -31,6 +33,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8809860039432602077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4031026630884582560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153293203873800976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2966534245f4c7449ea029412c81658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 400
+  damage: 40
+  direction: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  playerCamera: {fileID: 0}
+  rbParent: {fileID: 47761485113179425}
+  lifeTime: 4
+--- !u!135 &502945438986643501
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153293203873800976}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9063582735099455030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,8 +131,67 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09e5cfed8b7f4f94491da5b369eae15b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1691153695819811007}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09e5cfed8b7f4f94491da5b369eae15b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 47761485113179425}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09e5cfed8b7f4f94491da5b369eae15b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3606069227329148375}
   m_SourcePrefab: {fileID: 100100000, guid: 09e5cfed8b7f4f94491da5b369eae15b, type: 3}
+--- !u!1 &8145104811469724519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09e5cfed8b7f4f94491da5b369eae15b, type: 3}
+  m_PrefabInstance: {fileID: 9063582735099455030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &47761485113179425
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145104811469724519}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &3606069227329148375
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145104811469724519}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8809860039432602077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09e5cfed8b7f4f94491da5b369eae15b, type: 3}
