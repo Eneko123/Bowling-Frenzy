@@ -23,6 +23,10 @@ public class PowerUps : MonoBehaviour
     [SerializeField] public Sprite ImagenIIForUpgrate;
     [SerializeField] public Sprite ImagenIIIForUpgrate;
 
+    [SerializeField] public Sprite ImagenVForUpgrate;
+    [SerializeField] public Sprite ImagenVIForUpgrate;
+    [SerializeField] public Sprite ImagenVIIForUpgrate;
+
     // Cada fila = una ronda. Cada columna = categoria del boton.
     // P = PlayerStat, B = BulletDamage, U = UnlockBullet
     private enum Cat { P, B, U }
