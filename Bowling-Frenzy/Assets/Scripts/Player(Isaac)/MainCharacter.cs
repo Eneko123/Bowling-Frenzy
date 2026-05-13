@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -66,6 +67,10 @@ public class MainCharacter : MonoBehaviour
     private bool isShootingLoopActive = false;
     private Coroutine normalBulletReloadCoroutine = null;
 
+    [Header("Special Bullets UI")]
+    [SerializeField] private UIGameplay[] specialBulletUIs; // Arrastra en Inspector
+    private Dictionary<SpecialBullets, (float cooldownTime, UIGameplay ui)> bulletCooldowns;
+
     private void Awake()
     {
         if (Instance == null)
@@ -87,6 +92,13 @@ public class MainCharacter : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+
+        bulletCooldowns = new Dictionary<SpecialBullets, (float, UIGameplay)>
+    {
+        { SpecialBullets.Explosive, (10f, null) },
+        { SpecialBullets.Piercing,  (5.5f, null) },
+        { SpecialBullets.Slowing,   (7f, null) }
+    };
     }
     //Se llamara al evento en Unity asociado con la accion de moverse
     public void OnMoveInput(InputAction.CallbackContext contextMove)
@@ -217,25 +229,16 @@ public class MainCharacter : MonoBehaviour
 
     public void OnSpecial(InputAction.CallbackContext contextSpecial)
     {
-        if (contextSpecial.performed && !isReloadingExplosiveBullet && currentSpecialBullet == SpecialBullets.Explosive
-            || contextSpecial.performed && !isReloadingPiercingBullet && currentSpecialBullet == SpecialBullets.Piercing
-            || contextSpecial.performed && !isReloadingSlowingBullet && currentSpecialBullet == SpecialBullets.Slowing)
+        if (contextSpecial.performed && UIGameplay.uI != null && UIGameplay.uI.IsSpecialReady(currentSpecialBullet))
         {
-            // Guarda si el jugador estaba disparando
             bool wasShootingPressed = isShootingPressed;
-
-            // Detiene completamente el loop de disparo normal
             isShootingPressed = false;
             StopShootingLoop();
 
-
             animator.SetTrigger("IsSpecial");
 
-            // Si el jugador seguía manteniendo el clic izquierdo, reinicia el loop después del disparo especial
             if (wasShootingPressed)
-            {
                 StartCoroutine(ResumeShootingAfterSpecial());
-            }
         }
     }
 
@@ -300,27 +303,7 @@ public class MainCharacter : MonoBehaviour
         normalBulletReloadCoroutine = null;
     }
 
-    IEnumerator DelayForBullets(float delay)
-    {
-        switch (typeOfBullet)
-        {
-            case 1:
-                isReloadingExplosiveBullet = true;
-                yield return new WaitForSeconds(delay);
-                isReloadingExplosiveBullet = false;
-                break;
-            case 2:
-                isReloadingPiercingBullet = true;
-                yield return new WaitForSeconds(delay);
-                isReloadingPiercingBullet = false;
-                break;
-            case 3:
-                isReloadingSlowingBullet = true;
-                yield return new WaitForSeconds(delay);
-                isReloadingSlowingBullet = false;
-                break;
-        }
-    }
+    
     private void Update()
     {
         // Si el juego se pausa o se abre el menú de mejoras, detener el disparo
@@ -410,63 +393,25 @@ public class MainCharacter : MonoBehaviour
     }
     void ThrowSpecialBall()
     {
-        GenerateBullet currentHability = GenerateBullet.instance;
-        GameObject b = null;
-        switch (currentSpecialBullet)
-        {
-            case SpecialBullets.Explosive:
-                if (!isReloadingExplosiveBullet)
-                {
-                    b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
-                }
-                break;
-            case SpecialBullets.Piercing:
-                if (!isReloadingPiercingBullet)
-                {
-                    b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
-                }
-                break;
-            case SpecialBullets.Slowing:
-                if (!isReloadingSlowingBullet)
-                {
-                    b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
-                }
-                break;
-        }
+        // Seguridad por si se llama antes de tiempo
+        if (UIGameplay.uI == null || !UIGameplay.uI.IsSpecialReady(currentSpecialBullet)) return;
 
-        if (b != null)
+        GameObject b = GenerateBullet.instance.SelectTheSpecial(currentSpecialBullet);
+        if (b == null) return;
+
+        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
+
+        // Duraciones centralizadas (puedes moverlas a un ScriptableObject después si quieres)
+        float cooldown = currentSpecialBullet switch
         {
-            switch (b.GetComponentInChildren<NormalBulletBehaviour>().GetSpecialBullet())
-            {
-                case SpecialBullets.Explosive:
-                    if (!isReloadingExplosiveBullet)
-                    {
-                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                        typeOfBullet = 1;
-                        StartCoroutine(DelayForBullets(10f));
-                        tiempoRecarga.UpdateCooldown(10f);
-                    }
-                    break;
-                case SpecialBullets.Piercing:
-                    if (!isReloadingPiercingBullet)
-                    {
-                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                        typeOfBullet = 2;
-                        StartCoroutine(DelayForBullets(5.5f));
-                        tiempoRecarga.UpdateCooldown(5.5f);
-                    }
-                    break;
-                case SpecialBullets.Slowing:
-                    if (!isReloadingSlowingBullet)
-                    {
-                        b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-                        typeOfBullet = 3;
-                        StartCoroutine(DelayForBullets(7f));
-                        tiempoRecarga.UpdateCooldown(7f);
-                    }
-                    break;
-            }
-        }
+            SpecialBullets.Explosive => 10f,
+            SpecialBullets.Piercing => 5.5f,
+            SpecialBullets.Slowing => 7f,
+            _ => 0f
+        };
+
+        // Notifica a la UI y elimina lógica duplicada
+        UIGameplay.uI.StartSpecialCooldown(currentSpecialBullet, cooldown);
     }
     #region Geters-Seters
     public float GetHealthMax() { return MaxHealth; }

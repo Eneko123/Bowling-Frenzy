@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIGameplay : MonoBehaviour
 {
@@ -17,6 +19,24 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private GameObject bossHealthIndicator;     // Almacena todo lo visualmente relacionado con la vida del boss
     [SerializeField] private Image bigBowlingBowlBossHealthBar;     // Imagen que muestra la vida del boss
     [SerializeField] private BoloEBoos boos;
+
+    [System.Serializable]
+    public class SpecialCooldownUI
+    {
+        public SpecialBullets bulletType;
+        public Image fillImage;        // Circulo con Fill Type: Radial 360
+        public TextMeshProUGUI cooldownText; // Tiempo restante
+
+        // Estado interno
+        [HideInInspector] public bool isOnCooldown;
+        [HideInInspector] public float remainingTime;
+        [HideInInspector] public float totalTime;
+    }
+
+    // Array para asignar en Inspector (orden libre)
+    [SerializeField] private SpecialCooldownUI[] specialCooldownUIsArray;
+    // Diccionario para búsqueda rápida por tipo de bala
+    private Dictionary<SpecialBullets, SpecialCooldownUI> cooldownUIs = new Dictionary<SpecialBullets, SpecialCooldownUI>();
 
     [Header("Panels")]
     [SerializeField] private GameObject hudPanel;
@@ -65,6 +85,7 @@ public class UIGameplay : MonoBehaviour
         UpdateRoundText();
         UpdateScoreText();
         comboManager = GetComponentInChildren<Combos>();
+        InitializeSpecialCooldowns();
     }
 
     void Update()
@@ -82,6 +103,7 @@ public class UIGameplay : MonoBehaviour
             }
         }
         UpdateBigJumpCooldown();
+        UpdateSpecialCooldowns();
 
         if (RoundsManager.instance.GetFinalRound())
         {
@@ -204,6 +226,80 @@ public class UIGameplay : MonoBehaviour
 
         float progres = (bossHeath / bossHealthMax);
         bigBowlingBowlBossHealthBar.fillAmount = progres;
+    }
+
+    private void InitializeSpecialCooldowns()
+    {
+        foreach (var ui in specialCooldownUIsArray)
+        {
+            if (ui != null && !cooldownUIs.ContainsKey(ui.bulletType))
+            {
+                cooldownUIs[ui.bulletType] = ui;
+
+                // Ocultar todo por defecto (no se ven hasta que se use la bala)
+                ui.fillImage.gameObject.SetActive(false);
+                if (ui.cooldownText != null) ui.cooldownText.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void UpdateSpecialCooldowns()
+    {
+        foreach (var ui in cooldownUIs.Values)
+        {
+            if (!ui.isOnCooldown) continue;
+
+            ui.remainingTime -= Time.deltaTime;
+
+            if (ui.remainingTime <= 0f)
+            {
+                // Cooldown terminado: ocultar UI y resetear estado
+                ui.remainingTime = 0f;
+                ui.isOnCooldown = false;
+                ui.fillImage.gameObject.SetActive(false);
+                if (ui.cooldownText != null) ui.cooldownText.gameObject.SetActive(false);
+            }
+            else
+            {
+                // Progreso: 1 (lleno) → 0 (vacío)
+                ui.fillImage.fillAmount = ui.remainingTime / ui.totalTime;
+                if (ui.cooldownText != null) ui.cooldownText.text = $"{ui.remainingTime:F1}s";
+            }
+        }
+    }
+
+    public void StartSpecialCooldown(SpecialBullets type, float duration)
+    {
+        if (cooldownUIs.TryGetValue(type, out var ui))
+        {
+            ui.totalTime = duration;
+            ui.remainingTime = duration;
+            ui.isOnCooldown = true;
+
+            // Mostrar UI al iniciar cooldown
+            ui.fillImage.gameObject.SetActive(true);
+            ui.fillImage.fillAmount = 1f; // Empieza completamente visible
+            if (ui.cooldownText != null)
+            {
+                ui.cooldownText.gameObject.SetActive(true);
+                ui.cooldownText.text = $"{duration:F1}s";
+            }
+        }
+    }
+
+    public bool IsSpecialReady(SpecialBullets type)
+    {
+        if (cooldownUIs.TryGetValue(type, out var ui)) return !ui.isOnCooldown;
+        return true; // Fallback seguro si no hay UI asignada
+    }
+
+    // Marca visualmente la bala como lista
+    private void SetSpecialReady(SpecialCooldownUI ui)
+    {
+        ui.isOnCooldown = false;
+        ui.remainingTime = 0f;
+        ui.fillImage.fillAmount = 1f;
+        ui.cooldownText.text = "LISTO";
     }
     #endregion
 
