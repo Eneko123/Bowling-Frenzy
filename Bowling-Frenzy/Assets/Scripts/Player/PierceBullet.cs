@@ -3,7 +3,6 @@ using UnityEngine;
 public class PierceBullet : NormalBulletBehaviour
 {
     int MaxPierce;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -12,7 +11,7 @@ public class PierceBullet : NormalBulletBehaviour
     }
     void Start()
     {
-        //Init(transform.position, Vector3.zero);
+
     }
     //internal void AddPierce()
     //{
@@ -31,7 +30,6 @@ public class PierceBullet : NormalBulletBehaviour
     }
     internal override void CheckEnemy(Collider collider)
     {
-
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
             enemy.ReceiveDamage(damage, false);

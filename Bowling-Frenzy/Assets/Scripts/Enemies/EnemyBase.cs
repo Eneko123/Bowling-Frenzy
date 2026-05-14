@@ -25,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     protected Color originalColor;
     protected Material[] materials;
     float damageCooldown = 0;
+    bool isPiercing;
+    public NormalBulletBehaviour BulletGetter;
     protected void Awake()
     {   
         player = MainCharacter.Instance.transform;
@@ -35,6 +37,7 @@ public class EnemyBase : MonoBehaviour
         if (col == null) { col = GetComponent<Collider>(); }
         player = MainCharacter.Instance.playerTransform;
         health = maxHealth;        
+        isPiercing = false;
     }
 
     protected void Start()
@@ -83,7 +86,18 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void ReceiveDamage(float damage, bool isBarredora)
     {
-        if(pulseCoroutine != null)
+        //isPiercing = true;
+        //if(isPiercing && BulletGetter.GetSpecialBullet() == SpecialBullets.Piercing)
+        //{
+        //   bool canPierce = true; // Variable para controlar si el proyectil puede atravesar o no
+        //    if (canPierce)
+        //    {
+        //        // Permitir que el proyectil atraviese al enemigo sin destruirlo
+                
+        //        Debug.Log("Proyectil atravesó al enemigo sin destruirlo.");
+        //    }
+        //}
+        if (pulseCoroutine != null)
         {
             StopCoroutine(pulseCoroutine);
         }
