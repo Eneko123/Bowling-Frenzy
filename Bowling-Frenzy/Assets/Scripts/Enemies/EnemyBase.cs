@@ -232,6 +232,8 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    public float GetHealth() => health;
+
     //private void OnCollisionExit(Collision collision)
     //{
     //    if (collision.gameObject.TryGetComponent(out MainCharacter player))
