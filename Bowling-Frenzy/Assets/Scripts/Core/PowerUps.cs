@@ -190,6 +190,13 @@ public class PowerUps : MonoBehaviour
             toUnlock = locked[Random.Range(0, locked.Count)];
         }
         //necesito aca
+        Sprite image = toUnlock switch
+        {
+            SpecialBullets.Explosive => ImagenVForUpgrate,
+            SpecialBullets.Piercing => ImagenVForUpgrate,
+            SpecialBullets.Slowing => ImagenVForUpgrate,
+            _ => null
+        };
         string name = toUnlock switch
         {
             SpecialBullets.Explosive => "Bala Explosiva",
@@ -201,7 +208,7 @@ public class PowerUps : MonoBehaviour
             return new UpgradeOption
             {
                 label = $" Desbloquear: {name}",
-                //upgrateimage = () => ImagenBola(Sprite mejora),
+                upgrateimage = image,
                 apply = () => GenerateBullet.instance.AddSpecial(toUnlock)
             };
     }
