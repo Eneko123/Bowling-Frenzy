@@ -51,14 +51,19 @@ public class UIGameplay : MonoBehaviour
 
     [Header("Iconospausa")]
     [SerializeField] private TextMeshProUGUI ComonBall;
-    [SerializeField] private TextMeshProUGUI BurnBall;
-    [SerializeField] private GameObject BlackBB;
-    [SerializeField] private TextMeshProUGUI FreezeBall;
-    [SerializeField] private GameObject BlackFB;
     [SerializeField] private TextMeshProUGUI DrillBall;
     [SerializeField] private GameObject BlackDB;
-    [SerializeField] private TextMeshProUGUI Defense;
+    [SerializeField] private TextMeshProUGUI FreezeBall;
+    [SerializeField] private GameObject BlackFB;
+    [SerializeField] private TextMeshProUGUI BurnBall;
+    [SerializeField] private GameObject BlackBB;
     [SerializeField] private TextMeshProUGUI Speed;
+    [SerializeField] private TextMeshProUGUI Defense;
+    NormalBulletBehaviour Bolanormal;
+    PierceBullet Bolataladro;
+    SlowBullet Bolahielo;
+    ExplosiveBulletBehaviour Bolaexplosion;
+    PowerUps MejBolas;
 
     internal bool isPaused = false;
     internal bool isUpgradeMenuOpen = false;
@@ -104,6 +109,8 @@ public class UIGameplay : MonoBehaviour
         }
         UpdateBigJumpCooldown();
         UpdateSpecialCooldowns();
+
+        ShowPlayerSatats();
 
         if (RoundsManager.instance.GetFinalRound())
         {
@@ -372,14 +379,16 @@ public class UIGameplay : MonoBehaviour
     void ShowPlayerSatats()
     {
         // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
-
-        //ComonBall.text =;
-        //BurnBall.text =;
-        //FreezeBall.text =;
-        //DrillBall.text =;
-
+        //ComonBall.text = Bolanormal.GetDamage().ToString();
         Defense.text = MainCharacter.Instance.GetDefense().ToString();
         Speed.text = MainCharacter.Instance.GetSpeed().ToString();
+
+        //
+        //if(MejBolas.)
+        //BurnBall.text = Bolataladro.GetDamage().ToString();
+        //FreezeBall.text = Bolahielo.GetDamage().ToString();
+        //DrillBall.text = Bolaexplosion.GetDamage().ToString(); 
+
     }
 
     #endregion

@@ -189,7 +189,7 @@ public class PowerUps : MonoBehaviour
             // evita desbloquear "None" si por alguna razon esta en la lista
             toUnlock = locked[Random.Range(0, locked.Count)];
         }
-        
+        //necesito aca
         string name = toUnlock switch
         {
             SpecialBullets.Explosive => "Bala Explosiva",
@@ -198,11 +198,12 @@ public class PowerUps : MonoBehaviour
             _ => toUnlock.ToString()
         };
 
-        return new UpgradeOption
-        {
-            label = $" Desbloquear: {name}",
-            apply = () => GenerateBullet.instance.AddSpecial(toUnlock)
-        };
+            return new UpgradeOption
+            {
+                label = $" Desbloquear: {name}",
+                //upgrateimage = () => ImagenBola(Sprite mejora),
+                apply = () => GenerateBullet.instance.AddSpecial(toUnlock)
+            };
     }
 
     int WeightedRandom()
