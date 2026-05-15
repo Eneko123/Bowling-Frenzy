@@ -59,10 +59,10 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private GameObject BlackBB;
     [SerializeField] private TextMeshProUGUI Speed;
     [SerializeField] private TextMeshProUGUI Defense;
-    NormalBulletBehaviour Bolanormal;
-    PierceBullet Bolataladro;
-    SlowBullet Bolahielo;
-    ExplosiveBulletBehaviour Bolaexplosion;
+    GenerateBullet Bolanormal;
+    GenerateBullet Bolataladro;
+    GenerateBullet Bolahielo;
+    GenerateBullet Bolaexplosion;
     PowerUps MejBolas;
 
     internal bool isPaused = false;
@@ -379,16 +379,21 @@ public class UIGameplay : MonoBehaviour
     void ShowPlayerSatats()
     {
         // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
-        //ComonBall.text = Bolanormal.GetDamage().ToString();
+        //ComonBall.text = Balanormal.GetDamage().ToString();
         Defense.text = MainCharacter.Instance.GetDefense().ToString();
         Speed.text = MainCharacter.Instance.GetSpeed().ToString();
 
-        //
+        
+        /*
+        GameObject bullet;
+        GameObject explosiveBullet;
+        GameObject piercingBullet;
+        GameObject slowingBullet;
+         */
         //if(MejBolas.)
         //BurnBall.text = Bolataladro.GetDamage().ToString();
         //FreezeBall.text = Bolahielo.GetDamage().ToString();
         //DrillBall.text = Bolaexplosion.GetDamage().ToString(); 
-
     }
 
     #endregion
