@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6934709782349635461}
   m_Layer: 0
   m_Name: Bala Realentizadora Neon Almacen
-  m_TagString: Untagged
+  m_TagString: FB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +124,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f907886ebc4f3724d8d825de6e949f90, type: 3}
       propertyPath: m_Name
       value: BolaRealentizadoraNeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f907886ebc4f3724d8d825de6e949f90, type: 3}
+      propertyPath: m_TagString
+      value: FB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

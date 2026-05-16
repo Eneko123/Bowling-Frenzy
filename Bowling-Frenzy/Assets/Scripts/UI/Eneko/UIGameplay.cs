@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -59,10 +60,10 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private GameObject BlackBB;
     [SerializeField] private TextMeshProUGUI Speed;
     [SerializeField] private TextMeshProUGUI Defense;
-    GenerateBullet Bolanormal;
-    GenerateBullet Bolataladro;
-    GenerateBullet Bolahielo;
-    GenerateBullet Bolaexplosion;
+
+    PierceBullet Bolataladro;
+    SlowBullet Bolahielo;
+    ExplosiveBulletBehaviour Bolaexplosion;
     PowerUps MejBolas;
 
     internal bool isPaused = false;
@@ -92,6 +93,11 @@ public class UIGameplay : MonoBehaviour
         UpdateScoreText();
         comboManager = GetComponentInChildren<Combos>();
         InitializeSpecialCooldowns();
+
+
+        Bolataladro = FindAnyObjectByType<PierceBullet>();
+        Bolahielo = FindAnyObjectByType<SlowBullet>();
+        Bolaexplosion = FindAnyObjectByType<ExplosiveBulletBehaviour>(); 
     }
 
     void Update()
@@ -377,20 +383,52 @@ public class UIGameplay : MonoBehaviour
 #endif
     }
 
-    void ShowPlayerSatats()
+     void ShowPlayerSatats()
     {
-        // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
-        //ComonBall.text = Balanormal.GetDamage().ToString();
-        Defense.text = MainCharacter.Instance.GetDefense().ToString();
-        Speed.text = MainCharacter.Instance.GetSpeed().ToString();
+        Defense.text = "......" + MainCharacter.Instance.GetDefense().ToString();
+        Speed.text = "......" + MainCharacter.Instance.GetSpeed().ToString();
 
-        
-        /*
-        GameObject bullet;
-        GameObject explosiveBullet;
-        GameObject piercingBullet;
-        GameObject slowingBullet;
-         */
+        if (Bolataladro == null) DrillBall.text = "......??"; BlackDB.SetActive(true);
+        if (Bolahielo == null) FreezeBall.text = "......??"; BlackFB.SetActive(true);
+        if (Bolaexplosion == null) BurnBall.text = "......??"; BlackBB.SetActive(true);
+
+        GameObject[] bolasNormales = GameObject.FindGameObjectsWithTag("CB");
+        foreach (GameObject bola in bolasNormales)
+        {
+            if (bola == null)
+            {
+                Debug.Log("Hay un GameObject null en el array bolas");
+                continue;
+            }
+
+            NormalBulletBehaviour balanormal = bola.GetComponentInChildren<NormalBulletBehaviour>();
+
+            if (balanormal != null)
+            {
+                ComonBall.text = "......" + balanormal.GetDamage().ToString();
+            }
+            else if (balanormal == null) ComonBall.text = "......error";
+        }
+
+        GameObject[] bolasPerforantes = GameObject.FindGameObjectsWithTag("DB");
+        foreach (GameObject bola in bolasPerforantes)
+        {
+            if (bola == null)
+            {
+                Debug.Log("Hay un GameObject null en el array bolas");
+                continue;
+            }
+
+            PierceBullet balanormal = bola.GetComponentInChildren<PierceBullet>();
+
+            if (balanormal != null)
+            {
+                DrillBall.text = "......" + balanormal.GetDamage().ToString();
+            }
+            else if (balanormal == null) ComonBall.text = "......error";
+        }
+
+
         //if(MejBolas.)
         //BurnBall.text = Bolataladro.GetDamage().ToString();
         //FreezeBall.text = Bolahielo.GetDamage().ToString();

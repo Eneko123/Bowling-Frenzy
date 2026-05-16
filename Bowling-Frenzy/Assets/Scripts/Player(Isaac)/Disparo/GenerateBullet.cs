@@ -86,6 +86,8 @@ public class GenerateBullet : MonoBehaviour
             tmpSlowing.gameObject.SetActive(false);
             listSlowingBullets.Add(tmpSlowing);
         }
+
+        //
     }
     //private void Update()
     //{

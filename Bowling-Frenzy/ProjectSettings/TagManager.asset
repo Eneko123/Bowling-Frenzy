@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ball
+  - CB
+  - BB
+  - DB
+  - FB
   layers:
   - Default
   - TransparentFX
