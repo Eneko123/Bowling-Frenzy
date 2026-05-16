@@ -67,6 +67,7 @@ public class UIGameplay : MonoBehaviour
 
     internal bool isPaused = false;
     internal bool isUpgradeMenuOpen = false;
+    internal bool isTutorialOpen = false;
 
     private MainCharacter player;
     public static UIGameplay uI;
@@ -313,7 +314,7 @@ public class UIGameplay : MonoBehaviour
     #region Pause Menu
     public void PauseGame()
     {
-        if (isUpgradeMenuOpen) return; // No pausar si esta abierto el menu de mejoras
+        if (isUpgradeMenuOpen || BotonTutorial.instance.GetIfTutorialIsOpen()) return; // No pausar si esta abierto el menu de mejoras
 
         isPaused = true;
         Time.timeScale = 0f;

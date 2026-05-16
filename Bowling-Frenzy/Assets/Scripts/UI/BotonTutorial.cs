@@ -9,6 +9,7 @@ public class BotonTutorial : MonoBehaviour
     [SerializeField] Button buttonReturnMainMenu;
     [SerializeField] Button buttonStartFirstPlaythrought;
     [SerializeField] GameObject uigameplay;
+    static bool isTutorialOpen;
     public static BotonTutorial instance;
     public void ReturnMenu()
     {
@@ -42,19 +43,22 @@ public class BotonTutorial : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (intToBool(PlayerPrefs.GetInt("isFirstTimePlayed", 0)))
+            if (intToBool(PlayerPrefs.GetInt("isFirstTimePlayed")))
             {
                 Time.timeScale = 0.0f;
                 if (uigameplay != null)
                 {
                     uigameplay.gameObject.SetActive(false);
                 }
-                PlayerPrefs.SetInt("isFirstTimePlayed", boolToInt(isFirstTimePlayed));
                 this.gameObject.SetActive(isFirstTimePlayed);
+                isTutorialOpen = true;
             }
             else
             {
+                isTutorialOpen = false;
+                isFirstTimePlayed = false;
                 this.gameObject.SetActive(isFirstTimePlayed);
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
@@ -63,7 +67,9 @@ public class BotonTutorial : MonoBehaviour
         this.gameObject.SetActive(false);
         isFirstTimePlayed = false;
         PlayerPrefs.SetInt("isFirstTimePlayed", boolToInt(isFirstTimePlayed));
+        PlayerPrefs.Save();
         Time.timeScale = 1.0f;
+        isTutorialOpen = false;
         if (uigameplay != null)
         {
             uigameplay.gameObject.SetActive(true);
@@ -72,7 +78,7 @@ public class BotonTutorial : MonoBehaviour
     }
     int boolToInt(bool val)
     {
-        if (val)
+        if (!val)
             return 1;
         else
             return 0;
@@ -88,5 +94,9 @@ public class BotonTutorial : MonoBehaviour
     public bool GetFirstPlayedChecker()
     {
         return isFirstTimePlayed;
+    }
+    public bool GetIfTutorialIsOpen()
+    {
+        return isTutorialOpen;
     }
 }
