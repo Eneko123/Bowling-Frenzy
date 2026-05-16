@@ -185,8 +185,8 @@ public class PowerUps : MonoBehaviour
         Sprite image = toUnlock switch
         {
             SpecialBullets.Explosive => ImagenVForUpgrate,
-            SpecialBullets.Piercing => ImagenVForUpgrate,
-            SpecialBullets.Slowing => ImagenVForUpgrate,
+            SpecialBullets.Piercing => ImagenVIForUpgrate,
+            SpecialBullets.Slowing => ImagenVIIForUpgrate,
             _ => null
         };
         string name = toUnlock switch
