@@ -2750,6 +2750,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartPlaying
       objectReference: {fileID: 0}
+    - target: {fileID: 8082392619470991248, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8104096317494001184, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_Sprite
       value: 
