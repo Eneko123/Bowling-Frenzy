@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PowerUps : MonoBehaviour
 {
-    MainCharacter player;
     EnemyBase enemis;
     [SerializeField] GenerateBullet generateBullet;
     [SerializeField] RoundsManager rounds;
@@ -48,7 +46,7 @@ public class PowerUps : MonoBehaviour
     public struct UpgradeOption
     {
         public string label;
-        public System.Action apply;
+        public Action apply;
         public Sprite upgrateimage;
         public int weight; // mayor = mas comun
     }
@@ -67,12 +65,7 @@ public class PowerUps : MonoBehaviour
     internal int[] pierceVals = { 2, 4, 8 };
     internal float[] slowTimeVals = { 1f, 2f, 3f };
     // Estado interno
-    private System.Action[] pendingActions = new System.Action[3];
-
-    void Awake()
-    {
-        player = MainCharacter.Instance;
-    }
+    private Action[] pendingActions = new Action[3];
 
     public void ShowUpgradesForRound(int roundIndex)
     {
@@ -99,11 +92,9 @@ public class PowerUps : MonoBehaviour
             // Marca esta opcion como usada
             usedOptions.Add(opt.label);
 
-            pendingActions[i] = opt.apply;
             btnLabels[i].text = opt.label;
             btnImage[i].sprite = opt.upgrateimage;//para que le de la imagen
-
-            int captured = i;
+            Action captured = opt.apply;
             buttons[i].onClick.RemoveAllListeners();
             buttons[i].onClick.AddListener(() => ApplyAndClose(captured));
         }
@@ -112,14 +103,15 @@ public class PowerUps : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void ApplyAndClose(int index)
+    void ApplyAndClose(Action actionToRun)
     {
-        MainCharacter.Instance.ResetShootingState(); // Evita disparos acomulados
-        pendingActions[index]?.Invoke();
-        upgradePanel.SetActive(false);
-        Time.timeScale = 1f;
-        rounds.StartNextRoundButton();
-        playerHealth.UpdateHealth(player.GetCurrentHealth(), player.GetHealthMax());
+            MainCharacter.Instance.ResetShootingState();
+            actionToRun.Invoke();
+
+            upgradePanel.SetActive(false);
+            Time.timeScale = 1f;
+            if (rounds != null) rounds.StartNextRoundButton();
+            if (playerHealth != null) playerHealth.UpdateHealth(MainCharacter.Instance.GetCurrentHealth(), MainCharacter.Instance.GetHealthMax());
     }
 
     UpgradeOption GetRandomOption(Cat cat)
@@ -138,7 +130,7 @@ public class PowerUps : MonoBehaviour
     public UpgradeOption GetPlayerOption(int tier)
     {
         // Elige aleatoriamente entre las 3 stats del jugador
-        int stat = Random.Range(0, 3);
+        int stat = UnityEngine.Random.Range(0, 3);
         return stat switch
         {
             0 => new UpgradeOption
@@ -147,9 +139,9 @@ public class PowerUps : MonoBehaviour
                 upgrateimage = ImagenIForUpgrate,
                 apply = () =>
                 {
-                    player.SetHealthMax(player.GetHealthMax() + healthSum[tier]);
+                    MainCharacter.Instance.SetHealthMax(MainCharacter.Instance.GetHealthMax() + healthSum[tier]);
                     // Añade también la vida al current health
-                    player.SetCurrentHealth(player.GetCurrentHealth() + healthSum[tier]);
+                    MainCharacter.Instance.SetCurrentHealth(MainCharacter.Instance.GetCurrentHealth() + healthSum[tier]);
                 },
                 weight = weights[tier]
             },
@@ -157,14 +149,14 @@ public class PowerUps : MonoBehaviour
             {
                 label = $" Defensa +{defenseBons[tier]}",
                 upgrateimage = ImagenIIForUpgrate,
-                apply = () => player.SetDefense(player.GetDefense() + defenseBons[tier]),
+                apply = () => MainCharacter.Instance.SetDefense(MainCharacter.Instance.GetDefense() + defenseBons[tier]),
                 weight = weights[tier]
             },
             _ => new UpgradeOption
             {
                 label = $" Velocidad +{speedBons[tier]}",
                 upgrateimage = ImagenIIIForUpgrate,
-                apply = () => player.SetSpeed(player.GetSpeed() + speedBons[tier]),
+                apply = () => MainCharacter.Instance.SetSpeed(MainCharacter.Instance.GetSpeed() + speedBons[tier]),
                 weight = weights[tier]
             }
         };
@@ -187,7 +179,7 @@ public class PowerUps : MonoBehaviour
         while (toUnlock == SpecialBullets.None)
         {
             // evita desbloquear "None" si por alguna razon esta en la lista
-            toUnlock = locked[Random.Range(0, locked.Count)];
+            toUnlock = locked[UnityEngine.Random.Range(0, locked.Count)];
         }
         //necesito aca
         Sprite image = toUnlock switch
@@ -215,7 +207,7 @@ public class PowerUps : MonoBehaviour
 
     int WeightedRandom()
     {
-        int roll = Random.Range(1, 101); // 1 a 100
+        int roll = UnityEngine.Random.Range(1, 101); // 1 a 100
         if (roll <= 10) return 2;        // epico   10%
         if (roll <= 40) return 1;        // raro    30%
         return 0;                        // comun   60%
