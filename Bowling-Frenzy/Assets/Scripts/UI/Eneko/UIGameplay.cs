@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,6 +62,8 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Speed;
     [SerializeField] private TextMeshProUGUI Defense;
 
+    GameObject[] bolas;
+    NormalBulletBehaviour Balanormal;
     PierceBullet Bolataladro;
     SlowBullet Bolahielo;
     ExplosiveBulletBehaviour Bolaexplosion;
@@ -94,6 +97,7 @@ public class UIGameplay : MonoBehaviour
         comboManager = GetComponentInChildren<Combos>();
         InitializeSpecialCooldowns();
 
+       
 
         Bolataladro = FindAnyObjectByType<PierceBullet>();
         Bolahielo = FindAnyObjectByType<SlowBullet>();
@@ -124,6 +128,7 @@ public class UIGameplay : MonoBehaviour
             bossHealthIndicator.SetActive(true);
             UpdateBossHealthBar();
         }
+
     }
 
     void InitializePanels()
@@ -385,54 +390,28 @@ public class UIGameplay : MonoBehaviour
 
      void ShowPlayerSatats()
     {
+        ComonBall.text = "......" + GenerateBullet.instance.ListBullets[0].GetComponentInChildren<NormalBulletBehaviour>().GetDamage().ToString();
         Defense.text = "......" + MainCharacter.Instance.GetDefense().ToString();
         Speed.text = "......" + MainCharacter.Instance.GetSpeed().ToString();
 
-        if (Bolataladro == null) DrillBall.text = "......??"; BlackDB.SetActive(true);
-        if (Bolahielo == null) FreezeBall.text = "......??"; BlackFB.SetActive(true);
-        if (Bolaexplosion == null) BurnBall.text = "......??"; BlackBB.SetActive(true);
+        // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
+        //ComonBall.text = Balanormal.GetDamage().ToString();  WeaponSlots
 
-        GameObject[] bolasNormales = GameObject.FindGameObjectsWithTag("CB");
-        foreach (GameObject bola in bolasNormales)
+        if (GenerateBullet.instance.WeaponSlots[0].enabled)//aca debe ver si te deja hacer esa accion y luego sacas
+        { DrillBall.text = "......??"; BlackDB.SetActive(true); }
+        else
         {
-            if (bola == null)
-            {
-                Debug.Log("Hay un GameObject null en el array bolas");
-                continue;
-            }
-
-            NormalBulletBehaviour balanormal = bola.GetComponentInChildren<NormalBulletBehaviour>();
-
-            if (balanormal != null)
-            {
-                ComonBall.text = "......" + balanormal.GetDamage().ToString();
-            }
-            else if (balanormal == null) ComonBall.text = "......error";
+            BlackDB.SetActive(false);
+            DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString();
         }
 
-        GameObject[] bolasPerforantes = GameObject.FindGameObjectsWithTag("DB");
-        foreach (GameObject bola in bolasPerforantes)
-        {
-            if (bola == null)
-            {
-                Debug.Log("Hay un GameObject null en el array bolas");
-                continue;
-            }
+        //if (Bolahielo == null) FreezeBall.text = "......??"; BlackFB.SetActive(true);
+        BlackFB.SetActive(false);
+        FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
 
-            PierceBullet balanormal = bola.GetComponentInChildren<PierceBullet>();
-
-            if (balanormal != null)
-            {
-                DrillBall.text = "......" + balanormal.GetDamage().ToString();
-            }
-            else if (balanormal == null) ComonBall.text = "......error";
-        }
-
-
-        //if(MejBolas.)
-        //BurnBall.text = Bolataladro.GetDamage().ToString();
-        //FreezeBall.text = Bolahielo.GetDamage().ToString();
-        //DrillBall.text = Bolaexplosion.GetDamage().ToString(); 
+        //if (Bolaexplosion == null) BurnBall.text = "......??"; BlackBB.SetActive(true);
+        BlackBB.SetActive(false);
+        BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
     }
 
     #endregion

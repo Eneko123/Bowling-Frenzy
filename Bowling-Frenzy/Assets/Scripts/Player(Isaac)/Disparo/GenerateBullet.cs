@@ -37,7 +37,14 @@ public class GenerateBullet : MonoBehaviour
     public Sprite SlowingIcon;
     //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
-    public List<Image> WeaponSlots = new List<Image>();
+    private List<Image> weaponSlots = new List<Image>();
+
+    public List<GameObject> ListBullets { get => listBullets; }
+    public List<GameObject> ListExplosiveBullets { get => listExplosiveBullets; }
+    public List<GameObject> ListPiercingBullets { get => listPiercingBullets; }
+    public List<GameObject> ListSlowingBullets { get => listSlowingBullets; }
+    public List<Image> WeaponSlots { get => weaponSlots; }
+
     // Primer elemento: imagen del slot de bala explosiva
     // Segundo elemento: imagen del slot de bala perforante
     // Tercer elemento: imagen del slot de bala ralentizadora
