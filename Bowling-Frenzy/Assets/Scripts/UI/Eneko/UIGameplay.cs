@@ -97,11 +97,11 @@ public class UIGameplay : MonoBehaviour
         comboManager = GetComponentInChildren<Combos>();
         InitializeSpecialCooldowns();
 
-       
 
-        Bolataladro = FindAnyObjectByType<PierceBullet>();
-        Bolahielo = FindAnyObjectByType<SlowBullet>();
-        Bolaexplosion = FindAnyObjectByType<ExplosiveBulletBehaviour>(); 
+
+        DrillBall.text = "......??"; BlackDB.SetActive(true);
+        FreezeBall.text = "......??"; BlackFB.SetActive(true);
+        BurnBall.text = "......??"; BlackBB.SetActive(true);
     }
 
     void Update()
@@ -388,7 +388,7 @@ public class UIGameplay : MonoBehaviour
 #endif
     }
 
-     void ShowPlayerSatats()
+    void ShowPlayerSatats()
     {
         ComonBall.text = "......" + GenerateBullet.instance.ListBullets[0].GetComponentInChildren<NormalBulletBehaviour>().GetDamage().ToString();
         Defense.text = "......" + MainCharacter.Instance.GetDefense().ToString();
@@ -397,29 +397,50 @@ public class UIGameplay : MonoBehaviour
         // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
         //ComonBall.text = Balanormal.GetDamage().ToString();  WeaponSlots
 
-        if (GenerateBullet.instance.SelectTheSpecial(SpecialBullets.Piercing))//aca debe ver si te deja hacer esa accion y luego sacas
-        { DrillBall.text = "......??"; BlackDB.SetActive(true); }
-        else
+        var unLocked = new List<SpecialBullets>();
+        foreach (SpecialBullets b in System.Enum.GetValues(typeof(SpecialBullets)))
         {
-            BlackDB.SetActive(false);
-            DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString();
+            if (GenerateBullet.instance.specialBullets.Contains(b))
+                unLocked.Add(b);
+        
+            //{ 
+            //    if (b != SpecialBullets.Piercing)
+            //    {
+            //        BlackDB.SetActive(false);
+            //        DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString();
+            //    }
+            //    if (b != SpecialBullets.Slowing)
+            //    {
+            //        BlackFB.SetActive(false);
+            //        FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
+            //    }
+            //    if (b != SpecialBullets.Explosive)
+            //    {
+            //        BlackBB.SetActive(false);
+            //        BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
+            //    }
+
+            //}
         }
 
-        if (GenerateBullet.instance.SelectTheSpecial(SpecialBullets.Slowing))//aca debe ver si te deja hacer esa accion y luego sacas
-        { FreezeBall.text = "......??"; BlackFB.SetActive(true); }
-        else
-        {
-            BlackFB.SetActive(false);
-            FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
+        for (int i = 0; i < unLocked.Count; i++) {
+            if (unLocked[i] == SpecialBullets.Explosive)
+            {
+                BlackBB.SetActive(false);
+                BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
+            }
+            if (unLocked[i] == SpecialBullets.Piercing)
+            {
+                BlackDB.SetActive(false);
+                DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString();
+            }
+            if (unLocked[i] == SpecialBullets.Slowing)
+            {
+                BlackFB.SetActive(false);
+                FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
+            }
         }
 
-        if (GenerateBullet.instance.SelectTheSpecial(SpecialBullets.Explosive))//aca debe ver si te deja hacer esa accion y luego sacas
-        { BurnBall.text = "......??"; BlackBB.SetActive(true); }
-        else
-        {
-            BlackBB.SetActive(false);
-            BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
-        }
     }
 
     #endregion
