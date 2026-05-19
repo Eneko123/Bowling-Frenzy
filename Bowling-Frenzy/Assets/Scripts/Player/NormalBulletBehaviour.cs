@@ -61,8 +61,6 @@ public class NormalBulletBehaviour : MonoBehaviour
     }
     protected virtual void OnDeactivate()
     {
-        Debug.Log("Hit Enemy");
-
         transform.parent.gameObject.SetActive(false);
     }
 
