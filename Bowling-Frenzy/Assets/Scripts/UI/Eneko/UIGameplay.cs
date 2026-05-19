@@ -397,7 +397,7 @@ public class UIGameplay : MonoBehaviour
         // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
         //ComonBall.text = Balanormal.GetDamage().ToString();  WeaponSlots
 
-        if (GenerateBullet.instance.WeaponSlots[0].enabled)//aca debe ver si te deja hacer esa accion y luego sacas
+        if (GenerateBullet.instance.SelectTheSpecial(SpecialBullets.Piercing))//aca debe ver si te deja hacer esa accion y luego sacas
         { DrillBall.text = "......??"; BlackDB.SetActive(true); }
         else
         {
@@ -405,13 +405,21 @@ public class UIGameplay : MonoBehaviour
             DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString();
         }
 
-        //if (Bolahielo == null) FreezeBall.text = "......??"; BlackFB.SetActive(true);
-        BlackFB.SetActive(false);
-        FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
+        if (GenerateBullet.instance.SelectTheSpecial(SpecialBullets.Slowing))//aca debe ver si te deja hacer esa accion y luego sacas
+        { FreezeBall.text = "......??"; BlackFB.SetActive(true); }
+        else
+        {
+            BlackFB.SetActive(false);
+            FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
+        }
 
-        //if (Bolaexplosion == null) BurnBall.text = "......??"; BlackBB.SetActive(true);
-        BlackBB.SetActive(false);
-        BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
+        if (GenerateBullet.instance.SelectTheSpecial(SpecialBullets.Explosive))//aca debe ver si te deja hacer esa accion y luego sacas
+        { BurnBall.text = "......??"; BlackBB.SetActive(true); }
+        else
+        {
+            BlackBB.SetActive(false);
+            BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
+        }
     }
 
     #endregion
