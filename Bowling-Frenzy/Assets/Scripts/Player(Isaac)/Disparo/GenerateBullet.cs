@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static PowerUps;
@@ -37,7 +35,8 @@ public class GenerateBullet : MonoBehaviour
     public Sprite SlowingIcon;
     //Una vez tengamos los iconos: descomentar los public sprites, bajar hasta AddSpecial y sustituir el ".color = Color.red/green/blue" por ".sprite = ExploIcon/PiercingIcon/SlowingIcon"
     public List<SpecialBullets> specialBullets = new List<SpecialBullets>();
-    private List<Image> weaponSlots = new List<Image>();
+    //Si quereis hacer esto privado, buscad la forma de anadirlos por script
+    public List<Image> weaponSlots = new List<Image>();
 
     public List<GameObject> ListBullets { get => listBullets; }
     public List<GameObject> ListExplosiveBullets { get => listExplosiveBullets; }
@@ -62,6 +61,9 @@ public class GenerateBullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log(weaponSlots.Count);
+        //Si quereis anadir los WeaponSlots desde script y no desde el inspector hay que crear un algoritmo para que detecte
+        //Las imagenes del Weapon 
         WeaponSlots[0].enabled = false;
         WeaponSlots[1].enabled = false;
         WeaponSlots[2].enabled = false;
@@ -93,8 +95,6 @@ public class GenerateBullet : MonoBehaviour
             tmpSlowing.gameObject.SetActive(false);
             listSlowingBullets.Add(tmpSlowing);
         }
-
-        //
     }
     //private void Update()
     //{

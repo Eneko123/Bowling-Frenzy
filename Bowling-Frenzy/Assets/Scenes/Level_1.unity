@@ -1536,6 +1536,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 28346466}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: weaponSlots.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: 'WeaponSlots.Array.data[0]'
       value: 
       objectReference: {fileID: 1127600413}
@@ -1545,6 +1549,18 @@ PrefabInstance:
       objectReference: {fileID: 1127600412}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: 'WeaponSlots.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1127600411}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: 'weaponSlots.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1127600413}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: 'weaponSlots.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1127600412}
+    - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: 'weaponSlots.Array.data[2]'
       value: 
       objectReference: {fileID: 1127600411}
     m_RemovedComponents: []
