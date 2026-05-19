@@ -84,9 +84,9 @@ public class AreaAttack : MonoBehaviour
     private void OnJumpDeactivated()
     {
         // Volver a ser hijo del boss
-        if (GetComponentInParent<BoloEBoos>() != null)
+        if (GetComponent<BoloEBoos>() != null)
         {
-            jump.transform.SetParent(GetComponentInParent<BoloEBoos>().transform);
+            jump.transform.SetParent(GetComponent<BoloEBoos>().transform);
         }
         else
         {
@@ -113,9 +113,9 @@ public class AreaAttack : MonoBehaviour
     private void OnAtackDeactivated()
     {
         // Volver a ser hijo del boss
-        if (GetComponentInParent<BoloEBoos>() != null)
+        if (GetComponent<BoloEBoos>() != null)
         {
-            atack.transform.SetParent(GetComponentInParent<BoloEBoos>().transform);
+            atack.transform.SetParent(GetComponent<BoloEBoos>().transform);
         }
         else
         {
@@ -139,21 +139,6 @@ public class AreaAttack : MonoBehaviour
         if (atack != null && atack.transform.parent == null)
         {
             OnAtackDeactivated();
-        }
-    }
-
-    void StopAttacks()
-    {
-        if (jump != null)
-        {
-            jump.SetActive(false);
-            jump.transform.localScale = new Vector3(10f, 0.01f, 10f);
-        }
-
-        if (atack != null)
-        {
-            atack.SetActive(false);
-            atack.transform.localScale = new Vector3(10f, 0.01f, 10f);
         }
     }
 

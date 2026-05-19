@@ -183,6 +183,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccf6dcfe6ddc0794a9d2bf25d12b3456, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2986894422894276662}
+    - targetCorrespondingSourceObject: {fileID: 6905609870639353253, guid: ccf6dcfe6ddc0794a9d2bf25d12b3456, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2815463247963295581}
   m_SourcePrefab: {fileID: 100100000, guid: ccf6dcfe6ddc0794a9d2bf25d12b3456, type: 3}
 --- !u!1 &3792463572738024985 stripped
 GameObject:
@@ -230,6 +233,7 @@ MonoBehaviour:
   health: 0
   points: 0
   pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
+  BulletGetter: {fileID: 0}
 --- !u!95 &8097040505411447150
 Animator:
   serializedVersion: 7
@@ -316,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   raycastDistance: 2
   raycastOffset: 0.5
   rotationSpeed: 5
@@ -5130,3 +5134,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccf6dcfe6ddc0794a9d2bf25d12b3456, type: 3}
   m_PrefabInstance: {fileID: 4062493529373776712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7472958047863068397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6905609870639353253, guid: ccf6dcfe6ddc0794a9d2bf25d12b3456, type: 3}
+  m_PrefabInstance: {fileID: 4062493529373776712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2815463247963295581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472958047863068397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3507c0ad718aa43841b3f828ac9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 8150576592745389348}
+  particle: {fileID: 4694482085847270430}
+  floor:
+    serializedVersion: 2
+    m_Bits: 8
+  rayDistance: 0.2

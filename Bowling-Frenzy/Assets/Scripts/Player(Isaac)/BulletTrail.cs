@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class BulletTrail : MonoBehaviour
 {
+    [SerializeField] private float stelaDuration = 0.5f;
+    [SerializeField] private float startWidth = 0.5f;
+    [SerializeField] private float endWidth = 0.01f;
+
+    [SerializeField] private Color initialColor;
+    [SerializeField] private Color finalColor;
+
+
+
     private TrailRenderer trailRenderer;
 
     void Awake()
@@ -18,14 +27,14 @@ public class BulletTrail : MonoBehaviour
 
     void ConfigureTrail()
     {
-        trailRenderer.time = 0.5f; // Duración de la estela
-        trailRenderer.startWidth = 0.1f;
-        trailRenderer.endWidth = 0.01f;
+        trailRenderer.time = stelaDuration; // Duracion de la estela
+        trailRenderer.startWidth = startWidth; // Tamanio de la estela al inicio
+        trailRenderer.endWidth = endWidth; // Tamanio de la estela al final
 
         // Material y color
         trailRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        trailRenderer.startColor = Color.yellow;
-        trailRenderer.endColor = new Color(1f, 1f, 0f, 0f); // Transparente al final
+        trailRenderer.startColor = initialColor;
+        trailRenderer.endColor = finalColor;
 
         // Suavizado
         trailRenderer.numCornerVertices = 5;
