@@ -240,7 +240,7 @@ MonoBehaviour:
   sensibilityX: 0.1
   sensibilityY: 0.1
   player: {fileID: 7772299266287812469}
-  maxY: 180
+  maxY: 360
   minY: -368
 --- !u!1 &4991114913024878199
 GameObject:
@@ -1592,9 +1592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveDir: {x: 0, y: 0}
-  speed: 15
+  speed: 8
   velocity: {x: 0, y: 0, z: 0}
-  jumpForce: 3.2
+  normalJumpForce: 1.6
+  bigJumpForce: 3.2
+  bigJumpCooldown: 5
   gravity: -19.6
   changeWeapon: {fileID: 0}
   saludJugador: {fileID: 0}
@@ -1603,6 +1605,7 @@ MonoBehaviour:
   pointOfShoot: {fileID: 4991114913024878199}
   uiGameplay: {fileID: 0}
   playerTransform: {fileID: 7772299266287812469}
+  specialBulletUIs: []
 --- !u!114 &8697455628537231847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,10 +1635,6 @@ MonoBehaviour:
   PiercingIcon: {fileID: 21300000, guid: 0c0e333cc1b39a243b65f87382159c15, type: 3}
   SlowingIcon: {fileID: 21300000, guid: 87405a691b2092f4c9590f75a71ccda2, type: 3}
   specialBullets: 
-  WeaponSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &7772299266287812469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}

@@ -183,7 +183,7 @@ public class EnemyBase : MonoBehaviour
 
         if (Sweeper.instance.gameObject.activeSelf && Sweeper.instance != null)
         {
-            SetEnemySpeed(0f);
+            agent.enabled = false;
         }
         else if (!Sweeper.instance.gameObject.activeSelf && Sweeper.instance != null)
         {
@@ -219,12 +219,9 @@ public class EnemyBase : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out MainCharacter player))
         {
             // Solo hacer daño si el cooldown ha terminado
-            if (damageCooldown <= 0)
-            {
                 player.damageHealthPlayer(damage);
                 damageCooldown = 1.5f; // Reiniciar cooldown
                 Debug.Log("Daño aplicado en OnCollisionEnter");
-            }
         }
     }
 

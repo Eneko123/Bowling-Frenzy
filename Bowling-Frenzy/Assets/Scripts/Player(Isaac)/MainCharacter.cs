@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -71,6 +73,9 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] private UIGameplay[] specialBulletUIs; // Arrastra en Inspector
     private Dictionary<SpecialBullets, (float cooldownTime, UIGameplay ui)> bulletCooldowns;
 
+    private LayerMask floor;
+    private float rayDistance = 0.25f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -85,6 +90,7 @@ public class MainCharacter : MonoBehaviour
         playerHealth = MaxHealth;
         healthRecovery = (playerHealth * 15) / 100;
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
+        floor = LayerMask.GetMask("Ground");
     }
 
     private void Start()
@@ -328,11 +334,28 @@ public class MainCharacter : MonoBehaviour
             controller.Move(move.normalized * speed * Time.deltaTime);
         }
         //Calcula para que el jugador baje segun la gravedad
-        if (velocity.y > -19.6)
+        if (!IsTouchingFloor())
         {
             velocity.y += gravity * Time.deltaTime;
         }
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    bool IsTouchingFloor()
+    {
+        RaycastHit hit;
+
+        // Lanzar el raycast hacia abajo
+        if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance, floor))
+        {
+            // Debug para visualizar el ray
+            Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.green);
+            // velocity.y = 0;
+            return true;
+        }
+
+        Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
+        return false;
     }
 
     void Dead()
@@ -369,7 +392,7 @@ public class MainCharacter : MonoBehaviour
     IEnumerator InvencibilityCoroutine()
     {
         characterController.detectCollisions = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         characterController.detectCollisions = true;
     }
 
