@@ -183,6 +183,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f04571dc6c9a840a9d68c67b19e982, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1334857763740638923}
+    - targetCorrespondingSourceObject: {fileID: 6905609870639353253, guid: c4f04571dc6c9a840a9d68c67b19e982, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1402897601645975188}
   m_SourcePrefab: {fileID: 100100000, guid: c4f04571dc6c9a840a9d68c67b19e982, type: 3}
 --- !u!1 &3724789665852845525 stripped
 GameObject:
@@ -230,6 +233,7 @@ MonoBehaviour:
   health: 0
   points: 0
   pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
+  BulletGetter: {fileID: 0}
 --- !u!136 &1299829598448541712
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -316,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   raycastDistance: 2
   raycastOffset: 0.5
   rotationSpeed: 5
@@ -5130,3 +5134,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4f04571dc6c9a840a9d68c67b19e982, type: 3}
   m_PrefabInstance: {fileID: 4571282979824423044}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6964203508922490145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6905609870639353253, guid: c4f04571dc6c9a840a9d68c67b19e982, type: 3}
+  m_PrefabInstance: {fileID: 4571282979824423044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1402897601645975188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964203508922490145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3507c0ad718aa43841b3f828ac9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 2318151373538269548}
+  particle: {fileID: 2790213583869241795}
+  floor:
+    serializedVersion: 2
+    m_Bits: 8
+  rayDistance: 0.2

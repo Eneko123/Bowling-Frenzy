@@ -27,8 +27,6 @@ public class BoloEBoos : EnemyBase
     private bool atacked = false;
     private bool bossDead;
 
-    [SerializeField] RoundsManager roundsManager;
-
     public static BoloEBoos Instance { get; private set; }
 
     new void Start()

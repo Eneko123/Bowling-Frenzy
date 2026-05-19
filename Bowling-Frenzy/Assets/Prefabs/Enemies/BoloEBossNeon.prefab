@@ -192,6 +192,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6821206254590287034}
+    - targetCorrespondingSourceObject: {fileID: 6905609870639353253, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6786178152770731001}
   m_SourcePrefab: {fileID: 100100000, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
 --- !u!1 &383425004723806294 stripped
 GameObject:
@@ -239,6 +242,7 @@ MonoBehaviour:
   health: 0
   points: 0
   pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
+  BulletGetter: {fileID: 0}
   EnemyStates: []
   jump: {fileID: 0}
   atack: {fileID: 0}
@@ -350,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   raycastDistance: 2
   raycastOffset: 0.5
   rotationSpeed: 5
@@ -5164,6 +5168,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
   m_PrefabInstance: {fileID: 689995031286488327}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6216934805213171874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6905609870639353253, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+  m_PrefabInstance: {fileID: 689995031286488327}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6786178152770731001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216934805213171874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3507c0ad718aa43841b3f828ac9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 9216128478546954207}
+  particle: {fileID: 5001828265106250575}
+  floor:
+    serializedVersion: 2
+    m_Bits: 8
+  rayDistance: 0.2
 --- !u!1001 &6112606815219874186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5231,7 +5258,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Name
       value: Attack
@@ -5326,7 +5353,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &7405694181224050925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5394,7 +5421,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Name
       value: Jump
@@ -5493,4 +5520,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}

@@ -167,7 +167,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Name
       value: Jump
@@ -193,10 +193,10 @@ PrefabInstance:
       addedObject: {fileID: 7003766230007838016}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3984599453196829078}
+      addedObject: {fileID: 7392612909822616191}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7392612909822616191}
+      addedObject: {fileID: 9018383175143790958}
   m_SourcePrefab: {fileID: 100100000, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
 --- !u!1 &146857487070688300 stripped
 GameObject:
@@ -225,21 +225,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3984599453196829078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146857487070688300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f2d8be31c400640bb877159a1e7bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: {fileID: 146857487070688300}
-  atack: {fileID: 3564890275236091876}
-  damage: 0
 --- !u!64 &7392612909822616191
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -255,13 +240,27 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &9018383175143790958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146857487070688300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d925e581e600b458fb4061655d946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 146857487070688300}
+  atack: {fileID: 0}
 --- !u!4 &667217429876977302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
@@ -334,7 +333,7 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       propertyPath: m_Name
       value: Attack
@@ -356,10 +355,10 @@ PrefabInstance:
       addedObject: {fileID: 7482150481738746988}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1803762542224644279}
+      addedObject: {fileID: 5608895535030121168}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5608895535030121168}
+      addedObject: {fileID: 4172993889014947823}
   m_SourcePrefab: {fileID: 100100000, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
 --- !u!1 &3564890275236091876 stripped
 GameObject:
@@ -388,21 +387,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1803762542224644279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3564890275236091876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f2d8be31c400640bb877159a1e7bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: {fileID: 146857487070688300}
-  atack: {fileID: 3564890275236091876}
-  damage: 0
 --- !u!64 &5608895535030121168
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -424,7 +408,21 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4172993889014947823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564890275236091876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d925e581e600b458fb4061655d946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 0}
+  atack: {fileID: 3564890275236091876}
 --- !u!4 &4193652237840502110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
@@ -606,6 +604,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5573966092737063593}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1401869128257525771}
+    - targetCorrespondingSourceObject: {fileID: 6905609870639353253, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9043674885476819256}
   m_SourcePrefab: {fileID: 100100000, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
 --- !u!1 &3630691104249013946 stripped
 GameObject:
@@ -653,6 +657,7 @@ MonoBehaviour:
   health: 1000
   points: 1000
   pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
+  BulletGetter: {fileID: 0}
   EnemyStates:
   - CooldownMax: 30
     MinVel: 1
@@ -671,7 +676,6 @@ MonoBehaviour:
     MaxVel: 0
   jump: {fileID: 146857487070688300}
   atack: {fileID: 3564890275236091876}
-  roundsManager: {fileID: 0}
 --- !u!136 &639174233103976314
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -779,7 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   raycastDistance: 2
   raycastOffset: 0.5
   rotationSpeed: 5
@@ -5588,8 +5592,46 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1401869128257525771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630691104249013946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f2d8be31c400640bb877159a1e7bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 146857487070688300}
+  atack: {fileID: 3564890275236091876}
+  damage: 0
 --- !u!4 &4118857411272293376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
   m_PrefabInstance: {fileID: 4513635434011810795}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7022800756189173326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6905609870639353253, guid: 0af3078e8afc6dd4d870fb5bd03d789f, type: 3}
+  m_PrefabInstance: {fileID: 4513635434011810795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9043674885476819256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022800756189173326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3507c0ad718aa43841b3f828ac9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4985992440342056084}
+  particle: {fileID: 1557987798461196079}
+  floor:
+    serializedVersion: 2
+    m_Bits: 8
+  rayDistance: 0.2

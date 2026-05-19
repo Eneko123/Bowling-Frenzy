@@ -251,22 +251,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5222759321309750736}
-    - targetCorrespondingSourceObject: {fileID: 7036213049465896255, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6905609870639353253, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6354206729288523219}
+      addedObject: {fileID: 967956130970334422}
   m_SourcePrefab: {fileID: 100100000, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
---- !u!1 &1268077224696500012 stripped
+--- !u!1 &3452321849676824502 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6905609870639353253, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
   m_PrefabInstance: {fileID: 8087545710526706195}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6354206729288523219
+--- !u!114 &967956130970334422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268077224696500012}
+  m_GameObject: {fileID: 3452321849676824502}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b3507c0ad718aa43841b3f828ac9870, type: 3}
@@ -277,6 +277,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 8
+  rayDistance: 0.2
 --- !u!4 &8626084902805231096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cd4be17b30185f94aacbe5f1ddc50012, type: 3}
@@ -350,6 +351,7 @@ MonoBehaviour:
   health: 0
   points: 0
   pulseMaterial: {fileID: 2100000, guid: 3f40468c414b44e4d97c7f58de11390c, type: 2}
+  BulletGetter: {fileID: 0}
 --- !u!136 &4800854851156398981
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -414,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   raycastDistance: 2
   raycastOffset: 0.5
   rotationSpeed: 5

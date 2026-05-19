@@ -7,8 +7,6 @@ public class DetectFloor : MonoBehaviour
     [SerializeField] private LayerMask floor;
     [SerializeField] private float rayDistance = 0.2f;
 
-    private ParticleSystem.EmissionModule emissionModule;
-
     void Awake()
     {
         enemy = GetComponentInParent<EnemyBase>();
@@ -25,14 +23,14 @@ public class DetectFloor : MonoBehaviour
         RaycastHit hit;
 
         // Lanzar el raycast hacia abajo
-        if (Physics.Raycast(transform.position, -transform.forward, out hit, rayDistance, floor))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance, floor))
         {
             // Debug para visualizar el ray
-            Debug.DrawRay(transform.position, -transform.forward * rayDistance, Color.green);
+            Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.green);
             return true;
         }
 
-        Debug.DrawRay(transform.position, -transform.forward * rayDistance, Color.red);
+        Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
         return false;
     }
 
@@ -42,6 +40,7 @@ public class DetectFloor : MonoBehaviour
 
         // Activar particulas solo si esta tocando el suelo y esta vivo
         bool shouldEmit = IsTouchingFloor() && enemy.GetHealth() > 0;
-        emissionModule.enabled = shouldEmit;
+        var emission = particle.emission;
+        emission.enabled = shouldEmit;
     }
 }
