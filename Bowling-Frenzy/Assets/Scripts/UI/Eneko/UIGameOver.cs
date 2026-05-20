@@ -158,6 +158,7 @@ public class UIGameOver : MonoBehaviour
         // Recargar el nivel actual
         if (GameManager.Instance != null && !string.IsNullOrEmpty(GameManager.Instance.selectedLevel))
         {
+            GameManager.Instance.playerScore = 0;
             SceneManager.LoadScene(GameManager.Instance.selectedLevel);
         }
         else
