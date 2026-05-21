@@ -10,6 +10,7 @@ public class Cinematic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioManager.Instance.PlayMusic("MainMenu");
         foreach (Image comicImage in comicImages)
         {
             Color colorComicImage = comicImage.color;

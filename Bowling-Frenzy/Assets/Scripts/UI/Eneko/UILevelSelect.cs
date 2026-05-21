@@ -34,7 +34,6 @@ public class UILevelSelect : MonoBehaviour
         SetupButtonListeners();
         SetupDifficultyButtons();
         UpdateLevelAvailability();
-        AudioManager.Instance.PlayMusic("MainMenu");
     }
 
     void InitializePanels()

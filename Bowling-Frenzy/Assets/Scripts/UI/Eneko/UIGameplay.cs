@@ -353,7 +353,6 @@ public class UIGameplay : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-
         // Recargar el nivel actual
         if (GameManager.Instance != null && !string.IsNullOrEmpty(GameManager.Instance.selectedLevel))
         {
@@ -369,7 +368,6 @@ public class UIGameplay : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-
         // Resetear estado del juego
         if (GameManager.Instance != null)
         {
