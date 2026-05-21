@@ -3,12 +3,12 @@ using UnityEngine;
 public class PierceBullet : NormalBulletBehaviour
 {
     int MaxPierce;
-    int currentPirce;
+    int currentPierce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         MaxPierce = 3;
-        currentPirce = MaxPierce;
+        currentPierce = MaxPierce;
         this.currentSpecial = SpecialBullets.Piercing;
     }
     void Start()
@@ -35,11 +35,11 @@ public class PierceBullet : NormalBulletBehaviour
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
             enemy.ReceiveDamage(damage, false);
-            currentPirce--;
-
-            if (currentPirce <= 0)
+            currentPierce--;
+            AudioManager.Instance.PlaySFX("PierceBulletEffect");
+            if (currentPierce <= 0)
             {
-                currentPirce = MaxPierce;
+                currentPierce = MaxPierce;
                 OnDeactivate();
             }
         }

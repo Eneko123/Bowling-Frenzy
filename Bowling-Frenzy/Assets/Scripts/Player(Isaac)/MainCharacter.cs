@@ -386,6 +386,7 @@ public class MainCharacter : MonoBehaviour
     }
     public void damageHealthPlayer(float damage)
     {
+        AudioManager.Instance.PlaySFX("DanoJugador");
         playerHealth -= Mathf.Round(damage * (1 - defense));
         Debug.Log("Player health decreased");
         saludJugador.UpdateHealth(playerHealth, MaxHealth);
@@ -408,7 +409,7 @@ public class MainCharacter : MonoBehaviour
 
         GameObject b = GenerateBullet.instance.GetBullets();
         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-
+        AudioManager.Instance.PlaySFX("BulletSFX");
         // Detener la corrutina anterior si existe
         if (normalBulletReloadCoroutine != null)
         {
@@ -427,7 +428,7 @@ public class MainCharacter : MonoBehaviour
         if (b == null) return;
 
         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-
+        AudioManager.Instance.PlaySFX("BulletSFX");
         // Duraciones centralizadas (puedes moverlas a un ScriptableObject después si quieres)
         float cooldown = currentSpecialBullet switch
         {

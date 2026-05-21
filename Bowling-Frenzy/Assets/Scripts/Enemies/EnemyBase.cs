@@ -106,6 +106,7 @@ public class EnemyBase : MonoBehaviour
         }
         //Debug.Log(health);
         health -= damage;
+        AudioManager.Instance.PlaySFX("BolosRecibeDano");
         if (Combos.Instance != null && !isBarredora)
             Combos.Instance.IncrementCombo();
         //Debug.Log(health);
@@ -173,7 +174,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (!isSlowing)
         {
-
+            AudioManager.Instance.PlaySFX("SlowBulletEffect");
             originalSpeed = GetEnemySpeed();
             SetEnemySpeed(originalSpeed / 2);
             isSlowing = true;
@@ -220,6 +221,7 @@ public class EnemyBase : MonoBehaviour
     // Desactiva al enemigo
     void DeadAnim()
     {
+        AudioManager.Instance.PlaySFX("BolosMuerte");
         materials[0].color = originalColor;
         health = maxHealth;
         currentDamage = damage;
@@ -246,6 +248,7 @@ public class EnemyBase : MonoBehaviour
         {
             // Solo hacer danio si el cooldown ha terminado
             player.damageHealthPlayer(damage);
+            AudioManager.Instance.PlaySFX("AtqNormalBolos");
             damageCooldown = 1.5f; // Reiniciar cooldown
             Debug.Log("Danio aplicado en OnCollisionEnter");
         }
@@ -262,6 +265,7 @@ public class EnemyBase : MonoBehaviour
             if (damageCooldown <= 0)
             {
                 player.damageHealthPlayer(damage);
+                AudioManager.Instance.PlaySFX("AtqNormalBolos");
                 damageCooldown = 1.5f; // Reiniciar cooldown
                 Debug.Log("Danio aplicado en OnCollisionStay");
             }

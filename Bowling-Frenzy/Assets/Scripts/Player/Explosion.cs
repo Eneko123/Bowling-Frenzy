@@ -34,6 +34,7 @@ public class Explosion : MonoBehaviour
 
     IEnumerator ExplosionAnimation()
     {
+        AudioManager.Instance.PlaySFX("ExplosionBulletEffect");
         float timer = 0f;
         while (timer < explosionTime)
         {

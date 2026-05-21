@@ -213,11 +213,13 @@ public class BoloEBoos : EnemyBase
     void AttackAnim()
     {
         atack.SetActive(true);
+        AudioManager.Instance.PlaySFX("AtqNormalJefe");
     }
     // Activa el salto
     void JumpAnim()
     {
         jump.SetActive(true);
+        AudioManager.Instance.PlaySFX("AreaJefe");
     }
 
     private IEnumerator Intro()
