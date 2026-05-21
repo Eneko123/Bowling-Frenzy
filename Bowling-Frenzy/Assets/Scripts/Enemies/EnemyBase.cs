@@ -141,10 +141,12 @@ public class EnemyBase : MonoBehaviour
             agent.enabled = false;
             col.enabled = false;
             animator.SetTrigger("Dead");
+            AudioManager.Instance.PlaySFX("BolosMuerte", 0.2f);
         }
         if (health <= 0 && !isBarredoraOn)
         {
             GivePoints(points);
+            AudioManager.Instance.PlaySFX("BolosMuerte");
         }
     }
     internal void SetEnemySpeed(float newSpeed)
@@ -221,7 +223,6 @@ public class EnemyBase : MonoBehaviour
     // Desactiva al enemigo
     void DeadAnim()
     {
-        AudioManager.Instance.PlaySFX("BolosMuerte");
         materials[0].color = originalColor;
         health = maxHealth;
         currentDamage = damage;

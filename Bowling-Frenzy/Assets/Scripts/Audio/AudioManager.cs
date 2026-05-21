@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Método para reproducir Efectos de Sonido (SFX)
-    public void PlaySFX(string name)
+    public void PlaySFX(string name, float volume = 1f)
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
         }
 
         // PlayOneShot permite superponer sonidos sin interrumpir el anterior
-        sfxSource.PlayOneShot(s.clip);
+        sfxSource.PlayOneShot(s.clip, volume);
         sfxSource.loop = false; // Asegura que los SFX no entren en bucle
     }
 }
