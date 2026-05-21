@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -353,7 +350,6 @@ public class UIGameplay : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-
         // Recargar el nivel actual
         if (GameManager.Instance != null && !string.IsNullOrEmpty(GameManager.Instance.selectedLevel))
         {
@@ -369,7 +365,6 @@ public class UIGameplay : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-
         // Resetear estado del juego
         if (GameManager.Instance != null)
         {

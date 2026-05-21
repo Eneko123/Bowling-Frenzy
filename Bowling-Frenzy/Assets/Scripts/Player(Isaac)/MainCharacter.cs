@@ -334,33 +334,33 @@ public class MainCharacter : MonoBehaviour
             controller.Move(move.normalized * speed * Time.deltaTime);
         }
         //Calcula para que el jugador baje segun la gravedad
-        if (!IsTouchingFloor())
-        {
+        //if (!IsTouchingFloor())
+        //{
             velocity.y += gravity * Time.deltaTime;
-        }
+        //}
         controller.Move(velocity * Time.deltaTime);
     }
 
-    bool IsTouchingFloor()
-    {
-        RaycastHit hit;
+    //bool IsTouchingFloor()
+    //{
+    //    RaycastHit hit;
 
-        // Lanzar el raycast hacia abajo
-        if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance, floor))
-        {
-            // Debug para visualizar el ray
-            Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.green);
-            if (velocity.y < 0 && controller.isGrounded) // sigue siendo una guarrada, pero ahora funciona bien
-            {
-                velocity.y = 0;
-                return false;
-            }
-            return true;
-        }
+    //    // Lanzar el raycast hacia abajo
+    //    if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance, floor))
+    //    {
+    //        // Debug para visualizar el ray
+    //        Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.green);
+    //        if (velocity.y < 0 && controller.isGrounded) // sigue siendo una guarrada, pero ahora funciona bien
+    //        {
+    //            velocity.y = 0;
+    //            return false;
+    //        }
+    //        return true;
+    //    }
 
-        Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
-        return false;
-    }
+    //    Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
+    //    return false;
+    //}
 
     void Dead()
     {

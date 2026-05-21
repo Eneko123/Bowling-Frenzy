@@ -13,7 +13,8 @@ public class BotonTutorial : MonoBehaviour
     public static BotonTutorial instance;
     public void ReturnMenu()
     {
-        SceneManager.LoadScene(MenuLevel);
+        this.gameObject.SetActive(false);
+        UIMainMenu.instance.gameObject.SetActive(true);
     }
     private void Awake()
     {
