@@ -328,8 +328,16 @@ public class GenerateBullet : MonoBehaviour
                     for (int i = 0; i < listPiercingBullets.Count; i++)
                     {
                         int captured = i;
-                        listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().SetDamage(
-                            listPiercingBullets[captured].GetComponentInChildren<PierceBullet>().GetDamage() + powerUps.normalDmgM[tier]);
+                        PierceBullet pierceBullet = listPiercingBullets[captured].GetComponentInChildren<PierceBullet>();
+
+                        if (pierceBullet != null)
+                        {
+                            // Actualiza el daño
+                            pierceBullet.SetDamage(pierceBullet.GetDamage() + powerUps.specialDmgM[tier]);
+
+                            // Actualiza la cantidad de perforación
+                            pierceBullet.SetMaxPierce(pierceBullet.GetMaxPierce() + powerUps.pierceVals[tier]);
+                        }
                     }
                 }
             },
@@ -342,8 +350,16 @@ public class GenerateBullet : MonoBehaviour
                     for (int i = 0; i < listSlowingBullets.Count; i++)
                     {
                         int captured = i;
-                        listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().SetDamage(
-                            listSlowingBullets[captured].GetComponentInChildren<SlowBullet>().GetDamage() + powerUps.normalDmgM[tier]);
+                        SlowBullet slowBullet = listSlowingBullets[captured].GetComponentInChildren<SlowBullet>();
+
+                        if (slowBullet != null)
+                        {
+                            // Actualiza el daño
+                            slowBullet.SetDamage(slowBullet.GetDamage() + powerUps.specialDmgM[tier]);
+
+                            // Actualiza la duración del slow
+                            slowBullet.SetSlowDuration(slowBullet.GetSlowDuration() + powerUps.slowTimeVals[tier]);
+                        }
                     }
                 }
             },
