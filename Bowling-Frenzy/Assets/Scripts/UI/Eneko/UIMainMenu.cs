@@ -38,6 +38,7 @@ public class UIMainMenu : MonoBehaviour
         InitializePanels();
         SetupButtonListeners();
         LoadAudioSettings();
+        AudioManager.Instance.PlayMusic("MainMenu");
     }
 
     void InitializePanels()

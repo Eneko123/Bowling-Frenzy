@@ -49,10 +49,12 @@ public class UIGameOver : MonoBehaviour
         {
             panelWin.SetActive(true);
             panelLoose.SetActive(false);
+            AudioManager.Instance.PlayMusic("Victoria");
         }
         else {
             panelWin.SetActive(false);
             panelLoose.SetActive(true);
+            AudioManager.Instance.PlayMusic("Derrota");
         }
     }
 

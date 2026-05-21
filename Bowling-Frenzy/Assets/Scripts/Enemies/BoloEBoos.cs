@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,6 +35,7 @@ public class BoloEBoos : EnemyBase
         base.Start();
         CurrentState = EnemyStates[0];
         Cooldown = CurrentState.CooldownMax;
+        StartCoroutine(Intro());
     }
 
     new void Awake()
@@ -216,5 +218,12 @@ public class BoloEBoos : EnemyBase
     void JumpAnim()
     {
         jump.SetActive(true);
+    }
+
+    private IEnumerator Intro()
+    {
+        AudioManager.Instance.PlaySFX("JefeAlarma");
+        yield return new WaitForSeconds(2f);
+        AudioManager.Instance.PlayMusic("BatallaJefe");
     }
 }

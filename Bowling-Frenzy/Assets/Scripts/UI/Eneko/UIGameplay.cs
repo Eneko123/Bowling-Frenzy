@@ -102,6 +102,7 @@ public class UIGameplay : MonoBehaviour
         DrillBall.text = "......??"; BlackDB.SetActive(true);
         FreezeBall.text = "......??"; BlackFB.SetActive(true);
         BurnBall.text = "......??"; BlackBB.SetActive(true);
+        AudioManager.Instance.PlayMusic("Batalla");
     }
 
     void Update()
