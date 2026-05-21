@@ -350,7 +350,11 @@ public class MainCharacter : MonoBehaviour
         {
             // Debug para visualizar el ray
             Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.green);
-            // velocity.y = 0;
+            if (velocity.y < 0) // Es una guarrada hacer esto, pero al menos funciona para evitar que el jugador se quede pegado al suelo por la gravedad acumulada
+            {
+                velocity.y = 0;
+                return false;
+            }
             return true;
         }
 
