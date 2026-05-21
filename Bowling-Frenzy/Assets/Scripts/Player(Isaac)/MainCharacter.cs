@@ -74,7 +74,7 @@ public class MainCharacter : MonoBehaviour
     private Dictionary<SpecialBullets, (float cooldownTime, UIGameplay ui)> bulletCooldowns;
 
     private LayerMask floor;
-    private float rayDistance = 0.25f;
+    private float rayDistance = 0.1f;
 
     private void Awake()
     {
@@ -350,7 +350,7 @@ public class MainCharacter : MonoBehaviour
         {
             // Debug para visualizar el ray
             Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.green);
-            if (velocity.y < 0) // Es una guarrada hacer esto, pero al menos funciona para evitar que el jugador se quede pegado al suelo por la gravedad acumulada
+            if (velocity.y < 0 && controller.isGrounded) // sigue siendo una guarrada, pero ahora funciona bien
             {
                 velocity.y = 0;
                 return false;
@@ -440,6 +440,7 @@ public class MainCharacter : MonoBehaviour
         // Notifica a la UI y elimina lógica duplicada
         UIGameplay.uI.StartSpecialCooldown(currentSpecialBullet, cooldown);
     }
+
     #region Geters-Seters
     public float GetHealthMax() { return MaxHealth; }
     public float GetCurrentHealth() { return playerHealth; }
