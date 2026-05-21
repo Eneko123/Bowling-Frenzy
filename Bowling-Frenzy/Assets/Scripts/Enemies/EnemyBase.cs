@@ -18,7 +18,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected int points;
     private float slowTime = 2f;
     private SkinnedMeshRenderer meshRenderer;
-    [SerializeField] private Material pulseMaterial;  
+    [SerializeField] private Material pulseMaterial;
     private Collider col;
     protected Coroutine pulseCoroutine;
     protected Color originalColor;
@@ -27,7 +27,7 @@ public class EnemyBase : MonoBehaviour
     bool isPiercing;
     public NormalBulletBehaviour BulletGetter;
     protected void Awake()
-    {   
+    {
         player = MainCharacter.Instance.transform;
 
         // asignamos los componentes necesarios
@@ -35,7 +35,7 @@ public class EnemyBase : MonoBehaviour
         if (animator == null) { animator = GetComponent<Animator>(); }
         if (col == null) { col = GetComponent<Collider>(); }
         player = MainCharacter.Instance.playerTransform;
-        health = maxHealth;        
+        health = maxHealth;
         isPiercing = false;
     }
 
@@ -72,8 +72,8 @@ public class EnemyBase : MonoBehaviour
                 break;
 
             case Difficulty.Hard:
-                maxHealth += 3.5f;   
-                damage += 1.5f;      
+                maxHealth += 3.5f;
+                damage += 1.5f;
                 agent.speed += 0.04f;
                 break;
         }
@@ -92,8 +92,8 @@ public class EnemyBase : MonoBehaviour
         //    if (canPierce)
         //    {
         //        // Permitir que el proyectil atraviese al enemigo sin destruirlo
-                
-        //        Debug.Log("Proyectil atravesó al enemigo sin destruirlo.");
+
+        //        Debug.Log("Proyectil atravesa al enemigo sin destruirlo.");
         //    }
         //}
         if (pulseCoroutine != null)
@@ -155,11 +155,16 @@ public class EnemyBase : MonoBehaviour
         yield return new WaitForSeconds(slowTime);
         isSlowing = false;
         SetEnemySpeed(originalSpeed);
+        // Restaurar el color original cuando termine la ralentizacion
+        if (materials != null && materials.Length > 0)
+        {
+            materials[0].color = originalColor;
+        }
     }
 
     protected IEnumerator ColorPulse()
     {
-        materials[0].color = pulseMaterial.color; // Cambia a rojo para indicar que está ralentizado
+        materials[0].color = pulseMaterial.color; // Cambia a rojo para indicar que esta ralentizado
         yield return new WaitForSeconds(0.2f);
         materials[0].color = originalColor; // Vuelve al color original
         pulseCoroutine = null; // Reinicia la referencia al coroutine
@@ -175,8 +180,29 @@ public class EnemyBase : MonoBehaviour
             StartCoroutine(TimerSlow());
         }
     }
+
+    // Nuevo metodo para ralentizar con duracion personalizada y cambio de color azul claro
+    internal void SlowEnemyWithDuration(float duration)
+    {
+        if (!isSlowing)
+        {
+            originalSpeed = GetEnemySpeed();
+            SetEnemySpeed(originalSpeed / 2);
+            isSlowing = true;
+            slowTime = duration;
+
+            // Cambiar el color a azul claro para feedback visual
+            if (materials != null && materials.Length > 0)
+            {
+                materials[0].color = new Color(0.5f, 0.8f, 1f, 1f); // Azul claro (RGB: 128, 204, 255)
+            }
+
+            StartCoroutine(TimerSlow());
+            Debug.Log("Enemy slowed with color change for: " + duration + " seconds");
+        }
+    }
     void StopSpeedIfIsSweeperActive()
-    { 
+    {
         float currentSpeed = GetEnemySpeed();
 
         if (Sweeper.instance == null) { return; } // Para que deje de saltar errores
@@ -218,10 +244,10 @@ public class EnemyBase : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out MainCharacter player))
         {
-            // Solo hacer daño si el cooldown ha terminado
-                player.damageHealthPlayer(damage);
-                damageCooldown = 1.5f; // Reiniciar cooldown
-                Debug.Log("Daño aplicado en OnCollisionEnter");
+            // Solo hacer danio si el cooldown ha terminado
+            player.damageHealthPlayer(damage);
+            damageCooldown = 1.5f; // Reiniciar cooldown
+            Debug.Log("Danio aplicado en OnCollisionEnter");
         }
     }
 
@@ -232,12 +258,12 @@ public class EnemyBase : MonoBehaviour
             // Reducir el cooldown constantemente
             damageCooldown -= Time.deltaTime;
 
-            // Hacer daño solo cuando el cooldown llega a 0 o menos
+            // Hacer danio solo cuando el cooldown llega a 0 o menos
             if (damageCooldown <= 0)
             {
                 player.damageHealthPlayer(damage);
                 damageCooldown = 1.5f; // Reiniciar cooldown
-                Debug.Log("Daño aplicado en OnCollisionStay");
+                Debug.Log("Danio aplicado en OnCollisionStay");
             }
         }
     }
@@ -249,9 +275,9 @@ public class EnemyBase : MonoBehaviour
     //    if (collision.gameObject.TryGetComponent(out MainCharacter player))
     //    {
     //        // Resetear el cooldown cuando deja de tocar al jugador
-    //        // Esto hace que el próximo contacto haga daño inmediato
+    //        // Esto hace que el proximo contacto haga danio inmediato
     //        damageCooldown = 0f;
-    //        Debug.Log("Jugador salió de colisión - cooldown reseteado");
+    //        Debug.Log("Jugador salio de colision - cooldown reseteado");
     //    }
     //}
 }

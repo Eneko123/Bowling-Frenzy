@@ -3,33 +3,37 @@ using UnityEngine;
 
 public class SlowBullet : NormalBulletBehaviour
 {
-    bool isSlowing = false;
-    float originalSpeed;
+    [SerializeField] private SlowExplosion slowExplosionEffect;
+    [SerializeField] private float explosionScale = 8f; // Escala de la explosion ralentizadora
+    [SerializeField] GameObject slowExplosion;
+    [SerializeField] private float slowDuration = 2f; // Duracion del efecto de ralentizacion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         this.currentSpecial = SpecialBullets.Slowing;
+
+        // Asegurarse de que la explosion este desactivada al inicio
+        if (slowExplosionEffect != null)
+        {
+            slowExplosionEffect.gameObject.SetActive(false);
+        }
     }
+
     void Start()
     {
-        //Init(transform.position, Vector3.zero);
+        // Inicializa las propiedades de la explosion ralentizadora
+        if (slowExplosionEffect != null)
+        {
+            slowExplosionEffect.SetExplosionScale(explosionScale);
+            slowExplosionEffect.SetSlowDuration(slowDuration);
+        }
     }
-    //internal void AddSlow()
-    //{
-    //    for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
-    //    {
-    //        if (GenerateBullet.instance.listOfHabilities[i] == null)
-    //        {
-    //            GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
-    //            break;
-    //        }
-    //    }
-    //}
+
     public override SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;
     }
-
 
     // Update is called once per frame
     internal override void CheckEnemy(Collider collider)
@@ -37,11 +41,27 @@ public class SlowBullet : NormalBulletBehaviour
         if (collider.gameObject.TryGetComponent<EnemyBase>(out EnemyBase enemy))
         {
             enemy.ReceiveDamage(damage, false);
-            enemy.SlowEnemy();
             OnDeactivate();
         }
     }
 
+    protected override void OnDeactivate()
+    {
+        // Activa la explosion ralentizadora
+        if (slowExplosion != null)
+        {
+            GameObject slowExplosionInstance = Instantiate(slowExplosion, transform.position, Quaternion.identity);
+            slowExplosionInstance.SetActive(true);
+
+            SlowExplosion slowExplo = slowExplosionInstance.GetComponent<SlowExplosion>();
+            slowExplo.SetExplosionScale(explosionScale);
+            slowExplo.SetSlowDuration(slowDuration);
+            slowExplo.startExplosion();
+            Debug.Log("Slow explosion activated with scale: " + explosionScale + " and duration: " + slowDuration);
+        }
+
+        base.OnDeactivate();
+    }
 
     public override float GetDamage()
     {
@@ -51,5 +71,25 @@ public class SlowBullet : NormalBulletBehaviour
     public override void SetDamage(float newDamage)
     {
         this.damage = newDamage;
+    }
+
+    public float GetExplosionScale()
+    {
+        return explosionScale;
+    }
+
+    public void SetExplosionScale(float newScale)
+    {
+        explosionScale = newScale;
+    }
+
+    public float GetSlowDuration()
+    {
+        return slowDuration;
+    }
+
+    public void SetSlowDuration(float newDuration)
+    {
+        slowDuration = newDuration;
     }
 }

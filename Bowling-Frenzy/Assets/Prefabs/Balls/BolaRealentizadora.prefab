@@ -119,6 +119,10 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   rbParent: {fileID: 101323096113153023}
   lifeTime: 4
+  slowExplosionEffect: {fileID: 8930205547012236176}
+  explosionScale: 8
+  slowExplosion: {fileID: 4135741099473621977}
+  slowDuration: 2
 --- !u!1001 &2929872591698719510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,6 +189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2852dea4921587044a0c587cc9f21176, type: 3}
       insertIndex: -1
       addedObject: {fileID: 192717983751184541}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2852dea4921587044a0c587cc9f21176, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6765729866776633893}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2852dea4921587044a0c587cc9f21176, type: 3}
       insertIndex: -1
@@ -251,3 +258,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2852dea4921587044a0c587cc9f21176, type: 3}
   m_PrefabInstance: {fileID: 2929872591698719510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8614457192222935628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3396355014726751485}
+    m_Modifications:
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686262590365899157, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+      propertyPath: m_Name
+      value: SlowExplosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+--- !u!1 &4135741099473621977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5686262590365899157, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+  m_PrefabInstance: {fileID: 8614457192222935628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6765729866776633893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055692739627264105, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+  m_PrefabInstance: {fileID: 8614457192222935628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8930205547012236176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8330879148287137316, guid: cb8087310577c9246b0b28511a240f41, type: 3}
+  m_PrefabInstance: {fileID: 8614457192222935628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135741099473621977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c8246403658004f82cbee67584a00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
