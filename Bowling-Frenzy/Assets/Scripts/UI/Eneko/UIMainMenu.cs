@@ -32,8 +32,21 @@ public class UIMainMenu : MonoBehaviour
 
     [Header("Buttons - Tutorial Panel")]
     [SerializeField] private Button tutorialBackButton;
+    public static UIMainMenu instance; 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
+        }
+        this.gameObject.SetActive(false);
+    }
 
-    void Start()
+    void OnEnable()
     {
         InitializePanels();
         SetupButtonListeners();
