@@ -385,9 +385,9 @@ public class UIGameplay : MonoBehaviour
 
     void ShowPlayerSatats()
     {
-        ComonBall.text = "......" + GenerateBullet.instance.ListBullets[0].GetComponentInChildren<NormalBulletBehaviour>().GetDamage().ToString();
-        Defense.text = "......" + MainCharacter.Instance.GetDefense().ToString();
-        Speed.text = "......" + MainCharacter.Instance.GetSpeed().ToString();
+        ComonBall.text = "......" + GenerateBullet.instance.ListBullets[0].GetComponentInChildren<NormalBulletBehaviour>().GetDamage().ToString() + "Dañ.";
+        Defense.text = "......" + MainCharacter.Instance.GetDefense().ToString() + "Def.";
+        Speed.text = "......" + MainCharacter.Instance.GetSpeed().ToString() + "Vel.";
 
         // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa
         //ComonBall.text = Balanormal.GetDamage().ToString();  WeaponSlots
@@ -422,17 +422,17 @@ public class UIGameplay : MonoBehaviour
             if (unLocked[i] == SpecialBullets.Explosive)
             {
                 BlackBB.SetActive(false);
-                BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString();
+                BurnBall.text = "......" + GenerateBullet.instance.ListExplosiveBullets[0].GetComponentInChildren<ExplosiveBulletBehaviour>().GetDamage().ToString() + "Dañ.";
             }
             if (unLocked[i] == SpecialBullets.Piercing)
             {
                 BlackDB.SetActive(false);
-                DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString();
+                DrillBall.text = "......" + GenerateBullet.instance.ListPiercingBullets[0].GetComponentInChildren<PierceBullet>().GetDamage().ToString() + "Dañ.";
             }
             if (unLocked[i] == SpecialBullets.Slowing)
             {
                 BlackFB.SetActive(false);
-                FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString();
+                FreezeBall.text = "......" + GenerateBullet.instance.ListSlowingBullets[0].GetComponentInChildren<SlowBullet>().GetDamage().ToString() + "Dañ.";
             }
         }
 
