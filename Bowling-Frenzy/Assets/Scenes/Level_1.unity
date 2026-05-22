@@ -384,19 +384,19 @@ MonoBehaviour:
   bigBowlingBowlBossHealthBar: {fileID: 511228061}
   boos: {fileID: 2081428954}
   specialCooldownUIsArray:
-  - bulletType: 1
+  - bulletType: 0
     fillImage: {fileID: 1399814587}
     cooldownText: {fileID: 448187579}
     isOnCooldown: 0
     remainingTime: 0
     totalTime: 0
-  - bulletType: 2
+  - bulletType: 0
     fillImage: {fileID: 2140187137}
     cooldownText: {fileID: 4355935}
     isOnCooldown: 0
     remainingTime: 0
     totalTime: 0
-  - bulletType: 3
+  - bulletType: 0
     fillImage: {fileID: 1828445101}
     cooldownText: {fileID: 61150003}
     isOnCooldown: 0
@@ -1070,6 +1070,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7840832038737001221, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359882412443204308, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8863696699055725547, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
