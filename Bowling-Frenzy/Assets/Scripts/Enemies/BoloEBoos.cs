@@ -72,7 +72,7 @@ public class BoloEBoos : EnemyBase
             if (GameManager.Instance == null) { return; }
 
             switch (GameManager.Instance.difficulty)
-            {
+            {  
                 case Difficulty.Easy:
                     // Sin cambios, los valores quedan como estan
                     break;

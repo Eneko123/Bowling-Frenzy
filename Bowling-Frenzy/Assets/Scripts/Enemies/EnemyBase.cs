@@ -243,9 +243,9 @@ public class EnemyBase : MonoBehaviour
         slowTime = newSlowTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        if (other.gameObject.TryGetComponent(out MainCharacter player))
         {
             // Solo hacer danio si el cooldown ha terminado
             player.damageHealthPlayer(damage);
@@ -255,9 +255,9 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        if (other.gameObject.TryGetComponent(out MainCharacter player))
         {
             // Reducir el cooldown constantemente
             damageCooldown -= Time.deltaTime;
