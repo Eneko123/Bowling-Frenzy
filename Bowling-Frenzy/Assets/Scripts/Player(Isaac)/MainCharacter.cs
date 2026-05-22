@@ -49,7 +49,7 @@ public class MainCharacter : MonoBehaviour
     bool isReloadingExplosiveBullet = false;
     bool isReloadingPiercingBullet = false;
     bool isReloadingSlowingBullet = false;
-
+    int currentSpecial = 0;
     int typeOfBullet = 0;//Cambiar con el enum de las balas
 
     [SerializeField] UIGameplay uiGameplay;
@@ -269,31 +269,32 @@ public class MainCharacter : MonoBehaviour
     {
         if (contextSpecial.performed)
         {
-            int currentSpecial = 0;
             GenerateBullet currentHability = GenerateBullet.instance;
             InputBinding? binding = contextSpecial.action.GetBindingForControl(contextSpecial.control);
-            InputBinding K1 = new InputBinding(path: "<Keyboard>/1", action: "ChangeSpecial");
-            InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
-            InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
+            InputBinding K1 = new InputBinding(path: "<Keyboard>/tab", action: "ChangeSpecial");
+            //InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
+            //InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
+                currentSpecial++;
+                if(currentSpecial >= currentHability.specialBullets.Count)
+                {
+                    currentSpecial = 0;
+                }
+            currentSpecialBullet = currentHability.ChangeHability(currentHability.specialBullets[currentSpecial]);
+            
+                Debug.Log("ChangedSpec");
 
-            if (binding.Value.path == K1.path)
-            {
-                currentSpecial = 1;
-                currentSpecialBullet = currentHability.ChangeHability(0);
-                Debug.Log("1Spec");
-            }
-            else if (binding.Value.path == K2.path)
-            {
-                currentSpecial = 2;
-                currentSpecialBullet = currentHability.ChangeHability(1);
-                Debug.Log("2Spec");
-            }
-            else if (binding.Value.path == K3.path)
-            {
-                currentSpecial = 3;
-                currentSpecialBullet = currentHability.ChangeHability(2);
-                Debug.Log("3Spec");
-            }
+            //else if (binding.Value.path == K2.path)
+            //{
+            //    currentSpecial = 2;
+            //    currentSpecialBullet = currentHability.ChangeHability(1);
+            //    Debug.Log("2Spec");
+            //}
+            //else if (binding.Value.path == K3.path)
+            //{
+            //    currentSpecial = 3;
+            //    currentSpecialBullet = currentHability.ChangeHability(2);
+            //    Debug.Log("3Spec");
+            //}
 
             changeWeapon.UpdateActive(currentSpecial);
 
