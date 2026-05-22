@@ -105,13 +105,13 @@ public class PowerUps : MonoBehaviour
 
     void ApplyAndClose(Action actionToRun)
     {
-            MainCharacter.Instance.ResetShootingState();
-            actionToRun.Invoke();
-
-            upgradePanel.SetActive(false);
-            Time.timeScale = 1f;
-            if (rounds != null) rounds.StartNextRoundButton();
-            if (playerHealth != null) playerHealth.UpdateHealth(MainCharacter.Instance.GetCurrentHealth(), MainCharacter.Instance.GetHealthMax());
+        MainCharacter.Instance.ResetShootingState();
+        actionToRun.Invoke();
+        UIGameplay.uI.InitializeSpecialCooldowns();
+        upgradePanel.SetActive(false);
+        Time.timeScale = 1f;
+        if (rounds != null) rounds.StartNextRoundButton();
+        if (playerHealth != null) playerHealth.UpdateHealth(MainCharacter.Instance.GetCurrentHealth(), MainCharacter.Instance.GetHealthMax());
     }
 
     UpgradeOption GetRandomOption(Cat cat)
@@ -162,7 +162,7 @@ public class PowerUps : MonoBehaviour
         };
     }
 
-    
+
 
     UpgradeOption GetUnlockOption()
     {
@@ -197,12 +197,12 @@ public class PowerUps : MonoBehaviour
             _ => toUnlock.ToString()
         };
 
-            return new UpgradeOption
-            {
-                label = $" Desbloquear: {name}",
-                upgrateimage = image,
-                apply = () => GenerateBullet.instance.AddSpecial(toUnlock)
-            };
+        return new UpgradeOption
+        {
+            label = $" Desbloquear: {name}",
+            upgrateimage = image,
+            apply = () => GenerateBullet.instance.AddSpecial(toUnlock)
+        };
     }
 
     int WeightedRandom()

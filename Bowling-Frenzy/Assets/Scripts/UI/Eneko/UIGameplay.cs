@@ -92,7 +92,6 @@ public class UIGameplay : MonoBehaviour
         UpdateRoundText();
         UpdateScoreText();
         comboManager = GetComponentInChildren<Combos>();
-        InitializeSpecialCooldowns();
 
 
 
@@ -244,24 +243,25 @@ public class UIGameplay : MonoBehaviour
         bigBowlingBowlBossHealthBar.fillAmount = progres;
     }
 
-    private void InitializeSpecialCooldowns()
+    public void InitializeSpecialCooldowns()
     {
+        if (GenerateBullet.instance.specialBullets.Count == 0)
+        {
+            return;
+        }
+        int i = 0;
         foreach (var ui in specialCooldownUIsArray)
         {
-            if (ui != null && !cooldownUIs.ContainsKey(ui.bulletType))
+            if (ui != null && ui.bulletType == SpecialBullets.None)
             {
-                cooldownUIs[ui.bulletType] = ui;
-
-                // Ocultar todo por defecto (no se ven hasta que se use la bala)
-                ui.fillImage.gameObject.SetActive(false);
-                if (ui.cooldownText != null) ui.cooldownText.gameObject.SetActive(false);
+                specialCooldownUIsArray[i].bulletType = GenerateBullet.instance.specialBullets[GenerateBullet.instance.specialBullets.Count - 1];
             }
         }
     }
 
     private void UpdateSpecialCooldowns()
     {
-        foreach (var ui in cooldownUIs.Values)
+        foreach (var ui in specialCooldownUIsArray)
         {
             if (!ui.isOnCooldown) continue;
 
@@ -286,27 +286,36 @@ public class UIGameplay : MonoBehaviour
 
     public void StartSpecialCooldown(SpecialBullets type, float duration)
     {
-        if (cooldownUIs.TryGetValue(type, out var ui))
+        foreach (SpecialCooldownUI specialCooldownUI in specialCooldownUIsArray)
         {
-            ui.totalTime = duration;
-            ui.remainingTime = duration;
-            ui.isOnCooldown = true;
-
-            // Mostrar UI al iniciar cooldown
-            ui.fillImage.gameObject.SetActive(true);
-            ui.fillImage.fillAmount = 1f; // Empieza completamente visible
-            if (ui.cooldownText != null)
+            if (specialCooldownUI.bulletType == type)
             {
-                ui.cooldownText.gameObject.SetActive(true);
-                ui.cooldownText.text = $"{duration:F1}s";
+                specialCooldownUI.totalTime = duration;
+                specialCooldownUI.remainingTime = duration;
+                specialCooldownUI.isOnCooldown = true;
+
+                // Mostrar UI al iniciar cooldown
+                specialCooldownUI.fillImage.gameObject.SetActive(true);
+                specialCooldownUI.fillImage.fillAmount = 1f; // Empieza completamente visible
+                if (specialCooldownUI.cooldownText != null)
+                {
+                    specialCooldownUI.cooldownText.gameObject.SetActive(true);
+                    specialCooldownUI.cooldownText.text = $"{duration:F1}s";
+                }
             }
         }
     }
 
     public bool IsSpecialReady(SpecialBullets type)
     {
-        if (cooldownUIs.TryGetValue(type, out var ui)) return !ui.isOnCooldown;
-        return true; // Fallback seguro si no hay UI asignada
+        foreach (SpecialCooldownUI specialCooldownUI in specialCooldownUIsArray)
+        {
+            if (specialCooldownUI.isOnCooldown)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Marca visualmente la bala como lista
