@@ -50,6 +50,7 @@ public class MainCharacter : MonoBehaviour
     bool isReloadingPiercingBullet = false;
     bool isReloadingSlowingBullet = false;
     int currentSpecial = 0;
+    int specialSelected = 0;
     int typeOfBullet = 0;//Cambiar con el enum de las balas
 
     [SerializeField] UIGameplay uiGameplay;
@@ -271,35 +272,40 @@ public class MainCharacter : MonoBehaviour
         {
             GenerateBullet currentHability = GenerateBullet.instance;
             InputBinding? binding = contextSpecial.action.GetBindingForControl(contextSpecial.control);
-            InputBinding K1 = new InputBinding(path: "<Keyboard>/tab", action: "ChangeSpecial");
             //InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
             //InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
+            
                 currentSpecial++;
-                if(currentSpecial >= currentHability.specialBullets.Count)
+                if (currentSpecial >= currentHability.specialBullets.Count)
                 {
                     currentSpecial = 0;
                 }
-            currentSpecialBullet = currentHability.ChangeHability(currentHability.specialBullets[currentSpecial]);
+
+                if (currentHability.specialBullets.Count > 0) 
+                    currentSpecialBullet = currentHability.ChangeHability(currentHability.specialBullets[currentSpecial]);
+            else
+                currentSpecialBullet = SpecialBullets.None;
+
+            Debug.Log("ChangedSpec");
+
+                //else if (binding.Value.path == K2.path)
+                //{
+                //    currentSpecial = 2;
+                //    currentSpecialBullet = currentHability.ChangeHability(1);
+                //    Debug.Log("2Spec");
+                //}
+                //else if (binding.Value.path == K3.path)
+                //{
+                //    currentSpecial = 3;
+                //    currentSpecialBullet = currentHability.ChangeHability(2);
+                //    Debug.Log("3Spec");
+                //}
+
+                changeWeapon.UpdateActive(currentSpecialBullet);
+
+                Debug.Log(binding.Value);
+                Debug.Log(currentHability.currentPositionHability);
             
-                Debug.Log("ChangedSpec");
-
-            //else if (binding.Value.path == K2.path)
-            //{
-            //    currentSpecial = 2;
-            //    currentSpecialBullet = currentHability.ChangeHability(1);
-            //    Debug.Log("2Spec");
-            //}
-            //else if (binding.Value.path == K3.path)
-            //{
-            //    currentSpecial = 3;
-            //    currentSpecialBullet = currentHability.ChangeHability(2);
-            //    Debug.Log("3Spec");
-            //}
-
-            changeWeapon.UpdateActive(currentSpecial);
-
-            Debug.Log(binding.Value);
-            Debug.Log(currentHability.currentPositionHability);
         }
     }
     IEnumerator DelayForNormalBullet(float delay)
