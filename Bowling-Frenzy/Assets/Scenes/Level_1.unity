@@ -1542,6 +1542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BowlFace
       objectReference: {fileID: 0}
+    - target: {fileID: 6048898275541411092, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: powerUps
       value: 
@@ -5929,6 +5933,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2386481621210913055, guid: 0b54ac961eaac844c97e1e92c3a3b5c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2618200198247278533, guid: 0b54ac961eaac844c97e1e92c3a3b5c8, type: 3}
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 0
@@ -6597,6 +6605,10 @@ PrefabInstance:
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9028806458996808117, guid: 0b54ac961eaac844c97e1e92c3a3b5c8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6699,7 +6711,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e1c62b6a54dea6b4caab900a3676e71b, type: 2}
   m_BuildHeightMesh: 0
