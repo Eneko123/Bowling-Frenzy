@@ -72,9 +72,9 @@ public class EnemyBase : MonoBehaviour
                 break;
 
             case Difficulty.Hard:
-                maxHealth += 3.5f;
-                damage += 1.5f;
-                agent.speed += 0.04f;
+                maxHealth += 10f;
+                damage += 5f;
+                agent.speed += 0.4f;
                 break;
         }
 
