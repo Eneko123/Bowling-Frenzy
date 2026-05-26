@@ -119,6 +119,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   rbParent: {fileID: 3097745896522026331}
   lifeTime: 4
+  MaxPierce: 3
 --- !u!1001 &1471480470424054386
 PrefabInstance:
   m_ObjectHideFlags: 0

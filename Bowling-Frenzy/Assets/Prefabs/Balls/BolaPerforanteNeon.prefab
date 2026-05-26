@@ -52,6 +52,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   rbParent: {fileID: 47761485113179425}
   lifeTime: 4
+  MaxPierce: 3
 --- !u!135 &502945438986643501
 SphereCollider:
   m_ObjectHideFlags: 0

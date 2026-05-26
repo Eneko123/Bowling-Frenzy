@@ -333,6 +333,7 @@ public class GenerateBullet : MonoBehaviour
 
                             // Actualiza la cantidad de perforación
                             pierceBullet.SetMaxPierce(pierceBullet.GetMaxPierce() + powerUps.pierceVals[tier]);
+                            pierceBullet.SetPierce(pierceBullet.GetPierce() + powerUps.pierceVals[tier]);
                         }
                     }
                 }
