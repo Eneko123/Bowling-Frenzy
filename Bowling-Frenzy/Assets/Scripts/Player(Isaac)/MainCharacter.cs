@@ -301,7 +301,7 @@ public class MainCharacter : MonoBehaviour
                 //    Debug.Log("3Spec");
                 //}
 
-                changeWeapon.UpdateActive(currentSpecialBullet);
+                changeWeapon.OnTabPressed();
 
                 Debug.Log(binding.Value);
                 Debug.Log(currentHability.currentPositionHability);
