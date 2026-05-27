@@ -7,8 +7,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     [Header("Canales de Audio")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource sfxSource;
 
     [Header("Lista de Sonidos")]
     [SerializeField] private Sound[] musicSounds;
