@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 1960916087181414781, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: boos
+      value: 
+      objectReference: {fileID: 2144449489}
     - target: {fileID: 2818053905714736868, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: rounds
       value: 
@@ -1909,6 +1913,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7640117413853547964, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
   m_PrefabInstance: {fileID: 2144449485}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2144449489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9216128478546954207, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
+  m_PrefabInstance: {fileID: 2144449485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144449486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabca747231017641b29d473b33c5712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

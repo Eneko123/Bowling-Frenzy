@@ -54,13 +54,13 @@ public class PowerUps : MonoBehaviour
     // variables de mejora
     // Player
     int[] healthSum = { 10, 25, 50 };
-    float[] defenseBons = { 0.05f, 0.1f, 0.2f };
+    float[] defenseBons = { 0.1f, 0.2f, 0.35f };
     float[] speedBons = { 1f, 2f, 5f };
     int[] weights = { 60, 30, 10 }; // comun, raro, epico
 
     // Balas
-    internal float[] normalDmgM = { 15f, 25f, 40f };
-    internal float[] specialDmgM = { 10f, 20f, 30f };
+    internal float[] normalDmgM = { 5f, 10f, 20f };
+    internal float[] specialDmgM = { 15f, 25f, 40f };
     internal float[] explScaleM = { 1.2f, 1.4f, 1.6f };
     internal int[] pierceVals = { 2, 4, 8 };
     internal float[] slowTimeVals = { 1f, 2f, 3f };
@@ -150,7 +150,7 @@ public class PowerUps : MonoBehaviour
             },
             1 => new UpgradeOption
             {
-                label = $" Defensa +{defenseBons[tier]}",
+                label = $" Defensa +{defenseBons[tier] * 100}%",
                 upgrateimage = ImagenIIForUpgrate,
                 apply = () => MainCharacter.Instance.SetDefense(MainCharacter.Instance.GetDefense() + defenseBons[tier]),
                 weight = weights[tier]
