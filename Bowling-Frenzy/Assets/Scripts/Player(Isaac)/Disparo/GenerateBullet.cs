@@ -250,6 +250,10 @@ public class GenerateBullet : MonoBehaviour
                 WeaponSlots[slotIndex].sprite = SlowingIcon;
                 break;
         }
+        SpecialBullets sP = MainCharacter.Instance.GetCurrentSpecialBullet();
+        sP = ChangeHability(slotIndex);
+        MainCharacter.Instance.SetCurrentSpecialBullet(sP);
+        MainCharacter.Instance.changeWeapon.UpdateActive(slotIndex + 1);
     }
 
     #region Update Mejoras balas

@@ -447,11 +447,12 @@ public class MainCharacter : MonoBehaviour
     public bool CanUseBigJump() { return canUseBigJump; }
     public float GetBigJumpCooldownRemaining() { return bigJumpTimer; }
     public float GetBigJumpCooldownTotal() { return bigJumpCooldown; }
-
+    public SpecialBullets GetCurrentSpecialBullet() { return currentSpecialBullet; }
 
     public void SetHealthMax(float healtUp) { MaxHealth = healtUp; }
     public void SetCurrentHealth(float currentHealtUp) { playerHealth = currentHealtUp; }
     public void SetDefense(float defenseUp) { defense = defenseUp; }
     public void SetSpeed(float speedUp) { speed = speedUp; }
+    public void SetCurrentSpecialBullet(SpecialBullets sP) { currentSpecialBullet = sP; }
     #endregion
 }
