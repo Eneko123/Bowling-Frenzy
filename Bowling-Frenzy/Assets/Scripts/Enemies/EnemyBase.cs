@@ -72,9 +72,9 @@ public class EnemyBase : MonoBehaviour
                 break;
 
             case Difficulty.Hard:
-                maxHealth += 3.5f;
-                damage += 1.5f;
-                agent.speed += 0.04f;
+                maxHealth += 10f;
+                damage += 5f;
+                agent.speed += 0.4f;
                 break;
         }
 
@@ -172,17 +172,17 @@ public class EnemyBase : MonoBehaviour
         materials[0].color = originalColor; // Vuelve al color original
         pulseCoroutine = null; // Reinicia la referencia al coroutine
     }
-    internal void SlowEnemy()
-    {
-        if (!isSlowing)
-        {
-            AudioManager.Instance.PlaySFX("SlowBulletEffect");
-            originalSpeed = GetEnemySpeed();
-            SetEnemySpeed(originalSpeed / 2);
-            isSlowing = true;
-            StartCoroutine(TimerSlow());
-        }
-    }
+    //internal void SlowEnemy()
+    //{
+    //    if (!isSlowing)
+    //    {
+    //        AudioManager.Instance.PlaySFX("SlowBulletEffect");
+    //        originalSpeed = GetEnemySpeed();
+    //        SetEnemySpeed(originalSpeed / 2);
+    //        isSlowing = true;
+    //        StartCoroutine(TimerSlow());
+    //    }
+    //}
 
     // Nuevo metodo para ralentizar con duracion personalizada y cambio de color azul claro
     internal void SlowEnemyWithDuration(float duration)
@@ -251,7 +251,6 @@ public class EnemyBase : MonoBehaviour
             player.damageHealthPlayer(damage);
             AudioManager.Instance.PlaySFX("AtqNormalBolos");
             damageCooldown = 1.5f; // Reiniciar cooldown
-            Debug.Log("Danio aplicado en OnCollisionEnter");
         }
     }
 
@@ -268,21 +267,10 @@ public class EnemyBase : MonoBehaviour
                 player.damageHealthPlayer(damage);
                 AudioManager.Instance.PlaySFX("AtqNormalBolos");
                 damageCooldown = 1.5f; // Reiniciar cooldown
-                Debug.Log("Danio aplicado en OnCollisionStay");
             }
         }
     }
 
     public float GetHealth() => health;
 
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.TryGetComponent(out MainCharacter player))
-    //    {
-    //        // Resetear el cooldown cuando deja de tocar al jugador
-    //        // Esto hace que el proximo contacto haga danio inmediato
-    //        damageCooldown = 0f;
-    //        Debug.Log("Jugador salio de colision - cooldown reseteado");
-    //    }
-    //}
 }

@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class PierceBullet : NormalBulletBehaviour
 {
-    int MaxPierce;
+    [SerializeField] private int MaxPierce;
     int currentPierce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        MaxPierce = 3;
         currentPierce = MaxPierce;
         this.currentSpecial = SpecialBullets.Piercing;
     }
@@ -15,17 +14,6 @@ public class PierceBullet : NormalBulletBehaviour
     {
 
     }
-    //internal void AddPierce()
-    //{
-    //    for (int i = 0; i < GenerateBullet.instance.listOfHabilities.Length; i++)
-    //    {
-    //        if (GenerateBullet.instance.listOfHabilities[i] == null)
-    //        {
-    //            GenerateBullet.instance.listOfHabilities[i] = this.gameObject;
-    //            break;
-    //        }
-    //    }
-    //}
     public override SpecialBullets GetSpecialBullet()
     {
         return currentSpecial;
@@ -59,8 +47,15 @@ public class PierceBullet : NormalBulletBehaviour
     {
         return MaxPierce;
     }
+
+    public int GetPierce()
+        { return currentPierce; }
+
     public void SetMaxPierce(int newMaxPierce)
     {
         MaxPierce = newMaxPierce;
     }
+
+    public void SetPierce(int newPierce)
+        { currentPierce = newPierce; }
 }

@@ -24,7 +24,6 @@ public class UIGameplay : MonoBehaviour
     {
         public SpecialBullets bulletType;
         public Image fillImage;        // Circulo con Fill Type: Radial 360
-        public TextMeshProUGUI cooldownText; // Tiempo restante
 
         // Estado interno
         [HideInInspector] public bool isOnCooldown;
@@ -275,13 +274,11 @@ public class UIGameplay : MonoBehaviour
                 ui.remainingTime = 0f;
                 ui.isOnCooldown = false;
                 ui.fillImage.gameObject.SetActive(false);
-                if (ui.cooldownText != null) ui.cooldownText.gameObject.SetActive(false);
             }
             else
             {
                 // Progreso: 1 (lleno) → 0 (vacío)
                 ui.fillImage.fillAmount = ui.remainingTime / ui.totalTime;
-                if (ui.cooldownText != null) ui.cooldownText.text = $"{ui.remainingTime:F1}s";
             }
         }
     }
@@ -299,11 +296,6 @@ public class UIGameplay : MonoBehaviour
                 // Mostrar UI al iniciar cooldown
                 specialCooldownUI.fillImage.gameObject.SetActive(true);
                 specialCooldownUI.fillImage.fillAmount = 1f; // Empieza completamente visible
-                if (specialCooldownUI.cooldownText != null)
-                {
-                    specialCooldownUI.cooldownText.gameObject.SetActive(true);
-                    specialCooldownUI.cooldownText.text = $"{duration:F1}s";
-                }
             }
         }
     }
@@ -326,7 +318,6 @@ public class UIGameplay : MonoBehaviour
         ui.isOnCooldown = false;
         ui.remainingTime = 0f;
         ui.fillImage.fillAmount = 1f;
-        ui.cooldownText.text = "LISTO";
     }
     #endregion
 

@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1647328088482381514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3173542199644468800}
+  - component: {fileID: 8416435502433041026}
+  m_Layer: 0
+  m_Name: Rounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3173542199644468800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647328088482381514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.698303, y: 40.60981, z: -11.384628}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8416435502433041026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647328088482381514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5457e6eceb8f2a4d910fc33ab8878ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sweeper: {fileID: 0}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerUps: {fileID: 0}
+  states:
+  - timeMax: 60
+    E1: 20
+    E2: 0
+    E3: 0
+    spawnRateMax: 0
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 30
+    E2: 0
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 50
+    E2: 10
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 20
+    E2: 10
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 25
+    E2: 15
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 30
+    E2: 20
+    E3: 0
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 20
+    E2: 10
+    E3: 5
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 30
+    E2: 20
+    E3: 10
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 35
+    E2: 25
+    E3: 15
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  - timeMax: 60
+    E1: 15
+    E2: 10
+    E3: 5
+    spawnRateMax: 1
+    currentSpawnRate: 0
+  timerText: {fileID: 0}
+  RoundManagerText: {fileID: 0}
+  timerObject: {fileID: 0}
+  uiGameplay: {fileID: 0}
+  boss: {fileID: 0}
