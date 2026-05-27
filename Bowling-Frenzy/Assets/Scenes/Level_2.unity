@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasGameplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1533237191252614042, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533237191252614042, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2818053905714736868, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: rounds
       value: 
@@ -139,6 +147,18 @@ PrefabInstance:
       propertyPath: generateBullet
       value: 
       objectReference: {fileID: 225083331}
+    - target: {fileID: 5532836306393479409, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532836306393479409, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870852719893961798, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8802446169381410382, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_Pivot.x
       value: 0

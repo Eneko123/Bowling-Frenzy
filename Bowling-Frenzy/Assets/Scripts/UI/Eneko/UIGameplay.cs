@@ -324,15 +324,15 @@ public class UIGameplay : MonoBehaviour
     #region Pause Menu
     public void PauseGame()
     {
-        if (isUpgradeMenuOpen || BotonTutorial.instance.GetIfTutorialIsOpen()) return; // No pausar si esta abierto el menu de mejoras
-
+        if (isUpgradeMenuOpen || BotonTutorial.instance.GetIfTutorialIsOpen()) return;
         isPaused = true;
         Time.timeScale = 0f;
-
         if (pausePanel) pausePanel.SetActive(true);
         if (hudPanel) hudPanel.SetActive(false);
+        MainCharacter.Instance.ResetShootingState();
 
-        MainCharacter.Instance.ResetShootingState(); // Evita disparos acomulados
+        // Congela la cámara
+        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(true);
 
         Cursor.lockState = CursorLockMode.None;
     }
@@ -341,9 +341,12 @@ public class UIGameplay : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
-
         if (pausePanel) pausePanel.SetActive(false);
         if (hudPanel) hudPanel.SetActive(true);
+        MainCharacter.Instance.GetComponentInChildren<Camera>().enabled = true;
+
+        // Descongela la cámara
+        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(false);
 
         Cursor.lockState = CursorLockMode.Locked;
     }

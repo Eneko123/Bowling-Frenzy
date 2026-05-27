@@ -16,6 +16,16 @@ public class CameraPlayer : MonoBehaviour
 
     //Sirve para comprobar si está mirando
     bool isLooking = false;
+
+    // Sirve para congelar la cámara (p.ej. menú de pausa)
+    bool isFrozen = false;
+
+    public void SetFrozen(bool frozen)
+    {
+        isFrozen = frozen;
+        if (frozen) isLooking = false; // evita que el último input quede "colgado"
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,10 +39,10 @@ public class CameraPlayer : MonoBehaviour
 
     public void OnLookInput(InputAction.CallbackContext contextLook)
     {
+        if (isFrozen) return;
         if (contextLook.performed)
         {
             isLooking = true;
-            //Se leera la rotacion que el jugador desea hacer tanto en el eje X e Y
             rotationY += contextLook.ReadValue<Vector2>().y;
             rotationX += contextLook.ReadValue<Vector2>().x;
         }
