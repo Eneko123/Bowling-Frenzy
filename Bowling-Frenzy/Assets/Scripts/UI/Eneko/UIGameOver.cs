@@ -31,7 +31,15 @@ public class UIGameOver : MonoBehaviour
 
     void Start()
     {
-        SetupButtonListeners();
+        if(GameManager.Instance.winornot)
+        {
+            AudioManager.Instance.PlayMusic("Victoria");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("Derrota");
+        }
+            SetupButtonListeners();
         DisplayGameOverStats();
         Time.timeScale = 1f; // Asegurar que el tiempo esta normal
     }
@@ -49,12 +57,11 @@ public class UIGameOver : MonoBehaviour
         {
             panelWin.SetActive(true);
             panelLoose.SetActive(false);
-            AudioManager.Instance.PlayMusic("Victoria");
         }
-        else {
+        else 
+        {
             panelWin.SetActive(false);
             panelLoose.SetActive(true);
-            AudioManager.Instance.PlayMusic("Derrota");
         }
     }
 
