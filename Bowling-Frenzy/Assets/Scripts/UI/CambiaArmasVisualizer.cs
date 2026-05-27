@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class CambiaArmasVisualizer : MonoBehaviour
 {
-    public GameObject[] Selectors;
+    public GameObject ExploActive;
+    public GameObject SlowActive;
+    public GameObject PierceActive;
     int currentSpecialIndex = 0;    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 public void UpdateActive(int currentSpecial)
