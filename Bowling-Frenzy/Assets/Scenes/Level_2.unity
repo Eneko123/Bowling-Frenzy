@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015907160951803376, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_text
+      value: "Estad\xEDsticas:"
+      objectReference: {fileID: 0}
     - target: {fileID: 1340183115330360500, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_Name
       value: CanvasGameplay
