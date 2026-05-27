@@ -8,7 +8,7 @@ public class CambiaArmasVisualizer : MonoBehaviour
     public GameObject PierceActive;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-public void UpdateActive(SpecialBullets currentSpecial)
+public void UpdateActive(int currentSpecial)
     {
         for(int i = 0; i < GenerateBullet.instance.specialBullets.Count; i++)
         {
@@ -17,22 +17,22 @@ public void UpdateActive(SpecialBullets currentSpecial)
         
         switch (currentSpecial)
         {
-            case SpecialBullets.None:
+            case 0:
                 ExploActive.SetActive(false);
                 SlowActive.SetActive(false);
                 PierceActive.SetActive(false);
                 break;
-            case SpecialBullets.Explosive:
+            case 1:
                 ExploActive.SetActive(true);
                 SlowActive.SetActive(false);
                 PierceActive.SetActive(false);
                 break;
-            case SpecialBullets.Slowing:
+            case 2:
                 ExploActive.SetActive(false);
                 SlowActive.SetActive(true);
                 PierceActive.SetActive(false);
                 break;
-            case SpecialBullets.Piercing:
+            case 3:
                 ExploActive.SetActive(false);
                 SlowActive.SetActive(false);
                 PierceActive.SetActive(true);

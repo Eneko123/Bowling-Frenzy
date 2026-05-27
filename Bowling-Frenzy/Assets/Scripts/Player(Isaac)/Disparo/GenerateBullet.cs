@@ -198,9 +198,13 @@ public class GenerateBullet : MonoBehaviour
         tmpSlowing.gameObject.SetActive(false);
         return tmpSlowing;
     }
-    internal SpecialBullets ChangeHability(SpecialBullets hability)
+    internal SpecialBullets ChangeHability(int hability)
     {
-        SpecialBullets sP = hability;
+        if (specialBullets.Count == 0 || hability >= specialBullets.Count)
+        {
+            return SpecialBullets.None;
+        }
+        SpecialBullets sP = specialBullets[hability];
         switch (sP)
         {
             case SpecialBullets.Explosive:

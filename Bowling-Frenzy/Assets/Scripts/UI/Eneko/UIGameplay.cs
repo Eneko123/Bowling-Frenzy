@@ -252,10 +252,12 @@ public class UIGameplay : MonoBehaviour
         int i = 0;
         foreach (var ui in specialCooldownUIsArray)
         {
-            if (ui != null && ui.bulletType == SpecialBullets.None)
+            if (ui != null && ui.bulletType == SpecialBullets.None )
             {
                 specialCooldownUIsArray[i].bulletType = GenerateBullet.instance.specialBullets[GenerateBullet.instance.specialBullets.Count - 1];
+                break;
             }
+            i++;
         }
     }
 
@@ -310,7 +312,7 @@ public class UIGameplay : MonoBehaviour
     {
         foreach (SpecialCooldownUI specialCooldownUI in specialCooldownUIsArray)
         {
-            if (specialCooldownUI.isOnCooldown)
+            if (specialCooldownUI.isOnCooldown && specialCooldownUI.bulletType == type)
             {
                 return false;
             }
