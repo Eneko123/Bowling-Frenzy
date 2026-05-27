@@ -78,8 +78,9 @@ public class BoloEBoos : EnemyBase
                     break;
 
                 case Difficulty.Normal:
-                    maxHealth += 250f;
+                    maxHealth += 1500f;
                     damage += 10;
+                    Instance.GetComponent<AreaAttack>().SetDamage(Instance.GetComponent<AreaAttack>().GetDamage() + 10);
                     for (int i = 0; i < EnemyStates.Length - 1; i++)
                     {
                         EnemyStates[i].CooldownMax -= 2.5f;
@@ -89,11 +90,12 @@ public class BoloEBoos : EnemyBase
                     break;
 
                 case Difficulty.Hard:
-                    maxHealth += 500f;
+                    maxHealth += 4000f;
                     damage += 30;
+                    Instance.GetComponent<AreaAttack>().SetDamage(Instance.GetComponent<AreaAttack>().GetDamage() + 10);
                     for (int i = 0; i < EnemyStates.Length - 1; i++)
                     {
-                        EnemyStates[i].CooldownMax -= 4.5f;
+                        EnemyStates[i].CooldownMax -= 5f;
                         EnemyStates[i].MaxVel += 3f;
                         EnemyStates[i].MinVel += 3f;
                     }
@@ -119,21 +121,17 @@ public class BoloEBoos : EnemyBase
             pulseCoroutine = StartCoroutine(ColorPulse());
         }
 
-        if (health <= maxHealth * 0.75f && health > maxHealth * 0.5f)
+        if (health <= maxHealth * 0.66f && health > maxHealth * 0.33f)
         {
             CurrentState = EnemyStates[1];
         }
-        else if (health <= maxHealth * 0.5f && health > maxHealth * 0.25f)
+        else if (health <= maxHealth * 0.33f && health > 0)
         {
             CurrentState = EnemyStates[2];
         }
-        else if (health <= maxHealth * 0.25f && health > 0)
-        {
-            CurrentState = EnemyStates[3];
-        }
         else if (health <= 0)
         {
-            CurrentState = EnemyStates[4];
+            CurrentState = EnemyStates[3];
             Dead(isBarredora);
         }
         if (Combos.Instance != null && !isBarredora)

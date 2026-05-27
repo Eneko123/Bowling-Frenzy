@@ -151,4 +151,7 @@ public class AreaAttack : MonoBehaviour
             Debug.Log("Player hit by area attack");
         }
     }
+
+    public float GetDamage() => damage;
+    public void SetDamage(float newDamage) => damage = newDamage;
 }
