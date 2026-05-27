@@ -46,7 +46,7 @@ public class ExplosiveBulletBehaviour : NormalBulletBehaviour
             Debug.Log("Explosion activated with damage: " + damage + " and scale: " + explosionScale);
         }
 
-        base.OnDeactivate();
+         base.OnDeactivate();
     }
 
     public override float GetDamage()

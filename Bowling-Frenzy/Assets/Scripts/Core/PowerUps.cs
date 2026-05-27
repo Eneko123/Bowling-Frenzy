@@ -96,18 +96,21 @@ public class PowerUps : MonoBehaviour
             btnImage[i].sprite = opt.upgrateimage;//para que le de la imagen
             Action captured = opt.apply;
             buttons[i].onClick.RemoveAllListeners();
-            buttons[i].onClick.AddListener(() => ApplyAndClose(captured));
+            buttons[i].onClick.AddListener(() => ApplyAndClose(captured, opt.label));
         }
 
         upgradePanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    void ApplyAndClose(Action actionToRun)
+    void ApplyAndClose(Action actionToRun, string text)
     {
         MainCharacter.Instance.ResetShootingState();
         actionToRun.Invoke();
-        UIGameplay.uI.InitializeSpecialCooldowns();
+        if (text.StartsWith(" Desbloquear:"))
+        {
+            UIGameplay.uI.InitializeSpecialCooldowns();
+        }
         upgradePanel.SetActive(false);
         Time.timeScale = 1f;
         if (rounds != null) rounds.StartNextRoundButton();

@@ -6,18 +6,30 @@ public class CambiaArmasVisualizer : MonoBehaviour
     public GameObject[] Selectors;
     int currentSpecialIndex = 0;    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void OnTabPressed()
+public void UpdateActive(int currentSpecial)
     {
-        for(int i = 0; i < GenerateBullet.instance.specialBullets.Count; i++)
+        switch(currentSpecial)
         {
-            Debug.Log((GenerateBullet.instance.specialBullets[i]));
+            case 0:
+                ExploActive.SetActive(false);
+                SlowActive.SetActive(false);
+                PierceActive.SetActive(false);
+                break;
+            case 1:
+                ExploActive.SetActive(true);
+                SlowActive.SetActive(false);
+                PierceActive.SetActive(false);
+                break;
+            case 2:
+                ExploActive.SetActive(false);
+                SlowActive.SetActive(true);
+                PierceActive.SetActive(false);
+                break;
+            case 3:
+                ExploActive.SetActive(false);
+                SlowActive.SetActive(false);
+                PierceActive.SetActive(true);
+                break;
         }
-        Selectors[currentSpecialIndex].SetActive(false);
-        currentSpecialIndex++;
-        if(currentSpecialIndex >= GenerateBullet.instance.specialBullets.Count)
-        {
-            currentSpecialIndex = 0;
-        }
-        Selectors[currentSpecialIndex].SetActive(true);
     }
 }

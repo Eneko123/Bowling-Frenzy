@@ -249,8 +249,30 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bf7c1b35-7579-419b-92a9-bd9f75203cd3"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""id"": ""c880c813-ac00-4833-ace5-8d8664c8cb18"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02372962-2b35-4e49-9770-001bf85c35a6"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5362c576-942e-461e-a0e4-56d34b72b7d0"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

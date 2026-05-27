@@ -18,16 +18,16 @@ public class MainCharacter : MonoBehaviour
     float defense = 0;
     float healthRecovery;
     [Space(1)]
-    //Sirve para ver la direcciÛn en la que se mueve
+    //Sirve para ver la direcci√≥n en la que se mueve
     public Vector2 MoveDir = Vector2.zero;
-    //Hace referencia al componente CharacterController del objeto al que se le aÒadira
+    //Hace referencia al componente CharacterController del objeto al que se le a√±adira
     private CharacterController controller;
     //Velocidad del jugador para moverse
     [SerializeField] float speed = 4f;
     //Sirve para controlar el salto
     [SerializeField] Vector3 velocity;
     //Fuerza con la que se quiere que el jugador salte
-    [SerializeField] float normalJumpForce = 1.6f;      // Salto pequeÒo
+    [SerializeField] float normalJumpForce = 1.6f;      // Salto peque√±o
     [SerializeField] float bigJumpForce = 3.2f;         // Salto grande
     [SerializeField] float bigJumpCooldown = 5f;      // Tiempo entre saltos grandes
     private float bigJumpTimer = 0f;                  // Timer interno
@@ -55,7 +55,7 @@ public class MainCharacter : MonoBehaviour
 
     [SerializeField] UIGameplay uiGameplay;
 
-    // Singleton para que el enemigo pueda acceder a la posiciÛn del jugador
+    // Singleton para que el enemigo pueda acceder a la posici√≥n del jugador
     public static MainCharacter Instance { get; private set; }
     public Transform playerTransform;
 
@@ -120,18 +120,18 @@ public class MainCharacter : MonoBehaviour
         {
             _movementInputPressed = false;
         }
-        //Controla la direcciÛn en la que se mueve
+        //Controla la direcci√≥n en la que se mueve
         MoveDir = contextMove.ReadValue<Vector2>();
     }
     //Se llamara al evento en Unity asociado con la accion de saltar
     public void OnJumpInput(InputAction.CallbackContext contextJump)
     {
-        // Si el jugador realiza la acciÛn y est· en el suelo
+        // Si el jugador realiza la acci√≥n y est√° en el suelo
         if (contextJump.performed && controller.isGrounded)
         {
             jumpTimeStamp = Time.time;
 
-            // Determinar quÈ tipo de salto usar
+            // Determinar qu√© tipo de salto usar
             float jumpForceToUse;
 
             if (canUseBigJump)
@@ -152,7 +152,7 @@ public class MainCharacter : MonoBehaviour
         }
         else if (contextJump.canceled)
         {
-            // Si decide no querer saltar al m·ximo se frenar· el salto
+            // Si decide no querer saltar al m√°ximo se frenar√° el salto
             if (Time.time - jumpTimeStamp < jumpTime)
             {
                 velocity.y = 0;
@@ -164,7 +164,7 @@ public class MainCharacter : MonoBehaviour
 
         if (!uiGameplay.isPaused && !uiGameplay.isUpgradeMenuOpen)
         {
-            // Cuando se presiona el botÛn
+            // Cuando se presiona el bot√≥n
             if (contextShoot.started)
             {
                 isShootingPressed = true;
@@ -173,7 +173,7 @@ public class MainCharacter : MonoBehaviour
                     StartCoroutine(ShootingLoopCoroutine());
                 }
             }
-            // Cuando se suelta el botÛn
+            // Cuando se suelta el bot√≥n
             else if (contextShoot.canceled)
             {
                 isShootingPressed = false;
@@ -189,7 +189,7 @@ public class MainCharacter : MonoBehaviour
 
         while (isShootingPressed)
         {
-            // Solo dispara si no est· recargando
+            // Solo dispara si no est√° recargando
             if (!isReloadingNormalBullet)
             {
                 animator.SetTrigger("isAttacking");
@@ -220,14 +220,14 @@ public class MainCharacter : MonoBehaviour
         isReloadingNormalBullet = false;
     }
 
-    // FunciÛn p˙blica para resetear el estado de disparo
+    // Funci√≥n p√∫blica para resetear el estado de disparo
     // Evita acomulaciones de disparos
     public void ResetShootingState()
     {
         isShootingPressed = false;
         StopShootingLoop();
 
-        // Detener tambiÈn las corrutinas de balas especiales si est·n activas
+        // Detener tambi√©n las corrutinas de balas especiales si est√°n activas
         StopAllCoroutines();
 
         isShootingLoopActive = false;
@@ -249,17 +249,17 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    // Corrutina para reanudar el disparo normal despuÈs del disparo especial
+    // Corrutina para reanudar el disparo normal despu√©s del disparo especial
     private IEnumerator ResumeShootingAfterSpecial()
     {
-        // Espera un frame para que la animaciÛn especial se active
+        // Espera un frame para que la animaci√≥n especial se active
         yield return null;
 
-        // Espera a que termine la animaciÛn especial (ajustar este tiempo seg˙n la duraciÛn de la animaciÛn)
+        // Espera a que termine la animaci√≥n especial (ajustar este tiempo seg√∫n la duraci√≥n de la animaci√≥n)
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(stateInfo.length);
 
-        // Verifica que el jugador realmente siga presionando el botÛn (no solo que la variable estÈ en true)
+        // Verifica que el jugador realmente siga presionando el bot√≥n (no solo que la variable est√© en true)
         if (isShootingPressed && !isReloadingNormalBullet && !isShootingLoopActive)
         {
             StartCoroutine(ShootingLoopCoroutine());
@@ -270,38 +270,46 @@ public class MainCharacter : MonoBehaviour
     {
         if (contextSpecial.performed)
         {
+            int currentSpecial = 0;
             GenerateBullet currentHability = GenerateBullet.instance;
             InputBinding? binding = contextSpecial.action.GetBindingForControl(contextSpecial.control);
-            //InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
-            //InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
+            InputBinding K1 = new InputBinding(path: "<Keyboard>/1", action: "ChangeSpecial");
+            InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
+            InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
             
-                currentSpecial++;
-                if (currentSpecial >= currentHability.specialBullets.Count)
-                {
-                    currentSpecial = 0;
-                }
+            if (binding.Value.path == K1.path)
+            {
+                currentSpecial = 1;
+                currentSpecialBullet = currentHability.ChangeHability(0);
+                Debug.Log("1Spec");
+            }
+            else if (binding.Value.path == K2.path)
+            {
+                currentSpecial = 2;
+                currentSpecialBullet = currentHability.ChangeHability(1);
+                Debug.Log("2Spec");
+            }
+            else if (binding.Value.path == K3.path)
+            {
+                currentSpecial = 3;
+                currentSpecialBullet = currentHability.ChangeHability(2);
+                Debug.Log("3Spec");
+            }
 
-                if (currentHability.specialBullets.Count > 0) 
-                    currentSpecialBullet = currentHability.ChangeHability(currentHability.specialBullets[currentSpecial]);
-            else
-                currentSpecialBullet = SpecialBullets.None;
+            //else if (binding.Value.path == K2.path)
+            //{
+            //    currentSpecial = 2;
+            //    currentSpecialBullet = currentHability.ChangeHability(1);
+            //    Debug.Log("2Spec");
+            //}
+            //else if (binding.Value.path == K3.path)
+            //{
+            //    currentSpecial = 3;
+            //    currentSpecialBullet = currentHability.ChangeHability(2);
+            //    Debug.Log("3Spec");
+            //}
 
-            Debug.Log("ChangedSpec");
-
-                //else if (binding.Value.path == K2.path)
-                //{
-                //    currentSpecial = 2;
-                //    currentSpecialBullet = currentHability.ChangeHability(1);
-                //    Debug.Log("2Spec");
-                //}
-                //else if (binding.Value.path == K3.path)
-                //{
-                //    currentSpecial = 3;
-                //    currentSpecialBullet = currentHability.ChangeHability(2);
-                //    Debug.Log("3Spec");
-                //}
-
-                changeWeapon.OnTabPressed();
+            changeWeapon.UpdateActive(currentSpecial);
 
                 Debug.Log(binding.Value);
                 Debug.Log(currentHability.currentPositionHability);
@@ -319,7 +327,7 @@ public class MainCharacter : MonoBehaviour
     
     private void Update()
     {
-        // Si el juego se pausa o se abre el men˙ de mejoras, detener el disparo
+        // Si el juego se pausa o se abre el men√∫ de mejoras, detener el disparo
         if ((uiGameplay.isPaused || uiGameplay.isUpgradeMenuOpen) && isShootingPressed)
         {
             isShootingPressed = false;
@@ -331,7 +339,7 @@ public class MainCharacter : MonoBehaviour
             if (bigJumpTimer <= 0f)
             {
                 canUseBigJump = true;
-                Debug.Log("°SALTO GRANDE DISPONIBLE!");
+                Debug.Log("¬°SALTO GRANDE DISPONIBLE!");
             }
         }
         if (_movementInputPressed)
@@ -391,7 +399,7 @@ public class MainCharacter : MonoBehaviour
 
     void ThrowNormalBall()
     {
-        // Solo dispara si no est· recargando
+        // Solo dispara si no est√° recargando
         if (isReloadingNormalBullet)
             return;
 
@@ -417,7 +425,7 @@ public class MainCharacter : MonoBehaviour
 
         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
         AudioManager.Instance.PlaySFX("BulletSFX");
-        // Duraciones centralizadas (puedes moverlas a un ScriptableObject despuÈs si quieres)
+        // Duraciones centralizadas (puedes moverlas a un ScriptableObject despu√©s si quieres)
         float cooldown = currentSpecialBullet switch
         {
             SpecialBullets.Explosive => 10f,
@@ -426,7 +434,7 @@ public class MainCharacter : MonoBehaviour
             _ => 0f
         };
 
-        // Notifica a la UI y elimina lÛgica duplicada
+        // Notifica a la UI y elimina l√≥gica duplicada
         UIGameplay.uI.StartSpecialCooldown(currentSpecialBullet, cooldown);
     }
 
