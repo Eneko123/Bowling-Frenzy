@@ -148,9 +148,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6522695966643703301, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -3144417392784287367, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847189750831826276, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -444638083464494004, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
       propertyPath: m_Name
       value: BoloEBossNeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493766638946876590, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790183945725220954, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352165018896000097, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819001077394492298, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233112405309087440, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480623767174774313, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905609870639353253, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484923236504402754, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648441544259905962, guid: 9be80cbabf44bc64db65345ebf836380, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -214,7 +274,7 @@ Animator:
   m_GameObject: {fileID: 383425004723806294}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d5e6e93cdad1a2a4c87986bcf81b9ccd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 131ef784a9357b64593cbc1f304cd82c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

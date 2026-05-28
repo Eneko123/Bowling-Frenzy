@@ -2403,10 +2403,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barredora
       objectReference: {fileID: 0}
-    - target: {fileID: 8104226097108124074, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8880023272107072272, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 135
@@ -2447,8 +2443,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5502976217703375900, guid: 3f955c1476787704baa1eeae54d1bc2d, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3747,7 +3742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5659310154345514570, guid: 15ad93012b350204e9f25e0da01ac5a8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1820
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 5659310154345514570, guid: 15ad93012b350204e9f25e0da01ac5a8, type: 3}
       propertyPath: m_SizeDelta.y
