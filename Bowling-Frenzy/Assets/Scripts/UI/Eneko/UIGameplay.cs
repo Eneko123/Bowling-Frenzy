@@ -379,7 +379,8 @@ public class UIGameplay : MonoBehaviour
     void ShowPlayerSatats()
     {
         ComonBall.text = ".." + GenerateBullet.instance.ListBullets[0].GetComponentInChildren<NormalBulletBehaviour>().GetDamage().ToString() + " Dañ.";
-        Defense.text = ".." + MainCharacter.Instance.GetDefense().ToString() + " Def.";
+        float defense = MainCharacter.Instance.GetDefense() * 100;
+        Defense.text = ".." + defense + "% Def.";
         Speed.text = ".." + MainCharacter.Instance.GetSpeed().ToString() + " Vel.";
 
         // Tienes que hacer un sistema para acceder a los datan como en el power ups o inventarte otra coasa

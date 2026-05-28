@@ -303,7 +303,7 @@ public class GenerateBullet : MonoBehaviour
         {
             SpecialBullets.Explosive => new UpgradeOption
             {
-                label = $" Explosivo: daño +{powerUps.specialDmgM[tier]} / area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
+                label = $" Explosivo: daño +{powerUps.explosiveDmgM[tier]} \n area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
                 upgrateimage = ImagenVForUpgrate,
                 apply = () =>
                 {
@@ -315,7 +315,7 @@ public class GenerateBullet : MonoBehaviour
                         if (explosiveBehaviour != null)
                         {
                             // Actualiza el daioo
-                            explosiveBehaviour.SetDamage(explosiveBehaviour.GetDamage() + powerUps.specialDmgM[tier]);
+                            explosiveBehaviour.SetDamage(explosiveBehaviour.GetDamage() + powerUps.explosiveDmgM[tier]);
 
                             // Actualiza la escala de explosioin
                             explosiveBehaviour.SetExplosionScale(explosiveBehaviour.GetExplosionScale() * powerUps.explScaleM[tier]);
@@ -325,7 +325,7 @@ public class GenerateBullet : MonoBehaviour
             },
             SpecialBullets.Piercing => new UpgradeOption
             {
-                label = $" Perforante: daño +{powerUps.specialDmgM[tier]} / cantidad de perforacion +{powerUps.pierceVals[tier]}",
+                label = $" Perforante: daño +{powerUps.pierceDmgM[tier]} \n Cantidad de perforacion +{powerUps.pierceVals[tier]}",
                 upgrateimage = ImagenVIForUpgrate,
                 apply = () =>
                 {
@@ -337,7 +337,7 @@ public class GenerateBullet : MonoBehaviour
                         if (pierceBullet != null)
                         {
                             // Actualiza el daño
-                            pierceBullet.SetDamage(pierceBullet.GetDamage() + powerUps.specialDmgM[tier]);
+                            pierceBullet.SetDamage(pierceBullet.GetDamage() + powerUps.pierceDmgM[tier]);
 
                             // Actualiza la cantidad de perforación
                             pierceBullet.SetMaxPierce(pierceBullet.GetMaxPierce() + powerUps.pierceVals[tier]);
@@ -348,7 +348,7 @@ public class GenerateBullet : MonoBehaviour
             },
             SpecialBullets.Slowing => new UpgradeOption
             {
-                label = $" Ralentizadora: daño +{powerUps.specialDmgM[tier]} / duracion +{powerUps.slowTimeVals[tier]}s",
+                label = $" Ralentizadora: daño +{powerUps.slowDmgM[tier]} \n duracion +{powerUps.slowTimeVals[tier]}s \n area +{Mathf.RoundToInt((powerUps.explScaleM[tier] - 1) * 100)}%",
                 upgrateimage = ImagenVIIForUpgrate,
                 apply = () =>
                 {
@@ -360,7 +360,7 @@ public class GenerateBullet : MonoBehaviour
                         if (slowBullet != null)
                         {
                             // Actualiza el daño
-                            slowBullet.SetDamage(slowBullet.GetDamage() + powerUps.specialDmgM[tier]);
+                            slowBullet.SetDamage(slowBullet.GetDamage() + powerUps.slowDmgM[tier]);
 
                             // Actualiza la duración del slow
                             slowBullet.SetSlowDuration(slowBullet.GetSlowDuration() + powerUps.slowTimeVals[tier]);

@@ -54,13 +54,15 @@ public class PowerUps : MonoBehaviour
     // variables de mejora
     // Player
     int[] healthSum = { 10, 25, 50 };
-    float[] defenseBons = { 0.1f, 0.2f, 0.35f };
-    float[] speedBons = { 1f, 2f, 5f };
+    float[] defenseBons = { 0.1f, 0.2f, 0.3f };
+    float[] speedBons = { 2f, 3f, 4f };
     int[] weights = { 60, 30, 10 }; // comun, raro, epico
 
     // Balas
     internal float[] normalDmgM = { 5f, 10f, 20f };
-    internal float[] specialDmgM = { 15f, 25f, 40f };
+    internal float[] explosiveDmgM = { 15f, 25f, 40f };
+    internal float[] pierceDmgM = { 20f, 30f, 50f };
+    internal float[] slowDmgM = { 5f, 10f, 15f };
     internal float[] explScaleM = { 1.2f, 1.4f, 1.6f };
     internal int[] pierceVals = { 2, 4, 8 };
     internal float[] slowTimeVals = { 1f, 2f, 3f };
