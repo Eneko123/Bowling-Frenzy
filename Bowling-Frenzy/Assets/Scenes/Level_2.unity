@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasGameplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1493337298078318139, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_margin.z
+      value: -82.15877
+      objectReference: {fileID: 0}
     - target: {fileID: 1533237191252614042, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0.5
@@ -167,6 +171,10 @@ PrefabInstance:
       propertyPath: generateBullet
       value: 
       objectReference: {fileID: 225083331}
+    - target: {fileID: 2866804119967610136, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_margin.z
+      value: -86.157974
+      objectReference: {fileID: 0}
     - target: {fileID: 3758704381210184967, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -183,6 +191,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5049441136735731075, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_margin.z
+      value: -86.04018
+      objectReference: {fileID: 0}
     - target: {fileID: 5532836306393479409, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1920
@@ -198,6 +210,14 @@ PrefabInstance:
     - target: {fileID: 6333271621337683999, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387505744690024011, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_margin.z
+      value: -124.52374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956464358322948995, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_margin.z
+      value: -120.52716
       objectReference: {fileID: 0}
     - target: {fileID: 8344716466991610253, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_Color.b
@@ -302,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 8802446169381410382, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183522649407986142, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_margin.z
+      value: -130.56073
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
