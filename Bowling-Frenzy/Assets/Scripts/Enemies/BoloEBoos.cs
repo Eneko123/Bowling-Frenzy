@@ -192,6 +192,7 @@ public class BoloEBoos : EnemyBase
     }
 
     public float GetBossHealth() { return health; }
+    public float GetBossHealthMax() { return maxHealth; }
     public bool GetBossIsDead() { return bossDead; }
 
     // Funciones de animaciones

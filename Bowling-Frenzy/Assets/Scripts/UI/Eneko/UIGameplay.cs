@@ -224,19 +224,7 @@ public class UIGameplay : MonoBehaviour
     void UpdateBossHealthBar()
     {
         float bossHeath = boos.GetBossHealth();
-        float bossHealthMax = 0;
-        if (GameManager.Instance.difficulty == Difficulty.Easy)
-        {
-            bossHealthMax = 1000f;
-        } 
-        else if (GameManager.Instance.difficulty == Difficulty.Normal)
-        {
-            bossHealthMax = 1250f;
-        }
-        else if (GameManager.Instance.difficulty == Difficulty.Hard)
-        {
-            bossHealthMax = 1500f;
-        }
+        float bossHealthMax = boos.GetBossHealthMax();
 
         float progres = (bossHeath / bossHealthMax);
         bigBowlingBowlBossHealthBar.fillAmount = progres;

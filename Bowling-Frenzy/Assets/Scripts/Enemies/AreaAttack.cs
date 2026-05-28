@@ -142,10 +142,11 @@ public class AreaAttack : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
-        if (collision.gameObject.TryGetComponent(out MainCharacter player))
+        Debug.Log("Trigger con: " + other.gameObject.name + " layer: " + other.gameObject.layer);
+        MainCharacter player = other.gameObject.GetComponentInParent<MainCharacter>();
+        if (player != null)
         {
             player.damageHealthPlayer(damage);
             Debug.Log("Player hit by area attack");
