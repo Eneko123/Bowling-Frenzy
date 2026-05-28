@@ -113,15 +113,8 @@ public class UIGameOver : MonoBehaviour
                 "\nBolos macarras eliminados: " + GameManager.Instance.bolo3Score;
         }
 
-        // if (accuracyText)
-        // {
-        //     // accuracyText.text = $"Precisión: {GameManager.Instance.accuracy}%";
-        //     accuracyText.text = "Precisión: --%";
-        // }
-
         if (timePlayedText)
         {
-            // timePlayedText.text = $"Tiempo jugado: {FormatTime(GameManager.Instance.timePlayed)}";
             timePlayedText.text = "Tiempo jugado: " + FormatTime(GameManager.Instance.playedTime);
         }
     }
