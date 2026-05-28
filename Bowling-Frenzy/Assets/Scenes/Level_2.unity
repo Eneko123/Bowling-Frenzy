@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 1960916087181414781, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: boos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 537611308}
     - target: {fileID: 2444548575845272866, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -186,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 3758704381210184967, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955166854327717917, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4144886448674967581, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: m_IsActive
@@ -674,6 +678,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
+--- !u!1 &537611307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 383425004723806294, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
+  m_PrefabInstance: {fileID: 537611306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &537611308 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9216128478546954207, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
+  m_PrefabInstance: {fileID: 537611306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537611307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabca747231017641b29d473b33c5712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &592376540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1886,7 @@ PrefabInstance:
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: boss
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 537611307}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: sweeper
       value: 

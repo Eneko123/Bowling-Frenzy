@@ -11,10 +11,13 @@ public class BoloE3 : EnemyBase
         damage = 5f;
     }
 
-    protected override void DeadAnim()
+    protected override void Dead(bool isBarredora)
     {
-        base.DeadAnim();
-        GameManager.Instance.bolo3Score += 1;
+        base.Dead(isBarredora);
+        if (!isBarredora)
+        {
+            GameManager.Instance.bolo3Score += 1;
+        }
     }
 
     //protected override void Dead()

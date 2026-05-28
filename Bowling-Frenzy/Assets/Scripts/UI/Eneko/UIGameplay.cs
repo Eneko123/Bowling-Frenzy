@@ -114,6 +114,10 @@ public class UIGameplay : MonoBehaviour
                 PauseGame();
             }
         }
+
+        if (!isPaused && !isUpgradeMenuOpen)
+            GameManager.Instance.playedTime += Time.deltaTime;
+
         UpdateBigJumpCooldown();
         UpdateSpecialCooldowns();
 
@@ -440,12 +444,14 @@ public class UIGameplay : MonoBehaviour
     {
         isUpgradeMenuOpen = true;
         if (hudPanel) hudPanel.SetActive(false);
+        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(true);
     }
 
     public void OnUpgradeMenuClosed()
     {
         isUpgradeMenuOpen = false;
         if (hudPanel) hudPanel.SetActive(true);
+        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(false);
     }
     #endregion
 
