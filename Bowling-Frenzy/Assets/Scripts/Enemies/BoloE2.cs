@@ -10,6 +10,13 @@ public class BoloE2 : EnemyBase
         points = 250;
         damage = 15f;
     }
+
+    protected override void DeadAnim()
+    {
+        base.DeadAnim();
+        GameManager.Instance.bolo2Score += 1;
+    }
+
     //protected override void Dead()
     //{
     //    base.Dead();

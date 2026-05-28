@@ -108,7 +108,9 @@ public class UIGameOver : MonoBehaviour
         if (enemiesKilledText)
         {
             // enemiesKilledText.text = $"Enemigos eliminados: {GameManager.Instance.totalEnemiesKilled}";
-            enemiesKilledText.text = "Enemigos eliminados: --";
+            enemiesKilledText.text = "Bolos normales eliminados: " + GameManager.Instance.bolo1Score + 
+                "\nBolos bebes eliminados: " + GameManager.Instance.bolo2Score + 
+                "\nBolos macarras eliminados: " + GameManager.Instance.bolo3Score;
         }
 
         // if (accuracyText)
@@ -120,7 +122,7 @@ public class UIGameOver : MonoBehaviour
         if (timePlayedText)
         {
             // timePlayedText.text = $"Tiempo jugado: {FormatTime(GameManager.Instance.timePlayed)}";
-            timePlayedText.text = "Tiempo jugado: --:--";
+            timePlayedText.text = "Tiempo jugado: " + FormatTime(GameManager.Instance.playedTime);
         }
     }
 
@@ -168,6 +170,9 @@ public class UIGameOver : MonoBehaviour
         if (GameManager.Instance != null && !string.IsNullOrEmpty(GameManager.Instance.selectedLevel))
         {
             GameManager.Instance.playerScore = 0;
+            GameManager.Instance.bolo1Score = 0;
+            GameManager.Instance.bolo2Score = 0;
+            GameManager.Instance.bolo3Score = 0;
             SceneManager.LoadScene(GameManager.Instance.selectedLevel);
         }
         else

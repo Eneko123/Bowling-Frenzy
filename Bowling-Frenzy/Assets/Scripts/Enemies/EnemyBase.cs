@@ -201,7 +201,7 @@ public class EnemyBase : MonoBehaviour
     }
 
     // Desactiva al enemigo
-    void DeadAnim()
+    protected virtual void DeadAnim()
     {
         materials[0].color = originalColor;
         health = maxHealth;

@@ -11,6 +11,12 @@ public class BoloE3 : EnemyBase
         damage = 5f;
     }
 
+    protected override void DeadAnim()
+    {
+        base.DeadAnim();
+        GameManager.Instance.bolo3Score += 1;
+    }
+
     //protected override void Dead()
     //{
     //    base.Dead();

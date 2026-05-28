@@ -15,8 +15,17 @@ public class GameManager : MonoBehaviour
     [Header("Game State")]
     public Difficulty difficulty = Difficulty.Normal;
     public string selectedLevel = "";
+
+    [Header("Player Puntuation")]
     public int playerScore = 0;
     public int bestPlayerScore = 0;
+    public int bolo1Score = 0;
+    public int bestBolo1Score = 0;
+    public int bolo2Score = 0;
+    public int bestBolo2Score = 0;
+    public int bolo3Score = 0;
+    public int bestBolo3Score = 0;
+    public float playedTime = 0;
 
     [Header("Settings")]
     public float masterVolume = 1f;
