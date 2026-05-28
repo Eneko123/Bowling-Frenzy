@@ -80,8 +80,8 @@ public class BoloEBoos : EnemyBase
                 case Difficulty.Normal:
                     maxHealth += 1500f;
                     damage += 10;
-                    Instance.GetComponent<AreaAttack>().SetDamage(Instance.GetComponent<AreaAttack>().GetDamage() + 10);
-                    for (int i = 0; i < EnemyStates.Length - 1; i++)
+                GetComponent<AreaAttack>().SetDamage(GetComponent<AreaAttack>().GetDamage() + 10);
+                for (int i = 0; i < EnemyStates.Length - 1; i++)
                     {
                         EnemyStates[i].CooldownMax -= 2.5f;
                         EnemyStates[i].MaxVel += 2f;
@@ -92,8 +92,8 @@ public class BoloEBoos : EnemyBase
                 case Difficulty.Hard:
                     maxHealth += 4000f;
                     damage += 30;
-                    Instance.GetComponent<AreaAttack>().SetDamage(Instance.GetComponent<AreaAttack>().GetDamage() + 10);
-                    for (int i = 0; i < EnemyStates.Length - 1; i++)
+                GetComponent<AreaAttack>().SetDamage(GetComponent<AreaAttack>().GetDamage() + 20);
+                for (int i = 0; i < EnemyStates.Length - 1; i++)
                     {
                         EnemyStates[i].CooldownMax -= 5f;
                         EnemyStates[i].MaxVel += 3f;

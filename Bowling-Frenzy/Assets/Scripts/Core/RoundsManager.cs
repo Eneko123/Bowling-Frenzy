@@ -113,8 +113,8 @@ public class RoundsManager : MonoBehaviour
                     isFinalRound = true;
                     timerObject.SetActive(false);
                     RoundManagerText.gameObject.SetActive(false);
-                    boss.GetComponent<BoloEBoos>().DificultySystem(); // Llamamos a esta funcion en la ultima ronda para que funcione
                     boss.SetActive(true);
+                    boss.GetComponent<BoloEBoos>().DificultySystem(); // Llamamos a esta funcion en la ultima ronda para que funcione
                 }
                 else if (currentTime >= 0)
                 {

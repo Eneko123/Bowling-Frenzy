@@ -1844,15 +1844,15 @@ PrefabInstance:
       objectReference: {fileID: 1638487386}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[0].timeMax
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[1].timeMax
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[2].timeMax
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[3].timeMax
