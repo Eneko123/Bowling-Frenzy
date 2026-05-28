@@ -13,7 +13,7 @@ public class Combos : MonoBehaviour
     private float ComboSpeed = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Vector2 XLimit = new Vector2(-600f, 600f);
-    private Vector2 YLimit = new Vector2(-600f, -130f);
+    private Vector2 YLimit = new Vector2(-600f, -200f);
     void Start()
     {
         ComboBar.GetComponent<Image>();

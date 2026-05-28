@@ -93,7 +93,7 @@ public class EnemyBase : MonoBehaviour
         
         //Debug.Log(health);
         health -= damage;
-        AudioManager.Instance.PlaySFX("BolosRecibeDano");
+        AudioManager.Instance.PlaySFX("BoloRecibeDano");
         if (Combos.Instance != null && !isBarredora)
             Combos.Instance.IncrementCombo();
         //Debug.Log(health);
