@@ -85,25 +85,12 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void ReceiveDamage(float damage, bool isBarredora)
     {
-        //isPiercing = true;
-        //if(isPiercing && BulletGetter.GetSpecialBullet() == SpecialBullets.Piercing)
-        //{
-        //   bool canPierce = true; // Variable para controlar si el proyectil puede atravesar o no
-        //    if (canPierce)
-        //    {
-        //        // Permitir que el proyectil atraviese al enemigo sin destruirlo
-
-        //        Debug.Log("Proyectil atravesa al enemigo sin destruirlo.");
-        //    }
-        //}
         if (pulseCoroutine != null)
         {
             StopCoroutine(pulseCoroutine);
         }
-        else
-        {
-            pulseCoroutine = StartCoroutine(ColorPulse());
-        }
+        pulseCoroutine = StartCoroutine(ColorPulse());
+        
         //Debug.Log(health);
         health -= damage;
         AudioManager.Instance.PlaySFX("BolosRecibeDano");
@@ -169,20 +156,13 @@ public class EnemyBase : MonoBehaviour
     {
         materials[0].color = pulseMaterial.color; // Cambia a rojo para indicar que esta ralentizado
         yield return new WaitForSeconds(0.2f);
-        materials[0].color = originalColor; // Vuelve al color original
+        // Solo restaura al original si no está ralentizado
+        if (!isSlowing)
+        {
+            materials[0].color = originalColor;
+        }
         pulseCoroutine = null; // Reinicia la referencia al coroutine
     }
-    //internal void SlowEnemy()
-    //{
-    //    if (!isSlowing)
-    //    {
-    //        AudioManager.Instance.PlaySFX("SlowBulletEffect");
-    //        originalSpeed = GetEnemySpeed();
-    //        SetEnemySpeed(originalSpeed / 2);
-    //        isSlowing = true;
-    //        StartCoroutine(TimerSlow());
-    //    }
-    //}
 
     // Nuevo metodo para ralentizar con duracion personalizada y cambio de color azul claro
     internal void SlowEnemyWithDuration(float duration)

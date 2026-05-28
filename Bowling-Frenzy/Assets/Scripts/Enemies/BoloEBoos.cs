@@ -116,10 +116,7 @@ public class BoloEBoos : EnemyBase
         {
             StopCoroutine(pulseCoroutine);
         }
-        else
-        {
-            pulseCoroutine = StartCoroutine(ColorPulse());
-        }
+        pulseCoroutine = StartCoroutine(ColorPulse());
 
         if (health <= maxHealth * 0.66f && health > maxHealth * 0.33f)
         {

@@ -5309,10 +5309,10 @@ PrefabInstance:
       addedObject: {fileID: 4490352319758498347}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1138753848428247723}
+      addedObject: {fileID: 5131947458196349675}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5131947458196349675}
+      addedObject: {fileID: 1553384227900133555}
   m_SourcePrefab: {fileID: 100100000, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
 --- !u!4 &6007501728964058721 stripped
 Transform:
@@ -5346,21 +5346,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1138753848428247723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6347047775326356699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f2d8be31c400640bb877159a1e7bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: {fileID: 7640117413853547964}
-  atack: {fileID: 6347047775326356699}
-  damage: 0
 --- !u!64 &5131947458196349675
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5383,6 +5368,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1553384227900133555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347047775326356699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d925e581e600b458fb4061655d946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 7640117413853547964}
+  atack: {fileID: 6347047775326356699}
 --- !u!1001 &7405694181224050925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5476,10 +5475,10 @@ PrefabInstance:
       addedObject: {fileID: 1837067448712175626}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2982054521051329904}
+      addedObject: {fileID: 7032143889324487124}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7032143889324487124}
+      addedObject: {fileID: 1201439024849185797}
   m_SourcePrefab: {fileID: 100100000, guid: e6ad71ea3c272fe479e5f680d9cdbc4c, type: 3}
 --- !u!4 &7011250177238636294 stripped
 Transform:
@@ -5513,21 +5512,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2982054521051329904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7640117413853547964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f2d8be31c400640bb877159a1e7bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: {fileID: 7640117413853547964}
-  atack: {fileID: 6347047775326356699}
-  damage: 0
 --- !u!64 &7032143889324487124
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5550,3 +5534,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1201439024849185797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640117413853547964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d925e581e600b458fb4061655d946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 7640117413853547964}
+  atack: {fileID: 6347047775326356699}
