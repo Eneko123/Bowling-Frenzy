@@ -223,16 +223,16 @@ public class EnemyBase : MonoBehaviour
         slowTime = newSlowTime;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out MainCharacter player))
-        {
-            // Solo hacer danio si el cooldown ha terminado
-            player.damageHealthPlayer(damage);
-            AudioManager.Instance.PlaySFX("AtqNormalBolos");
-            damageCooldown = 1.5f; // Reiniciar cooldown
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.TryGetComponent(out MainCharacter player))
+    //    {
+    //        // Solo hacer danio si el cooldown ha terminado
+    //        player.damageHealthPlayer(damage);
+    //        AudioManager.Instance.PlaySFX("AtqNormalBolos");
+    //        damageCooldown = 1.5f; // Reiniciar cooldown
+    //    }
+    //}
 
     private void OnTriggerStay(Collider other)
     {

@@ -5,7 +5,7 @@ public class AreaAttack : MonoBehaviour
     public GameObject jump;
     public GameObject atack;
 
-    [SerializeField] float damage;
+    [SerializeField] public float damage;
 
     // Variables para guardar las posiciones originales
     private Vector3 jumpOriginalLocalPosition;
@@ -139,17 +139,6 @@ public class AreaAttack : MonoBehaviour
         if (atack != null && atack.transform.parent == null)
         {
             OnAtackDeactivated();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Trigger con: " + other.gameObject.name + " layer: " + other.gameObject.layer);
-        MainCharacter player = other.gameObject.GetComponentInParent<MainCharacter>();
-        if (player != null)
-        {
-            player.damageHealthPlayer(damage);
-            Debug.Log("Player hit by area attack");
         }
     }
 
