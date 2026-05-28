@@ -161,11 +161,20 @@ public class RoundsManager : MonoBehaviour
     { // Accede a los enemigos dentro de los spawnpoints y les aplica las mejoras
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            var enemies = spawnPoints[i].GetComponentsInChildren<EnemyBase>(true);
-            Debug.Log(enemies.Length);
-            for (int j = 0; j < enemies.Length; j++)
+            var enemies1 = spawnPoints[i].GetComponentsInChildren<BoloE1>(true);
+            var enemies2 = spawnPoints[i].GetComponentsInChildren<BoloE2>(true);
+            var enemies3 = spawnPoints[i].GetComponentsInChildren<BoloE3>(true);
+            for (int j = 0; j < enemies1.Length; j++)
             {
-                enemies[j].DificultySystem();
+                enemies1[j].DificultySystem();
+            }
+            for (int j = 0; j < enemies2.Length; j++)
+            {
+                enemies1[j].DificultySystem();
+            }
+            for (int j = 0; j < enemies3.Length; j++)
+            {
+                enemies1[j].DificultySystem();
             }
         }
     }

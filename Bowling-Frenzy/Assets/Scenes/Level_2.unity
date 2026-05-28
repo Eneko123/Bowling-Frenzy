@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoloEBossNeon
       objectReference: {fileID: 0}
+    - target: {fileID: 383425004723806294, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1016093528454920940, guid: 93e87aec70abe774b86b9ddc5afb376b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 108
@@ -1917,15 +1921,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[9].E1
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[9].E2
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[9].E3
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: 'spawnPoints.Array.data[0]'
@@ -1957,43 +1961,43 @@ PrefabInstance:
       objectReference: {fileID: 1638487386}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[0].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[1].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[2].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[3].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[4].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[5].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[6].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[7].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[8].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: states.Array.data[9].timeMax
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

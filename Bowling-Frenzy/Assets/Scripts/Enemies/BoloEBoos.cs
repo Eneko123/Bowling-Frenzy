@@ -63,7 +63,7 @@ public class BoloEBoos : EnemyBase
         DificultySystem();
     }
 
-    public override void DificultySystem()
+    public void DificultySystem()
     {
         // Solo se llama en la ultima ronda
  
