@@ -35,15 +35,15 @@ public class BoloE1 : EnemyBase
             case Difficulty.Normal:
                 // Incremento ADITIVO por ronda (SUMA)
                 // Usa los valores BASE y suma el incremento por ronda
-                maxHealth += 5f;      // +2 de vida por ronda
-                damage += 2.5f;             // +0.5 de danio por ronda
-                agent.speed += 0.25f;      // +0.2 de velocidad por ronda
+                maxHealth += 1.5f;      // +2 de vida por ronda
+                damage += 1.5f;             // +0.5 de danio por ronda
+                agent.speed += 0.1f;      // +0.2 de velocidad por ronda
                 break;
 
             case Difficulty.Hard:
-                maxHealth += 15f;
-                damage += 5f;
-                agent.speed += 0.5f;
+                maxHealth += 10f;
+                damage += 3.5f;
+                agent.speed += 0.3f;
                 break;
         }
 

@@ -204,7 +204,7 @@ public class MainCharacter : MonoBehaviour
         {
             ThrowNormalBall(); // Dispara una bala normal
             // El ritmo lo marca este WaitForSeconds, no isReloadingNormalBullet
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.2f);
         }
 
         isShootingLoopActive = false;
@@ -268,7 +268,7 @@ public class MainCharacter : MonoBehaviour
     // Corrutina para reanudar el disparo normal después del disparo especial
     private IEnumerator ResumeShootingAfterSpecial()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         // Solo reanudar si el jugador sigue con el botón pulsado y no hay ya un loop activo
         if (isShootingPressed && !isShootingLoopActive)
