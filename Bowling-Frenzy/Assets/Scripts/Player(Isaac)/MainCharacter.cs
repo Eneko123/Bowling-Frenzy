@@ -331,13 +331,29 @@ public class MainCharacter : MonoBehaviour
     // Suscrito por código en Start a "CycleWeapon".performed
     public void OnCycleWeapon(InputAction.CallbackContext contextCycle)
     {
-        Debug.Log("CycleWeapon performed");
         if (uiGameplay.isPaused || uiGameplay.isUpgradeMenuOpen) return;
 
         GenerateBullet currentHability = GenerateBullet.instance;
-        int newIndex = changeWeapon.CycleLeft();
-        currentSpecialBullet = currentHability.ChangeHability(newIndex - 1);
-        Debug.Log($"Ciclo → especial {newIndex}");
+        var unlocked = currentHability.specialBullets; // Lista de SpecialBullets desbloqueadas
+
+        // Si no hay ninguna desbloqueada, no hacer nada
+        if (unlocked == null || unlocked.Count == 0) return;
+
+        // Buscar en qué posición de la lista está el especial actual
+        int currentPos = unlocked.IndexOf(currentSpecialBullet);
+
+        // Avanzar una posición (si no estaba en la lista, empieza en 0)
+        int nextPos = (currentPos + 1) % unlocked.Count;
+
+        SpecialBullets next = unlocked[nextPos];
+
+        // Actualizar el estado interno igual que hace OnChangeSpecial
+        currentSpecialBullet = currentHability.ChangeHability(nextPos);
+
+        // Actualizar el visual — nextPos + 1 porque UpdateActive espera 1/2/3
+        changeWeapon.UpdateActive(nextPos + 1);
+
+        Debug.Log($"Ciclo → {next} (slot {nextPos + 1})");
     }
     IEnumerator DelayForNormalBullet(float delay)
     {
