@@ -6,18 +6,27 @@ public class Cinematic : MonoBehaviour
 {
     [SerializeField] List<Image> comicImages = new List<Image>();
     [SerializeField] float duracionDeLasImagenes = 5f;
-    Coroutine coroutineCinematic;
+    static bool hasEnteredInGame = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         AudioManager.Instance.PlayMusic("MainMenu");
-        foreach (Image comicImage in comicImages)
+        if (!hasEnteredInGame)
         {
-            Color colorComicImage = comicImage.color;
-            colorComicImage.a = 0f;
-            comicImage.color = colorComicImage;
+            foreach (Image comicImage in comicImages)
+            {
+                Color colorComicImage = comicImage.color;
+                colorComicImage.a = 0f;
+                comicImage.color = colorComicImage;
+            }
+            StartCoroutine(StartComic(0, 1, duracionDeLasImagenes));
         }
-        StartCoroutine(StartComic(0, 1, duracionDeLasImagenes));
+        else
+        {
+            this.gameObject.SetActive(false);
+            UIMainMenu.instance.gameObject.SetActive(true);
+        }
     }
     IEnumerator StartComic(float startValue, float endValue, float duration)
     {
@@ -36,11 +45,14 @@ public class Cinematic : MonoBehaviour
             image.color = actualImageComic;
             yield return new WaitForSeconds(2);
         }
+        this.gameObject.SetActive(false);
+        UIMainMenu.instance.gameObject.SetActive(true);
     }
     public void SaltarCinematica()
     {
         StopAllCoroutines();
         this.gameObject.SetActive(false);
         UIMainMenu.instance.gameObject.SetActive(true);
+        hasEnteredInGame = true;
     }
 }

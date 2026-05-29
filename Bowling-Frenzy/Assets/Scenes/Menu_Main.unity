@@ -390,7 +390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &60964451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3318,12 +3318,6 @@ MonoBehaviour:
   creditsButton: {fileID: 321896081}
   quitButton: {fileID: 2057185459}
   optionsBackButton: {fileID: 163031954}
-  masterVolumeSlider: {fileID: 0}
-  musicVolumeSlider: {fileID: 0}
-  sfxVolumeSlider: {fileID: 0}
-  masterVolumeText: {fileID: 0}
-  musicVolumeText: {fileID: 0}
-  sfxVolumeText: {fileID: 0}
   creditsBackButton: {fileID: 1362831985}
   tutorialBackButton: {fileID: 658581392}
 --- !u!1 &1083594818
@@ -3929,9 +3923,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -503
       objectReference: {fileID: 0}
+    - target: {fileID: 453302628612167861, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 453302628612167861, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 453302628612167861, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.39
+      objectReference: {fileID: 0}
     - target: {fileID: 992503496325498746, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1375.414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971353112082874485, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971353112082874485, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971353112082874485, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971353112082874485, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 2168873009792465083, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3997,6 +4019,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1059.0604
       objectReference: {fileID: 0}
+    - target: {fileID: 3660066309326883379, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660066309326883379, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
     - target: {fileID: 3993857066869094896, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -4015,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4313865741011013466, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4542829477257668808, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_Sprite
@@ -4136,6 +4166,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6363196527527505712, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363196527527505712, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6864804584497931585, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_Name
       value: BackButton
@@ -4148,6 +4186,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 502856426, guid: 44f58fdb886de974d88f5dcdeeb8bda4, type: 3}
+    - target: {fileID: 8603507041590257827, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603507041590257827, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

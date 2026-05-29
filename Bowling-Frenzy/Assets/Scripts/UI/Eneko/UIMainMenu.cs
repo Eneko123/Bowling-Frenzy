@@ -20,12 +20,6 @@ public class UIMainMenu : MonoBehaviour
 
     [Header("Buttons - Options Panel")]
     [SerializeField] private Button optionsBackButton;
-    [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider musicVolumeSlider;
-    [SerializeField] private Slider sfxVolumeSlider;
-    [SerializeField] private TextMeshProUGUI masterVolumeText;
-    [SerializeField] private TextMeshProUGUI musicVolumeText;
-    [SerializeField] private TextMeshProUGUI sfxVolumeText;
 
     [Header("Buttons - Credits Panel")]
     [SerializeField] private Button creditsBackButton;
@@ -50,7 +44,6 @@ public class UIMainMenu : MonoBehaviour
     {
         InitializePanels();
         SetupButtonListeners();
-        LoadAudioSettings();
     }
 
     void InitializePanels()
@@ -72,37 +65,12 @@ public class UIMainMenu : MonoBehaviour
 
         // Options Panel
         if (optionsBackButton) optionsBackButton.onClick.AddListener(OnOptionsBackClicked);
-        if (masterVolumeSlider) masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
-        if (musicVolumeSlider) musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
-        if (sfxVolumeSlider) sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
 
         // Credits Panel
         if (creditsBackButton) creditsBackButton.onClick.AddListener(OnCreditsBackClicked);
 
         // Tutorial Panel
         if (tutorialBackButton) tutorialBackButton.onClick.AddListener(OnCreditsBackClicked);
-    }
-
-    void LoadAudioSettings()
-    {
-        if (GameManager.Instance != null)
-        {
-            if (masterVolumeSlider)
-            {
-                masterVolumeSlider.value = GameManager.Instance.masterVolume;
-                UpdateVolumeText(masterVolumeText, GameManager.Instance.masterVolume);
-            }
-            if (musicVolumeSlider)
-            {
-                musicVolumeSlider.value = GameManager.Instance.musicVolume;
-                UpdateVolumeText(musicVolumeText, GameManager.Instance.musicVolume);
-            }
-            if (sfxVolumeSlider)
-            {
-                sfxVolumeSlider.value = GameManager.Instance.sfxVolume;
-                UpdateVolumeText(sfxVolumeText, GameManager.Instance.sfxVolume);
-            }
-        }
     }
 
     #region Button Callbacks - Main Panel
@@ -149,48 +117,6 @@ public class UIMainMenu : MonoBehaviour
     {
         Debug.Log("Options back clicked");
         ShowPanel(mainPanel);
-    }
-
-    void OnMasterVolumeChanged(float value)
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.masterVolume = Mathf.Clamp01(value);
-            AudioListener.volume = GameManager.Instance.masterVolume;
-            PlayerPrefs.SetFloat("MasterVolume", GameManager.Instance.masterVolume);
-            PlayerPrefs.Save();
-        }
-        UpdateVolumeText(masterVolumeText, value);
-    }
-
-    void OnMusicVolumeChanged(float value)
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.musicVolume = Mathf.Clamp01(value);
-            PlayerPrefs.SetFloat("MusicVolume", GameManager.Instance.musicVolume);
-            PlayerPrefs.Save();
-        }
-        UpdateVolumeText(musicVolumeText, value);
-    }
-
-    void OnSFXVolumeChanged(float value)
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.sfxVolume = Mathf.Clamp01(value);
-            PlayerPrefs.SetFloat("SFXVolume", GameManager.Instance.sfxVolume);
-            PlayerPrefs.Save();
-        }
-        UpdateVolumeText(sfxVolumeText, value);
-    }
-
-    void UpdateVolumeText(TextMeshProUGUI textComponent, float value)
-    {
-        if (textComponent)
-        {
-            textComponent.text = Mathf.RoundToInt(value * 100) + "%";
-        }
     }
     #endregion
 
