@@ -26,7 +26,7 @@ public class NormalBulletBehaviour : MonoBehaviour
         rbParent.transform.position = initialPos;   
         direction = initialDir;
         _currentLifeTime = lifeTime;
-
+        AudioManager.Instance.PlaySFX("BulletSFX");
         rbParent.AddForce(direction * speed, ForceMode.Force);
     }
     public virtual SpecialBullets GetSpecialBullet()
