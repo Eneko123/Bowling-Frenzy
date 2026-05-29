@@ -171,11 +171,11 @@ public class RoundsManager : MonoBehaviour
             }
             for (int j = 0; j < enemies2.Length; j++)
             {
-                enemies1[j].DificultySystem();
+                enemies2[j].DificultySystem();
             }
             for (int j = 0; j < enemies3.Length; j++)
             {
-                enemies1[j].DificultySystem();
+                enemies3[j].DificultySystem();
             }
         }
     }
