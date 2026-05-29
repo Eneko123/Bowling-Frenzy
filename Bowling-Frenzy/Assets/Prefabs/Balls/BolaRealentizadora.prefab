@@ -274,8 +274,9 @@ MonoBehaviour:
   stelaDuration: 0.5
   startWidth: 0.5
   endWidth: 0.01
-  initialColor: {r: 1, g: 1, b: 1, a: 1}
-  finalColor: {r: 1, g: 1, b: 1, a: 1}
+  initialColor: {r: 0.70980394, g: 0, b: 1, a: 0.78431374}
+  finalColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  minMoveDistance: 0.5
 --- !u!96 &3767012774071788519
 TrailRenderer:
   serializedVersion: 3
