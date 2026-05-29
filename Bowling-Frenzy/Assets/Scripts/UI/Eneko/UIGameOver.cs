@@ -100,8 +100,8 @@ public class UIGameOver : MonoBehaviour
         if (finalScoreText)
             finalScoreText.text = $"Puntuación Final: {GameManager.Instance.playerScore}";
 
-        if (finalRoundText && RoundsManager.instance != null)
-            finalRoundText.text = $"Ronda Alcanzada: {RoundsManager.instance.CurrentRound + 1}";
+        if (finalRoundText && GameManager.Instance != null)
+            finalRoundText.text = $"Ronda Alcanzada: {GameManager.Instance.roundReached}";
 
         //if (messageText)
         //    messageText.text = GetPerformanceMessage();
@@ -120,8 +120,8 @@ public class UIGameOver : MonoBehaviour
         if (finalScoreTextLose)
             finalScoreTextLose.text = $"Puntuación Final: {GameManager.Instance.playerScore}";
 
-        if (finalRoundTextLose && RoundsManager.instance != null)
-            finalRoundTextLose.text = $"Ronda Alcanzada: {RoundsManager.instance.CurrentRound + 1}";
+        if (finalRoundTextLose && GameManager.Instance != null)
+            finalRoundTextLose.text = $"Ronda Alcanzada: {GameManager.Instance.roundReached}";
 
         if (enemiesKilledTextLose)
         {

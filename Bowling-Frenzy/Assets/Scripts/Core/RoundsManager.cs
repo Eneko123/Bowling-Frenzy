@@ -145,6 +145,7 @@ public class RoundsManager : MonoBehaviour
         if (!isRoundFinished)
         {
             currentRound += 1;
+            GameManager.Instance.roundReached = currentRound + 1;
             AplyDificultySystemToEnemis();
             uiGameplay.UpdateRoundText();
             currentState = states[currentRound];

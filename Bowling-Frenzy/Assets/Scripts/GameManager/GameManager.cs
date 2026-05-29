@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public int bolo2Score = 0;
     public int bolo3Score = 0;
     public float playedTime = 0;
+    public int roundReached = 0;
 
     [Header("Records")]
     public int bestPlayerScore = 0;
