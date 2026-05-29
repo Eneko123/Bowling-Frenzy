@@ -3086,13 +3086,13 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 60
+  - timeMax: 1
     E1: 20
     E2: 0
     E3: 0
     spawnRateMax: 0
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 30
     E2: 0
     E3: 0

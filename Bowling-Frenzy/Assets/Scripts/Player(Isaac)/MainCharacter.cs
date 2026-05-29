@@ -192,11 +192,11 @@ public class MainCharacter : MonoBehaviour
             // Solo dispara si no está recargando
             if (!isReloadingNormalBullet)
             {
-                animator.SetTrigger("isAttacking");
+                ThrowNormalBall(); // Dispara una bala normal
             }
 
             // Espera el tiempo de recarga antes del siguiente disparo
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
         }
 
         isShootingLoopActive = false;
@@ -242,7 +242,7 @@ public class MainCharacter : MonoBehaviour
             isShootingPressed = false;
             StopShootingLoop();
 
-            animator.SetTrigger("IsSpecial");
+            ThrowSpecialBall(); // Lanza la bala especial
 
             if (wasShootingPressed)
                 StartCoroutine(ResumeShootingAfterSpecial());
@@ -256,8 +256,8 @@ public class MainCharacter : MonoBehaviour
         yield return null;
 
         // Espera a que termine la animación especial (ajustar este tiempo según la duración de la animación)
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        yield return new WaitForSeconds(stateInfo.length);
+        
+        yield return new WaitForSeconds(1.5f);
 
         // Verifica que el jugador realmente siga presionando el botón (no solo que la variable esté en true)
         if (isShootingPressed && !isReloadingNormalBullet && !isShootingLoopActive)
@@ -433,6 +433,8 @@ public class MainCharacter : MonoBehaviour
             SpecialBullets.Slowing => 7f,
             _ => 0f
         };
+
+        isShootingPressed = true; // Para que el jugador pueda seguir disparando después del especial sin soltar el botón
 
         // Notifica a la UI y elimina lógica duplicada
         UIGameplay.uI.StartSpecialCooldown(currentSpecialBullet, cooldown);

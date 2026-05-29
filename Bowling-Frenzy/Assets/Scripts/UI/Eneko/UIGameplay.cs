@@ -216,7 +216,7 @@ public class UIGameplay : MonoBehaviour
         {
             if (isReady)
             {
-                bigJumpText.text = "LISTO";
+                bigJumpText.text = "SALTO CARGADO";
             }
             else
             {
