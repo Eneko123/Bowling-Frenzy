@@ -145,6 +145,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CycleWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""218c77d6-69af-4d5c-ba07-091ee7a39588"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -279,6 +288,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeSpecial"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a75d02b9-c89f-47ea-8f78-d0d637364065"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -293,6 +313,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Keyboard_Shoot = m_Keyboard.FindAction("Shoot", throwIfNotFound: true);
         m_Keyboard_SpecialHability = m_Keyboard.FindAction("SpecialHability", throwIfNotFound: true);
         m_Keyboard_ChangeSpecial = m_Keyboard.FindAction("ChangeSpecial", throwIfNotFound: true);
+        m_Keyboard_CycleWeapon = m_Keyboard.FindAction("CycleWeapon", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -379,6 +400,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Shoot;
     private readonly InputAction m_Keyboard_SpecialHability;
     private readonly InputAction m_Keyboard_ChangeSpecial;
+    private readonly InputAction m_Keyboard_CycleWeapon;
     /// <summary>
     /// Provides access to input actions defined in input action map "Keyboard".
     /// </summary>
@@ -414,6 +436,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Keyboard/ChangeSpecial".
         /// </summary>
         public InputAction @ChangeSpecial => m_Wrapper.m_Keyboard_ChangeSpecial;
+        /// <summary>
+        /// Provides access to the underlying input action "Keyboard/CycleWeapon".
+        /// </summary>
+        public InputAction @CycleWeapon => m_Wrapper.m_Keyboard_CycleWeapon;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -458,6 +484,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ChangeSpecial.started += instance.OnChangeSpecial;
             @ChangeSpecial.performed += instance.OnChangeSpecial;
             @ChangeSpecial.canceled += instance.OnChangeSpecial;
+            @CycleWeapon.started += instance.OnCycleWeapon;
+            @CycleWeapon.performed += instance.OnCycleWeapon;
+            @CycleWeapon.canceled += instance.OnCycleWeapon;
         }
 
         /// <summary>
@@ -487,6 +516,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ChangeSpecial.started -= instance.OnChangeSpecial;
             @ChangeSpecial.performed -= instance.OnChangeSpecial;
             @ChangeSpecial.canceled -= instance.OnChangeSpecial;
+            @CycleWeapon.started -= instance.OnCycleWeapon;
+            @CycleWeapon.performed -= instance.OnCycleWeapon;
+            @CycleWeapon.canceled -= instance.OnCycleWeapon;
         }
 
         /// <summary>
@@ -569,5 +601,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeSpecial(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CycleWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCycleWeapon(InputAction.CallbackContext context);
     }
 }

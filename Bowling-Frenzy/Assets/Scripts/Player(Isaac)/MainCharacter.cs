@@ -68,6 +68,7 @@ public class MainCharacter : MonoBehaviour
     // Variables para el disparo continuo
     private bool isShootingPressed = false;
     private bool isShootingLoopActive = false;
+    private Coroutine shootingLoopCoroutine = null;
     private Coroutine normalBulletReloadCoroutine = null;
 
     [Header("Special Bullets UI")]
@@ -100,12 +101,24 @@ public class MainCharacter : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
 
+        // Suscripción por código para evitar que la referencia se pierda en runtime
+        PlayerInput playerInput = GetComponent<PlayerInput>();
+        playerInput.actions["CycleWeapon"].performed += OnCycleWeapon;
+
         bulletCooldowns = new Dictionary<SpecialBullets, (float, UIGameplay)>
     {
         { SpecialBullets.Explosive, (10f, null) },
         { SpecialBullets.Piercing,  (5.5f, null) },
         { SpecialBullets.Slowing,   (7f, null) }
     };
+    }
+
+    private void OnDestroy()
+    {
+        // Siempre desuscribirse para evitar memory leaks
+        PlayerInput playerInput = GetComponent<PlayerInput>();
+        if (playerInput != null)
+            playerInput.actions["CycleWeapon"].performed -= OnCycleWeapon;
     }
     //Se llamara al evento en Unity asociado con la accion de moverse
     public void OnMoveInput(InputAction.CallbackContext contextMove)
@@ -168,9 +181,9 @@ public class MainCharacter : MonoBehaviour
             if (contextShoot.started)
             {
                 isShootingPressed = true;
-                if (!isReloadingNormalBullet && !isShootingLoopActive)
+                if (!isShootingLoopActive)
                 {
-                    StartCoroutine(ShootingLoopCoroutine());
+                    shootingLoopCoroutine = StartCoroutine(ShootingLoopCoroutine());
                 }
             }
             // Cuando se suelta el botón
@@ -189,27 +202,24 @@ public class MainCharacter : MonoBehaviour
 
         while (isShootingPressed)
         {
-            // Solo dispara si no está recargando
-            if (!isReloadingNormalBullet)
-            {
-                ThrowNormalBall(); // Dispara una bala normal
-            }
-
-            // Espera el tiempo de recarga antes del siguiente disparo
+            ThrowNormalBall(); // Dispara una bala normal
+            // El ritmo lo marca este WaitForSeconds, no isReloadingNormalBullet
             yield return new WaitForSeconds(1.5f);
         }
 
         isShootingLoopActive = false;
+        shootingLoopCoroutine = null;
     }
 
     // Detiene el loop de disparo
     private void StopShootingLoop()
     {
-        if (isShootingLoopActive)
+        if (shootingLoopCoroutine != null)
         {
-            StopCoroutine(ShootingLoopCoroutine());
-            isShootingLoopActive = false;
+            StopCoroutine(shootingLoopCoroutine);
+            shootingLoopCoroutine = null;
         }
+        isShootingLoopActive = false;
 
         // Detiene la corrutina de recarga de balas normales
         if (normalBulletReloadCoroutine != null)
@@ -231,6 +241,7 @@ public class MainCharacter : MonoBehaviour
         StopAllCoroutines();
 
         isShootingLoopActive = false;
+        shootingLoopCoroutine = null;
         normalBulletReloadCoroutine = null;
     }
 
@@ -239,30 +250,30 @@ public class MainCharacter : MonoBehaviour
         if (contextSpecial.performed && UIGameplay.uI != null && UIGameplay.uI.IsSpecialReady(currentSpecialBullet))
         {
             bool wasShootingPressed = isShootingPressed;
+            // Parar el loop normal para que no se solape con el especial
             isShootingPressed = false;
             StopShootingLoop();
 
             ThrowSpecialBall(); // Lanza la bala especial
 
+            // Si el jugador seguía con el clic pulsado, reanudar el loop después de 1.5s
             if (wasShootingPressed)
+            {
+                isShootingPressed = true; // Mantener la intención del jugador
                 StartCoroutine(ResumeShootingAfterSpecial());
+            }
         }
     }
 
     // Corrutina para reanudar el disparo normal después del disparo especial
     private IEnumerator ResumeShootingAfterSpecial()
     {
-        // Espera un frame para que la animación especial se active
-        yield return null;
-
-        // Espera a que termine la animación especial (ajustar este tiempo según la duración de la animación)
-        
         yield return new WaitForSeconds(1.5f);
 
-        // Verifica que el jugador realmente siga presionando el botón (no solo que la variable esté en true)
-        if (isShootingPressed && !isReloadingNormalBullet && !isShootingLoopActive)
+        // Solo reanudar si el jugador sigue con el botón pulsado y no hay ya un loop activo
+        if (isShootingPressed && !isShootingLoopActive)
         {
-            StartCoroutine(ShootingLoopCoroutine());
+            shootingLoopCoroutine = StartCoroutine(ShootingLoopCoroutine());
         }
     }
 
@@ -276,7 +287,7 @@ public class MainCharacter : MonoBehaviour
             InputBinding K1 = new InputBinding(path: "<Keyboard>/1", action: "ChangeSpecial");
             InputBinding K2 = new InputBinding(path: "<Keyboard>/2", action: "ChangeSpecial");
             InputBinding K3 = new InputBinding(path: "<Keyboard>/3", action: "ChangeSpecial");
-            
+
             if (binding.Value.path == K1.path)
             {
                 currentSpecial = 1;
@@ -311,10 +322,22 @@ public class MainCharacter : MonoBehaviour
 
             changeWeapon.UpdateActive(currentSpecial);
 
-                Debug.Log(binding.Value);
-                Debug.Log(currentHability.currentPositionHability);
-            
+            Debug.Log(binding.Value);
+            Debug.Log(currentHability.currentPositionHability);
+
         }
+    }
+
+    // Suscrito por código en Start a "CycleWeapon".performed
+    public void OnCycleWeapon(InputAction.CallbackContext contextCycle)
+    {
+        Debug.Log("CycleWeapon performed");
+        if (uiGameplay.isPaused || uiGameplay.isUpgradeMenuOpen) return;
+
+        GenerateBullet currentHability = GenerateBullet.instance;
+        int newIndex = changeWeapon.CycleLeft();
+        currentSpecialBullet = currentHability.ChangeHability(newIndex - 1);
+        Debug.Log($"Ciclo → especial {newIndex}");
     }
     IEnumerator DelayForNormalBullet(float delay)
     {
@@ -324,7 +347,7 @@ public class MainCharacter : MonoBehaviour
         normalBulletReloadCoroutine = null;
     }
 
-    
+
     private void Update()
     {
         // Si el juego se pausa o se abre el menú de mejoras, detener el disparo
@@ -354,7 +377,7 @@ public class MainCharacter : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
-        
+
         controller.Move(velocity * Time.deltaTime);
     }
 
@@ -433,8 +456,6 @@ public class MainCharacter : MonoBehaviour
             SpecialBullets.Slowing => 7f,
             _ => 0f
         };
-
-        isShootingPressed = true; // Para que el jugador pueda seguir disparando después del especial sin soltar el botón
 
         // Notifica a la UI y elimina lógica duplicada
         UIGameplay.uI.StartSpecialCooldown(currentSpecialBullet, cooldown);

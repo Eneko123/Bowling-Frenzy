@@ -809,6 +809,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1486905778844460859, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486905778844460859, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 236
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486905778844460859, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -447
+      objectReference: {fileID: 0}
     - target: {fileID: 2587620543952980568, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 15
@@ -948,6 +960,14 @@ PrefabInstance:
     - target: {fileID: 7840832038737001221, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542088679291940812, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 236
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542088679291940812, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -487
       objectReference: {fileID: 0}
     - target: {fileID: 8863696699055725547, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1286,6 +1306,30 @@ PrefabInstance:
     - target: {fileID: 6048898275541411092, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991664578303302331, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991664578303302331, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 218c77d6-69af-4d5c-ba07-091ee7a39588
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991664578303302331, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: 'Keyboard/CycleWeapon[/Keyboard/tab]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991664578303302331, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991664578303302331, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991664578303302331, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8697455628537231847, guid: babefe7325f9bb244af55e2654645e7b, type: 3}
       propertyPath: powerUps
@@ -3086,7 +3130,7 @@ MonoBehaviour:
   - {fileID: 751842065}
   powerUps: {fileID: 28346466}
   states:
-  - timeMax: 1
+  - timeMax: 60
     E1: 20
     E2: 0
     E3: 0
@@ -3098,25 +3142,25 @@ MonoBehaviour:
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 50
     E2: 10
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 20
     E2: 10
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 25
     E2: 15
     E3: 0
     spawnRateMax: 1
     currentSpawnRate: 0
-  - timeMax: 60
+  - timeMax: 1
     E1: 30
     E2: 20
     E3: 0

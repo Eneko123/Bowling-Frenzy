@@ -442,16 +442,18 @@ public class UIGameplay : MonoBehaviour
     // Estos metodos son llamados por PowerUps.cs
     public void OnUpgradeMenuOpened()
     {
+        // Congela la cámara
+        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(true);
         isUpgradeMenuOpen = true;
         if (hudPanel) hudPanel.SetActive(false);
-        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(true);
     }
 
     public void OnUpgradeMenuClosed()
     {
+        // Descongela la cámara
+        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(false);
         isUpgradeMenuOpen = false;
         if (hudPanel) hudPanel.SetActive(true);
-        MainCharacter.Instance.GetComponentInChildren<CameraPlayer>().SetFrozen(false);
     }
     #endregion
 

@@ -1574,6 +1574,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1be8d6cb-df81-496f-a2da-8cf5146ea626
     m_ActionName: 'Keyboard/ChangeSpecial[/Keyboard/1,/Keyboard/2,/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1251003391922785699}
+        m_TargetAssemblyTypeName: MainCharacter, Assembly-CSharp
+        m_MethodName: OnCycleWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 218c77d6-69af-4d5c-ba07-091ee7a39588
+    m_ActionName: 'Keyboard/CycleWeapon[/Keyboard/tab]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Keyboard
@@ -1635,6 +1651,7 @@ MonoBehaviour:
   PiercingIcon: {fileID: 21300000, guid: 0c0e333cc1b39a243b65f87382159c15, type: 3}
   SlowingIcon: {fileID: 21300000, guid: 87405a691b2092f4c9590f75a71ccda2, type: 3}
   specialBullets: 
+  weaponSlots: []
 --- !u!4 &7772299266287812469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cec50fa64e5ac44449e4a496cfb0dd9a, type: 3}
