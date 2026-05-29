@@ -444,7 +444,6 @@ public class MainCharacter : MonoBehaviour
 
         GameObject b = GenerateBullet.instance.GetBullets();
         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-        AudioManager.Instance.PlaySFX("BulletSFX");
         // Detener la corrutina anterior si existe
         if (normalBulletReloadCoroutine != null)
         {
@@ -463,7 +462,6 @@ public class MainCharacter : MonoBehaviour
         if (b == null) return;
 
         b.GetComponentInChildren<NormalBulletBehaviour>().Init(pointOfShoot.transform.position, cameraPlayer.transform.forward);
-        AudioManager.Instance.PlaySFX("BulletSFX");
         // Duraciones centralizadas (puedes moverlas a un ScriptableObject después si quieres)
         float cooldown = currentSpecialBullet switch
         {
