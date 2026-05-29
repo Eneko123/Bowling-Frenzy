@@ -25,7 +25,6 @@ public class CameraPlayer : MonoBehaviour
         isFrozen = frozen;
         if (frozen) isLooking = false; // evita que el último input quede "colgado"
     }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,7 +33,6 @@ public class CameraPlayer : MonoBehaviour
             //Cuando se hace click en la pantalla el ratón pasa la centro de la pantalla
             Cursor.lockState = CursorLockMode.Locked;
         }
-        
     }
 
     public void OnLookInput(InputAction.CallbackContext contextLook)
