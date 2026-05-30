@@ -175,7 +175,6 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext contextShoot)
     {
-
         if (!uiGameplay.isPaused && !uiGameplay.isUpgradeMenuOpen)
         {
             // Cuando se presiona el botón
@@ -367,6 +366,7 @@ public class MainCharacter : MonoBehaviour
 
         Debug.Log($"Ciclo → {next} (slot {nextPos + 1})");
     }
+
     IEnumerator DelayForNormalBullet(float delay)
     {
         isReloadingNormalBullet = true;

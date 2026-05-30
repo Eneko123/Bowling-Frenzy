@@ -3034,7 +3034,7 @@ MonoBehaviour:
   - name: BoloRecibeDano
     clip: {fileID: 8300000, guid: 0bb6b5c61190728428569b652a6e79f5, type: 3}
   - name: BulletSFX
-    clip: {fileID: 8300000, guid: c96ceaf28504637498e0019eff3548ea, type: 3}
+    clip: {fileID: 8300000, guid: 7e2f9a746ecc41946b12250211ccc6a4, type: 3}
   - name: PierceBulletEffect
     clip: {fileID: 8300000, guid: 437e8d7a6673f99459dc43d13a038224, type: 3}
   - name: DanoJugador
