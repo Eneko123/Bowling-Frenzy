@@ -471,7 +471,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: n
+  m_text: "\xA1Bienvenido a Bowling Frenzy!\n\nRecuerda que tu objetivo es derribar
+    la mayor cantidad de bolos posible dentro del tiempo l\xEDmite de cada ronda.
+    Cuantos m\xE1s bolos derrotes, mayor ser\xE1 tu marcador.\n\nEs importante conservar
+    el combo, gracias a el podr\xE1s curarte si recibes da\xF1o.\n\nAl final de cada
+    ronda podr\xE1s escoger una mejora, escoge con cabeza para idear una buena estrategia.\n\n\xA1Buena
+    suerte!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -498,8 +503,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -536,7 +541,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -427.11682, w: 0}
+  m_margin: {x: 0, y: 0, z: -507.28625, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

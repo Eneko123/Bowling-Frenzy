@@ -1519,8 +1519,16 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 237285028121115867, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 237285028121115867, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 237285028121115867, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -521
       objectReference: {fileID: 0}
     - target: {fileID: 237285028121115867, guid: 3682c979497fa4a41bfc4048a5c15496, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5462,7 +5470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec2824bd5ef9353478a09e8e21db2561, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59750c4f505ca674b9215dab6615100d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
