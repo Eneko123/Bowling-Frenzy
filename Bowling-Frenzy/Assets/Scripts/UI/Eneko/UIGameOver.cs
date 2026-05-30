@@ -114,7 +114,7 @@ public class UIGameOver : MonoBehaviour
         if (enemiesKilledText)
         {
             enemiesKilledText.text =
-                "Bolos normales eliminados: " + GameManager.Instance.bolo1Score +
+                "Bolos enfadados eliminados: " + GameManager.Instance.bolo1Score +
                 "\nBolos bebés eliminados: " + GameManager.Instance.bolo2Score +
                 "\nBolos macarras eliminados: " + GameManager.Instance.bolo3Score;
         }
@@ -136,7 +136,7 @@ public class UIGameOver : MonoBehaviour
         if (enemiesKilledTextLose)
         {
             enemiesKilledTextLose.text =
-                "Bolos normales eliminados: " + GameManager.Instance.bolo1Score +
+                "Bolos enfadados eliminados: " + GameManager.Instance.bolo1Score +
                 "\nBolos bebés eliminados: " + GameManager.Instance.bolo2Score +
                 "\nBolos macarras eliminados: " + GameManager.Instance.bolo3Score;
         }

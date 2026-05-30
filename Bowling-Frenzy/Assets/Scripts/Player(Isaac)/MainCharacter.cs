@@ -70,6 +70,7 @@ public class MainCharacter : MonoBehaviour
     private bool isShootingLoopActive = false;
     private Coroutine shootingLoopCoroutine = null;
     private Coroutine normalBulletReloadCoroutine = null;
+    private float lastShootTime = -999f;
 
     [Header("Special Bullets UI")]
     [SerializeField] private UIGameplay[] specialBulletUIs; // Arrastra en Inspector
@@ -195,16 +196,24 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
+    private const float shootCooldown = 1.2f;
+
     // Corrutina que maneja el loop de disparo
     private IEnumerator ShootingLoopCoroutine()
     {
         isShootingLoopActive = true;
 
+        // Si se ha disparado recientemente
+        // Esperar el tiempo que queda del cooldown antes del primer disparo
+        float timeSinceLast = Time.time - lastShootTime;
+        if (timeSinceLast < shootCooldown)
+            yield return new WaitForSeconds(shootCooldown - timeSinceLast);
+
         while (isShootingPressed)
         {
-            ThrowNormalBall(); // Dispara una bala normal
-            // El ritmo lo marca este WaitForSeconds, no isReloadingNormalBullet
-            yield return new WaitForSeconds(1.2f);
+            ThrowNormalBall();
+            lastShootTime = Time.time;
+            yield return new WaitForSeconds(shootCooldown);
         }
 
         isShootingLoopActive = false;
@@ -268,7 +277,10 @@ public class MainCharacter : MonoBehaviour
     // Corrutina para reanudar el disparo normal después del disparo especial
     private IEnumerator ResumeShootingAfterSpecial()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(shootCooldown);
+
+        // Marcar el tiempo como "ahora" para que ShootingLoopCoroutine no añada espera extra
+        lastShootTime = Time.time - shootCooldown;
 
         // Solo reanudar si el jugador sigue con el botón pulsado y no hay ya un loop activo
         if (isShootingPressed && !isShootingLoopActive)
