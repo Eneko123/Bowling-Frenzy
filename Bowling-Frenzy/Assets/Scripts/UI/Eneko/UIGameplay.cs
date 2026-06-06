@@ -246,6 +246,7 @@ public class UIGameplay : MonoBehaviour
             if (ui != null && ui.bulletType == SpecialBullets.None )
             {
                 specialCooldownUIsArray[i].bulletType = GenerateBullet.instance.specialBullets[GenerateBullet.instance.specialBullets.Count - 1];
+                ui.fillImage.gameObject.SetActive(false);
                 break;
             }
             i++;
