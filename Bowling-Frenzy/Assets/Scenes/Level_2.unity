@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2654875537736715548, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2818053905714736868, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
       propertyPath: rounds
       value: 
