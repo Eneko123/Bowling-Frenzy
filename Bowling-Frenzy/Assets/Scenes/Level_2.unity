@@ -1745,9 +1745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902cbc199b624df46a8bbd69a51e216b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1481540132 stripped
+--- !u!1 &1512669920 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2022466134347673292, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4843783335574010868, guid: 847b6b3fe51d48f4f83e66a7e4068a16, type: 3}
   m_PrefabInstance: {fileID: 16670280}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1638487385
@@ -2076,7 +2076,7 @@ PrefabInstance:
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: timerObject
       value: 
-      objectReference: {fileID: 1481540132}
+      objectReference: {fileID: 1512669920}
     - target: {fileID: 8416435502433041026, guid: 37f85b9fcff92a047afda53e63a89705, type: 3}
       propertyPath: RoundManagerText
       value: 

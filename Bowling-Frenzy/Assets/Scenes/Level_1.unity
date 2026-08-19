@@ -2074,11 +2074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1152678867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 656327470378955913, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
-  m_PrefabInstance: {fileID: 174185783}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1184734096 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7171018526219594344, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
@@ -2218,7 +2213,7 @@ MonoBehaviour:
     currentSpawnRate: 0
   timerText: {fileID: 174185787}
   RoundManagerText: {fileID: 174185788}
-  timerObject: {fileID: 1152678867}
+  timerObject: {fileID: 1289997343}
   uiGameplay: {fileID: 28346465}
   boss: {fileID: 2081428949}
 --- !u!1 &1238506595
@@ -2569,6 +2564,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285599683}
   m_CullTransparentMesh: 1
+--- !u!1 &1289997343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6211047894482428337, guid: 655c8d76b0da6c4499c1abf8e0ad4a78, type: 3}
+  m_PrefabInstance: {fileID: 174185783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1333906359
 PrefabInstance:
   m_ObjectHideFlags: 0
